@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Acme-Overflow:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="Sample-Project-1.8.war">
+      <element id="artifact" artifact-name="Acme-Overflow:war exploded" />
+    </root>
+  </artifact>
+</component>
