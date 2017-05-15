@@ -1,8 +1,14 @@
 package domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 /**
@@ -19,5 +25,55 @@ public class Curricula extends DomainEntity {
     private String hobbiesSection;
 
     public Curricula() {
+    }
+
+
+    @NotBlank
+    @URL
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    @NotBlank
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+    public String getEducationSection() {
+        return educationSection;
+    }
+
+    public void setEducationSection(String educationSection) {
+        this.educationSection = educationSection;
+    }
+
+    @NotBlank
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+    public String getExperienceSection() {
+        return experienceSection;
+    }
+
+    public void setExperienceSection(String experienceSection) {
+        this.experienceSection = experienceSection;
+    }
+
+    @ElementCollection(targetClass = String.class)
+    public Collection<String> getReferencias() {
+        return referencias;
+    }
+
+    public void setReferencias(Collection<String> referencias) {
+        this.referencias = referencias;
+    }
+
+
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+    public String getHobbiesSection() {
+        return hobbiesSection;
+    }
+
+    public void setHobbiesSection(String hobbiesSection) {
+        this.hobbiesSection = hobbiesSection;
     }
 }

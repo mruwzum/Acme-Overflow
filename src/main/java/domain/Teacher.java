@@ -1,8 +1,7 @@
 package domain;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 /**
@@ -17,5 +16,24 @@ public class Teacher extends Actor {
 
 
     public Teacher() {
+    }
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @NotNull
+    public Curricula getCurricula() {
+        return curricula;
+    }
+
+    public void setCurricula(Curricula curricula) {
+        this.curricula = curricula;
+    }
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    public Collection<Webinar> getWebinars() {
+        return webinars;
+    }
+
+    public void setWebinars(Collection<Webinar> webinars) {
+        this.webinars = webinars;
     }
 }

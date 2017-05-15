@@ -1,8 +1,9 @@
 package domain;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
+
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
@@ -14,7 +15,37 @@ public class Folder extends DomainEntity {
 
     private String name;
     private Collection<Message> messages;
+    private Actor owner;
 
     public Folder() {
+    }
+
+    @NotBlank
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    public Collection<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Collection<Message> messages) {
+        this.messages = messages;
+    }
+
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    public Actor getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Actor owner) {
+        this.owner = owner;
     }
 }

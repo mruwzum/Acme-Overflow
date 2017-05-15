@@ -1,8 +1,6 @@
 package domain;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
@@ -16,5 +14,24 @@ public class User extends Actor{
     private Collection<Question> questions;
     private Collection<Webinar> webinars;
 
+    public User() {
+    }
 
+    @OneToMany(cascade = CascadeType.PERSIST)
+    public Collection<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Collection<Question> questions) {
+        this.questions = questions;
+    }
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    public Collection<Webinar> getWebinars() {
+        return webinars;
+    }
+
+    public void setWebinars(Collection<Webinar> webinars) {
+        this.webinars = webinars;
+    }
 }

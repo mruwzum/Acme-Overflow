@@ -1,8 +1,9 @@
 package domain;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
+
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
@@ -18,5 +19,43 @@ public class Category extends DomainEntity{
     private Collection<Category> sons;
 
     public Category() {
+    }
+
+
+    @NotBlank
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    @NotBlank
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    public Category getFather() {
+        return father;
+    }
+
+    public void setFather(Category father) {
+        this.father = father;
+    }
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    public Collection<Category> getSons() {
+        return sons;
+    }
+
+    public void setSons(Collection<Category> sons) {
+        this.sons = sons;
     }
 }
