@@ -16,6 +16,22 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<p><spring:message code="welcome.greeting.prefix" /> ${name}<spring:message code="welcome.greeting.suffix" /></p>
+<%--<p><spring:message code="welcome.greeting.prefix" /> ${name}<spring:message code="welcome.greeting.suffix" /></p>--%>
 
-<p><spring:message code="welcome.greeting.current.time" /> ${moment}</p> 
+<%--<p><spring:message code="welcome.greeting.current.time" /> ${moment}</p>--%>
+
+
+<security:authorize access="hasRole('BAN')">
+    <spring:message code="actor.banneda" var="suc"/>
+    <h1><jstl:out value="${suc}"/></h1>
+
+
+</security:authorize>
+
+
+<br>
+
+<br/>
+<security:authorize access="isAnonymous()">
+    ${banner}
+</security:authorize>
