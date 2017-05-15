@@ -1,7 +1,22 @@
 package domain;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import java.util.Collection;
+
 /**
  * Created by daviddelatorre on 15/5/17.
  */
-public class Category {
+@Entity
+@Access(AccessType.PROPERTY)
+public class Category extends DomainEntity{
+
+    private String name;
+    private String description;
+    private Category father;
+    private Collection<Category> sons;
+
+    public Category() {
+    }
 }

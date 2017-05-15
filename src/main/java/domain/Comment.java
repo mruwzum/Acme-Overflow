@@ -3,7 +3,6 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -11,18 +10,14 @@ import java.util.Date;
  */
 @Entity
 @Access(AccessType.PROPERTY)
-public class Question extends DomainEntity {
+public class Comment extends DomainEntity {
 
 
     private String title;
-    private String summary;
-    private Date createdDate;
-    private Category category;
-    private Collection<String> pictures;
-    private User owner;
+    private String text;
+    private Date creationDate;
+    private Other owner;
 
-    public Question() {
+    public Comment() {
     }
-
-
 }
