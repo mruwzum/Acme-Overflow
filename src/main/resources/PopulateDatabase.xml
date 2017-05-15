@@ -10,9 +10,9 @@
  * http://www.tdg-seville.info/License.html
  -->
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns="http://www.springframework.org/schema/beans"
+	   xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 	
@@ -180,4 +180,499 @@
 		<property name="url" value="http://i.imgur.com/eViE38q.png"/>
 	</bean>
 	<!-- /Banner -->
+
+
+	<!-- CreditCard -->
+	<bean id="creditcard1" class="domain.CreditCard">
+		<property name="holderName" value="user1"/>
+		<property name="type" value="VISA"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="year" value="2018"/>
+		<property name="CVV" value="432"/>
+		<property name="month" value="2"/>
+		<property name="owner" value="user1"/>
+	</bean>
+	<!-- CreditCard2 -->
+	<bean id="creditcard2" class="domain.CreditCard">
+
+		<property name="holderName" value="user2"/>
+		<property name="type" value="VISA"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="year" value="2018"/>
+		<property name="CVV" value="432"/>
+		<property name="month" value="2"/>
+		<property name="owner" value="user2"/>
+	</bean>
+	<!--&lt;!&ndash; CreditCard3 &ndash;&gt;-->
+	<!--<bean id="creditcard3" class="domain.CreditCard">-->
+
+	<!--</bean>-->
+	<!--&lt;!&ndash; CreditCard4 &ndash;&gt;-->
+	<!--<bean id="creditcard4" class="domain.CreditCard">-->
+	<!---->
+	<!--</bean>-->
+	<!--&lt;!&ndash; CreditCard5 &ndash;&gt;-->
+	<!--<bean id="creditcard5" class="domain.CreditCard">-->
+	<!---->
+	<!--</bean>-->
+
+	<!--&lt;!&ndash; CreditCard6 &ndash;&gt;-->
+	<!--<bean id="creditcard6" class="domain.CreditCard">-->
+
+	<!--</bean>-->
+
+	<!--&lt;!&ndash; CreditCard7 &ndash;&gt;-->
+	<!--<bean id="creditcard7" class="domain.CreditCard">-->
+
+	<!--</bean>-->
+	<!--&lt;!&ndash; CreditCard8 &ndash;&gt;-->
+	<!--<bean id="creditcard8" class="domain.CreditCard">-->
+
+	<!--</bean>-->
+	<!--&lt;!&ndash; CreditCard9 &ndash;&gt;-->
+	<!--<bean id="creditcard9" class="domain.CreditCard">-->
+
+	<!--</bean>-->
+	<!--&lt;!&ndash; CreditCard10 &ndash;&gt;-->
+	<!--<bean id="creditcard10" class="domain.CreditCard">-->
+
+	<!--</bean>-->
+	<!--&lt;!&ndash; CreditCard11 &ndash;&gt;-->
+	<!--<bean id="creditcard11" class="domain.CreditCard">-->
+
+	<!--</bean>-->
+
+	<!--&lt;!&ndash; /CreditCards &ndash;&gt;-->
+
+	<bean id="user1" class="domain.User">
+		<property name="name" value="user1name"/>
+		<property name="surname" value="user1sourname"/>
+		<property name="email" value="user1mail@gmail.com"/>
+		<property name="phoneNumber" value="+23-6234456456"/>
+		<property name="userAccount" ref="userAccountUser1"/>
+
+
+		<property name="receivedMessages">
+			<list>
+				<ref bean="message2"/>
+			</list>
+		</property>
+		<property name="sendedMessages">
+			<list>
+				<ref bean="message"/>
+			</list>
+		</property>
+
+		<property name="folders">
+			<list>
+				<ref bean="outbox1"/>
+				<ref bean="trashbox1"/>
+				<ref bean="inbox1"/>
+				<ref bean="spambox1"/>
+
+			</list>
+		</property>
+	</bean>
+	<bean id="user2" class="domain.User">
+		<property name="name" value="user2name"/>
+		<property name="surname" value="user2surname"/>
+		<property name="email" value="user2mail@gmail.com"/>
+		<property name="phoneNumber" value="+23-6234456456"/>
+		<property name="userAccount" ref="userAccountuser2"/>
+
+
+		<property name="receivedMessages">
+			<list>
+				<ref bean="message"/>
+			</list>
+		</property>
+		<property name="sendedMessages">
+			<list>
+				<ref bean="message2"/>
+			</list>
+		</property>
+
+		<property name="folders">
+			<list>
+				<ref bean="outbox2"/>
+				<ref bean="trashbox2"/>
+				<ref bean="inbox2"/>
+				<ref bean="spambox2"/>
+
+			</list>
+		</property>
+	</bean>
+	<!-- Folder1 -->
+	<bean id="outbox1" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox1" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox1" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox1" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+
+	<!-- Folder2 -->
+
+	<bean id="outbox2" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox2" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox2" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox2" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+
+
+	<!-- Folder3 -->
+
+	<bean id="outbox3" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox3" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox3" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox3" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+
+	<!-- Folder4 -->
+
+
+	<bean id="outbox4" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox4" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox4" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox4" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+
+	<!-- Folder5 -->
+
+
+	<bean id="outbox5" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox5" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox5" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox5" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+	<!-- Folder6 -->
+
+
+	<bean id="outbox6" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox6" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox6" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox6" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+
+	<!-- Folder7 -->
+
+
+	<bean id="outbox7" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox7" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox7" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox7" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+
+
+	<!-- Folder8 -->
+
+
+	<bean id="outbox8" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox8" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox8" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox8" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+	<!-- Folder9 -->
+
+
+	<bean id="outbox9" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox9" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox9" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox9" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+	<!-- Folder10 -->
+
+
+	<bean id="outbox10" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox10" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox10" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox10" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+	<!-- Folder11 -->
+
+
+	<bean id="outbox11" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox11" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox11" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox11" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+
+	<!-- Folder12 -->
+
+
+	<bean id="outbox12" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox12" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox12" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox12" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+	<!-- Folder13 -->
+
+
+	<bean id="outbox13" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox13" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox13" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox13" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+
+	<!-- Folder14 -->
+	<bean id="outbox14" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox14" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox14" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox14" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+	<!-- Folder15 -->
+	<bean id="outbox15" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox15" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox15" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox15" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+	<!-- Folder16 -->
+	<bean id="outbox16" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox16" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox16" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox16" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+	<!-- Folder17 -->
+	<bean id="outbox17" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+	<bean id="trashbox17" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox17" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox17" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+	<!-- Folder18 -->
+	<bean id="outbox18" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+	<bean id="trashbox18" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+	<bean id="inbox18" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+	<bean id="spambox18" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+	<!-- Folder19 -->
+
+
+	<bean id="outbox19" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox19" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox19" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox19" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+	<!-- Folder20 -->
+	<bean id="outbox20" class="domain.Folder">
+		<property name="name" value="Outbox"/>
+	</bean>
+
+	<bean id="trashbox20" class="domain.Folder">
+		<property name="name" value="Trashbox"/>
+	</bean>
+
+	<bean id="inbox20" class="domain.Folder">
+		<property name="name" value="Inbox"/>
+	</bean>
+
+	<bean id="spambox20" class="domain.Folder">
+		<property name="name" value="Spambox"/>
+	</bean>
+
+	<!--/folders-->
+
+
+	<!-- Message -->
+	<bean id="message" class="domain.Message">
+		<property name="sender" ref="user1"/>
+		<property name="receiver" ref="user2"/>
+		<property name="sendDate" value="2017/05/23 23:12:00"/>
+		<property name="subject" value="meeting"/>
+		<property name="body" value="Lorem ipsum dolor sit amet,"/>
+		<property name="folder" ref="inbox2"/>
+	</bean>
+	<bean id="message2" class="domain.Message">
+		<property name="sender" ref="user2"/>
+		<property name="receiver" ref="user1"/>
+		<property name="sendDate" value="2017/05/24 23:12:00"/>
+		<property name="subject" value="meeting"/>
+		<property name="body" value="Lorem ipsum dolor sit amet,"/>
+		<property name="folder" ref="inbox1"/>
+	</bean>
+
+
 </beans>

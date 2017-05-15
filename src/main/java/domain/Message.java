@@ -1,5 +1,4 @@
 package domain;
-
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 
@@ -7,10 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.util.Date;
-
-/**
- * Created by daviddelatorre on 15/5/17.
- */
 @Entity
 @Access(AccessType.PROPERTY)
 public class Message extends DomainEntity {
@@ -24,8 +19,6 @@ public class Message extends DomainEntity {
     private Priority priority;
     private Folder folder;
 
-    public Message() {
-    }
 
     @NotNull
     @ManyToOne(targetEntity = Actor.class, cascade = CascadeType.PERSIST)
