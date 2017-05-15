@@ -90,7 +90,7 @@ public class Webinar extends DomainEntity {
         this.categories = categories;
     }
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @NotNull
     public Teacher getOwner() {
         return owner;
@@ -119,7 +119,7 @@ public class Webinar extends DomainEntity {
         this.learningMaterials = learningMaterials;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     public Collection<User> getPartakers() {
         return partakers;
     }

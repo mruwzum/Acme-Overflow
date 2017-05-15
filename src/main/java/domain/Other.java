@@ -21,7 +21,7 @@ public class Other extends Actor {
     }
 
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
     public Collection<Answer> getAnswers() {
         return answers;
     }
@@ -30,7 +30,7 @@ public class Other extends Actor {
         this.answers = answers;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
     public Collection<Search> getSearches() {
         return searches;
     }
@@ -39,7 +39,7 @@ public class Other extends Actor {
         this.searches = searches;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
     public Collection<Comment> getComments() {
         return comments;
     }
@@ -48,7 +48,7 @@ public class Other extends Actor {
         this.comments = comments;
     }
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "owner")
     public CreditCard getCreditCard() {
         return creditCard;
     }

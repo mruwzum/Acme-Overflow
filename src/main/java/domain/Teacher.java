@@ -28,7 +28,7 @@ public class Teacher extends Actor {
         this.curricula = curricula;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
     public Collection<Webinar> getWebinars() {
         return webinars;
     }

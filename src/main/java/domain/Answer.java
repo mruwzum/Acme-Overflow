@@ -71,7 +71,7 @@ public class Answer extends DomainEntity {
         this.dislikes = dislikes;
     }
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @NotNull
     public Other getOwner() {
         return owner;

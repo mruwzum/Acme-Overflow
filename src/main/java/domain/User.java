@@ -17,7 +17,7 @@ public class User extends Actor{
     public User() {
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
     public Collection<Question> getQuestions() {
         return questions;
     }
@@ -26,7 +26,7 @@ public class User extends Actor{
         this.questions = questions;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "partakers")
     public Collection<Webinar> getWebinars() {
         return webinars;
     }

@@ -52,7 +52,7 @@ public class Comment extends DomainEntity {
     }
 
     @NotNull
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     public Other getOwner() {
         return owner;
     }

@@ -75,7 +75,7 @@ public class Question extends DomainEntity {
         this.pictures = pictures;
     }
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @NotNull
     public User getOwner() {
         return owner;

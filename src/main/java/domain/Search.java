@@ -49,7 +49,7 @@ public class Search extends DomainEntity {
         this.results = results;
     }
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     public Other getOwner() {
         return owner;
     }
