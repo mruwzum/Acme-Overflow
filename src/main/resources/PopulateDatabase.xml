@@ -196,30 +196,35 @@
 	<bean id="creditcard2" class="domain.CreditCard">
 
 		<property name="holderName" value="user2"/>
-		<property name="type" value="VISA"/>
+        <property name="type" value="DINNERS"/>
 		<property name="number" value="54275498043695577"/>
 		<property name="year" value="2018"/>
 		<property name="CVV" value="432"/>
 		<property name="month" value="2"/>
 		<property name="owner" ref="user2"/>
 	</bean>
-	<!--&lt;!&ndash; CreditCard3 &ndash;&gt;-->
-	<!--<bean id="creditcard3" class="domain.CreditCard">-->
+    <!-- CreditCard3 -->
+    <bean id="creditcard3" class="domain.CreditCard">
 
-	<!--</bean>-->
-	<!--&lt;!&ndash; CreditCard4 &ndash;&gt;-->
-	<!--<bean id="creditcard4" class="domain.CreditCard">-->
-	<!---->
-	<!--</bean>-->
-	<!--&lt;!&ndash; CreditCard5 &ndash;&gt;-->
-	<!--<bean id="creditcard5" class="domain.CreditCard">-->
-	<!---->
-	<!--</bean>-->
+        <property name="holderName" value="user3"/>
+        <property name="type" value="AMEX"/>
+        <property name="number" value="54275498043695577"/>
+        <property name="year" value="2018"/>
+        <property name="CVV" value="432"/>
+        <property name="month" value="2"/>
+        <property name="owner" ref="user3"/>
+    </bean>
+    <!-- CreditCard4 -->
+    <bean id="creditcard4" class="domain.CreditCard">
 
-	<!--&lt;!&ndash; CreditCard6 &ndash;&gt;-->
-	<!--<bean id="creditcard6" class="domain.CreditCard">-->
-
-	<!--</bean>-->
+        <property name="holderName" value="user4"/>
+        <property name="type" value="MASTERCARD"/>
+        <property name="number" value="54275498043695577"/>
+        <property name="year" value="2018"/>
+        <property name="CVV" value="432"/>
+        <property name="month" value="2"/>
+        <property name="owner" ref="user4"/>
+    </bean>
 
 	<!--&lt;!&ndash; CreditCard7 &ndash;&gt;-->
 	<!--<bean id="creditcard7" class="domain.CreditCard">-->
@@ -302,6 +307,64 @@
 			</list>
 		</property>
 	</bean>
+    <bean id="user3" class="domain.User">
+        <property name="name" value="user3name"/>
+        <property name="surname" value="user3surname"/>
+        <property name="email" value="user3mail@gmail.com"/>
+        <property name="phoneNumber" value="+23-6234456456"/>
+        <property name="userAccount" ref="userAccountuser3"/>
+        <property name="creditCard" ref="creditcard3"/>
+
+        <property name="receivedMessages">
+            <list>
+                <ref bean="message3"/>
+            </list>
+        </property>
+        <property name="sendedMessages">
+            <list>
+                <ref bean="message4"/>
+            </list>
+        </property>
+
+        <property name="folders">
+            <list>
+                <ref bean="outbox3"/>
+                <ref bean="trashbox3"/>
+                <ref bean="inbox3"/>
+                <ref bean="spambox3"/>
+
+            </list>
+        </property>
+    </bean>
+    <bean id="user4" class="domain.User">
+        <property name="name" value="user4name"/>
+        <property name="surname" value="user4surname"/>
+        <property name="email" value="user4mail@gmail.com"/>
+        <property name="phoneNumber" value="+23-6234456456"/>
+        <property name="userAccount" ref="userAccountuser4"/>
+        <property name="creditCard" ref="creditcard4"/>
+
+        <property name="receivedMessages">
+            <list>
+                <ref bean="message4"/>
+            </list>
+        </property>
+        <property name="sendedMessages">
+            <list>
+                <ref bean="message3"/>
+            </list>
+        </property>
+
+        <property name="folders">
+            <list>
+                <ref bean="outbox4"/>
+                <ref bean="trashbox4"/>
+                <ref bean="inbox4"/>
+                <ref bean="spambox4"/>
+
+            </list>
+        </property>
+    </bean>
 	<!-- Folder1 -->
 	<bean id="outbox1" class="domain.Folder">
 		<property name="name" value="Outbox"/>
@@ -660,7 +723,7 @@
 	<bean id="message" class="domain.Message">
 		<property name="sender" ref="user1"/>
 		<property name="receiver" ref="user2"/>
-		<property name="sendDate" value="2017/05/23 23:12:00"/>
+        <property name="sendDate" value="2017/04/23 23:12:00"/>
 		<property name="subject" value="meeting"/>
 		<property name="body" value="Lorem ipsum dolor sit amet,"/>
 		<property name="folder" ref="inbox2"/>
@@ -668,11 +731,26 @@
 	<bean id="message2" class="domain.Message">
 		<property name="sender" ref="user2"/>
 		<property name="receiver" ref="user1"/>
-		<property name="sendDate" value="2017/05/24 23:12:00"/>
+        <property name="sendDate" value="2017/04/24 23:12:00"/>
 		<property name="subject" value="meeting"/>
 		<property name="body" value="Lorem ipsum dolor sit amet,"/>
 		<property name="folder" ref="inbox1"/>
 	</bean>
-
+    <bean id="message3" class="domain.Message">
+        <property name="sender" ref="user3"/>
+        <property name="receiver" ref="user4"/>
+        <property name="sendDate" value="2017/02/23 23:12:00"/>
+        <property name="subject" value="meeting"/>
+        <property name="body" value="Lorem ipsum dolor sit amet,"/>
+        <property name="folder" ref="inbox4"/>
+    </bean>
+    <bean id="message4" class="domain.Message">
+        <property name="sender" ref="user4"/>
+        <property name="receiver" ref="user3"/>
+        <property name="sendDate" value="2017/04/23 23:12:00"/>
+        <property name="subject" value="meeting"/>
+        <property name="body" value="Lorem ipsum dolor sit amet,"/>
+        <property name="folder" ref="inbox3"/>
+    </bean>
 
 </beans>
