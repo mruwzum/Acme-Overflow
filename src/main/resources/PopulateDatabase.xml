@@ -168,7 +168,9 @@
 
 	<!-- Other domain beans come here -->
 
-
+    <bean id="searhCache" class="domain.SearchCache">
+        <property name="cacheValue" value="10"/>
+    </bean>
     <bean id="admin1" class="domain.Administrator">
         <property name="name" value="admin"/>
         <property name="surname" value="admin sur"/>
@@ -254,7 +256,71 @@
 	<!-- /Banner -->
 
 
-	<!-- CreditCard -->
+    <!-- Comment -->
+    <bean id="comment1" class="domain.Comment">
+        <property name="title" value="genial"/>
+        <property name="text" value="works 4 me!"/>
+        <property name="creationDate" value="2017/04/22"/>
+        <property name="owner" ref="user2"/>
+        <property name="webinar" ref="webinar1"/>
+    </bean>
+
+    <!-- Comment2 -->
+    <bean id="comment2" class="domain.Comment">
+        <property name="title" value="genial"/>
+        <property name="text" value="works 4 me!"/>
+        <property name="creationDate" value="2017/05/22"/>
+        <property name="owner" ref="user1"/>
+        <property name="webinar" ref="webinar1"/>
+    </bean>
+    <!-- Comment3 -->
+
+    <bean id="comment3" class="domain.Comment">
+        <property name="title" value="genial"/>
+        <property name="text" value="works 4 me!"/>
+        <property name="creationDate" value="2017/04/22"/>
+        <property name="owner" ref="user3"/>
+        <property name="webinar" ref="webinar2"/>
+    </bean>
+    <!-- Comment4 -->
+
+    <bean id="comment4" class="domain.Comment">
+        <property name="title" value="genial"/>
+        <property name="text" value="works 4 me!"/>
+        <property name="creationDate" value="2017/04/22"/>
+        <property name="owner" ref="user4"/>
+        <property name="webinar" ref="webinar3"/>
+    </bean>
+    <!-- Comment5 -->
+
+    <bean id="comment5" class="domain.Comment">
+        <property name="title" value="genial"/>
+        <property name="text" value="works 4 me!"/>
+        <property name="creationDate" value="2017/04/22"/>
+        <property name="owner" ref="user4"/>
+        <property name="webinar" ref="webinar3"/>
+    </bean>
+    <!-- Comment6 -->
+
+    <bean id="comment6" class="domain.Comment">
+        <property name="title" value="genial"/>
+        <property name="text" value="works 4 me!"/>
+        <property name="creationDate" value="2017/04/22"/>
+        <property name="owner" ref="user2"/>
+        <property name="webinar" ref="webinar1"/>
+    </bean>
+    <!-- Comment7 -->
+
+    <bean id="comment7" class="domain.Comment">
+        <property name="title" value="genial"/>
+        <property name="text" value="works 4 me!"/>
+        <property name="creationDate" value="2017/04/22"/>
+        <property name="owner" ref="user1"/>
+        <property name="webinar" ref="webinar1"/>
+    </bean>
+
+
+    <!-- CreditCard -->
 	<bean id="creditcard1" class="domain.CreditCard">
 		<property name="holderName" value="user1"/>
 		<property name="type" value="VISA"/>
@@ -384,6 +450,8 @@
         </property>
         <property name="comments">
             <list>
+                <ref bean="comment2"/>
+                <ref bean="comment7"/>
             </list>
         </property>
 	</bean>
@@ -427,6 +495,8 @@
         </property>
         <property name="comments">
             <list>
+                <ref bean="comment1"/>
+                <ref bean="comment6"/>
             </list>
         </property>
 	</bean>
@@ -465,10 +535,12 @@
         </property>
         <property name="searches">
             <list>
+
             </list>
         </property>
         <property name="comments">
             <list>
+                <ref bean="comment3"/>
             </list>
         </property>
     </bean>
@@ -512,6 +584,8 @@
         </property>
         <property name="comments">
             <list>
+                <ref bean="comment4"/>
+                <ref bean="comment5"/>
             </list>
         </property>
     </bean>
@@ -749,6 +823,14 @@
                 <ref bean="user1"/>
             </list>
         </property>
+        <property name="comments">
+            <list>
+                <ref bean="comment1"/>
+                <ref bean="comment2"/>
+                <ref bean="comment6"/>
+                <ref bean="comment7"/>
+            </list>
+        </property>
     </bean>
     <bean id="webinar2" class="domain.Webinar">
         <property name="name" value="webinar2"/>
@@ -770,6 +852,11 @@
         <property name="partakers">
             <list>
                 <ref bean="user3"/>
+            </list>
+        </property>
+        <property name="comments">
+            <list>
+                <ref bean="comment3"/>
             </list>
         </property>
     </bean>
@@ -795,6 +882,12 @@
                 <ref bean="user4"/>
             </list>
         </property>
+        <property name="comments">
+            <list>
+                <ref bean="comment4"/>
+                <ref bean="comment5"/>
+            </list>
+        </property>
     </bean>
     <bean id="webinar4" class="domain.Webinar">
         <property name="name" value="webinar4"/>
@@ -814,6 +907,11 @@
             </list>
         </property>
         <property name="partakers">
+            <list>
+
+            </list>
+        </property>
+        <property name="comments">
             <list>
 
             </list>
