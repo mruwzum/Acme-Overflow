@@ -12,24 +12,39 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="finder/find.do" modelAttribute="finder">
+<form:form action="credit-card/edit.do" modelAttribute="creditcard">
 
     <form:hidden path="id" />
     <form:hidden path="version" />
 
-    <acme:textbox path="title" code="finder.title"/>
+    <acme:textbox path="holderName" code="credit-card.holderName"/>
+    <br />
+    <acme:textbox path="number" code="credit-card.number"/>
+    <br />
+    <acme:textbox path="year" code="credit-card.year"/>
+    <br />
+    <acme:textbox path="month" code="credit-card.month"/>
+    <br />
+    <acme:textbox path="CVV" code="credit-card.CVV"/>
+    <br />
+    <form:label path="type">
+        <spring:message code="credit-card.type"/>:
+    </form:label>
+    <form:select path="type" code="credit-card.type">
+        <form:options/>
+    </form:select>
     <br />
 
     <!---------------------------- BOTONES -------------------------->
 
-    <acme:submit name="save" code="finder.save"/>
+    <acme:submit name="save" code="general.save"/>
 
-    <jstl:if test="\$\{finder.id != 0}">
+    <jstl:if test="\$\{credit-card.id != 0}">
         <input type="submit" name="delete"
-               value="<spring:message code="finder.delete" />"
-               onclick="return confirm('<spring:message code="finder.confirm.delete" />')" />&nbsp;
+               value="<spring:message code="general.delete" />"
+               onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
     </jstl:if>
-    <acme:cancel url="finder/list.do" code="finder.cancel"/>
+    <acme:cancel url="credit-card/list.do" code="general.cancel"/>
 
 
 </form:form>

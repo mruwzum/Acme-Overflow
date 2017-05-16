@@ -12,24 +12,36 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="finder/find.do" modelAttribute="finder">
+<form:form action="search/edit.do" modelAttribute="search">
 
     <form:hidden path="id" />
     <form:hidden path="version" />
+    <form:hidden path="results" />
+    <form:hidden path="owner" />
 
-    <acme:textbox path="title" code="finder.title"/>
+
+    <acme:textbox path="title" code="search.keyword"/>
     <br />
+
+    <form:label path="categories">
+        <spring:message code="question.categories"/>:
+    </form:label>
+    <form:select path="category" code="question.categories">
+        <form:options/>
+    </form:select>
+    <br />
+
 
     <!---------------------------- BOTONES -------------------------->
 
-    <acme:submit name="save" code="finder.save"/>
+    <acme:submit name="save" code="general.save"/>
 
-    <jstl:if test="\$\{finder.id != 0}">
+    <jstl:if test="\$\{search.id != 0}">
         <input type="submit" name="delete"
-               value="<spring:message code="finder.delete" />"
-               onclick="return confirm('<spring:message code="finder.confirm.delete" />')" />&nbsp;
+               value="<spring:message code="general.delete" />"
+               onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
     </jstl:if>
-    <acme:cancel url="finder/list.do" code="finder.cancel"/>
+    <acme:cancel url="search/list.do" code="general.cancel"/>
 
 
 </form:form>

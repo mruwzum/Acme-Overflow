@@ -11,6 +11,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+TODO hacer aqui la vista de edición completa de usuarios
 
 <form:form action="finder/find.do" modelAttribute="finder">
 

@@ -13,8 +13,8 @@
 <security:authorize access="permitAll">
     <div>
         <H5>
-            <a href="finder/create.do"> <spring:message
-                    code="finder.create" />
+            <a href="message/create.do"> <spring:message
+                    code="general.create" />
             </a>
         </H5>
     </div>
@@ -22,28 +22,30 @@
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-               name="finders" requestURI="${requestURI}" id="row">
+               name="messages1" requestURI="${requestURI}" id="row">
 
 
     <!-- Attributes -->
 
     <security:authorize access="permitAll">
         <display:column>
-            <a href="finder/edit.do?finderId=${row.id}"> <spring:message
-                    code="finder.edit" />
+            <a href="message/edit.do?messageId=${row.id}"> <spring:message
+                    code="general.edit" />
             </a>
         </display:column>
     </security:authorize>
 
-    <spring:message code="finder.title" var="title" />
-    <display:column property="title" title="${title}" sortable="true" />
-    <spring:message code="finder.description" var="description" />
-    <display:column property="description" title="${description}" sortable="true" />
-    <spring:message code="finder.originAddress" var="originAddress" />
-    <display:column property="originAddress" title="${originAddress}" sortable="true" />
-    <spring:message code="finder.destinationAddress" var="destinationAddress" />
-    <display:column property="destinationAddress" title="${destinationAddress}" sortable="true" />
-    <spring:message code="finder.keyword" var="keyword" />
-    <display:column property="keyword" title="${keyword}" sortable="true" />
+    <spring:message code="message.subject" var="title" />
+    <display:column property="subject" title="${title}" sortable="true" />
+    <spring:message code="message.body" var="description" />
+    <display:column property="body" title="${description}" sortable="true" />
+    <spring:message code="message.sendDate" var="originAddress" />
+    <display:column property="sendDate" title="${originAddress}" sortable="true" />
+    <spring:message code="message.sender" var="destinationAddress" />
+    <display:column property="sender" title="${destinationAddress}" sortable="true" />
+    <spring:message code="message.receiver" var="keyword" />
+    <display:column property="receiver" title="${keyword}" sortable="true" />
+    <spring:message code="message.folder" var="keyword" />
+    <display:column property="folder" title="${keyword}" sortable="true" />
 
 </display:table>

@@ -13,8 +13,8 @@
 <security:authorize access="permitAll">
     <div>
         <H5>
-            <a href="finder/create.do"> <spring:message
-                    code="finder.create" />
+            <a href="webinar/create.do"> <spring:message
+                    code="general.create" />
             </a>
         </H5>
     </div>
@@ -22,28 +22,27 @@
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-               name="finders" requestURI="${requestURI}" id="row">
+               name="webinars" requestURI="${requestURI}" id="row">
 
 
     <!-- Attributes -->
 
     <security:authorize access="permitAll">
         <display:column>
-            <a href="finder/edit.do?finderId=${row.id}"> <spring:message
-                    code="finder.edit" />
+            <a href="webinar/edit.do?webinarId=${row.id}"> <spring:message
+                    code="general.edit" />
             </a>
         </display:column>
     </security:authorize>
 
-    <spring:message code="finder.title" var="title" />
-    <display:column property="title" title="${title}" sortable="true" />
-    <spring:message code="finder.description" var="description" />
+    <spring:message code="webinar.name" var="title" />
+    <display:column property="name" title="${title}" sortable="true" />
+    <spring:message code="webinar.description" var="description" />
     <display:column property="description" title="${description}" sortable="true" />
-    <spring:message code="finder.originAddress" var="originAddress" />
-    <display:column property="originAddress" title="${originAddress}" sortable="true" />
-    <spring:message code="finder.destinationAddress" var="destinationAddress" />
-    <display:column property="destinationAddress" title="${destinationAddress}" sortable="true" />
-    <spring:message code="finder.keyword" var="keyword" />
-    <display:column property="keyword" title="${keyword}" sortable="true" />
+    <spring:message code="webinar.startDate" var="originAddress" />
+    <display:column property="startDate" title="${originAddress}" sortable="true" />
+    <spring:message code="webinar.price" var="destinationAddress" />
+    <display:column property="price" title="${destinationAddress}" sortable="true" />
+
 
 </display:table>

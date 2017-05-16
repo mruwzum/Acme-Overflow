@@ -13,8 +13,8 @@
 <security:authorize access="permitAll">
     <div>
         <H5>
-            <a href="finder/create.do"> <spring:message
-                    code="finder.create" />
+            <a href="learning-material/create.do"> <spring:message
+                    code="general.create" />
             </a>
         </H5>
     </div>
@@ -22,28 +22,22 @@
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-               name="finders" requestURI="${requestURI}" id="row">
+               name="learning-materials" requestURI="${requestURI}" id="row">
 
 
     <!-- Attributes -->
 
     <security:authorize access="permitAll">
         <display:column>
-            <a href="finder/edit.do?finderId=${row.id}"> <spring:message
-                    code="finder.edit" />
+            <a href="learning-material/edit.do?learning-materialId=${row.id}"> <spring:message
+                    code="general.edit" />
             </a>
         </display:column>
     </security:authorize>
 
-    <spring:message code="finder.title" var="title" />
+    <spring:message code="learning-material.title" var="title" />
     <display:column property="title" title="${title}" sortable="true" />
-    <spring:message code="finder.description" var="description" />
-    <display:column property="description" title="${description}" sortable="true" />
-    <spring:message code="finder.originAddress" var="originAddress" />
-    <display:column property="originAddress" title="${originAddress}" sortable="true" />
-    <spring:message code="finder.destinationAddress" var="destinationAddress" />
-    <display:column property="destinationAddress" title="${destinationAddress}" sortable="true" />
-    <spring:message code="finder.keyword" var="keyword" />
-    <display:column property="keyword" title="${keyword}" sortable="true" />
+    <spring:message code="learning-material.type" var="title" />
+    <display:column property="type" title="${title}" sortable="true" />
 
 </display:table>

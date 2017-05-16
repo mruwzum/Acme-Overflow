@@ -12,24 +12,28 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="finder/find.do" modelAttribute="finder">
+<form:form action="learning-material/edit.do" modelAttribute="learningmaterial">
 
     <form:hidden path="id" />
     <form:hidden path="version" />
+    <form:hidden path="attachmentsURLs" />
 
-    <acme:textbox path="title" code="finder.title"/>
+
+    <acme:textbox path="title" code="learning-material.title"/>
+    <br />
+    <acme:textbox path="type" code="learning-material.type"/>
     <br />
 
     <!---------------------------- BOTONES -------------------------->
 
-    <acme:submit name="save" code="finder.save"/>
+    <acme:submit name="save" code="general.save"/>
 
-    <jstl:if test="\$\{finder.id != 0}">
+    <jstl:if test="\$\{learning-material.id != 0}">
         <input type="submit" name="delete"
-               value="<spring:message code="finder.delete" />"
-               onclick="return confirm('<spring:message code="finder.confirm.delete" />')" />&nbsp;
+               value="<spring:message code="general.delete" />"
+               onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
     </jstl:if>
-    <acme:cancel url="finder/list.do" code="finder.cancel"/>
+    <acme:cancel url="learning-material/list.do" code="general.cancel"/>
 
 
 </form:form>

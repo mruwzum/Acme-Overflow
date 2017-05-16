@@ -12,24 +12,31 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="finder/find.do" modelAttribute="finder">
+<form:form action="curricula/edit.do" modelAttribute="curricula">
 
     <form:hidden path="id" />
     <form:hidden path="version" />
 
-    <acme:textbox path="title" code="finder.title"/>
-    <br />
-
+    <acme:textbox path="title" code="curricula.photo"/>
+    <br/>
+    <acme:textarea path="educationSection" code="curricula.educationSection"/>
+    <br/>
+    <acme:textarea path="experienceSection" code="curricula.experienceSection"/>
+    <br/>
+    <acme:textarea path="referencias" code="curricula.referencias"/>
+    <br/>
+    <acme:textarea path="hobbiesSection" code="curricula.hobbiesSection"/>
+    <br/>
     <!---------------------------- BOTONES -------------------------->
 
-    <acme:submit name="save" code="finder.save"/>
+    <acme:submit name="save" code="general.save"/>
 
-    <jstl:if test="\$\{finder.id != 0}">
+    <jstl:if test="\$\{curricula.id != 0}">
         <input type="submit" name="delete"
-               value="<spring:message code="finder.delete" />"
-               onclick="return confirm('<spring:message code="finder.confirm.delete" />')" />&nbsp;
+               value="<spring:message code="general.delete" />"
+               onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
     </jstl:if>
-    <acme:cancel url="finder/list.do" code="finder.cancel"/>
+    <acme:cancel url="curricula/list.do" code="general.cancel"/>
 
 
 </form:form>
