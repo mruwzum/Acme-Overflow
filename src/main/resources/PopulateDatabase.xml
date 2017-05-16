@@ -190,7 +190,7 @@
 		<property name="year" value="2018"/>
 		<property name="CVV" value="432"/>
 		<property name="month" value="2"/>
-		<property name="owner" value="user1"/>
+		<property name="owner" ref="user1"/>
 	</bean>
 	<!-- CreditCard2 -->
 	<bean id="creditcard2" class="domain.CreditCard">
@@ -201,7 +201,7 @@
 		<property name="year" value="2018"/>
 		<property name="CVV" value="432"/>
 		<property name="month" value="2"/>
-		<property name="owner" value="user2"/>
+		<property name="owner" ref="user2"/>
 	</bean>
 	<!--&lt;!&ndash; CreditCard3 &ndash;&gt;-->
 	<!--<bean id="creditcard3" class="domain.CreditCard">-->
@@ -250,7 +250,7 @@
 		<property name="email" value="user1mail@gmail.com"/>
 		<property name="phoneNumber" value="+23-6234456456"/>
 		<property name="userAccount" ref="userAccountUser1"/>
-
+		<property name="creditCard" ref="creditcard1"/>
 
 		<property name="receivedMessages">
 			<list>
@@ -279,7 +279,7 @@
 		<property name="email" value="user2mail@gmail.com"/>
 		<property name="phoneNumber" value="+23-6234456456"/>
 		<property name="userAccount" ref="userAccountuser2"/>
-
+		<property name="creditCard" ref="creditcard2"/>
 
 		<property name="receivedMessages">
 			<list>

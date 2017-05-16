@@ -9,7 +9,7 @@ import java.util.Collection;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class User extends Actor{
+public class User extends Other {
 
     private Collection<Question> questions;
     private Collection<Webinar> webinars;
@@ -32,4 +32,6 @@ public class User extends Actor{
     public void setWebinars(Collection<Webinar> webinars) {
         this.webinars = webinars;
     }
+
+
 }

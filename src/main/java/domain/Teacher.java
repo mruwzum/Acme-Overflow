@@ -9,7 +9,7 @@ import java.util.Collection;
  */
 @Entity
 @Access(AccessType.PROPERTY)
-public class Teacher extends Actor {
+public class Teacher extends Other {
 
     private Curricula curricula;
     private Collection<Webinar> webinars;
