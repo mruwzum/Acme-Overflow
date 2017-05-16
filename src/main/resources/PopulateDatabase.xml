@@ -167,6 +167,78 @@
 	</bean>
 
 	<!-- Other domain beans come here -->
+
+
+    <bean id="admin1" class="domain.Administrator">
+        <property name="name" value="admin"/>
+        <property name="surname" value="admin sur"/>
+        <property name="email" value="admin@gmail.com"/>
+        <property name="phoneNumber" value="+23-6234456456"/>
+        <property name="userAccount" ref="userAccountadministrator1"/>
+        <property name="receivedMessages">
+            <list>
+            </list>
+        </property>
+        <property name="sendedMessages">
+            <list>
+            </list>
+        </property>
+        <property name="folders">
+            <list>
+                <ref bean="outbox9"/>
+                <ref bean="trashbox9"/>
+                <ref bean="inbox9"/>
+                <ref bean="spambox9"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="admin2" class="domain.Administrator">
+        <property name="name" value="admin2"/>
+        <property name="surname" value="admin2 sur"/>
+        <property name="email" value="admin2@gmail.com"/>
+        <property name="phoneNumber" value="+23-6234456456"/>
+        <property name="userAccount" ref="userAccountadministrator2"/>
+        <property name="receivedMessages">
+            <list>
+            </list>
+        </property>
+        <property name="sendedMessages">
+            <list>
+            </list>
+        </property>
+        <property name="folders">
+            <list>
+                <ref bean="outbox10"/>
+                <ref bean="trashbox10"/>
+                <ref bean="inbox10"/>
+                <ref bean="spambox10"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="admin3" class="domain.Administrator">
+        <property name="name" value="admin3"/>
+        <property name="surname" value="admin3 sur"/>
+        <property name="email" value="admin3@gmail.com"/>
+        <property name="phoneNumber" value="+23-6234456456"/>
+        <property name="userAccount" ref="userAccountadministrator3"/>
+        <property name="receivedMessages">
+            <list>
+            </list>
+        </property>
+        <property name="sendedMessages">
+            <list>
+                <ref bean="message4"/>
+            </list>
+        </property>
+        <property name="folders">
+            <list>
+                <ref bean="outbox11"/>
+                <ref bean="trashbox11"/>
+                <ref bean="inbox11"/>
+                <ref bean="spambox11"/>
+            </list>
+        </property>
+    </bean>
 	<!-- Banner -->
 	<bean id="banner1" class="domain.Banner">
 		<property name="url" value="http://i.imgur.com/UY1x8KM.png"/>
@@ -226,26 +298,50 @@
         <property name="owner" ref="user4"/>
     </bean>
 
-	<!--&lt;!&ndash; CreditCard7 &ndash;&gt;-->
-	<!--<bean id="creditcard7" class="domain.CreditCard">-->
+    <!-- CreditCard -->
+    <bean id="creditcard5" class="domain.CreditCard">
+        <property name="holderName" value="teacher1"/>
+        <property name="type" value="VISA"/>
+        <property name="number" value="54275498043695577"/>
+        <property name="year" value="2018"/>
+        <property name="CVV" value="432"/>
+        <property name="month" value="2"/>
+        <property name="owner" ref="teacher1"/>
+    </bean>
+    <!-- CreditCard2 -->
+    <bean id="creditcard6" class="domain.CreditCard">
 
-	<!--</bean>-->
-	<!--&lt;!&ndash; CreditCard8 &ndash;&gt;-->
-	<!--<bean id="creditcard8" class="domain.CreditCard">-->
+        <property name="holderName" value="teacher2"/>
+        <property name="type" value="DISCOVER"/>
+        <property name="number" value="54275498043695577"/>
+        <property name="year" value="2018"/>
+        <property name="CVV" value="432"/>
+        <property name="month" value="2"/>
+        <property name="owner" ref="teacher2"/>
+    </bean>
+    <!-- CreditCard3 -->
+    <bean id="creditcard7" class="domain.CreditCard">
 
-	<!--</bean>-->
-	<!--&lt;!&ndash; CreditCard9 &ndash;&gt;-->
-	<!--<bean id="creditcard9" class="domain.CreditCard">-->
+        <property name="holderName" value="teacher3"/>
+        <property name="type" value="AMEX"/>
+        <property name="number" value="54275498043695577"/>
+        <property name="year" value="2018"/>
+        <property name="CVV" value="432"/>
+        <property name="month" value="2"/>
+        <property name="owner" ref="teacher3"/>
+    </bean>
+    <!-- CreditCard4 -->
+    <bean id="creditcard8" class="domain.CreditCard">
 
-	<!--</bean>-->
-	<!--&lt;!&ndash; CreditCard10 &ndash;&gt;-->
-	<!--<bean id="creditcard10" class="domain.CreditCard">-->
+        <property name="holderName" value="teacher4"/>
+        <property name="type" value="MASTERCARD"/>
+        <property name="number" value="54275498043695577"/>
+        <property name="year" value="2018"/>
+        <property name="CVV" value="432"/>
+        <property name="month" value="2"/>
+        <property name="owner" ref="teacher4"/>
+    </bean>
 
-	<!--</bean>-->
-	<!--&lt;!&ndash; CreditCard11 &ndash;&gt;-->
-	<!--<bean id="creditcard11" class="domain.CreditCard">-->
-
-	<!--</bean>-->
 
 	<!--&lt;!&ndash; /CreditCards &ndash;&gt;-->
 
@@ -277,6 +373,19 @@
 
 			</list>
 		</property>
+        <property name="answers">
+            <list>
+
+            </list>
+        </property>
+        <property name="searches">
+            <list>
+            </list>
+        </property>
+        <property name="comments">
+            <list>
+            </list>
+        </property>
 	</bean>
 	<bean id="user2" class="domain.User">
 		<property name="name" value="user2name"/>
@@ -306,6 +415,19 @@
 
 			</list>
 		</property>
+        <property name="answers">
+            <list>
+
+            </list>
+        </property>
+        <property name="searches">
+            <list>
+            </list>
+        </property>
+        <property name="comments">
+            <list>
+            </list>
+        </property>
 	</bean>
     <bean id="user3" class="domain.User">
         <property name="name" value="user3name"/>
@@ -333,6 +455,19 @@
                 <ref bean="inbox3"/>
                 <ref bean="spambox3"/>
 
+            </list>
+        </property>
+        <property name="answers">
+            <list>
+
+            </list>
+        </property>
+        <property name="searches">
+            <list>
+            </list>
+        </property>
+        <property name="comments">
+            <list>
             </list>
         </property>
     </bean>
@@ -364,6 +499,213 @@
 
             </list>
         </property>
+        <property name="answers">
+            <list>
+
+            </list>
+        </property>
+        <property name="searches">
+            <list>
+            </list>
+        </property>
+        <property name="comments">
+            <list>
+            </list>
+        </property>
+    </bean>
+    <bean id="teacher1" class="domain.Teacher">
+        <property name="name" value="teacher1name"/>
+        <property name="surname" value="teacher1surname"/>
+        <property name="email" value="teacher1mail@gmail.com"/>
+        <property name="phoneNumber" value="+23-6234456456"/>
+        <property name="userAccount" ref="userAccountteacher1"/>
+        <property name="creditCard" ref="creditcard5"/>
+
+        <property name="receivedMessages">
+            <list>
+                <ref bean="message5"/>
+            </list>
+        </property>
+        <property name="sendedMessages">
+            <list>
+                <ref bean="message6"/>
+            </list>
+        </property>
+
+        <property name="folders">
+            <list>
+                <ref bean="outbox5"/>
+                <ref bean="trashbox5"/>
+                <ref bean="inbox5"/>
+                <ref bean="spambox5"/>
+
+            </list>
+        </property>
+        <property name="answers">
+            <list>
+
+            </list>
+        </property>
+        <property name="searches">
+            <list>
+            </list>
+        </property>
+        <property name="comments">
+            <list>
+            </list>
+        </property>
+        <property name="curricula" ref="currricula1"/>
+    </bean>
+    <bean id="currricula1" class="domain.Curricula">
+        <property name="photo" value="http://wwww.pic.jpg"/>
+        <property name="educationSection" value="INGENIERO"/>
+        <property name="experienceSection" value="INDRA"/>
+        <property name="hobbiesSection" value="raspis"/>
+        <property name="referencias" value="sdfsdfsd"/>
+    </bean>
+    <bean id="currricula2" class="domain.Curricula">
+        <property name="photo" value="http://wwww.pic.jpg"/>
+        <property name="educationSection" value="INGENIERO"/>
+        <property name="experienceSection" value="RAE"/>
+        <property name="hobbiesSection" value="raspis"/>
+        <property name="referencias" value="sdfsdfsd"/>
+    </bean>
+    <bean id="currricula3" class="domain.Curricula">
+        <property name="photo" value="http://wwww.pic.jpg"/>
+        <property name="educationSection" value="INGENIERO"/>
+        <property name="experienceSection" value="RAE"/>
+        <property name="hobbiesSection" value="raspis"/>
+        <property name="referencias" value="sdfsdfsd"/>
+    </bean>
+    <bean id="currricula4" class="domain.Curricula">
+        <property name="photo" value="http://wwww.pic.jpg"/>
+        <property name="educationSection" value="INGENIERO"/>
+        <property name="experienceSection" value="INDIEGOGO"/>
+        <property name="hobbiesSection" value="raspis"/>
+        <property name="referencias" value="sdfsdfsd"/>
+    </bean>
+    <bean id="currricula5" class="domain.Curricula">
+        <property name="photo" value="http://wwww.pic.jpg"/>
+        <property name="educationSection" value="INGENIERO"/>
+        <property name="experienceSection" value="GOOGLE"/>
+        <property name="hobbiesSection" value="raspis"/>
+        <property name="referencias" value="sdfsdfsd"/>
+    </bean>
+    <bean id="teacher2" class="domain.Teacher">
+        <property name="name" value="teacher2name"/>
+        <property name="surname" value="teacher2surname"/>
+        <property name="email" value="teacher2mail@gmail.com"/>
+        <property name="phoneNumber" value="+23-6234456456"/>
+        <property name="userAccount" ref="userAccountteacher2"/>
+        <property name="creditCard" ref="creditcard6"/>
+
+        <property name="receivedMessages">
+            <list>
+                <ref bean="message6"/>
+            </list>
+        </property>
+        <property name="sendedMessages">
+            <list>
+                <ref bean="message5"/>
+            </list>
+        </property>
+
+        <property name="folders">
+            <list>
+                <ref bean="outbox6"/>
+                <ref bean="trashbox6"/>
+                <ref bean="inbox6"/>
+                <ref bean="spambox6"/>
+
+            </list>
+        </property>
+        <property name="answers">
+            <list>
+
+            </list>
+        </property>
+        <property name="searches">
+            <list>
+            </list>
+        </property>
+        <property name="comments">
+            <list>
+            </list>
+        </property>
+        <property name="curricula" ref="currricula2"/>
+    </bean>
+    <bean id="teacher3" class="domain.Teacher">
+        <property name="name" value="teacher3name"/>
+        <property name="surname" value="teacher3surname"/>
+        <property name="email" value="teacher3mail@gmail.com"/>
+        <property name="phoneNumber" value="+23-6234456456"/>
+        <property name="userAccount" ref="userAccountteacher3"/>
+        <property name="creditCard" ref="creditcard7"/>
+
+        <property name="receivedMessages">
+            <list>
+                <ref bean="message7"/>
+            </list>
+        </property>
+        <property name="sendedMessages">
+            <list>
+                <ref bean="message8"/>
+            </list>
+        </property>
+
+        <property name="folders">
+            <list>
+                <ref bean="outbox7"/>
+                <ref bean="trashbox7"/>
+                <ref bean="inbox7"/>
+                <ref bean="spambox7"/>
+
+            </list>
+        </property>
+        <property name="curricula" ref="currricula3"/>
+    </bean>
+    <bean id="teacher4" class="domain.Teacher">
+        <property name="name" value="teacher4name"/>
+        <property name="surname" value="teacher4surname"/>
+        <property name="email" value="teacher4mail@gmail.com"/>
+        <property name="phoneNumber" value="+23-6234456456"/>
+        <property name="userAccount" ref="userAccountteacher4"/>
+        <property name="creditCard" ref="creditcard8"/>
+
+        <property name="receivedMessages">
+            <list>
+                <ref bean="message8"/>
+            </list>
+        </property>
+        <property name="sendedMessages">
+            <list>
+                <ref bean="message7"/>
+            </list>
+        </property>
+
+        <property name="folders">
+            <list>
+                <ref bean="outbox8"/>
+                <ref bean="trashbox8"/>
+                <ref bean="inbox8"/>
+                <ref bean="spambox8"/>
+
+            </list>
+        </property>
+        <property name="answers">
+            <list>
+
+            </list>
+        </property>
+        <property name="searches">
+            <list>
+            </list>
+        </property>
+        <property name="comments">
+            <list>
+            </list>
+        </property>
+        <property name="curricula" ref="currricula4"/>
     </bean>
 	<!-- Folder1 -->
 	<bean id="outbox1" class="domain.Folder">
@@ -752,5 +1094,36 @@
         <property name="body" value="Lorem ipsum dolor sit amet,"/>
         <property name="folder" ref="inbox3"/>
     </bean>
-
+    <bean id="message5" class="domain.Message">
+        <property name="sender" ref="teacher1"/>
+        <property name="receiver" ref="teacher2"/>
+        <property name="sendDate" value="2017/04/23 23:12:00"/>
+        <property name="subject" value="meeting"/>
+        <property name="body" value="Lorem ipsum dolor sit amet,"/>
+        <property name="folder" ref="inbox6"/>
+    </bean>
+    <bean id="message6" class="domain.Message">
+        <property name="sender" ref="teacher2"/>
+        <property name="receiver" ref="teacher1"/>
+        <property name="sendDate" value="2017/04/24 23:12:00"/>
+        <property name="subject" value="meeting"/>
+        <property name="body" value="Lorem ipsum dolor sit amet,"/>
+        <property name="folder" ref="inbox5"/>
+    </bean>
+    <bean id="message7" class="domain.Message">
+        <property name="sender" ref="teacher3"/>
+        <property name="receiver" ref="teacher4"/>
+        <property name="sendDate" value="2017/02/23 23:12:00"/>
+        <property name="subject" value="meeting"/>
+        <property name="body" value="Lorem ipsum dolor sit amet,"/>
+        <property name="folder" ref="inbox8"/>
+    </bean>
+    <bean id="message8" class="domain.Message">
+        <property name="sender" ref="teacher4"/>
+        <property name="receiver" ref="teacher3"/>
+        <property name="sendDate" value="2017/04/23 23:12:00"/>
+        <property name="subject" value="meeting"/>
+        <property name="body" value="Lorem ipsum dolor sit amet,"/>
+        <property name="folder" ref="inbox7"/>
+    </bean>
 </beans>
