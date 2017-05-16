@@ -14,7 +14,7 @@
     <div>
         <H5>
             <a href="answer/create.do"> <spring:message
-                    code="answer.create" />
+                    code="general.create" />
             </a>
         </H5>
     </div>
@@ -22,7 +22,7 @@
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-               name="finders" requestURI="${requestURI}" id="row">
+               name="answers" requestURI="${requestURI}" id="row">
 
 
     <!-- Attributes -->
@@ -30,7 +30,7 @@
     <security:authorize access="permitAll">
         <display:column>
             <a href="answer/edit.do?answerId=${row.id}"> <spring:message
-                    code="answer.edit" />
+                    code="general.edit" />
             </a>
         </display:column>
     </security:authorize>

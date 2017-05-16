@@ -12,7 +12,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="answer/find.do" modelAttribute="answer">
+<form:form action="answer/edit.do" modelAttribute="answer">
 
     <form:hidden path="id" />
     <form:hidden path="version" />
@@ -34,8 +34,8 @@
 
     <jstl:if test="\$\{answer.id != 0}">
         <input type="submit" name="delete"
-               value="<spring:message code="answer.delete" />"
-               onclick="return confirm('<spring:message code="answer.confirm.delete" />')" />&nbsp;
+               value="<spring:message code="general.delete" />"
+               onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
     </jstl:if>
     <acme:cancel url="answer/list.do" code="general.cancel"/>
 
