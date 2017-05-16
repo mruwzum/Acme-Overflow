@@ -17,10 +17,6 @@ public class Other extends Actor {
     private CreditCard creditCard;
 
 
-    public Other() {
-    }
-
-
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
     public Collection<Answer> getAnswers() {
         return answers;

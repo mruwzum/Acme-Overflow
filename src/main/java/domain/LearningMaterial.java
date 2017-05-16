@@ -21,9 +21,6 @@ public class LearningMaterial extends DomainEntity {
     private Collection<String> attachmentsURLs;
     private LearningMaterialType type;
 
-    public LearningMaterial() {
-    }
-
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)

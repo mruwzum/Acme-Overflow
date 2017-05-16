@@ -24,9 +24,6 @@ public class Question extends DomainEntity {
     private Collection<String> pictures;
     private User owner;
 
-    public Question() {
-    }
-
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)

@@ -20,8 +20,6 @@ public class Comment extends DomainEntity {
     private Date creationDate;
     private Other owner;
 
-    public Comment() {
-    }
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)

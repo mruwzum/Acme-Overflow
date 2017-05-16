@@ -18,9 +18,6 @@ public class Category extends DomainEntity{
     private Category father;
     private Collection<Category> sons;
 
-    public Category() {
-    }
-
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)

@@ -20,8 +20,6 @@ public class Module extends DomainEntity{
     private String description;
     private Collection<LearningMaterial> learningMaterials;
 
-    public Module() {
-    }
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)

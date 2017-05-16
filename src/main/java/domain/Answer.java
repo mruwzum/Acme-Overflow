@@ -22,8 +22,6 @@ public class Answer extends DomainEntity {
     private int dislikes;
     private Other owner;
 
-    public Answer() {
-    }
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)

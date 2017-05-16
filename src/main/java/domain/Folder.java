@@ -17,8 +17,6 @@ public class Folder extends DomainEntity {
     private Collection<Message> messages;
     private Actor owner;
 
-    public Folder() {
-    }
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)

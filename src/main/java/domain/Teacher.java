@@ -15,9 +15,6 @@ public class Teacher extends Actor {
     private Collection<Webinar> webinars;
 
 
-    public Teacher() {
-    }
-
     @OneToOne(cascade = CascadeType.PERSIST)
     @NotNull
     public Curricula getCurricula() {

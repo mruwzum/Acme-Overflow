@@ -24,8 +24,6 @@ public class Curricula extends DomainEntity {
     private Collection<String> referencias;
     private String hobbiesSection;
 
-    public Curricula() {
-    }
 
 
     @NotBlank

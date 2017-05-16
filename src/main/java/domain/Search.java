@@ -18,8 +18,6 @@ public class Search extends DomainEntity {
     private Collection<Question> results;
     private Other owner;
 
-    public Search() {
-    }
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)

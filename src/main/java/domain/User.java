@@ -14,8 +14,6 @@ public class User extends Actor{
     private Collection<Question> questions;
     private Collection<Webinar> webinars;
 
-    public User() {
-    }
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
     public Collection<Question> getQuestions() {

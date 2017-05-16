@@ -18,11 +18,6 @@ public class Banner extends DomainEntity {
 
 
 
-    //Constructor
-    public Banner(){
-        super();
-    }
-
 
     @NotNull
     @URL

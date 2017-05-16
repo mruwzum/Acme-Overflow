@@ -23,8 +23,6 @@ public class CreditCard extends DomainEntity {
     private CreditCardType type;
     private Other owner;
 
-    public CreditCard() {
-    }
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
