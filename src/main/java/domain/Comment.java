@@ -19,6 +19,7 @@ public class Comment extends DomainEntity {
     private String text;
     private Date creationDate;
     private Other owner;
+    private Webinar webinar;
 
 
     @NotBlank
@@ -57,5 +58,14 @@ public class Comment extends DomainEntity {
 
     public void setOwner(Other owner) {
         this.owner = owner;
+    }
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    public Webinar getWebinar() {
+        return webinar;
+    }
+
+    public void setWebinar(Webinar webinar) {
+        this.webinar = webinar;
     }
 }

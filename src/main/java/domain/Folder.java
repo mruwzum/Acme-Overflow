@@ -28,7 +28,7 @@ public class Folder extends DomainEntity {
         this.name = name;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "folder")
     public Collection<Message> getMessages() {
         return messages;
     }

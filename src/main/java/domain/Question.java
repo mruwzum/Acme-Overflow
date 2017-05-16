@@ -54,7 +54,7 @@ public class Question extends DomainEntity {
         this.createdDate = createdDate;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     public Collection<Category> getCategories() {
         return categories;
     }

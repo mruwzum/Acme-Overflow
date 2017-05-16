@@ -17,6 +17,8 @@ public class Category extends DomainEntity{
     private String description;
     private Category father;
     private Collection<Category> sons;
+    private Collection<Question> questions;
+    private Collection<Webinar> webinars;
 
 
     @NotBlank
@@ -54,5 +56,24 @@ public class Category extends DomainEntity{
 
     public void setSons(Collection<Category> sons) {
         this.sons = sons;
+    }
+
+
+    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "categories")
+    public Collection<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Collection<Question> questions) {
+        this.questions = questions;
+    }
+
+    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "categories")
+    public Collection<Webinar> getWebinars() {
+        return webinars;
+    }
+
+    public void setWebinars(Collection<Webinar> webinars) {
+        this.webinars = webinars;
     }
 }
