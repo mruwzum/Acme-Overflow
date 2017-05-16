@@ -22,10 +22,44 @@
 		<value>/views/misc/tiles.xml</value>		
 		<value>/views/security/tiles.xml</value>
 		<value>/views/welcome/tiles.xml</value>
-		
+
+		<!--Administrator-->
 		<value>/views/administrator/tiles.xml</value>
-		<value>/views/customer/tiles.xml</value>
-		<value>/views/profile/tiles.xml</value>
+		<!--Answer-->
+		<value>/views/answer/tiles.xml</value>
+		<!--Banner-->
+		<value>/views/banner/tiles.xml</value>
+		<!--Category-->
+		<value>/views/category/tiles.xml</value>
+		<!--Comment-->
+		<value>/views/comment/tiles.xml</value>
+		<!--Credit-Card-->
+		<value>/views/credit-card/tiles.xml</value>
+		<!--Curricula-->
+		<value>/views/curricula/tiles.xml</value>
+		<!--Folder-->
+		<value>/views/folder/tiles.xml</value>
+		<!--Learning Material-->
+		<value>/views/learning-material/tiles.xml</value>
+		<!--Message-->
+		<value>/views/message/tiles.xml</value>
+		<!--Module-->
+		<value>/views/module/tiles.xml</value>
+		<!--Other-->
+		<value>/views/other/tiles.xml</value>
+		<!--Question-->
+		<value>/views/question/tiles.xml</value>
+		<!--Search-->
+		<value>/views/search/tiles.xml</value>
+		<!--Search-Cache-->
+		<value>/views/search-cache/tiles.xml</value>
+		<!--Teacher-->
+		<value>/views/teacher/tiles.xml</value>
+		<!--User-->
+		<value>/views/user/tiles.xml</value>
+		<!--Webinar-->
+		<value>/views/webinar/tiles.xml</value>
+
 	</util:list>
 
 </beans>

@@ -22,10 +22,43 @@
 		<value>/views/misc/messages</value>
 		<value>/views/security/messages</value>		
 		<value>/views/welcome/messages</value>
-		
+
+		<!--Administrator-->
 		<value>/views/administrator/messages</value>
-		<value>/views/customer/messages</value>
-		<value>/views/profile/messages</value>
+		<!--Answer-->
+		<value>/views/answer/messages</value>
+		<!--Banner-->
+		<value>/views/banner/messages</value>
+		<!--Category-->
+		<value>/views/category/messages</value>
+		<!--Comment-->
+		<value>/views/comment/messages</value>
+		<!--Credit-Card-->
+		<value>/views/credit-card/messages</value>
+		<!--Curricula-->
+		<value>/views/curricula/messages</value>
+		<!--Folder-->
+		<value>/views/folder/messages</value>
+		<!--Learning Material-->
+		<value>/views/learning-material/messages</value>
+		<!--Message-->
+		<value>/views/message/messages</value>
+		<!--Module-->
+		<value>/views/module/messages</value>
+		<!--Other-->
+		<value>/views/other/messages</value>
+		<!--Question-->
+		<value>/views/question/messages</value>
+		<!--Search-->
+		<value>/views/search/messages</value>
+		<!--Search-Cache-->
+		<value>/views/search-cache/messages</value>
+		<!--Teacher-->
+		<value>/views/teacher/messages</value>
+		<!--User-->
+		<value>/views/user/messages</value>
+		<!--Webinar-->
+		<value>/views/webinar/messages</value>
 	</util:list>
 
 </beans>

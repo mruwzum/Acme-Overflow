@@ -16,14 +16,14 @@
        
 <tiles-definitions>
 
-	<definition name="administrator/action-1" extends="master.page">	
-		<put-attribute name="title" value="Administrator: Action 1" />
-		<put-attribute name="body" value="/views/administrator/action-1.jsp" />
+	<definition name="folder/edit" extends="master.page">
+		<put-attribute name="title" value="folder: Edit" />
+		<put-attribute name="body" value="/views/folder/edit.jsp" />
 	</definition>
 	
-	<definition name="administrator/action-2" extends="master.page">	
-		<put-attribute name="title" value="Administrator: Action 2" />
-		<put-attribute name="body" value="/views/administrator/action-2.jsp" />
+	<definition name="folder/list" extends="master.page">
+		<put-attribute name="title" value="folder: List" />
+		<put-attribute name="body" value="/views/folder/list.jsp" />
 	</definition>
 	
 </tiles-definitions>

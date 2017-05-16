@@ -22,6 +22,7 @@ public class Question extends DomainEntity {
     private Date createdDate;
     private Collection<Category> categories;
     private Collection<String> pictures;
+    private Collection<Answer> answers;
     private User owner;
 
 
@@ -80,5 +81,14 @@ public class Question extends DomainEntity {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "question")
+    public Collection<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(Collection<Answer> answers) {
+        this.answers = answers;
     }
 }
