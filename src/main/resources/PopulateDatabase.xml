@@ -375,7 +375,7 @@
 		</property>
         <property name="answers">
             <list>
-
+                <ref bean="answer5"/>
             </list>
         </property>
         <property name="searches">
@@ -417,7 +417,8 @@
 		</property>
         <property name="answers">
             <list>
-
+                <ref bean="answer1"/>
+                <ref bean="answer4"/>
             </list>
         </property>
         <property name="searches">
@@ -501,7 +502,8 @@
         </property>
         <property name="answers">
             <list>
-
+                <ref bean="answer2"/>
+                <ref bean="answer3"/>
             </list>
         </property>
         <property name="searches">
@@ -543,7 +545,7 @@
         </property>
         <property name="answers">
             <list>
-
+                <ref bean="answer6"/>
             </list>
         </property>
         <property name="searches">
@@ -552,6 +554,11 @@
         </property>
         <property name="comments">
             <list>
+            </list>
+        </property>
+        <property name="webinars">
+            <list>
+                <ref bean="webinar1"/>
             </list>
         </property>
         <property name="curricula" ref="currricula1"/>
@@ -632,6 +639,11 @@
             <list>
             </list>
         </property>
+        <property name="webinars">
+            <list>
+                <ref bean="webinar2"/>
+            </list>
+        </property>
         <property name="curricula" ref="currricula2"/>
     </bean>
     <bean id="teacher3" class="domain.Teacher">
@@ -660,6 +672,11 @@
                 <ref bean="inbox7"/>
                 <ref bean="spambox7"/>
 
+            </list>
+        </property>
+        <property name="webinars">
+            <list>
+                <ref bean="webinar3"/>
             </list>
         </property>
         <property name="curricula" ref="currricula3"/>
@@ -707,7 +724,479 @@
         </property>
         <property name="curricula" ref="currricula4"/>
     </bean>
-	<!-- Folder1 -->
+
+
+    <bean id="webinar1" class="domain.Webinar">
+        <property name="name" value="webinar1"/>
+        <property name="description" value="web1"/>
+        <property name="startDate" value="2017/06/22"/>
+        <property name="price" value="20.0"/>
+        <property name="picture" value="http://picture.png"/>
+        <property name="owner" ref="teacher1"/>
+        <property name="categories">
+            <list>
+                <ref bean="categorie3"/>
+            </list>
+        </property>
+        <property name="learningMaterials">
+            <list>
+                <ref bean="learningmaterial2"/>
+            </list>
+        </property>
+        <property name="partakers">
+            <list>
+                <ref bean="user2"/>
+                <ref bean="user1"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="webinar2" class="domain.Webinar">
+        <property name="name" value="webinar2"/>
+        <property name="description" value="web2"/>
+        <property name="startDate" value="2017/07/22"/>
+        <property name="price" value="120.0"/>
+        <property name="picture" value="http://picture2.png"/>
+        <property name="owner" ref="teacher2"/>
+        <property name="categories">
+            <list>
+                <ref bean="categorie1"/>
+            </list>
+        </property>
+        <property name="learningMaterials">
+            <list>
+                <ref bean="learningmaterial1"/>
+            </list>
+        </property>
+        <property name="partakers">
+            <list>
+                <ref bean="user3"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="webinar3" class="domain.Webinar">
+        <property name="name" value="webinar3"/>
+        <property name="description" value="web3"/>
+        <property name="startDate" value="2017/06/12"/>
+        <property name="price" value="1.0"/>
+        <property name="picture" value="http://picture3.png"/>
+        <property name="owner" ref="teacher3"/>
+        <property name="categories">
+            <list>
+                <ref bean="categorie1"/>
+            </list>
+        </property>
+        <property name="learningMaterials">
+            <list>
+                <ref bean="learningmaterial3"/>
+            </list>
+        </property>
+        <property name="partakers">
+            <list>
+                <ref bean="user4"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="webinar4" class="domain.Webinar">
+        <property name="name" value="webinar4"/>
+        <property name="description" value="web4"/>
+        <property name="startDate" value="2017/06/11"/>
+        <property name="price" value="202.0"/>
+        <property name="picture" value="http://picture6.png"/>
+        <property name="owner" ref="teacher4"/>
+        <property name="categories">
+            <list>
+                <ref bean="categorie3"/>
+            </list>
+        </property>
+        <property name="learningMaterials">
+            <list>
+
+            </list>
+        </property>
+        <property name="partakers">
+            <list>
+
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="module1" class="domain.Module">
+        <property name="description" value="module1"/>
+        <property name="title" value="titulo del modulo 1"/>
+        <property name="learningMaterials">
+            <list>
+                <ref bean="learningmaterial1"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="module2" class="domain.Module">
+        <property name="description" value="module2"/>
+        <property name="title" value="titulo del modulo 2"/>
+        <property name="learningMaterials">
+            <list>
+                <ref bean="learningmaterial3"/>
+                <ref bean="learningmaterial2"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="module3" class="domain.Module">
+        <property name="description" value="module3"/>
+        <property name="title" value="titulo del modulo 3"/>
+        <property name="learningMaterials">
+            <list>
+                <ref bean="learningmaterial4"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Categorie -->
+    <bean id="categorie1" class="domain.Category">
+        <property name="name" value="soft"/>
+        <property name="description" value="Lorem ipsum dolor sit amet."/>
+        <property name="father" ref="categorie2"/>
+        <property name="sons">
+            <list>
+                <ref bean="categorie3"/>
+            </list>
+        </property>
+        <property name="questions">
+            <list>
+                <ref bean="question1"/>
+            </list>
+        </property>
+        <property name="webinars">
+            <list>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Categorie2 -->
+    <bean id="categorie2" class="domain.Category">
+        <property name="name" value="info"/>
+        <property name="description" value="Lorem ipsum dolor sit amet."/>
+        <property name="father" ref="categorie3"/>
+        <property name="sons">
+            <list>
+                <ref bean="categorie1"/>
+            </list>
+        </property>
+        <property name="questions">
+            <list>
+                <ref bean="question2"/>
+                <ref bean="question3"/>
+            </list>
+        </property>
+        <property name="webinars">
+            <list>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Categorie3 -->
+    <bean id="categorie3" class="domain.Category">
+        <property name="name" value="soft"/>
+        <property name="description" value="Lorem ipsum dolor sit amet."/>
+        <property name="sons">
+            <list>
+                <ref bean="categorie2"/>
+            </list>
+        </property>
+        <property name="questions">
+            <list>
+                <ref bean="question5"/>
+                <ref bean="question4"/>
+                <ref bean="question6"/>
+            </list>
+        </property>
+        <property name="webinars">
+            <list>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- LearningMaterial -->
+    <bean id="learningmaterial1" class="domain.LearningMaterial">
+        <property name="title" value="libro"/>
+        <property name="type" value="FILE"/>
+
+        <property name="attachmentsURLs">
+            <array value-type="java.lang.String">
+                <value>/documents/pictures/pic1.png</value>
+                <value>/documents/pictures/pic2.png</value>
+            </array>
+        </property>
+    </bean>
+    <!-- LearningMaterial2 -->
+    <bean id="learningmaterial2" class="domain.LearningMaterial">
+        <property name="title" value="libro"/>
+        <property name="type" value="URL"/>
+        <property name="attachmentsURLs">
+            <array value-type="java.lang.String">
+                <value>/documents/pictures/pic3.png</value>
+                <value>/documents/pictures/pic4.png</value>
+            </array>
+        </property>
+    </bean>
+    <!-- LearningMaterial3 -->
+    <bean id="learningmaterial3" class="domain.LearningMaterial">
+        <property name="title" value="libro3"/>
+        <property name="type" value="FILE"/>
+        <property name="attachmentsURLs">
+            <array value-type="java.lang.String">
+                <value>/documents/pictures/pic3.png</value>
+                <value>/documents/pictures/pic4.png</value>
+            </array>
+        </property>
+    </bean>
+    <!-- LearningMaterial4 -->
+    <bean id="learningmaterial4" class="domain.LearningMaterial">
+        <property name="title" value="libro4"/>
+        <property name="type" value="FILE"/>
+        <property name="attachmentsURLs">
+            <array value-type="java.lang.String">
+                <value>/documents/pictures/pic7.png</value>
+                <value>/documents/pictures/pic8.png</value>
+            </array>
+        </property>
+    </bean>
+
+
+    <!-- Question -->
+    <bean id="question1" class="domain.Question">
+        <property name="title" value="question1"/>
+        <property name="summary" value="ddfdsafdsfasdfdsf"/>
+        <property name="createdDate" value="2017/04/22"/>
+        <property name="owner" ref="user1"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="categories">
+            <list>
+                <ref bean="categorie1"/>
+            </list>
+        </property>
+        <property name="answers">
+            <list>
+                <ref bean="answer1"/>
+                <ref bean="answer4"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="question2" class="domain.Question">
+        <property name="title" value="question2"/>
+        <property name="summary" value="ddfdsafdsfasdfdsf"/>
+        <property name="createdDate" value="2017/05/22"/>
+        <property name="owner" ref="user2"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="categories">
+            <list>
+                <ref bean="categorie2"/>
+            </list>
+        </property>
+        <property name="answers">
+            <list>
+                <ref bean="answer2"/>
+                <ref bean="answer3"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="question3" class="domain.Question">
+        <property name="title" value="question3"/>
+        <property name="summary" value="ddfdsafdsfasdfdsf"/>
+        <property name="createdDate" value="2017/06/22"/>
+        <property name="owner" ref="user3"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="categories">
+            <list>
+                <ref bean="categorie3"/>
+            </list>
+        </property>
+        <property name="answers">
+            <list>
+                <ref bean="answer5"/>
+                <ref bean="answer6"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="question4" class="domain.Question">
+        <property name="title" value="question4"/>
+        <property name="summary" value="ddfdsafdsfasdfdsf"/>
+        <property name="createdDate" value="2017/04/12"/>
+        <property name="owner" ref="user1"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="categories">
+            <list>
+                <ref bean="categorie2"/>
+            </list>
+        </property>
+        <property name="answers">
+            <list>
+
+            </list>
+        </property>
+    </bean>
+    <bean id="question5" class="domain.Question">
+        <property name="title" value="question5"/>
+        <property name="summary" value="ddfdsafdsfasdfdsf"/>
+        <property name="createdDate" value="2017/01/22"/>
+        <property name="owner" ref="user1"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="categories">
+            <list>
+                <ref bean="categorie1"/>
+            </list>
+        </property>
+        <property name="answers">
+            <list>
+
+            </list>
+        </property>
+    </bean>
+    <bean id="question6" class="domain.Question">
+        <property name="title" value="question6"/>
+        <property name="summary" value="ddfdsafdsfasdfdsf"/>
+        <property name="createdDate" value="2016/12/22"/>
+        <property name="owner" ref="user4"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="categories">
+            <list>
+                <ref bean="categorie3"/>
+            </list>
+        </property>
+        <property name="answers">
+            <list>
+
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- /Question -->
+
+
+    <!--Answers -->
+
+    <bean id="answer1" class="domain.Answer">
+        <property name="title" value="answ1"/>
+        <property name="description" value="descrip1"/>
+        <property name="likes" value="112"/>
+        <property name="dislikes" value="12"/>
+        <property name="owner" ref="user2"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="question" ref="question1"/>
+    </bean>
+
+    <bean id="answer2" class="domain.Answer">
+        <property name="title" value="answ2"/>
+        <property name="description" value="descrip2"/>
+        <property name="likes" value="1121"/>
+        <property name="dislikes" value="2"/>
+        <property name="owner" ref="user4"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="question" ref="question2"/>
+    </bean>
+    <bean id="answer3" class="domain.Answer">
+        <property name="title" value="answ3"/>
+        <property name="description" value="descrip3"/>
+        <property name="likes" value="11"/>
+        <property name="dislikes" value="212"/>
+        <property name="owner" ref="user4"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="question" ref="question2"/>
+    </bean>
+    <bean id="answer4" class="domain.Answer">
+        <property name="title" value="answ4"/>
+        <property name="description" value="descrip4"/>
+        <property name="likes" value="1222"/>
+        <property name="dislikes" value="0"/>
+        <property name="owner" ref="user2"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="question" ref="question1"/>
+    </bean>
+    <bean id="answer5" class="domain.Answer">
+        <property name="title" value="answ5"/>
+        <property name="description" value="descrip5"/>
+        <property name="likes" value="8765"/>
+        <property name="dislikes" value="1442"/>
+        <property name="owner" ref="user1"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="question" ref="question3"/>
+    </bean>
+    <bean id="answer6" class="domain.Answer">
+        <property name="title" value="answ6"/>
+        <property name="description" value="descrip6"/>
+        <property name="likes" value="8765"/>
+        <property name="dislikes" value="1"/>
+        <property name="owner" ref="teacher1"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="question" ref="question3"/>
+    </bean>
+
+    <!--/Answers-->
+
+
+    <!-- Folder1 -->
 	<bean id="outbox1" class="domain.Folder">
 		<property name="name" value="Outbox"/>
 	</bean>
@@ -1069,6 +1558,7 @@
 		<property name="subject" value="meeting"/>
 		<property name="body" value="Lorem ipsum dolor sit amet,"/>
 		<property name="folder" ref="inbox2"/>
+        <property name="priority" value="HIGH"/>
 	</bean>
 	<bean id="message2" class="domain.Message">
 		<property name="sender" ref="user2"/>
@@ -1077,6 +1567,7 @@
 		<property name="subject" value="meeting"/>
 		<property name="body" value="Lorem ipsum dolor sit amet,"/>
 		<property name="folder" ref="inbox1"/>
+        <property name="priority" value="MEDIUM"/>
 	</bean>
     <bean id="message3" class="domain.Message">
         <property name="sender" ref="user3"/>
@@ -1085,6 +1576,7 @@
         <property name="subject" value="meeting"/>
         <property name="body" value="Lorem ipsum dolor sit amet,"/>
         <property name="folder" ref="inbox4"/>
+        <property name="priority" value="LOW"/>
     </bean>
     <bean id="message4" class="domain.Message">
         <property name="sender" ref="user4"/>
@@ -1093,6 +1585,7 @@
         <property name="subject" value="meeting"/>
         <property name="body" value="Lorem ipsum dolor sit amet,"/>
         <property name="folder" ref="inbox3"/>
+        <property name="priority" value="HIGH"/>
     </bean>
     <bean id="message5" class="domain.Message">
         <property name="sender" ref="teacher1"/>
@@ -1101,6 +1594,7 @@
         <property name="subject" value="meeting"/>
         <property name="body" value="Lorem ipsum dolor sit amet,"/>
         <property name="folder" ref="inbox6"/>
+        <property name="priority" value="MEDIUM"/>
     </bean>
     <bean id="message6" class="domain.Message">
         <property name="sender" ref="teacher2"/>
@@ -1109,6 +1603,7 @@
         <property name="subject" value="meeting"/>
         <property name="body" value="Lorem ipsum dolor sit amet,"/>
         <property name="folder" ref="inbox5"/>
+        <property name="priority" value="HIGH"/>
     </bean>
     <bean id="message7" class="domain.Message">
         <property name="sender" ref="teacher3"/>
@@ -1117,6 +1612,7 @@
         <property name="subject" value="meeting"/>
         <property name="body" value="Lorem ipsum dolor sit amet,"/>
         <property name="folder" ref="inbox8"/>
+        <property name="priority" value="HIGH"/>
     </bean>
     <bean id="message8" class="domain.Message">
         <property name="sender" ref="teacher4"/>
@@ -1125,5 +1621,6 @@
         <property name="subject" value="meeting"/>
         <property name="body" value="Lorem ipsum dolor sit amet,"/>
         <property name="folder" ref="inbox7"/>
+        <property name="priority" value="LOW"/>
     </bean>
 </beans>
