@@ -446,6 +446,7 @@
         </property>
         <property name="searches">
             <list>
+                <ref bean="search1"/>
             </list>
         </property>
         <property name="comments">
@@ -454,6 +455,7 @@
                 <ref bean="comment7"/>
             </list>
         </property>
+
 	</bean>
 	<bean id="user2" class="domain.User">
 		<property name="name" value="user2name"/>
@@ -580,6 +582,7 @@
         </property>
         <property name="searches">
             <list>
+                <ref bean="search3"/>
             </list>
         </property>
         <property name="comments">
@@ -624,6 +627,7 @@
         </property>
         <property name="searches">
             <list>
+                <ref bean="search2"/>
             </list>
         </property>
         <property name="comments">
@@ -1721,4 +1725,46 @@
         <property name="folder" ref="inbox7"/>
         <property name="priority" value="LOW"/>
     </bean>
+    <!-- /Message -->
+
+    <!-- Search -->
+
+
+    <bean id="search1" class="domain.Search">
+        <property name="keyword" value="java"/>
+        <property name="owner" ref="user1"/>
+        <property name="category" ref="categorie2"/>
+        <property name="results">
+            <list>
+                <ref bean="question1"/>
+                <ref bean="question2"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="search2" class="domain.Search">
+        <property name="keyword" value="spring"/>
+        <property name="owner" ref="teacher1"/>
+        <property name="category" ref="categorie3"/>
+        <property name="results">
+            <list>
+                <ref bean="question3"/>
+                <ref bean="question4"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="search3" class="domain.Search">
+        <property name="keyword" value="spring"/>
+        <property name="owner" ref="user4"/>
+        <property name="category" ref="categorie1"/>
+        <property name="results">
+            <list>
+                <ref bean="question5"/>
+                <ref bean="question6"/>
+            </list>
+        </property>
+    </bean>
+    <!-- /Search -->
+
 </beans>

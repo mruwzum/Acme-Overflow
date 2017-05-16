@@ -1,6 +1,8 @@
 package services;
 
 import domain.Actor;
+import domain.Folder;
+import domain.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,8 @@ public class ActorService {
 	private ActorRepository actorRepository;
 	@Autowired
 	private UserAccountService userAccountService;
+    @Autowired
+    private FolderService folderService;
 
     // Supporting services -----------------------
 
@@ -94,4 +98,70 @@ public class ActorService {
 		actorRepository.flush();
 	}
 
+    //Manage Folder
+
+    public Folder createNewFolder() {
+        Folder aux = folderService.create();
+        aux.setName("generic");
+        Folder res = folderService.save(aux);
+        return res;
+    }
+
+    public Folder createFolder(String name) {
+        Assert.notNull(name, "El nombre es nulo");
+        Actor u;
+        u = findByPrincipal();
+        Assert.notNull(u, "El actor no existe");
+        Folder aux = folderService.create();
+        aux.setName(name);
+        Folder res = folderService.save(aux);
+        u.getFolders().add(res);
+        return res;
+    }
+
+    public Collection<Folder> getFolders() {
+
+        Actor u;
+        u = findByPrincipal();
+        Assert.notNull(u, "El actor no existe");
+        Collection<Folder> res = actorRepository.getFolder(u.getId());
+        return res;
+    }
+
+    public Folder modifyFolder(Folder f, String name) {
+        Assert.notNull(f);
+        Actor u;
+        u = findByPrincipal();
+        Assert.notNull(u, "El actor no existe");
+        Assert.isTrue(u.getFolders().contains(f));
+        f.setName(name);
+        return f;
+    }
+
+    public void deleteFolder(Folder f) {
+        Assert.notNull(f);
+        Actor u;
+        u = findByPrincipal();
+        Assert.notNull(u, "El actor no existe");
+        Assert.isTrue(u.getFolders().contains(f), "El actor no contiene la carpeta ");
+        folderService.delete(f);
+    }
+
+    public Message sendMessage(Message message) {
+        Actor u;
+        u = findByPrincipal();
+        Assert.notNull(u, "El actor no existe");
+        recieveMessage(message, message.getReceiver());
+        return message;
+    }
+
+    public Message recieveMessage(Message message, Actor a) {
+
+
+        List<Folder> folders = new ArrayList<>(a.getFolders());
+        Assert.notEmpty(folders, "carpetas vacias");
+        folders.get(2).getMessages().add(message);
+        a.setFolders(folders);
+        return message;
+    }
 }
