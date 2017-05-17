@@ -9,7 +9,7 @@
  */
  
 table {
-	border: 1px solid #666;
+    border: 1px solid #98999c;
 	width: 80%;
 	margin: 20px 0 20px 0 !important;
 }
@@ -21,11 +21,11 @@ th,td {
 }
 
 thead tr {
-	background-color: #fc0;
+    background-color: #98999c;
 }
 
 th.sorted {
-	background-color: orange;
+    background-color: #98999c;
 }
 
 th a,th a:visited {
@@ -67,7 +67,7 @@ tr.odd {
 }
 
 tr.tableRowEven,tr.even {
-	background-color: #fea
+    background-color: #98999c
 }
 
 div.exportlinks {
