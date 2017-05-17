@@ -182,7 +182,7 @@ private UserAccountService userAccountService;
         ModelAndView result;
         try {
             userService.delete(user);
-            result = new ModelAndView("redirect:list.do");
+           result = new ModelAndView("welcome/index");
         } catch (Throwable oops) {
             result = createEditModelAndView(user, "user.commit.error");
         }
