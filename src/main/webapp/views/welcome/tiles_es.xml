@@ -17,7 +17,7 @@
 <tiles-definitions>
 
 	<definition name="welcome/index" extends="master.page">	
-		<put-attribute name="title" value="¡Bienvenidos!" />
+		<put-attribute name="title" value="¡La mayor comunidad online para programadores para aprender y compartir su conocimiento, y avanzar como profesionales!" />
 		<put-attribute name="body" value="/views/welcome/index.jsp" />
 	</definition>
 	
