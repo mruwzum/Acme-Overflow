@@ -1,9 +1,6 @@
 package services;
 
-import domain.Actor;
-import domain.Folder;
-import domain.Message;
-import domain.User;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -166,6 +163,12 @@ public class UserService {
         resu.setReceivedMessages(received);
         resu.setSendedMessages(sended);
 
+        Collection<Answer> answers = new HashSet<>();
+        Collection<Question> questions = new HashSet<>();
+        Collection<Comment> comments = new HashSet<>();
+        resu.setQuestions(questions);
+        resu.setAnswers(answers);
+        resu.setComments(comments);
         return resu;
     }
 
