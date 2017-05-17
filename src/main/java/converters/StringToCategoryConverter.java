@@ -18,7 +18,7 @@ import repositories.SearchRepository;
 public class StringToCategoryConverter implements Converter<String, Category> {
 
     @Autowired
-    CategoryRepository searchRepository;
+    CategoryRepository categoryRepository;
 
     @Override
     public Category convert(String text) {
@@ -30,7 +30,7 @@ public class StringToCategoryConverter implements Converter<String, Category> {
                 result = null;
             else {
                 id = Integer.valueOf(text);
-                result = searchRepository.findOne(id);
+                result = categoryRepository.findOne(id);
             }
         } catch (Throwable oops) {
             throw new IllegalArgumentException(oops);
