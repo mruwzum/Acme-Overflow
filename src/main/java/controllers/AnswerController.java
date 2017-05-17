@@ -3,6 +3,7 @@ package controllers;
 
 import domain.Answer;
 import domain.Comment;
+import domain.Other;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -11,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import services.ActorService;
-import services.AnswerService;
-import services.CommentService;
+import services.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -27,7 +26,14 @@ public class AnswerController extends AbstractController {
 
     @Autowired
     private AnswerService answerService;
-
+    @Autowired
+    private QuestionService questionService;
+    @Autowired
+    private OtherService otherService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private ActorService actorService;
 
     //Constructors----------------------------------------------
 
@@ -98,6 +104,7 @@ public class AnswerController extends AbstractController {
 
         Answer answer = answerService.create();
 
+        answer.setQuestion(questionService.findOne(questionId));
         result = createEditModelAndView(answer);
 
         return result;
@@ -122,14 +129,16 @@ public class AnswerController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid Answer answer, BindingResult binding) {
         ModelAndView result;
-        if (!binding.hasErrors()) {
+        if (binding.hasErrors()) {
             result = createEditModelAndView(answer);
         } else {
             try {
+                //answer.setOwner(otherService.findByPrincipal());
+
                 answerService.save(answer);
                 result = new ModelAndView("redirect:list.do");
             } catch (Throwable oops) {
-                result = createEditModelAndView(answer, "answer.commit.error");
+                result = createEditModelAndView(answer, "general.commit.error");
             }
         }
         return result;
@@ -142,7 +151,7 @@ public class AnswerController extends AbstractController {
             answerService.delete(answer);
             result = new ModelAndView("redirect:list.do");
         } catch (Throwable oops) {
-            result = createEditModelAndView(answer, "answer.commit.error");
+            result = createEditModelAndView(answer, "general.commit.error");
         }
 
         return result;

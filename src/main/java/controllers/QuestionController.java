@@ -18,6 +18,7 @@ import services.QuestionService;
 import services.UserService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -154,6 +155,25 @@ public class QuestionController extends AbstractController {
         } catch (Throwable oops) {
             result = createEditModelAndView(question, "question.commit.error");
         }
+
+        return result;
+    }
+
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    public ModelAndView lessorView(@RequestParam int questionId) {
+
+        ModelAndView result;
+        Question question = questionService.findOne(questionId);
+
+
+        result = new ModelAndView("question/view");
+        result.addObject("title", question.getTitle());
+        result.addObject("summary", question.getSummary());
+        result.addObject("owner", question.getOwner().getName());
+        result.addObject("categorie", question.getCategories().toString());
+        result.addObject("answers", question.getAnswers());
+        result.addObject("questionId", question.getId());
+        result.addObject("requestURI", "question/view.do");
 
         return result;
     }

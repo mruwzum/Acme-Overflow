@@ -60,7 +60,7 @@
 <security:authorize access="isAuthenticated()">
     <div>
         <H5>
-            <a href="answer/create.do?questionId=${id}"> <spring:message
+            <a href="answer/create.do?questionId=${questionId}"> <spring:message
                     code="answer.create"/>
             </a>
         </H5>

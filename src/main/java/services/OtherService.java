@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import repositories.OtherRepository;
+import security.LoginService;
+import security.UserAccount;
+
 import java.util.Collection;
 
 /**
@@ -66,7 +69,27 @@ public class OtherService {
 
     // Other business methods -------------------------------------------------------------------------------
 
+    public Other findByPrincipal() {
+        Other result;
+        UserAccount userAccount;
 
+        userAccount = LoginService.getPrincipal();
+        Assert.notNull(userAccount);
+        result = findByUserAccount(userAccount);
+        Assert.notNull(result);
+
+        return result;
+    }
+
+    public Other findByUserAccount(UserAccount userAccount) {
+        Assert.notNull(userAccount);
+
+        Other result;
+
+        result = otherRepository.findByUserAccountId(userAccount.getId());
+
+        return result;
+    }
 }
 
 

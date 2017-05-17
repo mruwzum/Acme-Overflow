@@ -20,7 +20,6 @@ public class Answer extends DomainEntity {
     private Collection<String> pictures;
     private int likes;
     private int dislikes;
-    private Other owner;
     private Question question;
 
 
@@ -70,15 +69,7 @@ public class Answer extends DomainEntity {
         this.dislikes = dislikes;
     }
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @NotNull
-    public Other getOwner() {
-        return owner;
-    }
 
-    public void setOwner(Other owner) {
-        this.owner = owner;
-    }
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     public Question getQuestion() {

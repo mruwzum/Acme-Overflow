@@ -22,10 +22,6 @@
     <br />
     <acme:textbox path="description" code="answer.description"/>
     <br />
-    <acme:textbox path="likes" code="answer.likes"/>
-    <br />
-    <acme:textbox path="dislikes" code="answer.dislikes"/>
-    <br />
 
 
     <!---------------------------- BOTONES -------------------------->

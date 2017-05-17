@@ -8,6 +8,7 @@ import java.util.Collection;
  */
 @Entity
 @Access(AccessType.PROPERTY)
+
 public abstract class Other extends Actor {
 
 
@@ -17,7 +18,7 @@ public abstract class Other extends Actor {
     private CreditCard creditCard;
 
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
+    @OneToMany(cascade = CascadeType.PERSIST)
     public Collection<Answer> getAnswers() {
         return answers;
     }

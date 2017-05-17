@@ -43,7 +43,6 @@
     <display:column property="likes" title="${originAddress}" sortable="true" />
     <spring:message code="answer.dislikes" var="destinationAddress" />
     <display:column property="dislikes" title="${destinationAddress}" sortable="true" />
-    <spring:message code="answer.owner" var="keyword" />
-    <display:column property="owner" title="${keyword}" sortable="true" />
+
 
 </display:table>
