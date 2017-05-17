@@ -66,7 +66,7 @@ public class UserController extends AbstractController {
     protected static ModelAndView createEditModelAndView2(User user, String message) {
         ModelAndView result;
 
-        result = new ModelAndView("user/editLess");
+        result = new ModelAndView("user/register");
         result.addObject("user", user);
         result.addObject("message", message);
 
@@ -89,17 +89,37 @@ public class UserController extends AbstractController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create(@RequestParam int id) {
+    public ModelAndView create() {
 
         ModelAndView result;
 
         User user = userService.create();
 
-        result = createEditModelAndView(user);
+        result = createEditModelAndView2(user);
 
         return result;
 
     }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
+    public ModelAndView register(@Valid User user, BindingResult binding) {
+        ModelAndView result;
+
+//            if (!binding.hasErrors()) {
+//                result = createEditModelAndView2(user);
+//            }else{
+//                try{
+        userService.registerAsUser(user);
+        result = new ModelAndView("redirect:list.do");
+//                }catch(Throwable oops){
+//                    result= createEditModelAndView2(user, "general.commit.error");
+//                }
+//            }
+        return result;
+    }
+
+
+
 
     // Ancillary methods ------------------------------------------------
 

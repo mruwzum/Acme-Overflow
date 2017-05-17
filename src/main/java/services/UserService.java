@@ -1,18 +1,21 @@
 package services;
 
+import domain.Actor;
+import domain.Folder;
+import domain.Message;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import repositories.UserRepository;
+import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import security.UserAccountService;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by david on 05/11/2016.
@@ -27,6 +30,23 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserAccountService userAccountService;
+    @Autowired
+    private FolderService folderService;
+    @Autowired
+    private MessageService messageService;
+    @Autowired
+    private SearchService searchService;
+    @Autowired
+    private AnswerService answerService;
+    @Autowired
+    private QuestionService questionService;
+    @Autowired
+    private CreditCardService creditCardService;
+    @Autowired
+    private WebinarService webinarService;
+
 
     // Managed repository--------------------------------------------------------------------------------
 
@@ -95,6 +115,60 @@ public class UserService {
 
         return result;
     }
+
+    public Actor registerAsUser(User u) {
+        Assert.notNull(u);
+        Authority autoh = new Authority();
+        autoh.setAuthority("USER");
+        UserAccount res = new UserAccount();
+        res.addAuthority(autoh);
+        res.setUsername(u.getUserAccount().getUsername());
+        Md5PasswordEncoder encoder;
+        encoder = new Md5PasswordEncoder();
+        String hash = encoder.encodePassword(u.getUserAccount().getPassword(), null);
+        res.setPassword(hash);
+        UserAccount userAccount = userAccountService.save(res);
+        u.setUserAccount(userAccount);
+        Assert.notNull(u.getUserAccount().getAuthorities(), "authorities null al registrar");
+        User resu = userRepository.save(u);
+        Collection<Message> received = new HashSet<>();
+        Collection<Message> sended = new HashSet<>();
+        Collection<Folder> folders = new HashSet<>();
+        Folder inbox = folderService.create();
+        inbox.setName("inbox");
+        inbox.setOwner(resu);
+        Collection<Message> innnn = new HashSet<>();
+        inbox.setMessages(innnn);
+        Folder outbox = folderService.create();
+        outbox.setName("outbox");
+        outbox.setOwner(resu);
+        Collection<Message> ouuuu = new HashSet<>();
+        outbox.setMessages(ouuuu);
+        Folder spambox = folderService.create();
+        spambox.setName("spambox");
+        spambox.setOwner(resu);
+        Collection<Message> spaaaam = new HashSet<>();
+        spambox.setMessages(spaaaam);
+        Folder trashBox = folderService.create();
+        trashBox.setName("trashbox");
+        trashBox.setOwner(resu);
+        Collection<Message> trashhh = new HashSet<>();
+        trashBox.setMessages(trashhh);
+        folders.add(inbox);
+        folders.add(outbox);
+        folders.add(spambox);
+        folders.add(trashBox);
+        folderService.save(inbox);
+        folderService.save(outbox);
+        folderService.save(spambox);
+        folderService.save(trashBox);
+        resu.setFolders(folders);
+        resu.setReceivedMessages(received);
+        resu.setSendedMessages(sended);
+
+        return resu;
+    }
+
 
 }
 
