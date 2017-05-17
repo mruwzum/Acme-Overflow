@@ -15,9 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.CategoryService;
 import services.QuestionService;
+import services.UserService;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/question")
@@ -29,6 +31,8 @@ public class QuestionController extends AbstractController {
     private QuestionService questionService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private UserService userService;
 
 
     //Constructors----------------------------------------------
@@ -130,6 +134,8 @@ public class QuestionController extends AbstractController {
             result = createEditModelAndView(question);
         } else {
             try {
+                question.setOwner(userService.findByPrincipal());
+                question.setCreatedDate(new Date(System.currentTimeMillis()-1000));
                 questionService.save(question);
                 result = new ModelAndView("redirect:list.do");
             } catch (Throwable oops) {
