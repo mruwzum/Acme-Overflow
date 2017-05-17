@@ -1,7 +1,9 @@
 package domain;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.Collection;
 
 /**
@@ -13,6 +15,7 @@ public class Teacher extends Other {
 
     private Curricula curricula;
     private Collection<Webinar> webinars;
+    private String IBAN;
 
 
     @OneToOne(cascade = CascadeType.PERSIST)
@@ -32,5 +35,14 @@ public class Teacher extends Other {
 
     public void setWebinars(Collection<Webinar> webinars) {
         this.webinars = webinars;
+    }
+
+    @Pattern(regexp = "[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}")
+    public String getIBAN() {
+        return IBAN;
+    }
+
+    public void setIBAN(String IBAN) {
+        this.IBAN = IBAN;
     }
 }

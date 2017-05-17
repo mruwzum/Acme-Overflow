@@ -599,7 +599,7 @@
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountteacher1"/>
         <property name="creditCard" ref="creditcard5"/>
-
+        <property name="IBAN" value="ES8023100001180000012345"/>
         <property name="receivedMessages">
             <list>
                 <ref bean="message5"/>
@@ -683,7 +683,7 @@
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountteacher2"/>
         <property name="creditCard" ref="creditcard6"/>
-
+        <property name="IBAN" value="ES8023145623220000012345"/>
         <property name="receivedMessages">
             <list>
                 <ref bean="message6"/>
@@ -731,7 +731,7 @@
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountteacher3"/>
         <property name="creditCard" ref="creditcard7"/>
-
+        <property name="IBAN" value="ES8023145623221845612345"/>
         <property name="receivedMessages">
             <list>
                 <ref bean="message7"/>
@@ -766,7 +766,7 @@
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountteacher4"/>
         <property name="creditCard" ref="creditcard8"/>
-
+        <property name="IBAN" value="ES8023145665743879010045"/>
         <property name="receivedMessages">
             <list>
                 <ref bean="message8"/>
