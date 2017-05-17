@@ -11,16 +11,23 @@
 package controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 
+import domain.Question;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import services.QuestionService;
 
 @Controller
 @RequestMapping("/welcome")
 public class WelcomeController extends AbstractController {
+
+	@Autowired
+	private QuestionService questionService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -36,10 +43,14 @@ public class WelcomeController extends AbstractController {
 		SimpleDateFormat formatter;
 		String moment;
 
+		Collection<Question> questions = questionService.findAll();
+
+
 		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		moment = formatter.format(new Date());
 
 		result = new ModelAndView("welcome/index");
+		result.addObject("questions", questions);
 		result.addObject("name", name);
 		result.addObject("moment", moment);
 

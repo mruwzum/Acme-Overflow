@@ -38,9 +38,9 @@
     <spring:message code="question.title" var="title" />
     <display:column property="title" title="${title}" sortable="true" />
     <spring:message code="question.summary" var="description" />
-    <display:column property="description" title="${description}" sortable="true" />
+    <display:column property="summary" title="${description}" sortable="true" />
     <spring:message code="question.createdDate" var="originAddress" />
-    <display:column property="originAddress" title="${originAddress}" sortable="true" />
+    <display:column property="createdDate" title="${originAddress}" sortable="true" />
 
 
 </display:table>

@@ -29,7 +29,24 @@
 </security:authorize>
 
 
-<br>
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+               name="questions" requestURI="${requestURI}" id="row">
+
+
+    <!-- Attributes -->
+
+
+    <spring:message code="question.title" var="title" />
+    <display:column property="title" title="${title}" sortable="true" />
+    <spring:message code="question.summary" var="description" />
+    <display:column property="summary" title="${description}" sortable="true" />
+    <spring:message code="question.createdDate" var="originAddress" />
+    <display:column property="createdDate" title="${originAddress}" sortable="true" />
+
+
+</display:table>
+
+    <br>
 
 <br/>
 <security:authorize access="isAnonymous()">
