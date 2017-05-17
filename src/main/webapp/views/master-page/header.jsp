@@ -60,6 +60,7 @@
 			<li><a class="fNiv"><spring:message code="master.page.teacher"/></a>
                 <ul>
                     <li class="arrow"></li>
+                    <li><a href="teacher/editp.do"><spring:message code="master.page.edit.profile"/> </a></li>
                 </ul>
             </li>
         </security:authorize>

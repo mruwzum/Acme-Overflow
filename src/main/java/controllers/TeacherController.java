@@ -119,8 +119,18 @@ public class TeacherController extends AbstractController {
       return result;
    }
     // Ancillary methods ------------------------------------------------
+    @RequestMapping(value = "/editp", method = RequestMethod.GET)
+    public ModelAndView editp() {
+       ModelAndView result;
+       Teacher teacher;
 
+       teacher = teacherService.findByPrincipal();
+       Assert.notNull(teacher);
 
+       result = createEditModelAndView(teacher);
+
+       return result;
+    }
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public ModelAndView edit(@RequestParam int teacherId) {
         ModelAndView result;
@@ -136,16 +146,16 @@ public class TeacherController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid Teacher teacher, BindingResult binding) {
         ModelAndView result;
-        if (!binding.hasErrors()) {
-            result = createEditModelAndView(teacher);
-        } else {
-            try {
+//        if (!binding.hasErrors()) {
+//            result = createEditModelAndView(teacher);
+//        } else {
+//            try {
                 teacherService.save(teacher);
                 result = new ModelAndView("redirect:list.do");
-            } catch (Throwable oops) {
-                result = createEditModelAndView(teacher, "teacher.commit.error");
-            }
-        }
+//            } catch (Throwable oops) {
+//                result = createEditModelAndView(teacher, "teacher.commit.error");
+//            }
+//        }
         return result;
     }
 

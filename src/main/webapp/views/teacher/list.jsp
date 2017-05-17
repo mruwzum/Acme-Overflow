@@ -10,40 +10,22 @@
           uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
-    <div>
-        <H5>
-            <a href="finder/create.do"> <spring:message
-                    code="finder.create" />
-            </a>
-        </H5>
-    </div>
-</security:authorize>
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-               name="finders" requestURI="${requestURI}" id="row">
+               name="teachers" requestURI="${requestURI}" id="row">
 
 
     <!-- Attributes -->
 
-    <security:authorize access="permitAll">
-        <display:column>
-            <a href="finder/edit.do?finderId=${row.id}"> <spring:message
-                    code="finder.edit" />
-            </a>
-        </display:column>
-    </security:authorize>
 
-    <spring:message code="finder.title" var="title" />
-    <display:column property="title" title="${title}" sortable="true" />
-    <spring:message code="finder.description" var="description" />
-    <display:column property="description" title="${description}" sortable="true" />
-    <spring:message code="finder.originAddress" var="originAddress" />
-    <display:column property="originAddress" title="${originAddress}" sortable="true" />
-    <spring:message code="finder.destinationAddress" var="destinationAddress" />
-    <display:column property="destinationAddress" title="${destinationAddress}" sortable="true" />
-    <spring:message code="finder.keyword" var="keyword" />
-    <display:column property="keyword" title="${keyword}" sortable="true" />
+    <spring:message code="user.name" var="name"/>
+    <display:column property="name" title="${name}" sortable="true"/>
+    <spring:message code="user.surname" var="surname"/>
+    <display:column property="surname" title="${surname}" sortable="true"/>
+    <spring:message code="user.email" var="email"/>
+    <display:column property="email" title="${email}" sortable="true"/>
+    <spring:message code="user.phone" var="phoneNumber"/>
+    <display:column property="phoneNumber" title="${phoneNumber}" sortable="true"/>
 
 </display:table>

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import repositories.TeacherRepository;
+import security.LoginService;
+import security.UserAccount;
 
 import java.util.Collection;
 
@@ -66,6 +68,27 @@ public class TeacherService {
 
     // Other business methods -------------------------------------------------------------------------------
 
+   public Teacher findByPrincipal() {
+      Teacher result;
+      UserAccount userAccount;
+
+      userAccount = LoginService.getPrincipal();
+      Assert.notNull(userAccount);
+      result = findByUserAccount(userAccount);
+      Assert.notNull(result);
+
+      return result;
+   }
+
+   public Teacher findByUserAccount(UserAccount userAccount) {
+      Assert.notNull(userAccount);
+
+      Teacher result;
+
+      result = teacherRepository.findByUserAccountId(userAccount.getId());
+
+      return result;
+   }
 }
 
 
