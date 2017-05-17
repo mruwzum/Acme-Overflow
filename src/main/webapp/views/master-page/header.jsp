@@ -34,7 +34,6 @@
 				<ul>
 					<li class="arrow"></li>
 				</ul>
-			<li><a class="fNiv" href="question/list.do"><spring:message code="master.page.questions.list"/></a>
 			</li>
 		</security:authorize>
 		

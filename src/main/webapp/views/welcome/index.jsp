@@ -48,8 +48,13 @@
     <display:column property="summary" title="${description}" sortable="true" />
     <spring:message code="question.createdDate" var="originAddress" />
     <display:column property="createdDate" title="${originAddress}" sortable="true" />
-
-
+    <security:authorize access="permitAll">
+        <display:column>
+            <a href="question/view.do?questionId=${row.id}"> <spring:message
+                    code="question.view"/>
+            </a>
+        </display:column>
+    </security:authorize>
 </display:table>
 
     <br>
