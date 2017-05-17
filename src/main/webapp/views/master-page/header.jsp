@@ -22,7 +22,10 @@
 <div>
 	<ul id="jMenu">
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
-		<security:authorize access="hasRole('ADMIN')">
+
+        <%--****************************************ADMIN****************************************--%>
+
+        <security:authorize access="hasRole('ADMIN')">
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -31,18 +34,57 @@
 			</li>
 		</security:authorize>
 
+
+        <%--****************************************USER****************************************--%>
+
+
 		<security:authorize access="hasRole('USER')">
 			<li><a class="fNiv"><spring:message code="master.page.user"/></a>
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="user/editp.do"><spring:message code="master.page.edit.profile" /> </a></li>
 				</ul>
 			</li>
+
+
+
 		</security:authorize>
-		
+
+
+
+
+        <%--****************************************TEACHER****************************************--%>
+
+
+        <security:authorize access="hasRole('TEACHER')">
+            <li><a class="fNiv"><spring:message code="master.page.user"/></a>
+                <ul>
+                    <li class="arrow"></li>
+                </ul>
+            </li>
+        </security:authorize>
+
+
+        <%--****************************************MODERATOR****************************************--%>
+
+
+        <security:authorize access="hasRole('MODERATOR')">
+            <li><a class="fNiv"><spring:message code="master.page.user"/></a>
+                <ul>
+                    <li class="arrow"></li>
+                </ul>
+            </li>
+        </security:authorize>
+
+        <%--****************************************ANONYMOUS****************************************--%>
+
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		<li><a class="fNiv" href="user/create.do"><spring:message code="master.page.register.user"/></a>
 			</security:authorize>
+
+
+            <%--****************************************AUTHENTICATED****************************************--%>
 
 			<security:authorize access="isAuthenticated()">
 		<li>

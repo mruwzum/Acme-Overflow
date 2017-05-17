@@ -12,24 +12,38 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="finder/find.do" modelAttribute="finder">
+<form:form action="user/edit.do" modelAttribute="user">
 
     <form:hidden path="id" />
     <form:hidden path="version" />
+    <form:hidden path="userAccount"/>
 
-    <acme:textbox path="title" code="finder.title"/>
+    <acme:textbox path="name" code="user.name"/>
+    <acme:textbox path="surname" code="user.surname"/>
+    <acme:textbox path="email" code="user.email"/>
+    <acme:textbox path="phoneNumber" code="user.phone"/>
+
+
     <br />
+
+    <acme:textbox path="creditCard.holderName" code="credit-card.holderName"/>
+    <acme:textbox path="creditCard.number" code="credit-card.number"/>
+    <acme:textbox path="creditCard.year" code="credit-card.year"/>
+    <acme:textbox path="creditCard.month" code="credit-card.month"/>
+    <form:label path="creditCard.type">
+        <spring:message code="credit-card.type"/>:
+    </form:label>
+    <form:select path="creditCard.type" code="creditCard.credit-card.type">
+        <form:options/>
+    </form:select>
+    <acme:textbox path="creditCard.CVV" code="credit-card.CVV"/>
 
     <!---------------------------- BOTONES -------------------------->
 
-    <acme:submit name="save" code="finder.save"/>
+    <acme:submit name="save" code="general.save"/>
 
-    <jstl:if test="\$\{finder.id != 0}">
-        <input type="submit" name="delete"
-               value="<spring:message code="finder.delete" />"
-               onclick="return confirm('<spring:message code="finder.confirm.delete" />')" />&nbsp;
-    </jstl:if>
-    <acme:cancel url="finder/list.do" code="finder.cancel"/>
+
+    <acme:cancel url="user/list.do" code="general.cancel"/>
 
 
 </form:form>

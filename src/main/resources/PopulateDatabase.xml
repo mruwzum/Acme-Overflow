@@ -341,8 +341,8 @@
         <property name="title" value="genial"/>
         <property name="text" value="works 4 me!"/>
         <property name="creationDate" value="2017/04/22"/>
-        <property name="owner" ref="user1"/>
         <property name="webinar" ref="webinar1"/>
+        <property name="owner" ref="user3"/>
     </bean>
 
 
@@ -354,7 +354,6 @@
 		<property name="year" value="2018"/>
 		<property name="CVV" value="432"/>
 		<property name="month" value="2"/>
-		<property name="owner" ref="user1"/>
 	</bean>
 	<!-- CreditCard2 -->
 	<bean id="creditcard2" class="domain.CreditCard">
@@ -365,7 +364,6 @@
 		<property name="year" value="2018"/>
 		<property name="CVV" value="432"/>
 		<property name="month" value="2"/>
-		<property name="owner" ref="user2"/>
 	</bean>
     <!-- CreditCard3 -->
     <bean id="creditcard3" class="domain.CreditCard">
@@ -376,7 +374,6 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
-        <property name="owner" ref="user3"/>
     </bean>
     <!-- CreditCard4 -->
     <bean id="creditcard4" class="domain.CreditCard">
@@ -387,7 +384,6 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
-        <property name="owner" ref="user4"/>
     </bean>
 
     <!-- CreditCard -->
@@ -398,7 +394,6 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
-        <property name="owner" ref="teacher1"/>
     </bean>
     <!-- CreditCard2 -->
     <bean id="creditcard6" class="domain.CreditCard">
@@ -409,7 +404,6 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
-        <property name="owner" ref="teacher2"/>
     </bean>
     <!-- CreditCard3 -->
     <bean id="creditcard7" class="domain.CreditCard">
@@ -420,7 +414,6 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
-        <property name="owner" ref="teacher3"/>
     </bean>
     <!-- CreditCard4 -->
     <bean id="creditcard8" class="domain.CreditCard">
@@ -431,7 +424,6 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
-        <property name="owner" ref="teacher4"/>
     </bean>
 
 

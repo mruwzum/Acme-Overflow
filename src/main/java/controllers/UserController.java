@@ -1,6 +1,7 @@
 package controllers;
 
 
+import domain.CreditCard;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import security.UserAccount;
+import security.UserAccountService;
+import services.CreditCardService;
 import services.UserService;
 
 
@@ -24,7 +28,10 @@ public class UserController extends AbstractController {
 
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private CreditCardService creditCardService;
+@Autowired
+private UserAccountService userAccountService;
 
     //Constructors----------------------------------------------
 
@@ -124,6 +131,20 @@ public class UserController extends AbstractController {
     // Ancillary methods ------------------------------------------------
 
 
+    @RequestMapping(value = "/editp", method = RequestMethod.GET)
+    public ModelAndView editp() {
+        ModelAndView result;
+        User user;
+
+        user = userService.findByPrincipal();
+        Assert.notNull(user);
+
+        result = createEditModelAndView(user);
+
+        return result;
+    }
+
+
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public ModelAndView edit(@RequestParam int userId) {
         ModelAndView result;
@@ -139,12 +160,16 @@ public class UserController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid User user, BindingResult binding) {
         ModelAndView result;
-        if (!binding.hasErrors()) {
+        if (binding.hasErrors()) {
             result = createEditModelAndView(user);
         } else {
             try {
-                userService.save(user);
-                result = new ModelAndView("redirect:list.do");
+
+
+                User user1 = userService.save(user);
+        creditCardService.save(user1.getCreditCard());
+
+                result = new ModelAndView("welcome/index");
             } catch (Throwable oops) {
                 result = createEditModelAndView(user, "user.commit.error");
             }

@@ -62,6 +62,18 @@ public class ActorController extends AbstractController {
 
     // Edition ---------------------------------------------------------
 
+    @RequestMapping(value = "/editp", method = RequestMethod.GET)
+    public ModelAndView editp() {
+        ModelAndView result;
+        Actor actor;
+
+        actor = actorService.findByPrincipal();
+        Assert.notNull(actor);
+        result = createEditModelAndView(actor);
+
+        return result;
+    }
+
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public ModelAndView edit(@RequestParam int actorId) {
         ModelAndView result;
@@ -117,7 +129,7 @@ public class ActorController extends AbstractController {
     protected ModelAndView createEditModelAndView(Actor actor, String message) {
         ModelAndView result;
 
-        result = new ModelAndView("actor/edit");
+        result = new ModelAndView("other/edit");
         result.addObject("actor", actor);
         result.addObject("message", message);
 

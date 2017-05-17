@@ -21,7 +21,6 @@ public class CreditCard extends DomainEntity {
     private int month;
     private String CVV;
     private CreditCardType type;
-    private Other owner;
 
 
     @NotBlank
@@ -81,13 +80,4 @@ public class CreditCard extends DomainEntity {
         this.type = type;
     }
 
-    @NotNull
-    @OneToOne(cascade = CascadeType.PERSIST)
-    public Other getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Other owner) {
-        this.owner = owner;
-    }
 }

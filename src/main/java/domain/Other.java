@@ -44,7 +44,7 @@ public abstract class Other extends Actor {
     public void setComments(Collection<Comment> comments) {
         this.comments = comments;
     }
-    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "owner")
+    @OneToOne(cascade = CascadeType.ALL)
     public CreditCard getCreditCard() {
         return creditCard;
     }

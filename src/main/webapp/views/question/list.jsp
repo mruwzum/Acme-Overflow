@@ -21,7 +21,7 @@
 </security:authorize>
 
 <!-- Listing grid -->
-<display:table pagesize="5" class="displaytag" keepStatus="true"
+<display:table pagesize="100" class="displaytag" keepStatus="true"
                name="questions" requestURI="${requestURI}" id="row">
 
 
