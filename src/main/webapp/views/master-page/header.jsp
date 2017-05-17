@@ -14,7 +14,9 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <div>
-	<img src="images/logo.png" alt="Acme Overflow, Inc."/>
+    <a href="welcome/index.do"> <img src="images/logo.png" alt="Acme Overflow, Inc."/>
+    </a>
+
 </div>
 
 <div>
