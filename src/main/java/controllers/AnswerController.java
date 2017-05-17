@@ -4,6 +4,7 @@ package controllers;
 import domain.Answer;
 import domain.Comment;
 import domain.Other;
+import domain.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -102,10 +103,17 @@ public class AnswerController extends AbstractController {
 
         ModelAndView result;
 
+        Question question = questionService.findOne(questionId);
         Answer answer = answerService.create();
+//        answer.setTitle("GENERIC");
+//        answer.setDescription("GENERIC");
+//        Answer answer1 = answerService.save(answer);
+        answer.setQuestion(question);
+//
+//        question.getAnswers().add(answer1);
 
-        answer.setQuestion(questionService.findOne(questionId));
         result = createEditModelAndView(answer);
+        result.addObject("idii",questionId);
 
         return result;
 
@@ -127,20 +135,22 @@ public class AnswerController extends AbstractController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-    public ModelAndView save(@Valid Answer answer, BindingResult binding) {
+    public ModelAndView save(@Valid Answer answer, int idii, BindingResult binding) {
         ModelAndView result;
-        if (binding.hasErrors()) {
-            result = createEditModelAndView(answer);
-        } else {
-            try {
+//        if (binding.hasErrors()) {
+//            result = createEditModelAndView(answer);
+//        } else {
+//            try {
                 //answer.setOwner(otherService.findByPrincipal());
+        Question question = questionService.findOne(idii);
+               Answer ans = answerService.save(answer);
+        question.getAnswers().add(ans);
 
-                answerService.save(answer);
-                result = new ModelAndView("redirect:list.do");
-            } catch (Throwable oops) {
-                result = createEditModelAndView(answer, "general.commit.error");
-            }
-        }
+        result = new ModelAndView("redirect:list.do");
+//            } catch (Throwable oops) {
+//                result = createEditModelAndView(answer, "general.commit.error");
+//            }
+//        }
         return result;
     }
 

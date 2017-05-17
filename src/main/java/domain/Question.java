@@ -83,7 +83,7 @@ public class Question extends DomainEntity {
         this.owner = owner;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "question")
+    @OneToMany(cascade = CascadeType.ALL)
     public Collection<Answer> getAnswers() {
         return answers;
     }

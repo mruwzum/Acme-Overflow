@@ -71,7 +71,7 @@ public class Answer extends DomainEntity {
 
 
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     public Question getQuestion() {
         return question;
     }
