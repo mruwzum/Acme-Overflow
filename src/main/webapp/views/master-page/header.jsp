@@ -57,7 +57,7 @@
 
 
         <security:authorize access="hasRole('TEACHER')">
-            <li><a class="fNiv"><spring:message code="master.page.user"/></a>
+			<li><a class="fNiv"><spring:message code="master.page.teacher"/></a>
                 <ul>
                     <li class="arrow"></li>
                 </ul>
@@ -69,7 +69,7 @@
 
 
         <security:authorize access="hasRole('MODERATOR')">
-            <li><a class="fNiv"><spring:message code="master.page.user"/></a>
+			<li><a class="fNiv"><spring:message code="master.page.moderator"/></a>
                 <ul>
                     <li class="arrow"></li>
                 </ul>

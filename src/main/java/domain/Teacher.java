@@ -18,7 +18,7 @@ public class Teacher extends Other {
     private String IBAN;
 
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @NotNull
     public Curricula getCurricula() {
         return curricula;
@@ -28,7 +28,7 @@ public class Teacher extends Other {
         this.curricula = curricula;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     public Collection<Webinar> getWebinars() {
         return webinars;
     }

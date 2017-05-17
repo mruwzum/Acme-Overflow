@@ -189,8 +189,25 @@ public class UserService {
         UserAccount userAccount = userAccountService.save(res);
         teacher.setUserAccount(userAccount);
         Assert.notNull(teacher.getUserAccount().getAuthorities(), "authorities null al registrar");
-        curriculaService.save(teacher.getCurricula());
+
+
+//        curriculaService.save(teacher.getCurricula());
         Teacher resu = teacherService.save(teacher);
+
+
+//        Curricula curricula = new Curricula();
+//        curricula.setExperienceSection(resu.getCurricula().getExperienceSection());
+//        curricula.setEducationSection(resu.getCurricula().getEducationSection());
+//        curricula.setHobbiesSection(resu.getCurricula().getHobbiesSection());
+//        curricula.setPhoto(resu.getCurricula().getPhoto());
+//        Collection<String> ref = new HashSet<>();
+//        curricula.setReferencias(ref);
+//        resu.setCurricula(curricula);
+//        curriculaService.save(curricula);
+
+
+
+
         Collection<Message> received = new HashSet<>();
         Collection<Message> sended = new HashSet<>();
         Collection<Folder> folders = new HashSet<>();

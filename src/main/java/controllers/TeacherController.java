@@ -106,13 +106,12 @@ public class TeacherController extends AbstractController {
    @RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
    public ModelAndView register(@Valid Teacher teacher, BindingResult binding) {
       ModelAndView result;
-
       if (!binding.hasErrors()) {
          result = createEditModelAndView2(teacher);
       } else {
          try {
             userService.registerAsTeacher(teacher);
-            result = new ModelAndView("redirect:list.do");
+            result = new ModelAndView("welcome/index");
          } catch (Throwable oops) {
             result = createEditModelAndView2(teacher, "general.commit.error");
          }
