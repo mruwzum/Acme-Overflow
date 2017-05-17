@@ -83,7 +83,7 @@
     <form:label path="curricula.photo">
         <spring:message code="curricula.photo"/>
     </form:label>
-    <form:input path="photo"/>
+    <form:input path="curricula.photo"/>
     <form:errors cssClass="error" path="curricula.photo"/>
     <br/>
     <!---------------------------- BOTONES -------------------------->
