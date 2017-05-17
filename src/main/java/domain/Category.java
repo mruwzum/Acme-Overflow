@@ -59,7 +59,7 @@ public class Category extends DomainEntity{
     }
 
 
-    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "categories")
+    @OneToMany(cascade = CascadeType.PERSIST)
     public Collection<Question> getQuestions() {
         return questions;
     }

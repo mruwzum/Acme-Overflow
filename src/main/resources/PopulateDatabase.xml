@@ -1104,9 +1104,9 @@
             </array>
         </property>
         <property name="categories">
-            <list>
+
                 <ref bean="categorie1"/>
-            </list>
+
         </property>
         <property name="answers">
             <list>
@@ -1128,9 +1128,9 @@
             </array>
         </property>
         <property name="categories">
-            <list>
+
                 <ref bean="categorie2"/>
-            </list>
+
         </property>
         <property name="answers">
             <list>
@@ -1151,9 +1151,9 @@
             </array>
         </property>
         <property name="categories">
-            <list>
+
                 <ref bean="categorie3"/>
-            </list>
+
         </property>
         <property name="answers">
             <list>
@@ -1174,9 +1174,9 @@
             </array>
         </property>
         <property name="categories">
-            <list>
+
                 <ref bean="categorie2"/>
-            </list>
+
         </property>
         <property name="answers">
             <list>
@@ -1196,9 +1196,9 @@
             </array>
         </property>
         <property name="categories">
-            <list>
+
                 <ref bean="categorie1"/>
-            </list>
+
         </property>
         <property name="answers">
             <list>
@@ -1218,9 +1218,9 @@
             </array>
         </property>
         <property name="categories">
-            <list>
+
                 <ref bean="categorie3"/>
-            </list>
+
         </property>
         <property name="answers">
             <list>

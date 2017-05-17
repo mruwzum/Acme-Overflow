@@ -25,13 +25,11 @@
     <br />
     <acme:textarea path="summary" code="question.summary"/>
     <br />
-    <form:label path="categories">
-        <spring:message code="question.categories"/>:
-    </form:label>
-    <form:select path="categories" code="question.categories">
-        <form:options/>
-    </form:select>
+
+
+    <acme:select path="categories" code="question.categories" items="${categories}" itemLabel="name"/>
     <br />
+
     <!---------------------------- BOTONES -------------------------->
 
     <acme:submit name="save" code="general.save"/>
