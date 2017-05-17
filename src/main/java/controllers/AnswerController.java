@@ -113,7 +113,7 @@ public class AnswerController extends AbstractController {
 //        question.getAnswers().add(answer1);
 
         result = createEditModelAndView(answer);
-        result.addObject("idii",questionId);
+        result.addObject("idii",question.getId());
 
         return result;
 
@@ -135,16 +135,15 @@ public class AnswerController extends AbstractController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-    public ModelAndView save(@Valid Answer answer, int idii, BindingResult binding) {
+    public ModelAndView save(@Valid Answer answer, BindingResult binding) {
         ModelAndView result;
 //        if (binding.hasErrors()) {
 //            result = createEditModelAndView(answer);
 //        } else {
 //            try {
                 //answer.setOwner(otherService.findByPrincipal());
-        Question question = questionService.findOne(idii);
                Answer ans = answerService.save(answer);
-        question.getAnswers().add(ans);
+
 
         result = new ModelAndView("redirect:list.do");
 //            } catch (Throwable oops) {
