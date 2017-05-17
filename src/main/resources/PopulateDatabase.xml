@@ -165,6 +165,28 @@
 			</list>
 		</property>
 	</bean>
+    <bean id="userAccountModerator1" class="security.UserAccount">
+        <property name="username" value="moderator1"/>
+        <property name="password" value="38caf4a470117125b995f7ce53e6e6b9"/>
+        <property name="authorities">
+            <list>
+                <bean class="security.Authority">
+                    <property name="authority" value="MODERATOR"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <bean id="userAccountModerator2" class="security.UserAccount">
+        <property name="username" value="moderator2"/>
+        <property name="password" value="95d88ad73653fc7ad4fec3bc56677c3c"/>
+        <property name="authorities">
+            <list>
+                <bean class="security.Authority">
+                    <property name="authority" value="MODERATOR"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
 
 	<!-- Other domain beans come here -->
 
@@ -1766,5 +1788,163 @@
         </property>
     </bean>
     <!-- /Search -->
+
+    <!-- Moderator -->
+
+    <bean id="moderator1" class="domain.Moderator">
+        <property name="name" value="moderator1"/>
+        <property name="surname" value="moderator1sourname"/>
+        <property name="email" value="moderator1@gmail.com"/>
+        <property name="phoneNumber" value="+23-6234456456"/>
+        <property name="userAccount" ref="userAccountModerator1"/>
+
+        <property name="receivedMessages">
+            <list>
+            </list>
+        </property>
+        <property name="sendedMessages">
+            <list>
+            </list>
+        </property>
+
+        <property name="folders">
+            <list>
+
+            </list>
+        </property>
+        <property name="answers">
+            <list>
+
+            </list>
+        </property>
+        <property name="searches">
+            <list>
+
+            </list>
+        </property>
+        <property name="comments">
+            <list>
+            </list>
+        </property>
+
+    </bean>
+
+    <bean id="moderator2" class="domain.Moderator">
+        <property name="name" value="moderator2"/>
+        <property name="surname" value="moderator2sourname"/>
+        <property name="email" value="moderator2@gmail.com"/>
+        <property name="phoneNumber" value="+23-6234456456"/>
+        <property name="userAccount" ref="userAccountModerator2"/>
+
+        <property name="receivedMessages">
+            <list>
+            </list>
+        </property>
+        <property name="sendedMessages">
+            <list>
+            </list>
+        </property>
+
+        <property name="folders">
+            <list>
+
+            </list>
+        </property>
+        <property name="answers">
+            <list>
+
+            </list>
+        </property>
+        <property name="searches">
+            <list>
+
+            </list>
+        </property>
+        <property name="comments">
+            <list>
+            </list>
+        </property>
+
+    </bean>
+
+
+    <!-- /Moderator -->
+
+    <!-- Evaluation -->
+    <bean id="evaluation1" class="domain.Evaluation">
+
+
+        <property name="evaluationQuestions">
+        <list>
+            <ref bean="evaluationQuestion1"/>
+            <ref bean="evaluationQuestion2"/>
+
+        </list>
+        </property>
+
+    </bean>
+
+    <bean id="evaluation2" class="domain.Evaluation">
+
+    <property name="evaluationQuestions">
+        <list>
+            <ref bean="evaluationQuestion3"/>
+            <ref bean="evaluationQuestion4"/>
+
+        </list>
+
+    </property>
+
+
+
+    </bean>
+    <!-- /Evaluation -->
+
+
+    <!-- Evaluation Question -->
+
+    <bean id="evaluationQuestion1" class="domain.EvaluationQuestion">
+
+        <property name="title" value="¿Te ha gustado?"/>
+        <property name="answer" value="SIII"/>
+        <property name="evaluation" ref="evaluation1"/>
+
+
+
+
+    </bean>
+
+    <bean id="evaluationQuestion2" class="domain.EvaluationQuestion">
+
+        <property name="title" value="¿El profe es guapo?"/>
+        <property name="answer" value="NOOO"/>
+        <property name="evaluation" ref="evaluation1"/>
+
+
+
+    </bean>
+
+    <bean id="evaluationQuestion3" class="domain.EvaluationQuestion">
+
+        <property name="title" value="¿Te ha gustado?"/>
+        <property name="answer" value="SIII"/>
+        <property name="evaluation" ref="evaluation2"/>
+
+
+
+    </bean>
+
+    <bean id="evaluationQuestion4" class="domain.EvaluationQuestion">
+
+        <property name="title" value="¿El profe es guapo?"/>
+        <property name="answer" value="NOOO"/>
+        <property name="evaluation" ref="evaluation2"/>
+
+
+
+    </bean>
+
+    <!-- /Evaluation Question -->
+
 
 </beans>
