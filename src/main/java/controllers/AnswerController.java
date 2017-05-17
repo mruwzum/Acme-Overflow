@@ -109,7 +109,7 @@ public class AnswerController extends AbstractController {
 //        answer.setDescription("GENERIC");
 //        Answer answer1 = answerService.save(answer);
         answer.setQuestion(question);
-//
+        //TODO no se responde
 //        question.getAnswers().add(answer1);
 
         result = createEditModelAndView(answer);
