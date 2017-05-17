@@ -92,7 +92,7 @@ public class AnswerController extends AbstractController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create(@RequestParam int id) {
+    public ModelAndView create(@RequestParam int questionId) {
 
         ModelAndView result;
 

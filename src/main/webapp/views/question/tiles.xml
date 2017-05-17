@@ -25,5 +25,8 @@
 		<put-attribute name="title" value="question: List" />
 		<put-attribute name="body" value="/views/question/list.jsp" />
 	</definition>
-	
+    <definition name="question/view" extends="master.page">
+        <put-attribute name="title" value="question: view"/>
+        <put-attribute name="body" value="/views/question/view.jsp"/>
+    </definition>
 </tiles-definitions>
