@@ -275,7 +275,11 @@
 	<bean id="banner3" class="domain.Banner">
 		<property name="url" value="http://i.imgur.com/eViE38q.png"/>
 	</bean>
-	<!-- /Banner -->
+    <bean id="banner4" class="domain.Banner">
+        <property name="url" value="http://i.imgur.com/IDRtMzG.png"/>
+    </bean>
+
+    <!-- /Banner -->
 
 
     <!-- Comment -->

@@ -3,5 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/src/main/java/repositories/ActorRepository.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/favicon.ico" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/images/logo.png" charset="UTF-8" />
   </component>
 </project>

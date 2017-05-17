@@ -11,15 +11,16 @@
 package controllers;
 
 import java.text.SimpleDateFormat;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
+import domain.Banner;
 import domain.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import services.BannerService;
 import services.QuestionService;
 
 @Controller
@@ -28,6 +29,8 @@ public class WelcomeController extends AbstractController {
 
 	@Autowired
 	private QuestionService questionService;
+	@Autowired
+	private BannerService bannerService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -46,13 +49,27 @@ public class WelcomeController extends AbstractController {
 		Collection<Question> questions = questionService.findAll();
 
 
-		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		moment = formatter.format(new Date());
+		Random randomGenerator = new Random();
+
+
+		List<Banner> banner = new ArrayList<>();
+		banner.addAll(bannerService.findAll());
+
+
+		int index = randomGenerator.nextInt(banner.size());
+		String bannerOut = banner.get(index).getUrl();
+
+		String ppoImg = "<img src=\"";
+		String finImg = "\" alt=\"Banner\" height=\"400\" width=\"700\">";
+
+		String bannerFin = ppoImg + bannerOut + finImg;
+
 
 		result = new ModelAndView("welcome/index");
 		result.addObject("questions", questions);
-		result.addObject("name", name);
-		result.addObject("moment", moment);
+		result.addObject("banner", bannerFin);
+
+
 
 		return result;
 	}
