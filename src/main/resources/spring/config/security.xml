@@ -47,8 +47,6 @@
 		<security:intercept-url pattern="/user/register.do" access="permitAll"/>
 		<security:intercept-url pattern="/user/error.do" access="permitAll"/>
 
-		<security:intercept-url pattern="/customer/action-1.do" access="hasRole('CUSTOMER')" /> 
-		<security:intercept-url pattern="/customer/action-2.do" access="hasRole('CUSTOMER')" />
 
 
 		<!--Allow user to make question-->
@@ -59,11 +57,6 @@
 
 
 
-
-		<security:intercept-url pattern="/profile/action-1.do" access="isAuthenticated()" />
-		<security:intercept-url pattern="/profile/action-2.do" access="isAuthenticated()" /> 
-		<security:intercept-url pattern="/profile/action-3.do" access="isAuthenticated()" /> 
-	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 		<security:form-login 

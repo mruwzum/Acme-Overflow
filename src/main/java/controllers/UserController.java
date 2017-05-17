@@ -105,16 +105,16 @@ public class UserController extends AbstractController {
     public ModelAndView register(@Valid User user, BindingResult binding) {
         ModelAndView result;
 
-//            if (!binding.hasErrors()) {
-//                result = createEditModelAndView2(user);
-//            }else{
-//                try{
+        if (!binding.hasErrors()) {
+            result = createEditModelAndView2(user);
+        } else {
+            try {
         userService.registerAsUser(user);
         result = new ModelAndView("redirect:list.do");
-//                }catch(Throwable oops){
-//                    result= createEditModelAndView2(user, "general.commit.error");
-//                }
-//            }
+            } catch (Throwable oops) {
+                result = createEditModelAndView2(user, "general.commit.error");
+            }
+        }
         return result;
     }
 
