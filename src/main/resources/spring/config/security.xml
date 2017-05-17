@@ -43,10 +43,14 @@
 
 		<!--Allows everybody to register as user.-->
 		<security:intercept-url pattern="/user/create.do" access="permitAll"/>
-		<!--Allows a non registered chorbi to finish and save his/her sign up-->
+		<!--Allows a non registered user to finish and save his/her sign up-->
 		<security:intercept-url pattern="/user/register.do" access="permitAll"/>
 		<security:intercept-url pattern="/user/error.do" access="permitAll"/>
-
+		<!--Allows everybody to register as teacher.-->
+		<security:intercept-url pattern="/teacher/create.do" access="permitAll"/>
+		<!--Allows a non registered teacher to finish and save his/her sign up-->
+		<security:intercept-url pattern="/teacher/register.do" access="permitAll"/>
+		<security:intercept-url pattern="/teacher/error.do" access="permitAll"/>
 
 
 		<!--Allow user to make question-->

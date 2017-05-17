@@ -43,7 +43,10 @@ public class UserService {
     private CreditCardService creditCardService;
     @Autowired
     private WebinarService webinarService;
-
+    @Autowired
+    private TeacherService teacherService;
+    @Autowired
+    private CurriculaService curriculaService;
 
     // Managed repository--------------------------------------------------------------------------------
 
@@ -172,7 +175,65 @@ public class UserService {
         return resu;
     }
 
+    public Actor registerAsTeacher(Teacher teacher) {
+        Assert.notNull(teacher);
+        Authority autoh = new Authority();
+        autoh.setAuthority("TEACHER");
+        UserAccount res = new UserAccount();
+        res.addAuthority(autoh);
+        res.setUsername(teacher.getUserAccount().getUsername());
+        Md5PasswordEncoder encoder;
+        encoder = new Md5PasswordEncoder();
+        String hash = encoder.encodePassword(teacher.getUserAccount().getPassword(), null);
+        res.setPassword(hash);
+        UserAccount userAccount = userAccountService.save(res);
+        teacher.setUserAccount(userAccount);
+        Assert.notNull(teacher.getUserAccount().getAuthorities(), "authorities null al registrar");
+        curriculaService.save(teacher.getCurricula());
+        Teacher resu = teacherService.save(teacher);
+        Collection<Message> received = new HashSet<>();
+        Collection<Message> sended = new HashSet<>();
+        Collection<Folder> folders = new HashSet<>();
+        Folder inbox = folderService.create();
+        inbox.setName("inbox");
+        inbox.setOwner(resu);
+        Collection<Message> innnn = new HashSet<>();
+        inbox.setMessages(innnn);
+        Folder outbox = folderService.create();
+        outbox.setName("outbox");
+        outbox.setOwner(resu);
+        Collection<Message> ouuuu = new HashSet<>();
+        outbox.setMessages(ouuuu);
+        Folder spambox = folderService.create();
+        spambox.setName("spambox");
+        spambox.setOwner(resu);
+        Collection<Message> spaaaam = new HashSet<>();
+        spambox.setMessages(spaaaam);
+        Folder trashBox = folderService.create();
+        trashBox.setName("trashbox");
+        trashBox.setOwner(resu);
+        Collection<Message> trashhh = new HashSet<>();
+        trashBox.setMessages(trashhh);
+        folders.add(inbox);
+        folders.add(outbox);
+        folders.add(spambox);
+        folders.add(trashBox);
+        folderService.save(inbox);
+        folderService.save(outbox);
+        folderService.save(spambox);
+        folderService.save(trashBox);
+        resu.setFolders(folders);
+        resu.setReceivedMessages(received);
+        resu.setSendedMessages(sended);
 
+        Collection<Answer> answers = new HashSet<>();
+        Collection<Comment> comments = new HashSet<>();
+        Collection<Webinar> webinars = new HashSet<>();
+        resu.setWebinars(webinars);
+        resu.setAnswers(answers);
+        resu.setComments(comments);
+        return resu;
+    }
 }
 
 
