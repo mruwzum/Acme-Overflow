@@ -28,6 +28,12 @@
 
 </security:authorize>
 
+<security:authorize access="hasRole('USER')">
+        <a href="question/create.do"> <spring:message
+                code="question.create" />
+        </a>
+</security:authorize>
+
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
                name="questions" requestURI="${requestURI}" id="row">

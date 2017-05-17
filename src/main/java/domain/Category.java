@@ -59,7 +59,7 @@ public class Category extends DomainEntity{
     }
 
 
-    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "categories")
+    @OneToMany(cascade = CascadeType.PERSIST)
     public Collection<Question> getQuestions() {
         return questions;
     }
@@ -75,5 +75,13 @@ public class Category extends DomainEntity{
 
     public void setWebinars(Collection<Webinar> webinars) {
         this.webinars = webinars;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

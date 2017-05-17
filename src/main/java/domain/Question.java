@@ -20,7 +20,7 @@ public class Question extends DomainEntity {
     private String title;
     private String summary;
     private Date createdDate;
-    private Collection<Category> categories;
+    private Category categories;
     private Collection<String> pictures;
     private Collection<Answer> answers;
     private User owner;
@@ -55,12 +55,12 @@ public class Question extends DomainEntity {
         this.createdDate = createdDate;
     }
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    public Collection<Category> getCategories() {
+    @OneToOne(cascade = CascadeType.PERSIST)
+    public Category getCategories() {
         return categories;
     }
 
-    public void setCategories(Collection<Category> categories) {
+    public void setCategories(Category categories) {
         this.categories = categories;
     }
 

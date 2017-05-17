@@ -6,7 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 /**
  * Created by daviddelatorre on 13/12/16.
  */
-public class UsertoStringConverter implements Converter<User, String> {
+public class UserToStringConverter implements Converter<User, String> {
 
 
     @Override

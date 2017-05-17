@@ -1,19 +1,22 @@
 package converters;
 
+import domain.Evaluation;
+import domain.EvaluationQuestion;
+import domain.Search;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import security.UserAccount;
 
 /**
  * Created by daviddelatorre on 29/3/17.
  */@Component
 @Transactional
-public class UsserAccountToStringConverter implements Converter<UserAccount, String> {
+public class EvaluationQuestionToStringConverter implements Converter<EvaluationQuestion, String> {
+
 
     @Override
-    public String convert(UserAccount actor) {
+    public String convert(EvaluationQuestion actor) {
         Assert.notNull(actor);
         String result;
         result = String.valueOf(actor.getId());

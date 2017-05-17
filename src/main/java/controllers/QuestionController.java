@@ -1,6 +1,7 @@
 package controllers;
 
 
+import domain.Category;
 import domain.Question;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.CategoryService;
 import services.QuestionService;
 
 import javax.validation.Valid;
@@ -25,6 +27,8 @@ public class QuestionController extends AbstractController {
 
     @Autowired
     private QuestionService questionService;
+    @Autowired
+    private CategoryService categoryService;
 
 
     //Constructors----------------------------------------------
@@ -90,13 +94,15 @@ public class QuestionController extends AbstractController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create(@RequestParam int id) {
+    public ModelAndView create() {
 
         ModelAndView result;
 
         Question question = questionService.create();
+        Collection<Category> categories = categoryService.findAll();
 
         result = createEditModelAndView(question);
+        result.addObject("categories", categories);
 
         return result;
 
