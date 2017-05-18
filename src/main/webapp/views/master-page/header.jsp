@@ -105,6 +105,9 @@
 				</ul>
 			</li>
 
+		<li><a href=" /create.do"><spring:message code="master.page.search.new" /> </a></li>
+
+
 		<li><a class="fNiv"><spring:message code="master.page.search"/></a>
 			<ul>
 				<li class="arrow"></li>
