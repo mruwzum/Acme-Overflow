@@ -91,6 +91,9 @@ public class QuestionService {
          res = true;
       } else if (question.isBanned()) {
          question.setBanned(false);
+         for (Answer a : question.getAnswers()) {
+            a.setBanned(false);
+         }
          questionRepository.save(question);
          res = true;
       }
