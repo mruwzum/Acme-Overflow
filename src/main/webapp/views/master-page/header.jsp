@@ -47,6 +47,7 @@
 					<li class="arrow"></li>
 					<li><a href="user/editp.do"><spring:message code="master.page.edit.profile" /> </a></li>
 				</ul>
+			<li><a class="fNiv" href="webinar/listAn.do"><spring:message code="master.page.webinar.list"/></a>
 			</li>
 
 
@@ -66,14 +67,15 @@
                     <li><a href="teacher/editp.do"><spring:message code="master.page.edit.profile"/> </a></li>
                 </ul>
             </li>
-        </security:authorize>
+		<li><a class="fNiv" href="webinar/list.do"><spring:message code="master.page.webinar.list"/></a>
+			</security:authorize>
 
 
-        <%--****************************************MODERATOR****************************************--%>
+			<%--****************************************MODERATOR****************************************--%>
 
 
-        <security:authorize access="hasRole('MODERATOR')">
-			<li><a class="fNiv"><spring:message code="master.page.moderator"/></a>
+			<security:authorize access="hasRole('MODERATOR')">
+		<li><a class="fNiv"><spring:message code="master.page.moderator"/></a>
                 <ul>
                     <li class="arrow"></li>
 				</ul>
@@ -91,7 +93,7 @@
 		<li><a class="fNiv" href="teacher/create.do"><spring:message code="master.page.register.teacher"/></a>
 		<li><a class="fNiv" href="question/listPopular.do"><spring:message code="master.page.question.listpop"/></a>
 		<li><a class="fNiv" href="webinar/listIncoming.do"><spring:message code="master.page.webinar.listIncom"/></a>
-		<li><a class="fNiv" href="webinar/list.do"><spring:message code="master.page.webinar.list"/></a>
+		<li><a class="fNiv" href="webinar/listAn.do"><spring:message code="master.page.webinar.list"/></a>
 			</security:authorize>
 
 

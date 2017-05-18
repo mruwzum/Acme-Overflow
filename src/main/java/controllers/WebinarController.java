@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import services.TeacherService;
 import services.WebinarService;
 
 
@@ -25,7 +26,8 @@ public class WebinarController extends AbstractController {
 
     @Autowired
     private WebinarService webinarService;
-
+   @Autowired
+   private TeacherService teacherService;
 
     //Constructors----------------------------------------------
 
@@ -75,6 +77,21 @@ public class WebinarController extends AbstractController {
 
     }
 
+   @RequestMapping(value = "/listAn", method = RequestMethod.GET)
+   public ModelAndView webinarListAn() {
+
+      ModelAndView result;
+      Collection<Webinar> webinars;
+
+      webinars = webinarService.findAll();
+
+
+      result = new ModelAndView("webinar/list");
+      result.addObject("webinars", webinars);
+      result.addObject("requestURI", "webinar/list.do");
+
+      return result;
+   }
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView webinarList() {
 
@@ -82,8 +99,16 @@ public class WebinarController extends AbstractController {
        Collection<Webinar> webinars;
 
        webinars = webinarService.findAll();
+       Collection<Webinar> mines = new HashSet<>();
+       //TODO hacer que solo se puedan editar mis webminars y ver todos y que en la vista ppal, funcionen los webminars
+       for (Webinar w : webinars) {
+          if (w.getOwner().equals(teacherService.findByPrincipal())) {
+             mines.add(w);
+          }
+       }
        result = new ModelAndView("webinar/list");
        result.addObject("webinars", webinars);
+       result.addObject("mywebinars", mines);
        result.addObject("requestURI", "webinar/list.do");
 
         return result;

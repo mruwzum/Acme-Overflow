@@ -53,7 +53,7 @@
 		<!--Allows a non registered teacher to finish and save his/her sign up-->
 		<security:intercept-url pattern="/teacher/register.do" access="permitAll"/>
 		<security:intercept-url pattern="/teacher/error.do" access="permitAll"/>
-
+		<security:intercept-url pattern="/webinar/listAn.do" access="permitAll"/>
 
 		<!--Allow user to make question-->
 		<security:intercept-url pattern="/question/create.do" access="hasRole('USER')" />
@@ -95,9 +95,9 @@
 		<security:intercept-url pattern="/category/delete.do" access="hasRole('ADMIN')"/>
 
 
-
-
-
+		<security:intercept-url pattern="/webinar/view.do" access="permitAll"/>
+		<security:intercept-url pattern="/webinar/create.do" access="hasRole('TEACHER')"/>
+		<security:intercept-url pattern="/webinar/edit.do" access="hasRole('TEACHER')"/>
 
 
 		<security:intercept-url pattern="/question/view.do" access="permitAll"/>

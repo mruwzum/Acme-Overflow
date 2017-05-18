@@ -26,14 +26,6 @@
 
 
     <!-- Attributes -->
-
-    <security:authorize access="hasRole('TEACHER')">
-        <display:column>
-            <a href="webinar/edit.do?webinarId=${row.id}"> <spring:message
-                    code="general.edit" />
-            </a>
-        </display:column>
-    </security:authorize>
     <security:authorize access="hasRole('USER')">
         <display:column>
             <a href="webinar/view.do?webinarId=${row.id}"> <spring:message
@@ -49,7 +41,30 @@
     <display:column property="startDate" title="${originAddress}" sortable="true" />
     <spring:message code="webinar.price" var="destinationAddress" />
     <display:column property="price" title="${destinationAddress}" sortable="true" />
-
     <spring:message code="webinar.categories" var="categories"/>
     <display:column property="categories" title="${categories}" sortable="true"/>
 </display:table>
+
+
+<security:authorize access="hasRole('TEACHER')">
+    <display:table pagesize="10" class="displaytag" keepStatus="true"
+                   name="mywebinars" requestURI="${requestURI}" id="row">
+        <!-- Attributes -->
+        <display:column>
+            <a href="webinar/edit.do?webinarId=${row.id}"> <spring:message
+                    code="general.edit"/>
+            </a>
+        </display:column>
+        <spring:message code="webinar.name" var="title"/>
+        <display:column property="name" title="${title}" sortable="true"/>
+        <spring:message code="webinar.description" var="description"/>
+        <display:column property="description" title="${description}" sortable="true"/>
+        <spring:message code="webinar.startDate" var="originAddress"/>
+        <display:column property="startDate" title="${originAddress}" sortable="true"/>
+        <spring:message code="webinar.price" var="destinationAddress"/>
+        <display:column property="price" title="${destinationAddress}" sortable="true"/>
+
+        <spring:message code="webinar.categories" var="categories"/>
+        <display:column property="categories" title="${categories}" sortable="true"/>
+    </display:table>
+</security:authorize>
