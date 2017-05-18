@@ -10,7 +10,7 @@
           uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
+<security:authorize access="hasRole('TEACHER')">
     <div>
         <H5>
             <a href="webinar/create.do"> <spring:message
@@ -27,7 +27,7 @@
 
     <!-- Attributes -->
 
-    <security:authorize access="permitAll">
+    <security:authorize access="hasRole('TEACHER')">
         <display:column>
             <a href="webinar/edit.do?webinarId=${row.id}"> <spring:message
                     code="general.edit" />

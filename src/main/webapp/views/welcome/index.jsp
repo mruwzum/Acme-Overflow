@@ -35,7 +35,7 @@
 </security:authorize>
 
 
-<display:table pagesize="5" class="displaytag" keepStatus="true"
+<display:table pagesize="25" class="displaytag" keepStatus="true"
                name="questions" requestURI="${requestURI}" id="row">
 
 
