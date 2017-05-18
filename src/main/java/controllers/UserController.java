@@ -177,6 +177,46 @@ private UserAccountService userAccountService;
         return result;
     }
 
+    @RequestMapping(value = "/ban", method = RequestMethod.GET)
+    public ModelAndView banUser(int userId) {
+
+        ModelAndView res;
+        User user = userService.findOne(userId);
+
+//		try {
+        userService.banUser(user);
+        res = new ModelAndView("user/success");
+//		} catch (Exception e) {
+//			res = new ModelAndView("chorbi/error");
+//			res.addObject("trace", e.fillInStackTrace());
+//		}
+
+
+        return res;
+
+
+    }
+
+
+    @RequestMapping(value = "/unban", method = RequestMethod.GET)
+    public ModelAndView unbanUser(int userId) {
+
+        ModelAndView res;
+        User user = userService.findOne(userId);
+
+        try {
+            userService.unbanUser(user);
+            res = new ModelAndView("user/success");
+        } catch (Exception e) {
+            res = new ModelAndView("user/error");
+            res.addObject("trace", e.toString());
+        }
+
+
+        return res;
+
+
+    }
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
     public ModelAndView delete(User user) {
         ModelAndView result;

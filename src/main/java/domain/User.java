@@ -13,6 +13,7 @@ public class User extends Other {
 
     private Collection<Question> questions;
     private Collection<Webinar> webinars;
+    private boolean banned;
 
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
@@ -33,5 +34,11 @@ public class User extends Other {
         this.webinars = webinars;
     }
 
+    public boolean isBanned() {
+        return banned;
+    }
 
+    public void setBanned(boolean banned) {
+        this.banned = banned;
+    }
 }

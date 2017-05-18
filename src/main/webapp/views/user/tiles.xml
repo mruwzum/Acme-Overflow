@@ -31,5 +31,13 @@
         <put-attribute name="title" value="user: Register"/>
         <put-attribute name="body" value="/views/user/register.jsp"/>
     </definition>
+	<definition name="user/success" extends="master.page">
+		<put-attribute name="title" value="user: success"/>
+		<put-attribute name="body" value="/views/user/success.jsp"/>
+	</definition>
+	<definition name="user/error" extends="master.page">
+		<put-attribute name="title" value="user: error"/>
+		<put-attribute name="body" value="/views/user/error.jsp"/>
+	</definition>
 
 </tiles-definitions>

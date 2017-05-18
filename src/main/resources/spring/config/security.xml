@@ -68,7 +68,8 @@
 		<security:intercept-url pattern="/user/editp.do" access="hasRole('USER')" />
 		<security:intercept-url pattern="/user/edit.do" access="hasRole('USER')" />
         <security:intercept-url pattern="/user/list.do" access="hasAnyRole('USER','TEACHER','MODERATOR')"/>
-
+		<security:intercept-url pattern="/user/ban.do" access="hasAnyRole('ADMIN','MODERATOR')"/>
+		<security:intercept-url pattern="/user/unban.do" access="hasAnyRole('ADMIN','MODERATOR')"/>
 
 		<!--Allow teacher to edit the profile-->
 		<security:intercept-url pattern="/teacher/editp.do" access="hasRole('TEACHER')"/>

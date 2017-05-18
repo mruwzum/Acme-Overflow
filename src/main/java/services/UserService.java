@@ -251,6 +251,34 @@ public class UserService {
         resu.setComments(comments);
         return resu;
     }
+
+    public Boolean banUser(User user) {
+        Boolean res = false;
+        if (!user.getUserAccount().getAuthorities().isEmpty()) {
+            Authority authority = new Authority();
+            authority.setAuthority("USER");
+            Authority authority2 = new Authority();
+            authority2.setAuthority("BAN");
+            user.getUserAccount().addAuthority(authority2);
+            user.getUserAccount().removeAuthority(authority);
+            user.setBanned(true);
+            res = true;
+        }
+        return res;
+    }
+
+    public Boolean unbanUser(User user) {
+        Boolean res = false;
+        Authority authority = new Authority();
+        authority.setAuthority("USER");
+        Authority authority2 = new Authority();
+        authority2.setAuthority("BAN");
+        user.getUserAccount().addAuthority(authority);
+        user.getUserAccount().removeAuthority(authority2);
+        user.setBanned(false);
+        res = true;
+        return res;
+    }
 }
 
 

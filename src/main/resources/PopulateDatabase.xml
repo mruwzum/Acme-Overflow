@@ -436,7 +436,7 @@
 		<property name="phoneNumber" value="+23-6234456456"/>
 		<property name="userAccount" ref="userAccountUser1"/>
 		<property name="creditCard" ref="creditcard1"/>
-
+        <property name="banned" value="false"/>
 		<property name="receivedMessages">
 			<list>
 				<ref bean="message2"/>
@@ -482,7 +482,7 @@
 		<property name="phoneNumber" value="+23-6234456456"/>
 		<property name="userAccount" ref="userAccountuser2"/>
 		<property name="creditCard" ref="creditcard2"/>
-
+        <property name="banned" value="false"/>
 		<property name="receivedMessages">
 			<list>
 				<ref bean="message"/>
@@ -527,7 +527,7 @@
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountuser3"/>
         <property name="creditCard" ref="creditcard3"/>
-
+        <property name="banned" value="false"/>
         <property name="receivedMessages">
             <list>
                 <ref bean="message3"/>
@@ -571,7 +571,7 @@
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountuser4"/>
         <property name="creditCard" ref="creditcard4"/>
-
+        <property name="banned" value="false"/>
         <property name="receivedMessages">
             <list>
                 <ref bean="message4"/>
