@@ -22,7 +22,7 @@ public class Comment extends DomainEntity {
     private Webinar webinar;
 
 
-    @NotBlank
+
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getTitle() {
         return title;
@@ -31,7 +31,7 @@ public class Comment extends DomainEntity {
     public void setTitle(String title) {
         this.title = title;
     }
-    @NotBlank
+
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getText() {
         return text;
@@ -51,7 +51,7 @@ public class Comment extends DomainEntity {
     }
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     public Other getOwner() {
         return owner;
     }
@@ -60,7 +60,7 @@ public class Comment extends DomainEntity {
         this.owner = owner;
     }
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+   @ManyToOne(cascade = CascadeType.ALL)
     public Webinar getWebinar() {
         return webinar;
     }

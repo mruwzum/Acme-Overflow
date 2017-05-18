@@ -2,6 +2,7 @@ package controllers;
 
 
 import domain.Comment;
+import domain.Webinar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import services.CommentService;
+import services.UserService;
+import services.WebinarService;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -27,7 +30,10 @@ public class CommentController extends AbstractController {
     private CommentService commentService;
     @Autowired
     private ActorService actorService;
-
+   @Autowired
+   private WebinarService webinarService;
+   @Autowired
+   private UserService userService;
 
     //Constructors----------------------------------------------
 
@@ -92,13 +98,16 @@ public class CommentController extends AbstractController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create(@RequestParam int id) {
+    public ModelAndView create(@RequestParam int webinarId) {
 
         ModelAndView result;
 
         Comment comment = commentService.create();
-
+       Webinar webinar = webinarService.findOne(webinarId);
+       comment.setWebinar(webinar);
+       webinar.getComments().add(comment);
         result = createEditModelAndView(comment);
+
 
         return result;
 
@@ -134,17 +143,21 @@ public class CommentController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid Comment comment, BindingResult binding) {
         ModelAndView result;
-        if (!binding.hasErrors()) {
-            result = createEditModelAndView(comment);
-        } else {
-            try {
-                comment.setCreationDate(new Date(System.currentTimeMillis() - 1000));
-                commentService.save(comment);
-                result = new ModelAndView("redirect:list.do");
-            } catch (Throwable oops) {
-                result = createEditModelAndView(comment, "comment.commit.error");
-            }
-        }
+//        if (!binding.hasErrors()) {
+//            result = createEditModelAndView(comment);
+//        } else {
+//            try {
+       //TODO no se guardan bien los comments
+       comment.setCreationDate(new Date(System.currentTimeMillis() - 1000));
+       comment.setOwner(userService.findByPrincipal());
+       commentService.save(comment);
+
+
+       result = new ModelAndView("user/success");
+//            } catch (Throwable oops) {
+//                result = createEditModelAndView(comment, "general.commit.error");
+//            }
+//        }
         return result;
     }
 

@@ -42,7 +42,7 @@
 <jstl:out value="${categories}"/>
 <br/>
 <security:authorize access="hasAnyRole('USER','TEACHER')">
-        <a href="comment/create.do?webinarId=${id}"> <spring:message
+    <a href="comment/create.do?webinarId=${webinarId}"> <spring:message
                 code="general.create"/>
         </a>
 </security:authorize>

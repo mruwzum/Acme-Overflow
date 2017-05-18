@@ -214,6 +214,7 @@ public class WebinarController extends AbstractController {
       result.addObject("startDate", webinar.getStartDate());
       result.addObject("price", webinar.getPrice());
       result.addObject("categories", webinar.getCategories());
+      result.addObject("comments", webinar.getComments());
       result.addObject("webinarId", webinar.getId());
       result.addObject("requestURI", "webinar/view.do");
 

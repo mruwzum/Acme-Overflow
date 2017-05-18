@@ -18,6 +18,7 @@
     <form:hidden path="version" />
     <form:hidden path="owner" />
     <form:hidden path="webinar" />
+    <form:hidden path="creationDate"/>
 
 
 
@@ -25,13 +26,14 @@
     <br />
     <acme:textbox path="text" code="comment.text"/>
     <br />
-    <acme:textbox path="creationDate" code="comment.creationDate"/>
-    <br />
+
 
 
     <!---------------------------- BOTONES -------------------------->
 
-    <acme:submit name="save" code="general.save"/>
+    <input type="submit" name="save"
+           value="<spring:message code="general.save" />"/>
+
 
     <jstl:if test="\$\{comment.id != 0}">
         <input type="submit" name="delete"
