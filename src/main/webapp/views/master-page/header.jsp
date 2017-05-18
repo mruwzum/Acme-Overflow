@@ -74,7 +74,7 @@
                 <ul>
                     <li class="arrow"></li>
 				</ul>
-			<li><a href="user/list.do"><spring:message code="master.page.user.list"/></a></li>
+			<li><a href="user/listAll.do"><spring:message code="master.page.user.list"/></a></li>
 			<li><a href="question/listAll.do"><spring:message code="master.page.question.list"/> </a></li>
 			<li><a href="answer/listAll.do"><spring:message code="master.page.answer.list"/> </a></li>
             </li>

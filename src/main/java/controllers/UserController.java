@@ -19,6 +19,7 @@ import services.UserService;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.HashSet;
 
 @Controller
 @RequestMapping("/user")
@@ -84,16 +85,35 @@ private UserAccountService userAccountService;
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView userList() {
 
-        ModelAndView result;
-        Collection<User> users;
+       ModelAndView result;
+       Collection<User> users;
 
-        users = userService.findAll();
-        result = new ModelAndView("user/list");
-        result.addObject("users", users);
-        result.addObject("requestURI", "user/list.do");
+       users = userService.findAll();
+       result = new ModelAndView("user/list");
+       result.addObject("users", users);
+       result.addObject("requestURI", "user/list.do");
 
-        return result;
+       return result;
     }
+
+   @RequestMapping(value = "/listAll", method = RequestMethod.GET)
+   public ModelAndView userListAll() {
+
+      ModelAndView result;
+      Collection<User> users;
+      Collection<User> res = new HashSet<>();
+      users = userService.findAll();
+      for (User user : users) {
+         if (!user.isBanned()) {
+            res.add(user);
+         }
+      }
+      result = new ModelAndView("user/list");
+      result.addObject("users", res);
+      result.addObject("requestURI", "user/list.do");
+
+      return result;
+   }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create() {
