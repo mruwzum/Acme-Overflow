@@ -14,7 +14,7 @@ import services.WebinarService;
 
 
 import javax.validation.Valid;
-import java.util.Collection;
+import java.util.*;
 
 
 @Controller
@@ -24,7 +24,7 @@ public class WebinarController extends AbstractController {
     //Services ----------------------------------------------------------------
 
     @Autowired
-    private WebinarService werbinarService;
+    private WebinarService webinarService;
 
 
     //Constructors----------------------------------------------
@@ -33,10 +33,10 @@ public class WebinarController extends AbstractController {
         super();
     }
 
-    protected static ModelAndView createEditModelAndView(Webinar werbinar) {
+   protected static ModelAndView createEditModelAndView(Webinar webinar) {
         ModelAndView result;
 
-        result = createEditModelAndView(werbinar, null);
+      result = createEditModelAndView(webinar, null);
 
         return result;
     }
@@ -44,31 +44,31 @@ public class WebinarController extends AbstractController {
 
     //Create Method -----------------------------------------------------------
 
-    protected static ModelAndView createEditModelAndView(Webinar werbinar, String message) {
+   protected static ModelAndView createEditModelAndView(Webinar webinar, String message) {
         ModelAndView result;
 
-        result = new ModelAndView("werbinar/edit");
-        result.addObject("werbinar", werbinar);
+      result = new ModelAndView("webinar/edit");
+      result.addObject("webinar", webinar);
         result.addObject("message", message);
 
         return result;
 
     }
 
-    protected static ModelAndView createEditModelAndView2(Webinar werbinar) {
+   protected static ModelAndView createEditModelAndView2(Webinar webinar) {
         ModelAndView result;
 
-        result = createEditModelAndView2(werbinar, null);
+      result = createEditModelAndView2(webinar, null);
 
         return result;
     }
     // Edition ---------------------------------------------------------
 
-    protected static ModelAndView createEditModelAndView2(Webinar werbinar, String message) {
+   protected static ModelAndView createEditModelAndView2(Webinar webinar, String message) {
         ModelAndView result;
 
-        result = new ModelAndView("werbinar/editLess");
-        result.addObject("werbinar", werbinar);
+      result = new ModelAndView("webinar/editLess");
+      result.addObject("webinar", webinar);
         result.addObject("message", message);
 
         return result;
@@ -76,27 +76,53 @@ public class WebinarController extends AbstractController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ModelAndView werbinarList() {
+    public ModelAndView webinarList() {
 
         ModelAndView result;
-        Collection<Webinar> werbinars;
+       Collection<Webinar> webinars;
 
-        werbinars = werbinarService.findAll();
-        result = new ModelAndView("werbinar/list");
-        result.addObject("werbinars", werbinars);
-        result.addObject("requestURI", "werbinar/list.do");
+       webinars = webinarService.findAll();
+       result = new ModelAndView("webinar/list");
+       result.addObject("webinars", webinars);
+       result.addObject("requestURI", "webinar/list.do");
 
         return result;
     }
 
+
+   @RequestMapping(value = "/listIncoming", method = RequestMethod.GET)
+   public ModelAndView webinarListIncoming() {
+
+      ModelAndView result;
+      Collection<Webinar> webinars;
+      List<Webinar> res = new ArrayList<>();
+      webinars = webinarService.findAll();
+
+      for (Webinar webinar : webinars) {
+         if (webinar.getStartDate().after(new Date(System.currentTimeMillis() - 100 * 30 * 24 * 60 * 60L))) {
+            res.add(webinar);
+         }
+      }
+      Collections.sort(res, new Comparator<Webinar>() {
+         public int compare(Webinar m1, Webinar m2) {
+            return m2.getStartDate().toString().compareTo(m1.getStartDate().toString());
+         }
+      });
+
+      result = new ModelAndView("webinar/list");
+      result.addObject("webinars", res);
+      result.addObject("requestURI", "webinar/listIncoming.do");
+
+      return result;
+   }
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create(@RequestParam int id) {
 
         ModelAndView result;
 
-        Webinar werbinar = werbinarService.create();
+       Webinar webinar = webinarService.create();
 
-        result = createEditModelAndView(werbinar);
+       result = createEditModelAndView(webinar);
 
         return result;
 
@@ -106,41 +132,41 @@ public class WebinarController extends AbstractController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int werbinarId) {
+    public ModelAndView edit(@RequestParam int webinarId) {
         ModelAndView result;
-        Webinar werbinar;
+       Webinar webinar;
 
-        werbinar = werbinarService.findOne(werbinarId);
-        Assert.notNull(werbinar);
-        result = createEditModelAndView(werbinar);
+       webinar = webinarService.findOne(webinarId);
+       Assert.notNull(webinar);
+       result = createEditModelAndView(webinar);
 
         return result;
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-    public ModelAndView save(@Valid Webinar werbinar, BindingResult binding) {
+    public ModelAndView save(@Valid Webinar webinar, BindingResult binding) {
         ModelAndView result;
         if (!binding.hasErrors()) {
-            result = createEditModelAndView(werbinar);
+           result = createEditModelAndView(webinar);
         } else {
             try {
-                werbinarService.save(werbinar);
+               webinarService.save(webinar);
                 result = new ModelAndView("redirect:list.do");
             } catch (Throwable oops) {
-                result = createEditModelAndView(werbinar, "werbinar.commit.error");
+               result = createEditModelAndView(webinar, "webinar.commit.error");
             }
         }
         return result;
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-    public ModelAndView delete(Webinar werbinar) {
+    public ModelAndView delete(Webinar webinar) {
         ModelAndView result;
         try {
-            werbinarService.delete(werbinar);
+           webinarService.delete(webinar);
             result = new ModelAndView("redirect:list.do");
         } catch (Throwable oops) {
-            result = createEditModelAndView(werbinar, "werbinar.commit.error");
+           result = createEditModelAndView(webinar, "webinar.commit.error");
         }
 
         return result;

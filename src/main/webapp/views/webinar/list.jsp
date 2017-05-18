@@ -44,5 +44,6 @@
     <spring:message code="webinar.price" var="destinationAddress" />
     <display:column property="price" title="${destinationAddress}" sortable="true" />
 
-
+    <spring:message code="webinar.categories" var="categories"/>
+    <display:column property="categories" title="${categories}" sortable="true"/>
 </display:table>

@@ -12,7 +12,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="webinar/find.do" modelAttribute="webinar">
+<form:form action="webinar/list.do" modelAttribute="webinar">
 
     <form:hidden path="id" />
     <form:hidden path="version" />
