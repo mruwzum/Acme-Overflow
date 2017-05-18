@@ -40,14 +40,13 @@
 <spring:message code="webinar.categories" var="cagetogies1"/>
 <h3><jstl:out value="${categories1}"/></h3>
 <jstl:out value="${categories}"/>
-
+<br/>
 <security:authorize access="hasAnyRole('USER','TEACHER')">
-    <display:column>
         <a href="comment/create.do?webinarId=${id}"> <spring:message
                 code="general.create"/>
         </a>
-    </display:column>
 </security:authorize>
+<br/>
 <!-- Listing grid comments -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
                name="comments" requestURI="${requestURI}" id="row">
