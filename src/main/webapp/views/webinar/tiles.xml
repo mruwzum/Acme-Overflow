@@ -20,10 +20,16 @@
 		<put-attribute name="title" value="webinar: Edit" />
 		<put-attribute name="body" value="/views/webinar/edit.jsp" />
 	</definition>
-	
-	<definition name="webinar/list" extends="master.page">
+
+
+    <definition name="webinar/list" extends="master.page">
 		<put-attribute name="title" value="webinar: List" />
 		<put-attribute name="body" value="/views/webinar/list.jsp" />
 	</definition>
+
+    <definition name="webinar/view" extends="master.page">
+        <put-attribute name="title" value="webinar:"/>
+        <put-attribute name="body" value="/views/webinar/view.jsp"/>
+    </definition>
 	
 </tiles-definitions>
