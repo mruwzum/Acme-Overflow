@@ -73,10 +73,18 @@
 		<security:intercept-url pattern="/teacher/edit.do" access="hasRole('TEACHER')"/>
 		<security:intercept-url pattern="/teacher/list.do" access="hasAnyRole('USER','TEACHER')"/>
 
+		<!--Allow actor to make search-->
+		<security:intercept-url pattern="/search/create.do" access="isAuthenticated()"/>
+		<security:intercept-url pattern="/search/edit.do" access="isAuthenticated()"/>
+		<security:intercept-url pattern="/search/mySearches.do" access="isAuthenticated()"/>
+		<security:intercept-url pattern="/search/edit2.do" access="isAuthenticated()"/>
 
 
 
-        <security:intercept-url pattern="/question/view.do" access="permitAll"/>
+
+
+
+		<security:intercept-url pattern="/question/view.do" access="permitAll"/>
 
 
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />

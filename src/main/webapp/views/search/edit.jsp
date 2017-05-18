@@ -20,15 +20,10 @@
     <form:hidden path="owner" />
 
 
-    <acme:textbox path="title" code="search.keyword"/>
+    <acme:textbox path="keyword" code="search.keyword"/>
     <br />
 
-    <form:label path="categories">
-        <spring:message code="question.categories"/>:
-    </form:label>
-    <form:select path="category" code="question.categories">
-        <form:options/>
-    </form:select>
+    <acme:select path="category" code="question.categories" items="${categories}" itemLabel="name"/>
     <br />
 
 

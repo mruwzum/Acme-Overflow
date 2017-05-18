@@ -1,6 +1,8 @@
 package controllers;
 
 
+import domain.Category;
+import domain.Question;
 import domain.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
+import services.CategoryService;
+import services.OtherService;
 import services.SearchService;
 
 
+import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import java.util.HashSet;
@@ -27,6 +34,10 @@ public class SearchController extends AbstractController {
 
     @Autowired
     private SearchService searchService;
+    @Autowired
+    private CategoryService categoryService;
+    @Autowired
+    private OtherService otherService;
     //Constructors----------------------------------------------
 
 
@@ -55,9 +66,9 @@ public class SearchController extends AbstractController {
 
         Search search = searchService.create();
 
-
+        Collection<Category> categories = categoryService.findAll();
         result = createEditModelAndView(search);
-
+        result.addObject("categories", categories);
 
         return result;
 
@@ -78,6 +89,59 @@ public class SearchController extends AbstractController {
     }
 
 
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+    public ModelAndView register(@Valid Search search, BindingResult binding) {
+        ModelAndView result;
+        if (binding.hasErrors()) {
+            result = createEditModelAndView(search);
+        } else {
+            try {
+
+                otherService.findByPrincipal().getSearches().add(search);
+                search.setOwner(otherService.findByPrincipal());
+                Collection<Question> resut;
+                if (search.getCategory()==null){
+                    resut =  searchService.questionsByKeyword(search.getKeyword());
+                }else {
+                    resut = searchService.questionsByKeywordAndCategory(search.getKeyword(), search.getCategory());
+                }
+
+
+                result = new ModelAndView("question/list");
+                result.addObject("questions", resut);
+            } catch (Throwable oops) {
+                result = createEditModelAndView(search, "general.commit.error");
+            }
+        }
+        return result;
+    }
+
+
+    @RequestMapping(value = "/edit2", method = RequestMethod.GET)
+    public ModelAndView research(@RequestParam int searchId) {
+        ModelAndView result;
+
+
+        Search search =  searchService.findOne(searchId);
+
+                Collection<Question> resut = new ArrayList<>();
+                if (search.getCategory()==null){
+                    resut =  searchService.questionsByKeyword(search.getKeyword());
+                }else {
+                    resut = searchService.questionsByKeywordAndCategory(search.getKeyword(), search.getCategory());
+                }
+
+
+                result = new ModelAndView("question/list");
+                result.addObject("questions", resut);
+
+      return result;
+    }
+
+
+
+
 //    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
 //    public ModelAndView delete(Search search){
 //        ModelAndView result;
@@ -92,6 +156,25 @@ public class SearchController extends AbstractController {
 //    }
 
     // Ancillary methods ------------------------------------------------
+
+
+    @RequestMapping(value = "/mySearches", method = RequestMethod.GET)
+    public ModelAndView myLastSearches(){
+
+
+        ModelAndView res;
+        Collection<Search> searches =  searchService.trunkedSearch();
+
+
+        res = new ModelAndView("search/list");
+        res.addObject("searches", searches);
+
+        return res;
+
+
+
+    }
+
 
     protected ModelAndView createEditModelAndView(Search search) {
         ModelAndView result;

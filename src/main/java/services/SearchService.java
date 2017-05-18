@@ -1,9 +1,6 @@
 package services;
 
-import domain.CreditCard;
-import domain.Search;
-import domain.SearchCache;
-import domain.User;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -27,6 +24,10 @@ public class SearchService {
     private SearchRepository searchRepository;
    @Autowired
    private UserService userService;
+   @Autowired
+   private OtherService otherService;
+   @Autowired
+   private SearchCacheService searchCacheService;
 
     // Supporting services -----------------------
 
@@ -155,5 +156,42 @@ public class SearchService {
 //        }
 //        }
 
+
+
+    public Collection<Question> questionsByKeyword(String keyword){
+
+
+        //TODO Comprobacion de usuario logueado
+
+        Assert.notNull(keyword, "keyword vacía");
+        return searchRepository.questionsByKeyword(keyword);
+    }
+
+
+    public Collection<Question> questionsByKeywordAndCategory(String keyword, Category category){
+
+        Assert.notNull(keyword, "keyword vacía");
+        Assert.notNull(category, "category vacía");
+        return searchRepository.questionsByKeywordAndCategory(keyword,category);
+    }
+
+
+
+    public Collection<Search> trunkedSearch(){
+
+        List<Search> searches =  new ArrayList<>(otherService.findByPrincipal().getSearches());
+        List<SearchCache> searchCaches =  new ArrayList<>(searchCacheService.findAll());
+        int searchcac = searchCaches.get(0).getCacheValue();
+
+        if(searches.size()>searchcac){
+
+            Collection<Search> searches1 =  searches.subList(searches.size()-searchcac, searches.size());
+            return searches1;
+
+        }else {
+            return searches;
+        }
+
+    }
 
 }

@@ -21,7 +21,7 @@
 </security:authorize>
 
 <!-- Listing grid -->
-<display:table pagesize="5" class="displaytag" keepStatus="true"
+<display:table pagesize="15" class="displaytag" keepStatus="true"
                name="searches" requestURI="${requestURI}" id="row">
 
 
@@ -29,8 +29,8 @@
 
     <security:authorize access="permitAll">
         <display:column>
-            <a href="search/edit.do?searchId=${row.id}"> <spring:message
-                    code="general.edit" />
+            <a href="search/edit2.do?searchId=${row.id}"> <spring:message
+                    code="search.view.result" />
             </a>
         </display:column>
     </security:authorize>
