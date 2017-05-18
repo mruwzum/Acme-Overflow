@@ -4,6 +4,7 @@ package controllers;
 import domain.Category;
 import domain.Question;
 import domain.Search;
+import domain.SearchCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -13,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.ActorService;
-import services.CategoryService;
-import services.OtherService;
-import services.SearchService;
+import security.Authority;
+import services.*;
 
 
 import javax.validation.Valid;
@@ -24,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import java.util.HashSet;
+import java.util.List;
 
 
 @Controller
@@ -38,6 +38,8 @@ public class SearchController extends AbstractController {
     private CategoryService categoryService;
     @Autowired
     private OtherService otherService;
+    @Autowired
+    private SearchCacheService searchCacheService;
     //Constructors----------------------------------------------
 
 
@@ -171,6 +173,43 @@ public class SearchController extends AbstractController {
 
         return res;
 
+
+
+    }
+
+
+    @RequestMapping(value = "/editCache", method = RequestMethod.GET)
+    public ModelAndView editSearchCache(){
+
+        ModelAndView res;
+        List<SearchCache> searchCaches =  new ArrayList<>(searchCacheService.findAll());
+        res = new ModelAndView("search-cache/edit");
+        res.addObject("searchcache", searchCaches.get(0));
+
+        return res;
+
+    }
+
+    @RequestMapping(value = "/changeCache", method = RequestMethod.POST, params = "save")
+    public ModelAndView changeSearchCache(@Valid SearchCache searchCache){
+
+        ModelAndView res;
+//
+//        Authority authority = new Authority();
+//        authority.setAuthority("ADMIN");
+//
+//        if(otherService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
+
+        //TODO comprobar identidad de administrador antes de cambiar.
+            searchCacheService.save(searchCache);
+            res =  new ModelAndView("administrator/action-1");
+
+//        }else{
+//            res =  new ModelAndView("/welcome/index");
+//
+//        }
+
+        return res;
 
 
     }

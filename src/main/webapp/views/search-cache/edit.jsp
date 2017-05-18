@@ -12,7 +12,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="searchcache/find.do" modelAttribute="searchcache">
+<form:form action="search/changeCache.do" modelAttribute="searchcache">
 
     <form:hidden path="id" />
     <form:hidden path="version" />
@@ -29,7 +29,7 @@
                value="<spring:message code="general.delete" />"
                onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
     </jstl:if>
-    <acme:cancel url="searchcache/list.do" code="general.cancel"/>
+    <acme:cancel url="welcome/index.do" code="general.cancel"/>
 
 
 </form:form>
