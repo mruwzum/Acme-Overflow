@@ -32,6 +32,9 @@
 
 				</ul>
 			</li>
+
+			<li><a href="category/list.do"><spring:message code="master.page.categories" /> </a></li>
+
 		</security:authorize>
 
 

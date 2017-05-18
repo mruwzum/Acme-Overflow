@@ -10,7 +10,7 @@
           uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
+<security:authorize access="hasRole('ADMIN')">
     <div>
         <H5>
             <a href="category/create.do"> <spring:message
@@ -27,7 +27,7 @@
 
     <!-- Attributes -->
 
-    <security:authorize access="permitAll">
+    <security:authorize access="hasRole('ADMIN')">
         <display:column>
             <a href="category/edit.do?categoryId=${row.id}"> <spring:message
                     code="general.edit" />
@@ -40,5 +40,11 @@
     <spring:message code="category.description" var="description" />
     <display:column property="description" title="${description}" sortable="true" />
 
-
+    <security:authorize access="hasRole('ADMIN')">
+        <display:column>
+            <a href="category/delete.do?categoryId=${row.id}"> <spring:message
+                    code="general.delete" />
+            </a>
+        </display:column>
+    </security:authorize>
 </display:table>
