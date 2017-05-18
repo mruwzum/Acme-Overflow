@@ -88,7 +88,13 @@ private UserAccountService userAccountService;
        ModelAndView result;
        Collection<User> users;
 
+       Collection<User> res = new HashSet<>();
        users = userService.findAll();
+       for (User user : users) {
+          if (!user.isBanned()) {
+             res.add(user);
+          }
+       }
        result = new ModelAndView("user/list");
        result.addObject("users", users);
        result.addObject("requestURI", "user/list.do");
@@ -101,15 +107,9 @@ private UserAccountService userAccountService;
 
       ModelAndView result;
       Collection<User> users;
-      Collection<User> res = new HashSet<>();
       users = userService.findAll();
-      for (User user : users) {
-         if (!user.isBanned()) {
-            res.add(user);
-         }
-      }
       result = new ModelAndView("user/list");
-      result.addObject("users", res);
+      result.addObject("users", users);
       result.addObject("requestURI", "user/list.do");
 
       return result;
