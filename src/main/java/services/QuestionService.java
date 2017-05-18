@@ -1,5 +1,6 @@
 package services;
 
+import domain.Answer;
 import domain.Message;
 import domain.Question;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,27 +67,31 @@ public class QuestionService {
     }
 
     // Other business methods -------------------------------------------------------------------------------
-    public Boolean banQuestion(Question answer) {
+    public Boolean banQuestion(Question question) {
 
        Boolean res = false;
-       if (answer.isBanned()) {
+       if (question.isBanned()) {
           res = false;
-       } else if (!answer.isBanned()) {
-          answer.setBanned(true);
-          questionRepository.save(answer);
+       } else if (!question.isBanned()) {
+          for (Answer a : question.getAnswers()) {
+             a.setBanned(true);
+          }
+          //TODO: creo que es lógico que si banean una pregunta, automáticamente se baneen sus respuestas asociadas
+          question.setBanned(true);
+          questionRepository.save(question);
           res = true;
        }
        return res;
     }
 
 
-   public Boolean unbanQuestion(Question answer) {
+   public Boolean unbanQuestion(Question question) {
       Boolean res = false;
-      if (!answer.isBanned()) {
+      if (!question.isBanned()) {
          res = true;
-      } else if (answer.isBanned()) {
-         answer.setBanned(false);
-         questionRepository.save(answer);
+      } else if (question.isBanned()) {
+         question.setBanned(false);
+         questionRepository.save(question);
          res = true;
       }
       return res;
