@@ -16,6 +16,12 @@
 
     <form:hidden path="id" />
     <form:hidden path="version" />
+    <form:hidden path="likes" />
+    <form:hidden path="dislikes" />
+    <form:hidden path="question" />
+
+
+
 
 
     <acme:textbox path="title" code="answer.title"/>

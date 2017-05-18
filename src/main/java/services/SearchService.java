@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.SearchRepository;
+import security.Authority;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -161,7 +162,7 @@ public class SearchService {
     public Collection<Question> questionsByKeyword(String keyword){
 
 
-        //TODO Comprobacion de usuario logueado
+        Assert.notNull(otherService.findByPrincipal());
 
         Assert.notNull(keyword, "keyword vacía");
         return searchRepository.questionsByKeyword(keyword);
@@ -169,6 +170,8 @@ public class SearchService {
 
 
     public Collection<Question> questionsByKeywordAndCategory(String keyword, Category category){
+
+        Assert.notNull(otherService.findByPrincipal());
 
         Assert.notNull(keyword, "keyword vacía");
         Assert.notNull(category, "category vacía");

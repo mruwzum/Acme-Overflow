@@ -12,7 +12,9 @@ package sample;
 
 import javax.transaction.Transactional;
 
+import domain.Answer;
 import domain.Category;
+import domain.Question;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +22,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
-import services.ActorService;
-import services.CategoryService;
-import services.OtherService;
-import services.SearchService;
+import services.*;
 import utilities.AbstractTest;
 
 import java.util.ArrayList;
@@ -46,6 +45,10 @@ public class SampleTest extends AbstractTest {
 	private ActorService actorService;
 	@Autowired
 	private OtherService otherService;
+	@Autowired
+	private QuestionService questionService;
+	@Autowired
+	private AnswerService answerService;
 
 	// Tests ------------------------------------------------------------------
 
@@ -84,6 +87,34 @@ public class SampleTest extends AbstractTest {
 		authenticate("user1");
 
 		otherService.findByPrincipal();
+
+
+
+		authenticate(null);
+
+	}
+
+
+	@Test
+	public void testAnswers(){
+
+		authenticate("user1");
+
+		List<Question> questions =  new ArrayList<>(questionService.findAll());
+
+		Answer answer = new Answer();
+		answer.setQuestion(questions.get(0));
+		answer.setBanned(false);
+		answer.setOwner(otherService.findByPrincipal());
+		answer.setTitle("Prueba");
+		answer.setDescription("Prueba");
+
+
+		System.out.println(questions.get(0).getAnswers());
+
+		questions.get(0).getAnswers().add(answer);
+
+		System.out.println(questions.get(0).getAnswers());
 
 
 

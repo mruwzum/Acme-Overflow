@@ -126,15 +126,12 @@ public class AnswerController extends AbstractController {
 
         Question question = questionService.findOne(questionId);
         Answer answer = answerService.create();
-//        answer.setTitle("GENERIC");
-//        answer.setDescription("GENERIC");
-//        Answer answer1 = answerService.save(answer);
         answer.setQuestion(question);
-        //TODO no se responde
-//        question.getAnswers().add(answer1);
+        answer.setBanned(false);
+       // question.getAnswers().add(answer);
 
         result = createEditModelAndView(answer);
-        result.addObject("idii",question.getId());
+        //result.addObject("idii",question.getId());
 
         return result;
 
@@ -163,10 +160,12 @@ public class AnswerController extends AbstractController {
 //        } else {
 //            try {
                 //answer.setOwner(otherService.findByPrincipal());
-               Answer ans = answerService.save(answer);
+        answer.setOwner(otherService.findByPrincipal());
+        answer.setQuestion(answer.getQuestion());
+        answerService.save(answer);
 
 
-        result = new ModelAndView("redirect:list.do");
+        result = new ModelAndView("welcome/index");
 //            } catch (Throwable oops) {
 //                result = createEditModelAndView(answer, "general.commit.error");
 //            }

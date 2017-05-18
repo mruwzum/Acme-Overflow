@@ -22,6 +22,7 @@ public class Answer extends DomainEntity {
     private int dislikes;
     private Question question;
    private boolean banned;
+   private Other owner;
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
@@ -84,5 +85,14 @@ public class Answer extends DomainEntity {
 
     public void setQuestion(Question question) {
         this.question = question;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Other getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Other owner) {
+        this.owner = owner;
     }
 }
