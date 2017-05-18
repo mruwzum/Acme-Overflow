@@ -47,7 +47,13 @@ public class WelcomeController extends AbstractController {
 		String moment;
 
 		Collection<Question> questions = questionService.findAll();
-
+      Collection<Question> res = new HashSet<>();
+      questions = questionService.findAll();
+      for (Question question : questions) {
+         if (!question.isBanned()) {
+            res.add(question);
+         }
+      }
 
 		Random randomGenerator = new Random();
 
@@ -66,8 +72,8 @@ public class WelcomeController extends AbstractController {
 
 
 		result = new ModelAndView("welcome/index");
-		result.addObject("questions", questions);
-		result.addObject("banner", bannerFin);
+      result.addObject("questions", res);
+      result.addObject("banner", bannerFin);
 
 
 
