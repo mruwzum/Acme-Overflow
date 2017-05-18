@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import security.Authority;
 import security.UserAccount;
 import security.UserAccountService;
 import services.CreditCardService;
 import services.UserService;
 
 
+import javax.jws.soap.SOAPBinding;
 import javax.validation.Valid;
 import java.util.Collection;
 import java.util.HashSet;
@@ -108,8 +110,16 @@ private UserAccountService userAccountService;
       ModelAndView result;
       Collection<User> users;
       users = userService.findAll();
+      Collection<User> res = new HashSet<>();
+      Authority authority = new Authority();
+      authority.setAuthority("MODERATOR");
+      for (User u : users) {
+         if (!u.getUserAccount().getAuthorities().contains(authority)) {
+            res.add(u);
+         }
+      }
       result = new ModelAndView("user/list");
-      result.addObject("users", users);
+      result.addObject("users", res);
       result.addObject("requestURI", "user/list.do");
 
       return result;
