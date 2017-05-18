@@ -108,7 +108,7 @@ public class QuestionController extends AbstractController {
 
       Collections.sort(questions, new Comparator<Question>() {
          public int compare(Question m1, Question m2) {
-            return m1.getCreatedDate().toString().compareTo(m2.getCreatedDate().toString());
+            return m2.getCreatedDate().toString().compareTo(m1.getCreatedDate().toString());
          }
       });
 
