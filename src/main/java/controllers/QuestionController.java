@@ -88,18 +88,33 @@ public class QuestionController extends AbstractController {
         ModelAndView result;
         Collection<Question> questions;
 
+       Collection<Question> res = new HashSet<>();
         questions = questionService.findAll();
+       for (Question question : questions) {
+          if (!question.isBanned()) {
+             res.add(question);
+          }
+       }
         result = new ModelAndView("question/list");
-        result.addObject("questions", questions);
-        result.addObject("requestURI", "question/list.do");
+       result.addObject("questions", res);
+       result.addObject("requestURI", "question/list.do");
 
-        return result;
+       return result;
     }
 
-   public int comparteTo(Question o, Question p) {
-      return o.getCreatedDate().compareTo(p.getCreatedDate());
-   }
+   @RequestMapping(value = "/listAll", method = RequestMethod.GET)
+   public ModelAndView questionListAll() {
 
+      ModelAndView result;
+      Collection<Question> questions;
+      questions = questionService.findAll();
+
+      result = new ModelAndView("question/list");
+      result.addObject("questions", questions);
+      result.addObject("requestURI", "question/list.do");
+
+      return result;
+   }
    @RequestMapping(value = "/listPopular", method = RequestMethod.GET)
    public ModelAndView questionListPopular() {
 
@@ -199,4 +214,37 @@ public class QuestionController extends AbstractController {
         return result;
     }
 
+   @RequestMapping(value = "ban", method = RequestMethod.GET)
+   public ModelAndView ban(@RequestParam int questionId) {
+      ModelAndView result;
+      Boolean opq;
+      Question answer = questionService.findOne(questionId);
+      opq = questionService.banQuestion(answer);
+
+      if (opq.equals(false)) {
+         result = new ModelAndView("user/error");
+      } else {
+         result = new ModelAndView("welcome/index");
+      }
+
+
+      return result;
+   }
+
+   @RequestMapping(value = "unban", method = RequestMethod.GET)
+   public ModelAndView unban(@RequestParam int questionId) {
+      ModelAndView result;
+      Boolean op;
+      Question answer = questionService.findOne(questionId);
+      op = questionService.unbanQuestion(answer);
+
+      if (op.equals(false)) {
+         result = new ModelAndView("user/error");
+      } else {
+         result = new ModelAndView("welcome/index");
+      }
+
+
+      return result;
+   }
 }

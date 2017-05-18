@@ -24,6 +24,7 @@ public class Question extends DomainEntity {
     private Collection<String> pictures;
     private Collection<Answer> answers;
     private User owner;
+    private boolean banned;
 
 
     @NotBlank
@@ -90,5 +91,13 @@ public class Question extends DomainEntity {
 
     public void setAnswers(Collection<Answer> answers) {
         this.answers = answers;
+    }
+
+    public boolean isBanned() {
+        return banned;
+    }
+
+    public void setBanned(boolean banned) {
+        this.banned = banned;
     }
 }

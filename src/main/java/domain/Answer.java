@@ -21,7 +21,7 @@ public class Answer extends DomainEntity {
     private int likes;
     private int dislikes;
     private Question question;
-
+   private boolean banned;
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
@@ -69,7 +69,13 @@ public class Answer extends DomainEntity {
         this.dislikes = dislikes;
     }
 
+   public boolean isBanned() {
+      return banned;
+   }
 
+   public void setBanned(boolean banned) {
+      this.banned = banned;
+   }
 
     @ManyToOne(cascade = CascadeType.ALL)
     public Question getQuestion() {

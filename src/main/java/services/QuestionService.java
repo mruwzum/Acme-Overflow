@@ -66,7 +66,31 @@ public class QuestionService {
     }
 
     // Other business methods -------------------------------------------------------------------------------
+    public Boolean banQuestion(Question answer) {
 
+       Boolean res = false;
+       if (answer.isBanned()) {
+          res = false;
+       } else if (!answer.isBanned()) {
+          answer.setBanned(true);
+          questionRepository.save(answer);
+          res = true;
+       }
+       return res;
+    }
+
+
+   public Boolean unbanQuestion(Question answer) {
+      Boolean res = false;
+      if (!answer.isBanned()) {
+         res = true;
+      } else if (answer.isBanned()) {
+         answer.setBanned(false);
+         questionRepository.save(answer);
+         res = true;
+      }
+      return res;
+   }
 }
 
 

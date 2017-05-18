@@ -1089,6 +1089,7 @@
         <property name="summary" value="ddfdsafdsfasdfdsf"/>
         <property name="createdDate" value="2017/04/22"/>
         <property name="owner" ref="user1"/>
+        <property name="banned" value="false"/>
         <property name="pictures">
             <array value-type="java.lang.String">
                 <value>http://www.pic.jpg</value>
@@ -1110,6 +1111,7 @@
 
     <bean id="question2" class="domain.Question">
         <property name="title" value="question2"/>
+        <property name="banned" value="false"/>
         <property name="summary" value="ddfdsafdsfasdfdsf"/>
         <property name="createdDate" value="2017/05/22"/>
         <property name="owner" ref="user2"/>
@@ -1133,6 +1135,7 @@
     </bean>
     <bean id="question3" class="domain.Question">
         <property name="title" value="question3"/>
+        <property name="banned" value="false"/>
         <property name="summary" value="ddfdsafdsfasdfdsf"/>
         <property name="createdDate" value="2017/06/22"/>
         <property name="owner" ref="user3"/>
@@ -1156,6 +1159,7 @@
     </bean>
     <bean id="question4" class="domain.Question">
         <property name="title" value="question4"/>
+        <property name="banned" value="false"/>
         <property name="summary" value="ddfdsafdsfasdfdsf"/>
         <property name="createdDate" value="2017/04/12"/>
         <property name="owner" ref="user1"/>
@@ -1178,6 +1182,7 @@
     </bean>
     <bean id="question5" class="domain.Question">
         <property name="title" value="question5"/>
+        <property name="banned" value="false"/>
         <property name="summary" value="ddfdsafdsfasdfdsf"/>
         <property name="createdDate" value="2017/01/22"/>
         <property name="owner" ref="user1"/>
@@ -1200,6 +1205,7 @@
     </bean>
     <bean id="question6" class="domain.Question">
         <property name="title" value="question6"/>
+        <property name="banned" value="false"/>
         <property name="summary" value="ddfdsafdsfasdfdsf"/>
         <property name="createdDate" value="2016/12/22"/>
         <property name="owner" ref="user4"/>
@@ -1229,6 +1235,7 @@
 
     <bean id="answer1" class="domain.Answer">
         <property name="title" value="answ1"/>
+        <property name="banned" value="false"/>
         <property name="description" value="descrip1"/>
         <property name="likes" value="112"/>
         <property name="dislikes" value="12"/>
@@ -1243,6 +1250,7 @@
 
     <bean id="answer2" class="domain.Answer">
         <property name="title" value="answ2"/>
+        <property name="banned" value="false"/>
         <property name="description" value="descrip2"/>
         <property name="likes" value="1121"/>
         <property name="dislikes" value="2"/>
@@ -1256,6 +1264,7 @@
     </bean>
     <bean id="answer3" class="domain.Answer">
         <property name="title" value="answ3"/>
+        <property name="banned" value="false"/>
         <property name="description" value="descrip3"/>
         <property name="likes" value="11"/>
         <property name="dislikes" value="212"/>
@@ -1269,6 +1278,7 @@
     </bean>
     <bean id="answer4" class="domain.Answer">
         <property name="title" value="answ4"/>
+        <property name="banned" value="false"/>
         <property name="description" value="descrip4"/>
         <property name="likes" value="1222"/>
         <property name="dislikes" value="0"/>
@@ -1281,6 +1291,7 @@
         <property name="question" ref="question1"/>
     </bean>
     <bean id="answer5" class="domain.Answer">
+        <property name="banned" value="false"/>
         <property name="title" value="answ5"/>
         <property name="description" value="descrip5"/>
         <property name="likes" value="8765"/>
@@ -1294,6 +1305,7 @@
         <property name="question" ref="question3"/>
     </bean>
     <bean id="answer6" class="domain.Answer">
+        <property name="banned" value="false"/>
         <property name="title" value="answ6"/>
         <property name="description" value="descrip6"/>
         <property name="likes" value="8765"/>

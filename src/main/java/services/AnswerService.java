@@ -70,16 +70,28 @@ public class AnswerService {
     }
 
    public Boolean banAnswer(Answer answer) {
-      Boolean res = false;
 
+      Boolean res = false;
+      if (answer.isBanned()) {
+         res = false;
+      } else if (!answer.isBanned()) {
+         answer.setBanned(true);
+         answerRepository.save(answer);
+         res = true;
+      }
       return res;
    }
 
-   public Boolean unbanUser(Answer answer) {
+
+   public Boolean unbanAnswer(Answer answer) {
       Boolean res = false;
-
-
-      res = true;
+      if (!answer.isBanned()) {
+         res = true;
+      } else if (answer.isBanned()) {
+         answer.setBanned(false);
+         answerRepository.save(answer);
+         res = true;
+      }
       return res;
    }
 

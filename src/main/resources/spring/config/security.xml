@@ -61,8 +61,6 @@
         <security:intercept-url pattern="/question/list.do" access="permitAll"/>
         <security:intercept-url pattern="/answer/create.do" access="hasAnyRole('USER','TEACHER')"/>
         <security:intercept-url pattern="/answer/edit.do" access="hasAnyRole('USER','TEACHER')"/>
-		<security:intercept-url pattern="/answer/list.do" access="permitAll"/>
-
 
 		<!--Allow User to edit the profile-->
 		<security:intercept-url pattern="/user/editp.do" access="hasRole('USER')" />
@@ -70,6 +68,12 @@
         <security:intercept-url pattern="/user/list.do" access="hasAnyRole('USER','TEACHER','MODERATOR')"/>
 		<security:intercept-url pattern="/user/ban.do" access="hasAnyRole('ADMIN','MODERATOR')"/>
 		<security:intercept-url pattern="/user/unban.do" access="hasAnyRole('ADMIN','MODERATOR')"/>
+		<security:intercept-url pattern="/answer/listAll.do" access="hasRole('MODERATOR')"/>
+		<security:intercept-url pattern="/question/listAll.do" access="hasRole('MODERATOR')"/>
+		<security:intercept-url pattern="/answer/ban.do" access="hasRole('MODERATOR')"/>
+		<security:intercept-url pattern="/question/ban.do" access="hasRole('MODERATOR')"/>
+		<security:intercept-url pattern="/answer/unban.do" access="hasRole('MODERATOR')"/>
+		<security:intercept-url pattern="/question/unban.do" access="hasRole('MODERATOR')"/>
 
 		<!--Allow teacher to edit the profile-->
 		<security:intercept-url pattern="/teacher/editp.do" access="hasRole('TEACHER')"/>

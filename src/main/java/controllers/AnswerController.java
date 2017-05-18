@@ -18,6 +18,7 @@ import services.*;
 import javax.validation.Valid;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 @Controller
 @RequestMapping("/answer")
@@ -90,13 +91,33 @@ public class AnswerController extends AbstractController {
         ModelAndView result;
         Collection<Answer> answers;
 
+       Collection<Answer> res = new HashSet<>();
         answers = answerService.findAll();
+       for (Answer answer : answers) {
+          if (!answer.isBanned()) {
+             res.add(answer);
+          }
+       }
         result = new ModelAndView("answer/list");
-        result.addObject("answers", answers);
+       result.addObject("answers", res);
         result.addObject("requestURI", "answer/list.do");
 
         return result;
     }
+
+   @RequestMapping(value = "/listAll", method = RequestMethod.GET)
+   public ModelAndView answerListAll() {
+
+      ModelAndView result;
+      Collection<Answer> answers;
+
+      answers = answerService.findAll();
+      result = new ModelAndView("answer/list");
+      result.addObject("answers", answers);
+      result.addObject("requestURI", "answer/list.do");
+
+      return result;
+   }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create(@RequestParam int questionId) {
@@ -165,5 +186,39 @@ public class AnswerController extends AbstractController {
 
         return result;
     }
+
+   @RequestMapping(value = "ban", method = RequestMethod.GET)
+   public ModelAndView ban(@RequestParam int answerId) {
+      ModelAndView result;
+      Boolean opq;
+      Answer answer = answerService.findOne(answerId);
+      opq = answerService.banAnswer(answer);
+
+      if (opq.equals(false)) {
+         result = new ModelAndView("user/error");
+      } else {
+         result = new ModelAndView("welcome/index");
+      }
+
+
+      return result;
+   }
+
+   @RequestMapping(value = "unban", method = RequestMethod.GET)
+   public ModelAndView unban(@RequestParam int answerId) {
+      ModelAndView result;
+      Boolean op;
+      Answer answer = answerService.findOne(answerId);
+      op = answerService.unbanAnswer(answer);
+
+      if (op.equals(false)) {
+         result = new ModelAndView("user/error");
+      } else {
+         result = new ModelAndView("welcome/index");
+      }
+
+
+      return result;
+   }
 
 }
