@@ -61,7 +61,7 @@
         <security:intercept-url pattern="/question/list.do" access="permitAll"/>
         <security:intercept-url pattern="/answer/create.do" access="hasAnyRole('USER','TEACHER')"/>
         <security:intercept-url pattern="/answer/edit.do" access="hasAnyRole('USER','TEACHER')"/>
-        <security:intercept-url pattern="/answer/list.do" access="hasAnyRole('USER','TEACHER')"/>
+		<security:intercept-url pattern="/answer/list.do" access="permitAll"/>
 
 
 		<!--Allow User to edit the profile-->

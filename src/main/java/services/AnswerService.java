@@ -69,5 +69,18 @@ public class AnswerService {
         answerRepository.flush();
     }
 
+   public Boolean banAnswer(Answer answer) {
+      Boolean res = false;
+
+      return res;
+   }
+
+   public Boolean unbanUser(Answer answer) {
+      Boolean res = false;
+
+
+      res = true;
+      return res;
+   }
 
 }

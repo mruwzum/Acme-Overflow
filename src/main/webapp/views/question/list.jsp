@@ -34,7 +34,19 @@
             </a>
         </display:column>
     </security:authorize>
-
+    <security:authorize access="hasAnyRole('ADMIN','MODERATOR')">
+        <display:column>
+            <jstl:if test="${not row.banned}">
+                <a href="question/ban.do?questionId=${row.id}"> <spring:message
+                        code="user.ban"/>
+                </a>
+            </jstl:if>
+            <jstl:if test="${row.banned}">
+                <a href="question/unban.do?questionId=${row.id}"> <spring:message
+                    code="user.unban"/>
+            </jstl:if>
+        </display:column>
+    </security:authorize>
     <spring:message code="question.title" var="title" />
     <display:column property="title" title="${title}" sortable="true" />
     <spring:message code="question.summary" var="description" />
