@@ -88,6 +88,14 @@
 		<security:intercept-url pattern="/search/edit2.do" access="isAuthenticated()"/>
 
 
+		<!--Allow Admin to manage categories-->
+		<security:intercept-url pattern="/category/list.do" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/category/edit.do" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/category/create.do" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/category/delete.do" access="hasRole('ADMIN')"/>
+
+
+
 
 
 

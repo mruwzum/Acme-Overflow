@@ -44,7 +44,13 @@
 
 
     <!-- Attributes -->
-
+    <security:authorize access="hasAnyRole('USER','TEACHER','MODERATOR')">
+        <display:column>
+            <a href="question/edit.do?questionId=${row.id}"> <spring:message
+                    code="general.edit" />
+            </a>
+        </display:column>
+    </security:authorize>
 
     <spring:message code="answer.title" var="title"/>
     <display:column property="title" title="${title}" sortable="true"/>
