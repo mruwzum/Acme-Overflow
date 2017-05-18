@@ -81,7 +81,7 @@ public class Webinar extends DomainEntity {
         this.picture = picture;
     }
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.ALL)
     public Collection<Category> getCategories() {
         return categories;
     }
@@ -100,7 +100,7 @@ public class Webinar extends DomainEntity {
         this.owner = owner;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "webinar")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "webinar")
     public Collection<Comment> getComments() {
         return comments;
     }
@@ -109,7 +109,7 @@ public class Webinar extends DomainEntity {
         this.comments = comments;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.ALL)
     @NotNull
     public Collection<LearningMaterial> getLearningMaterials() {
         return learningMaterials;

@@ -79,9 +79,6 @@ public class Category extends DomainEntity{
 
     @Override
     public String toString() {
-        return "Category{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+       return name;
     }
 }

@@ -863,7 +863,7 @@
         <property name="owner" ref="teacher2"/>
         <property name="categories">
             <list>
-                <ref bean="categorie1"/>
+                <ref bean="categorie2"/>
             </list>
         </property>
         <property name="learningMaterials">
@@ -939,7 +939,62 @@
             </list>
         </property>
     </bean>
+    <bean id="webinar5" class="domain.Webinar">
+        <property name="name" value="webinar5"/>
+        <property name="description" value="web4"/>
+        <property name="startDate" value="2016/06/11"/>
+        <property name="price" value="20.0"/>
+        <property name="picture" value="http://picture6.png"/>
+        <property name="owner" ref="teacher2"/>
+        <property name="categories">
+            <list>
+                <ref bean="categorie1"/>
+            </list>
+        </property>
+        <property name="learningMaterials">
+            <list>
 
+            </list>
+        </property>
+        <property name="partakers">
+            <list>
+
+            </list>
+        </property>
+        <property name="comments">
+            <list>
+
+            </list>
+        </property>
+    </bean>
+    <bean id="webinar6" class="domain.Webinar">
+        <property name="name" value="webinar6"/>
+        <property name="description" value="web6"/>
+        <property name="startDate" value="2018/06/11"/>
+        <property name="price" value="2000.0"/>
+        <property name="picture" value="http://picture6.png"/>
+        <property name="owner" ref="teacher1"/>
+        <property name="categories">
+            <list>
+                <ref bean="categorie1"/>
+            </list>
+        </property>
+        <property name="learningMaterials">
+            <list>
+
+            </list>
+        </property>
+        <property name="partakers">
+            <list>
+
+            </list>
+        </property>
+        <property name="comments">
+            <list>
+
+            </list>
+        </property>
+    </bean>
 
     <bean id="module1" class="domain.Module">
         <property name="description" value="module1"/>
