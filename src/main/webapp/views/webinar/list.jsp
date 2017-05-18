@@ -21,7 +21,7 @@
 </security:authorize>
 
 <!-- Listing grid -->
-<display:table pagesize="5" class="displaytag" keepStatus="true"
+<display:table pagesize="10" class="displaytag" keepStatus="true"
                name="webinars" requestURI="${requestURI}" id="row">
 
 
@@ -34,7 +34,13 @@
             </a>
         </display:column>
     </security:authorize>
-
+    <security:authorize access="hasRole('USER')">
+        <display:column>
+            <a href="webinar/view.do?webinarId=${row.id}"> <spring:message
+                    code="general.view"/>
+            </a>
+        </display:column>
+    </security:authorize>
     <spring:message code="webinar.name" var="title" />
     <display:column property="name" title="${title}" sortable="true" />
     <spring:message code="webinar.description" var="description" />

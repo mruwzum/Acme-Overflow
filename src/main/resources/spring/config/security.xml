@@ -95,6 +95,7 @@
 		<security:intercept-url pattern="/question/view.do" access="permitAll"/>
 
 		<security:intercept-url pattern="/webinar/listIncoming.do" access="permitAll"/>
+		<security:intercept-url pattern="/webinar/list.do" access="permitAll"/>
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 		<security:form-login 

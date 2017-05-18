@@ -99,9 +99,10 @@ public class WebinarController extends AbstractController {
       webinars = webinarService.findAll();
 
       for (Webinar webinar : webinars) {
-         if (webinar.getStartDate().after(new Date(System.currentTimeMillis() - 100 * 30 * 24 * 60 * 60L))) {
+         if (webinar.getStartDate().after(new Date(System.currentTimeMillis() - 30 * 24 * 60L)) && webinar.getStartDate().getYear() == 117) {
             res.add(webinar);
          }
+
       }
       Collections.sort(res, new Comparator<Webinar>() {
          public int compare(Webinar m1, Webinar m2) {

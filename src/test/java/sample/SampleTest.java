@@ -26,6 +26,7 @@ import services.*;
 import utilities.AbstractTest;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @ContextConfiguration(locations = {
@@ -117,8 +118,17 @@ public class SampleTest extends AbstractTest {
 		System.out.println(questions.get(0).getAnswers());
 
 
-
 		authenticate(null);
+
+	}
+
+	@Test
+	public void dsafsdfs() {
+
+		int date = new Date(System.currentTimeMillis()).getYear();
+
+		System.out.println(date);
+
 
 	}
 	// Ancillary methods ------------------------------------------------------

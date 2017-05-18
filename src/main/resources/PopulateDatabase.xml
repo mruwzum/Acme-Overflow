@@ -995,7 +995,34 @@
             </list>
         </property>
     </bean>
+    <bean id="webinar7" class="domain.Webinar">
+        <property name="name" value="webinar6"/>
+        <property name="description" value="web6"/>
+        <property name="startDate" value="2017/05/17"/>
+        <property name="price" value="2000.0"/>
+        <property name="picture" value="http://picture6.png"/>
+        <property name="owner" ref="teacher1"/>
+        <property name="categories">
+            <list>
+                <ref bean="categorie1"/>
+            </list>
+        </property>
+        <property name="learningMaterials">
+            <list>
 
+            </list>
+        </property>
+        <property name="partakers">
+            <list>
+
+            </list>
+        </property>
+        <property name="comments">
+            <list>
+
+            </list>
+        </property>
+    </bean>
     <bean id="module1" class="domain.Module">
         <property name="description" value="module1"/>
         <property name="title" value="titulo del modulo 1"/>

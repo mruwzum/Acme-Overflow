@@ -88,6 +88,7 @@
 		<li><a class="fNiv" href="teacher/create.do"><spring:message code="master.page.register.teacher"/></a>
 		<li><a class="fNiv" href="question/listPopular.do"><spring:message code="master.page.question.listpop"/></a>
 		<li><a class="fNiv" href="webinar/listIncoming.do"><spring:message code="master.page.webinar.listIncom"/></a>
+		<li><a class="fNiv" href="webinar/list.do"><spring:message code="master.page.webinar.list"/></a>
 			</security:authorize>
 
 
