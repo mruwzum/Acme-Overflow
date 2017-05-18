@@ -2,6 +2,7 @@ package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -18,7 +19,7 @@ import java.util.Collection;
 public class LearningMaterial extends DomainEntity {
 
     private String title;
-    private Collection<String> attachmentsURLs;
+    private String attachmentsURLs;
     private LearningMaterialType type;
 
 
@@ -33,13 +34,14 @@ public class LearningMaterial extends DomainEntity {
     }
 
     //TODO poner esto como clase aparte?
-    @ElementCollection(targetClass = String.class)
+
     @NotNull
-    public Collection<String> getAttachmentsURLs() {
+    @URL
+    public String getAttachmentsURLs() {
         return attachmentsURLs;
     }
 
-    public void setAttachmentsURLs(Collection<String> attachmentsURLs) {
+    public void setAttachmentsURLs(String attachmentsURLs) {
         this.attachmentsURLs = attachmentsURLs;
     }
 

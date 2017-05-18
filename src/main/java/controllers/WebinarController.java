@@ -1,6 +1,7 @@
 package controllers;
 
 
+import domain.LearningMaterial;
 import domain.Webinar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -144,8 +145,9 @@ public class WebinarController extends AbstractController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create() {
         ModelAndView result;
-
+       //TODO gordito crear webminars
        Webinar webinar = webinarService.create();
+       webinar.setOwner(teacherService.findByPrincipal());
 
        result = createEditModelAndView(webinar);
 

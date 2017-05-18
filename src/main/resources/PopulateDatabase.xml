@@ -1122,12 +1122,8 @@
     <bean id="learningmaterial1" class="domain.LearningMaterial">
         <property name="title" value="libro"/>
         <property name="type" value="FILE"/>
-
         <property name="attachmentsURLs">
-            <array value-type="java.lang.String">
-                <value>/documents/pictures/pic1.png</value>
-                <value>/documents/pictures/pic2.png</value>
-            </array>
+            <value>http://wwww.perri.com/pictures/pic1.png</value>
         </property>
     </bean>
     <!-- LearningMaterial2 -->
@@ -1135,10 +1131,7 @@
         <property name="title" value="libro"/>
         <property name="type" value="URL"/>
         <property name="attachmentsURLs">
-            <array value-type="java.lang.String">
-                <value>/documents/pictures/pic3.png</value>
-                <value>/documents/pictures/pic4.png</value>
-            </array>
+            <value>http://wwww.perri.com/pictures/pic2.png</value>
         </property>
     </bean>
     <!-- LearningMaterial3 -->
@@ -1146,10 +1139,7 @@
         <property name="title" value="libro3"/>
         <property name="type" value="FILE"/>
         <property name="attachmentsURLs">
-            <array value-type="java.lang.String">
-                <value>/documents/pictures/pic3.png</value>
-                <value>/documents/pictures/pic4.png</value>
-            </array>
+            <value>http://wwww.perri.com/pictures/pic3.pngg</value>
         </property>
     </bean>
     <!-- LearningMaterial4 -->
@@ -1157,10 +1147,7 @@
         <property name="title" value="libro4"/>
         <property name="type" value="FILE"/>
         <property name="attachmentsURLs">
-            <array value-type="java.lang.String">
-                <value>/documents/pictures/pic7.png</value>
-                <value>/documents/pictures/pic8.png</value>
-            </array>
+            <value>http://wwww.perri.com/pictures/pic4.png</value>
         </property>
     </bean>
 

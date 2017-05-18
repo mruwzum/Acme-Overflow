@@ -32,11 +32,8 @@
     <br />
     <acme:textbox path="picture" code="webinar.picture"/>
     <br />
-    <spring:message code="learning-material"/>
-    <acme:textbox path="learningMaterials" code="learning-material.title"/>
-    <spring:message code="learning-material"/>
-    <acme:textbox path="learningMaterials" code="learning-material.type"/>
-    <br/>
+
+
     <%--<form:label path="categories">--%>
     <%--<spring:message code="question.categories"/>:--%>
     <%--</form:label>--%>
