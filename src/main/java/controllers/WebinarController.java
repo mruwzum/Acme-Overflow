@@ -201,4 +201,22 @@ public class WebinarController extends AbstractController {
         return result;
     }
 
+   @RequestMapping(value = "/view", method = RequestMethod.GET)
+   public ModelAndView webinarView(@RequestParam int webinarId) {
+
+      ModelAndView result;
+      Webinar webinar = webinarService.findOne(webinarId);
+
+
+      result = new ModelAndView("webinar/view");
+      result.addObject("name", webinar.getName());
+      result.addObject("description", webinar.getDescription());
+      result.addObject("startDate", webinar.getStartDate());
+      result.addObject("price", webinar.getPrice());
+      result.addObject("categories", webinar.getCategories());
+      result.addObject("webinarId", webinar.getId());
+      result.addObject("requestURI", "webinar/view.do");
+
+      return result;
+   }
 }
