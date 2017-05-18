@@ -205,7 +205,7 @@ private UserAccountService userAccountService;
 
 //		try {
         userService.banUser(user);
-       res = new ModelAndView("redirect:user/listAll.do");
+       res = new ModelAndView("redirect:listAll.do");
 //		} catch (Exception e) {
 //			res = new ModelAndView("chorbi/error");
 //			res.addObject("trace", e.fillInStackTrace());
@@ -226,7 +226,7 @@ private UserAccountService userAccountService;
 
         try {
             userService.unbanUser(user);
-            res = new ModelAndView("user/success");
+           res = new ModelAndView("redirect:listAll.do");
         } catch (Exception e) {
             res = new ModelAndView("user/error");
             res.addObject("trace", e.toString());
