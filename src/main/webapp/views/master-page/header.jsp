@@ -73,7 +73,9 @@
 			<li><a class="fNiv"><spring:message code="master.page.moderator"/></a>
                 <ul>
                     <li class="arrow"></li>
-                </ul>
+					<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.user.list"/></a>
+
+				</ul>
             </li>
         </security:authorize>
 

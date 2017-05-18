@@ -1799,7 +1799,10 @@
 
         <property name="folders">
             <list>
-
+                <ref bean="inbox20"/>
+                <ref bean="outbox20"/>
+                <ref bean="trashbox20"/>
+                <ref bean="spambox20"/>
             </list>
         </property>
         <property name="answers">
@@ -1837,7 +1840,10 @@
 
         <property name="folders">
             <list>
-
+                <ref bean="inbox19"/>
+                <ref bean="outbox19"/>
+                <ref bean="trashbox19"/>
+                <ref bean="spambox19"/>
             </list>
         </property>
         <property name="answers">
