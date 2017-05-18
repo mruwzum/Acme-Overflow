@@ -76,7 +76,6 @@ public class QuestionService {
           for (Answer a : question.getAnswers()) {
              a.setBanned(true);
           }
-          //TODO: creo que es lógico que si banean una pregunta, automáticamente se baneen sus respuestas asociadas
           question.setBanned(true);
           questionRepository.save(question);
           res = true;

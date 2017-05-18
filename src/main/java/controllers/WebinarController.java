@@ -69,7 +69,7 @@ public class WebinarController extends AbstractController {
    protected static ModelAndView createEditModelAndView2(Webinar webinar, String message) {
         ModelAndView result;
 
-      result = new ModelAndView("webinar/editLess");
+      result = new ModelAndView("webinar/edit");
       result.addObject("webinar", webinar);
         result.addObject("message", message);
 
@@ -100,7 +100,7 @@ public class WebinarController extends AbstractController {
 
        webinars = webinarService.findAll();
        Collection<Webinar> mines = new HashSet<>();
-       //TODO hacer que solo se puedan editar mis webminars y ver todos y que en la vista ppal, funcionen los webminars
+
        for (Webinar w : webinars) {
           if (w.getOwner().equals(teacherService.findByPrincipal())) {
              mines.add(w);
@@ -142,8 +142,7 @@ public class WebinarController extends AbstractController {
       return result;
    }
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create(@RequestParam int id) {
-
+    public ModelAndView create() {
         ModelAndView result;
 
        Webinar webinar = webinarService.create();
@@ -165,23 +164,25 @@ public class WebinarController extends AbstractController {
        webinar = webinarService.findOne(webinarId);
        Assert.notNull(webinar);
        result = createEditModelAndView(webinar);
+       result.addObject("categories", webinar.getCategories());
 
         return result;
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+   @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid Webinar webinar, BindingResult binding) {
         ModelAndView result;
-        if (!binding.hasErrors()) {
-           result = createEditModelAndView(webinar);
-        } else {
-            try {
+//        if (!binding.hasErrors()) {
+//           result = createEditModelAndView(webinar);
+//        } else {
+//            try {
+      //TODO: no se guarda por los learning
                webinarService.save(webinar);
-                result = new ModelAndView("redirect:list.do");
-            } catch (Throwable oops) {
-               result = createEditModelAndView(webinar, "webinar.commit.error");
-            }
-        }
+      result = new ModelAndView("redirect:listAn.do");
+//            } catch (Throwable oops) {
+//               result = createEditModelAndView(webinar, "webinar.commit.error");
+//            }
+//        }
         return result;
     }
 
@@ -190,9 +191,9 @@ public class WebinarController extends AbstractController {
         ModelAndView result;
         try {
            webinarService.delete(webinar);
-            result = new ModelAndView("redirect:list.do");
+           result = new ModelAndView("redirect:listAn.do");
         } catch (Throwable oops) {
-           result = createEditModelAndView(webinar, "webinar.commit.error");
+           result = createEditModelAndView(webinar, "general.commit.error");
         }
 
         return result;

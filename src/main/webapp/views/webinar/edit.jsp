@@ -12,14 +12,14 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="webinar/list.do" modelAttribute="webinar">
+<form:form action="webinar/edit.do" modelAttribute="webinar">
 
     <form:hidden path="id" />
     <form:hidden path="version" />
     <form:hidden path="owner" />
     <form:hidden path="comments" />
-    <form:hidden path="learningMaterials" />
     <form:hidden path="partakers" />
+    <form:hidden path="categories"/>
 
 
     <acme:textbox path="name" code="webinar.name"/>
@@ -32,25 +32,30 @@
     <br />
     <acme:textbox path="picture" code="webinar.picture"/>
     <br />
-
-    <form:label path="categories">
-        <spring:message code="question.categories"/>:
-    </form:label>
-    <form:select path="categories" code="question.categories">
-        <form:options/>
-    </form:select>
+    <spring:message code="learning-material"/>
+    <acme:textbox path="learningMaterials" code="learning-material.title"/>
+    <spring:message code="learning-material"/>
+    <acme:textbox path="learningMaterials" code="learning-material.type"/>
+    <br/>
+    <%--<form:label path="categories">--%>
+    <%--<spring:message code="question.categories"/>:--%>
+    <%--</form:label>--%>
+    <%--<form:select path="categories" code="question.categories">--%>
+    <%--<form:options/>--%>
+    <%--</form:select>--%>
     <br />
 
     <!---------------------------- BOTONES -------------------------->
 
-    <acme:submit name="save" code="general.save"/>
 
-    <jstl:if test="\$\{webinar.id != 0}">
+    <input type="submit" name="save"
+           value="<spring:message code="general.save" />"/>
+
+    <jstl:if test="${webinar.id != 0}">
         <input type="submit" name="delete"
                value="<spring:message code="general.delete" />"
                onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
     </jstl:if>
-    <acme:cancel url="webinar/list.do" code="finder.cancel"/>
 
-
+    <acme:cancel url="welcome/index" code="general.cancel"/>
 </form:form>
