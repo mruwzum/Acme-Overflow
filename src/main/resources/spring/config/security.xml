@@ -40,6 +40,8 @@
 		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" />
 
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll"/>
+		<security:intercept-url pattern="/question/listPopular.do" access="permitAll"/>
+
 
 		<!--Allows everybody to register as user.-->
 		<security:intercept-url pattern="/user/create.do" access="permitAll"/>

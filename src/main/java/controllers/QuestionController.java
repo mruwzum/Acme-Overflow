@@ -18,9 +18,7 @@ import services.QuestionService;
 import services.UserService;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 @Controller
 @RequestMapping("/question")
@@ -97,6 +95,29 @@ public class QuestionController extends AbstractController {
 
         return result;
     }
+
+   public int comparteTo(Question o, Question p) {
+      return o.getCreatedDate().compareTo(p.getCreatedDate());
+   }
+
+   @RequestMapping(value = "/listPopular", method = RequestMethod.GET)
+   public ModelAndView questionListPopular() {
+
+      ModelAndView result;
+      List<Question> questions = new ArrayList<>(questionService.findAll());
+
+      Collections.sort(questions, new Comparator<Question>() {
+         public int compare(Question m1, Question m2) {
+            return m1.getCreatedDate().toString().compareTo(m2.getCreatedDate().toString());
+         }
+      });
+
+      result = new ModelAndView("question/list");
+      result.addObject("questions", questions);
+      result.addObject("requestURI", "question/list.do");
+
+      return result;
+   }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create() {

@@ -83,6 +83,7 @@
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		<li><a class="fNiv" href="user/create.do"><spring:message code="master.page.register.user"/></a>
 		<li><a class="fNiv" href="teacher/create.do"><spring:message code="master.page.register.teacher"/></a>
+		<li><a class="fNiv" href="question/listPopular.do"><spring:message code="master.page.question.listpop"/></a>
 			</security:authorize>
 
 
