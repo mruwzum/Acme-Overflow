@@ -27,7 +27,7 @@
 
     <!-- Attributes -->
 
-    <security:authorize access="permitAll">
+    <security:authorize access="hasAnyRole('TEACHER','USER')">
         <display:column>
             <a href="answer/edit.do?answerId=${row.id}"> <spring:message
                     code="general.edit" />
