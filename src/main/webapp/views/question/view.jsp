@@ -32,12 +32,15 @@
 <h3><jstl:out value="${owner1}"/></h3>
 <jstl:out value="${owner}"/>
 
+<spring:message code="general.catego" var="catego11"/>
+<h3><jstl:out value="${catego11}"/></h3>
 
 <spring:message code="question.categorie" var="cagetogie1"/>
 <h3><jstl:out value="${categorie1}"/></h3>
 <jstl:out value="${categorie}"/>
 
-
+<spring:message code="general.answers" var="register11"/>
+<h3><jstl:out value="${register11}"/></h3>
 <!-- Listing grid socialIdentities -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
                name="answers" requestURI="${requestURI}" id="row">

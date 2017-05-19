@@ -33,6 +33,8 @@ public class QuestionService {
     private QuestionRepository questionRepository;
    @Autowired
    private UserService userService;
+   @Autowired
+   private AnswerService answerService;
 
 
     // Suporting services --------------------------------------------------------------------------------
@@ -130,6 +132,17 @@ public class QuestionService {
 
       return questionRepository.notBannedAnswer(q);
 
+   }
+
+   public Collection<Answer> notBannedAnswer2(Question q) {
+      Collection<Answer> res = new HashSet<>();
+      Collection<Answer> questions = answerService.findAll();
+      for (Answer answer : questions) {
+         if (answer.getQuestion().equals(q) && !answer.isBanned()) {
+            res.add(answer);
+         }
+      }
+      return res;
    }
 }
 
