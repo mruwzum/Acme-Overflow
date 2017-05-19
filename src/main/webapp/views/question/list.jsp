@@ -26,6 +26,34 @@
 
 
     <!-- Attributes -->
+    <security:authorize access="hasAnyRole('ADMIN','MODERATOR')">
+        <display:column>
+            <jstl:if test="${not row.banned}">
+                <a href="question/ban.do?questionId=${row.id}"> <spring:message
+                        code="user.ban"/>
+                </a>
+            </jstl:if>
+            <jstl:if test="${row.banned}">
+                <a href="question/unban.do?questionId=${row.id}"> <spring:message
+                    code="user.unban"/>
+            </jstl:if>
+        </display:column>
+    </security:authorize>
+    <spring:message code="question.title" var="title"/>
+    <display:column property="title" title="${title}" sortable="true"/>
+    <spring:message code="question.summary" var="description"/>
+    <display:column property="summary" title="${description}" sortable="true"/>
+    <spring:message code="question.createdDate" var="originAddress"/>
+    <display:column property="createdDate" title="${originAddress}" sortable="true"/>
+
+
+</display:table>
+
+<display:table pagesize="100" class="displaytag" keepStatus="true"
+               name="myquestions" requestURI="${requestURI}" id="row">
+
+
+    <!-- Attributes -->
 
     <security:authorize access="hasAnyRole('USER','TEACHER')">
         <display:column>

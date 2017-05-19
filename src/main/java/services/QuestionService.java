@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 import repositories.QuestionRepository;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * Created by david on 05/11/2016.
@@ -30,6 +31,8 @@ public class QuestionService {
 
     @Autowired
     private QuestionRepository questionRepository;
+   @Autowired
+   private UserService userService;
 
 
     // Suporting services --------------------------------------------------------------------------------
@@ -95,6 +98,29 @@ public class QuestionService {
          }
          questionRepository.save(question);
          res = true;
+      }
+      return res;
+   }
+
+   public Collection<Question> notBannedQuestions() {
+      Collection<Question> res = new HashSet<>();
+      Collection<Question> questions = questionRepository.findAll();
+      for (Question question : questions) {
+         if (!question.isBanned()) {
+            res.add(question);
+         }
+      }
+      return res;
+   }
+
+
+   public Collection<Question> myQuestions() {
+      Collection<Question> res = new HashSet<>();
+      Collection<Question> all = questionRepository.findAll();
+      for (Question q : all) {
+         if (q.getOwner().equals(userService.findByPrincipal())) {
+            res.add(q);
+         }
       }
       return res;
    }

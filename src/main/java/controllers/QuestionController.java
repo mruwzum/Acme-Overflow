@@ -86,17 +86,14 @@ public class QuestionController extends AbstractController {
     public ModelAndView questionList() {
 
         ModelAndView result;
-        Collection<Question> questions;
 
-       Collection<Question> res = new HashSet<>();
-        questions = questionService.findAll();
-       for (Question question : questions) {
-          if (!question.isBanned()) {
-             res.add(question);
-          }
-       }
+
+       Collection<Question> res = questionService.notBannedQuestions();
+
+       Collection<Question> res2 = questionService.myQuestions();
         result = new ModelAndView("question/list");
        result.addObject("questions", res);
+       result.addObject("myquestions", res2);
        result.addObject("requestURI", "question/list.do");
 
        return result;
