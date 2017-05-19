@@ -52,6 +52,8 @@ public class SampleTest extends AbstractTest {
 	private WebinarService webinarService;
 	@Autowired
 	private CommentService commentService;
+   @Autowired
+   private UserService userService;
 
 	// Tests ------------------------------------------------------------------
 
@@ -127,10 +129,10 @@ public class SampleTest extends AbstractTest {
 	@Test
 	public void dsafsdfs() {
 
-		int date = new Date(System.currentTimeMillis()).getYear();
-
-		System.out.println(date);
-
+      authenticate("user2");
+      User user = userService.findByPrincipal();
+      System.out.println(user.getAnswers());
+      unauthenticate();
 
 	}
 

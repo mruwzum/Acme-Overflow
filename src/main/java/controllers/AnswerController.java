@@ -103,10 +103,12 @@ public class AnswerController extends AbstractController {
    public ModelAndView answerListAll() {
 
       ModelAndView result;
-      Collection<Answer> answers = answerService.findAll();
-      result = new ModelAndView("answer/list");
+      Collection<Answer> answers;
+      answers = answerService.findAll();
+
+      result = new ModelAndView("answers/list");
       result.addObject("answers", answers);
-      result.addObject("requestURI", "answer/listAll.do");
+      result.addObject("requestURI", "answers/list.do");
 
       return result;
    }

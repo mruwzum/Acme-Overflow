@@ -10,7 +10,7 @@
           uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
+<security:authorize access="hasAnyRole('TEACHER','USER')">
     <div>
         <H5>
             <a href="answer/create.do"> <spring:message
