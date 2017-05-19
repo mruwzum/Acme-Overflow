@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import services.ActorService;
-import services.CommentService;
-import services.UserService;
-import services.WebinarService;
+import services.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -34,6 +31,8 @@ public class CommentController extends AbstractController {
    private WebinarService webinarService;
    @Autowired
    private UserService userService;
+   @Autowired
+   private OtherService otherService;
 
     //Constructors----------------------------------------------
 
@@ -105,7 +104,8 @@ public class CommentController extends AbstractController {
         Comment comment = commentService.create();
        Webinar webinar = webinarService.findOne(webinarId);
        comment.setWebinar(webinar);
-       webinar.getComments().add(comment);
+       comment.setCreationDate(new Date(System.currentTimeMillis() - 1000));
+        //webinar.getComments().add(comment);
         result = createEditModelAndView(comment);
 
 
@@ -149,7 +149,8 @@ public class CommentController extends AbstractController {
 //            try {
        //TODO no se guardan bien los comments
        comment.setCreationDate(new Date(System.currentTimeMillis() - 1000));
-       comment.setOwner(userService.findByPrincipal());
+       comment.setOwner(otherService.findByPrincipal());
+       comment.getWebinar().getComments().add(comment);
        commentService.save(comment);
 
 

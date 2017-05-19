@@ -40,7 +40,7 @@ public class Comment extends DomainEntity {
     public void setText(String text) {
         this.text = text;
     }
-    @NotNull
+   // @NotNull
     @Temporal(TemporalType.DATE)
     public Date getCreationDate() {
         return creationDate;
@@ -50,7 +50,6 @@ public class Comment extends DomainEntity {
         this.creationDate = creationDate;
     }
 
-    @NotNull
     @ManyToOne(cascade = CascadeType.ALL)
     public Other getOwner() {
         return owner;
