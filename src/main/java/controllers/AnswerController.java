@@ -91,13 +91,7 @@ public class AnswerController extends AbstractController {
         ModelAndView result;
         Collection<Answer> answers;
 
-       Collection<Answer> res = new HashSet<>();
-        answers = answerService.findAll();
-       for (Answer answer : answers) {
-          if (!answer.isBanned()) {
-             res.add(answer);
-          }
-       }
+       Collection<Answer> res = answerService.notBannedAnswers();
         result = new ModelAndView("answer/list");
        result.addObject("answers", res);
         result.addObject("requestURI", "answer/list.do");
