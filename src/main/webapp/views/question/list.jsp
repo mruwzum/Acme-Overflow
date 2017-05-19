@@ -26,7 +26,14 @@
 
 
     <!-- Attributes -->
-    <security:authorize access="isAuthenticated()">
+    <security:authorize access="permitAll()">
+        <display:column>
+            <a href="question/viewAn.do?questionId=${row.id}"> <spring:message
+                    code="general.view"/>
+            </a>
+        </display:column>
+    </security:authorize>
+    <security:authorize access="hasRole('MODERATOR')">
         <display:column>
             <a href="question/view.do?questionId=${row.id}"> <spring:message
                     code="general.view"/>
