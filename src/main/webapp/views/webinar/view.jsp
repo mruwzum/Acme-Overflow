@@ -85,7 +85,7 @@
     <!-- Attributes -->
     <security:authorize access="hasAnyRole('USER','TEACHER','MODERATOR')">
         <display:column>
-            <a href="comment/create.do?webinarId=${id}"> <spring:message
+            <a href="comment/edit.do?commentId=${row.id}"> <spring:message
                     code="general.edit"/>
             </a>
         </display:column>
