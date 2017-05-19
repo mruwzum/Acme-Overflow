@@ -124,6 +124,13 @@ public class QuestionService {
       }
       return res;
    }
+
+
+   public Collection<Answer> notBannedAnswer(Question q) {
+
+      return questionRepository.notBannedAnswer(q);
+
+   }
 }
 
 

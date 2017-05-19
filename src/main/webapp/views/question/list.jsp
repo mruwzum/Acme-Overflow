@@ -26,6 +26,13 @@
 
 
     <!-- Attributes -->
+    <security:authorize access="isAuthenticated()">
+        <display:column>
+            <a href="question/view.do?questionId=${row.id}"> <spring:message
+                    code="general.view"/>
+            </a>
+        </display:column>
+    </security:authorize>
     <security:authorize access="hasAnyRole('ADMIN','MODERATOR')">
         <display:column>
             <jstl:if test="${not row.banned}">

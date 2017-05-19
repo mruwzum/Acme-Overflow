@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.Authority;
 import services.CategoryService;
+import services.OtherService;
 import services.QuestionService;
 import services.UserService;
 
@@ -32,6 +34,8 @@ public class QuestionController extends AbstractController {
     private CategoryService categoryService;
     @Autowired
     private UserService userService;
+   @Autowired
+   private OtherService otherService;
 
 
     //Constructors----------------------------------------------
@@ -211,13 +215,44 @@ public class QuestionController extends AbstractController {
         result.addObject("summary", question.getSummary());
         result.addObject("owner", question.getOwner().getName());
         result.addObject("categorie", question.getCategories().toString());
-        result.addObject("answers", question.getAnswers());
+
+       Authority authority = new Authority();
+       authority.setAuthority("MODERATOR");
+
+
+       if (otherService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)) {
+
+          result.addObject("answers", question.getAnswers());
+       } else {
+
+          result.addObject("answers", questionService.notBannedAnswer(question));
+       }
+
+
+
+
+
         result.addObject("questionId", question.getId());
         result.addObject("requestURI", "question/view.do");
 
         return result;
     }
 
+   @RequestMapping(value = "/viewAn", method = RequestMethod.GET)
+   public ModelAndView lessorViewAn(@RequestParam int questionId) {
+
+      ModelAndView result;
+      Question question = questionService.findOne(questionId);
+
+
+      result = new ModelAndView("question/view");
+      result.addObject("title", question.getTitle());
+      result.addObject("summary", question.getSummary());
+      result.addObject("owner", question.getOwner().getName());
+      result.addObject("categorie", question.getCategories().toString());
+      result.addObject("answers", questionService.notBannedAnswer(question));
+      return result;
+   }
    @RequestMapping(value = "ban", method = RequestMethod.GET)
    public ModelAndView ban(@RequestParam int questionId) {
       ModelAndView result;

@@ -46,14 +46,9 @@ public class WelcomeController extends AbstractController {
 		SimpleDateFormat formatter;
 		String moment;
 
-		Collection<Question> questions = questionService.findAll();
-      Collection<Question> res = new HashSet<>();
-      questions = questionService.findAll();
-      for (Question question : questions) {
-         if (!question.isBanned()) {
-            res.add(question);
-         }
-      }
+
+		Collection<Question> res = questionService.notBannedQuestions();
+
 
 		Random randomGenerator = new Random();
 

@@ -104,7 +104,7 @@ public class AnswerController extends AbstractController {
 
       ModelAndView result;
       Collection<Answer> answers;
-      answers = answerService.findAll();
+      answers = answerService.all();
 
       result = new ModelAndView("answers/list");
       result.addObject("answers", answers);

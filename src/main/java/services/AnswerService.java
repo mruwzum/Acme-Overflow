@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import repositories.AnswerRepository;
 
+import java.text.CollationElementIterator;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -118,5 +119,10 @@ public class AnswerService {
          }
       }
       return res;
+   }
+
+   public Collection<Answer> all() {
+      Collection<Answer> all = answerRepository.all();
+      return all;
    }
 }
