@@ -26,7 +26,7 @@
 
 
     <!-- Attributes -->
-    <security:authorize access="hasRole('USER')">
+    <security:authorize access="hasAnyRole('USER','TEACHER')">
         <display:column>
             <a href="webinar/view.do?webinarId=${row.id}"> <spring:message
                     code="general.view"/>
@@ -44,28 +44,36 @@
     <display:column property="price" title="${destinationAddress}" sortable="true" />
     <spring:message code="webinar.categories" var="categories"/>
     <display:column property="categories" title="${categories}" sortable="true"/>
+
+<jstl:if test="${my}">
+    <display:column>
+        <a href="webinar/edit.do?webinarId=${row.id}"> <spring:message
+                code="general.edit"/>
+        </a>
+    </display:column>
+</jstl:if>
 </display:table>
 
 
-<security:authorize access="hasRole('TEACHER')">
-    <display:table pagesize="10" class="displaytag" keepStatus="true"
-                   name="mywebinars" requestURI="${requestURI}" id="row">
-        <!-- Attributes -->
-        <display:column>
-            <a href="webinar/edit.do?webinarId=${row.id}"> <spring:message
-                    code="general.edit"/>
-            </a>
-        </display:column>
-        <spring:message code="webinar.name" var="title"/>
-        <display:column property="name" title="${title}" sortable="true"/>
-        <spring:message code="webinar.description" var="description"/>
-        <display:column property="description" title="${description}" sortable="true"/>
-        <spring:message code="webinar.startDate" var="originAddress"/>
-        <display:column property="startDate" title="${originAddress}" sortable="true"/>
-        <spring:message code="webinar.price" var="destinationAddress"/>
-        <display:column property="price" title="${destinationAddress}" sortable="true"/>
+<%--<security:authorize access="hasRole('TEACHER')">--%>
+    <%--<display:table pagesize="10" class="displaytag" keepStatus="true"--%>
+                   <%--name="mywebinars" requestURI="${requestURI}" id="row">--%>
+        <%--<!-- Attributes -->--%>
+        <%--<display:column>--%>
+            <%--<a href="webinar/edit.do?webinarId=${row.id}"> <spring:message--%>
+                    <%--code="general.edit"/>--%>
+            <%--</a>--%>
+        <%--</display:column>--%>
+        <%--<spring:message code="webinar.name" var="title"/>--%>
+        <%--<display:column property="name" title="${title}" sortable="true"/>--%>
+        <%--<spring:message code="webinar.description" var="description"/>--%>
+        <%--<display:column property="description" title="${description}" sortable="true"/>--%>
+        <%--<spring:message code="webinar.startDate" var="originAddress"/>--%>
+        <%--<display:column property="startDate" title="${originAddress}" sortable="true"/>--%>
+        <%--<spring:message code="webinar.price" var="destinationAddress"/>--%>
+        <%--<display:column property="price" title="${destinationAddress}" sortable="true"/>--%>
 
-        <spring:message code="webinar.categories" var="categories"/>
-        <display:column property="categories" title="${categories}" sortable="true"/>
-    </display:table>
-</security:authorize>
+        <%--<spring:message code="webinar.categories" var="categories"/>--%>
+        <%--<display:column property="categories" title="${categories}" sortable="true"/>--%>
+    <%--</display:table>--%>
+<%--</security:authorize>--%>

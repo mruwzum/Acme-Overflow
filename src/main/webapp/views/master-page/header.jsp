@@ -73,7 +73,16 @@
                     <li><a href="teacher/editp.do"><spring:message code="master.page.edit.profile"/> </a></li>
                 </ul>
             </li>
-		<li><a class="fNiv" href="webinar/list.do"><spring:message code="master.page.webinar.list"/></a>
+
+		<li><a class="fNiv"><spring:message code="master.page.webinars"/></a>
+			<ul>
+				<li class="arrow"></li>
+				<li><a class="fNiv" href="webinar/list.do"><spring:message code="master.page.webinar.list"/></a>
+				<li><a class="fNiv" href="webinar/listMy.do"><spring:message code="master.page.webinar.list.my"/></a>
+
+			</ul>
+		</li>
+
 			</security:authorize>
 
 

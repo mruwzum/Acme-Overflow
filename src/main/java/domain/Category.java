@@ -68,7 +68,7 @@ public class Category extends DomainEntity{
         this.questions = questions;
     }
 
-    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "categories")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categories")
     public Collection<Webinar> getWebinars() {
         return webinars;
     }

@@ -834,13 +834,11 @@
         <property name="picture" value="http://picture.png"/>
         <property name="owner" ref="teacher1"/>
         <property name="categories">
-            <list>
                 <ref bean="categorie3"/>
-            </list>
         </property>
-        <property name="learningMaterials">
+        <property name="modules">
             <list>
-                <ref bean="learningmaterial2"/>
+                <ref bean="module1"/>
             </list>
         </property>
         <property name="partakers">
@@ -866,13 +864,11 @@
         <property name="picture" value="http://picture2.png"/>
         <property name="owner" ref="teacher2"/>
         <property name="categories">
-            <list>
                 <ref bean="categorie2"/>
-            </list>
         </property>
-        <property name="learningMaterials">
+        <property name="modules">
             <list>
-                <ref bean="learningmaterial1"/>
+                <ref bean="module2"/>
             </list>
         </property>
         <property name="partakers">
@@ -894,13 +890,11 @@
         <property name="picture" value="http://picture3.png"/>
         <property name="owner" ref="teacher3"/>
         <property name="categories">
-            <list>
                 <ref bean="categorie1"/>
-            </list>
         </property>
-        <property name="learningMaterials">
+        <property name="modules">
             <list>
-                <ref bean="learningmaterial3"/>
+                <ref bean="module3"/>
             </list>
         </property>
         <property name="partakers">
@@ -923,14 +917,7 @@
         <property name="picture" value="http://picture6.png"/>
         <property name="owner" ref="teacher4"/>
         <property name="categories">
-            <list>
                 <ref bean="categorie3"/>
-            </list>
-        </property>
-        <property name="learningMaterials">
-            <list>
-
-            </list>
         </property>
         <property name="partakers">
             <list>
@@ -951,14 +938,7 @@
         <property name="picture" value="http://picture6.png"/>
         <property name="owner" ref="teacher2"/>
         <property name="categories">
-            <list>
                 <ref bean="categorie1"/>
-            </list>
-        </property>
-        <property name="learningMaterials">
-            <list>
-
-            </list>
         </property>
         <property name="partakers">
             <list>
@@ -979,15 +959,9 @@
         <property name="picture" value="http://picture6.png"/>
         <property name="owner" ref="teacher1"/>
         <property name="categories">
-            <list>
                 <ref bean="categorie1"/>
-            </list>
         </property>
-        <property name="learningMaterials">
-            <list>
 
-            </list>
-        </property>
         <property name="partakers">
             <list>
 
@@ -1007,14 +981,7 @@
         <property name="picture" value="http://picture6.png"/>
         <property name="owner" ref="teacher1"/>
         <property name="categories">
-            <list>
                 <ref bean="categorie1"/>
-            </list>
-        </property>
-        <property name="learningMaterials">
-            <list>
-
-            </list>
         </property>
         <property name="partakers">
             <list>

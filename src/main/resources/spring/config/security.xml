@@ -104,6 +104,7 @@
 
 
 
+		<security:intercept-url pattern="/webinar/listMy.do" access="hasRole('TEACHER')"/>
 
 		<security:intercept-url pattern="/webinar/view.do" access="permitAll"/>
 		<security:intercept-url pattern="/webinar/create.do" access="hasRole('TEACHER')"/>

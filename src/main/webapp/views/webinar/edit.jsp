@@ -19,7 +19,6 @@
     <form:hidden path="owner" />
     <form:hidden path="comments" />
     <form:hidden path="partakers" />
-    <form:hidden path="categories"/>
 
 
     <acme:textbox path="name" code="webinar.name"/>
@@ -33,6 +32,8 @@
     <acme:textbox path="picture" code="webinar.picture"/>
     <br />
 
+    <acme:select path="categories" code="question.categories" items="${categories}" itemLabel="name"/>
+    <br />
 
     <%--<form:label path="categories">--%>
     <%--<spring:message code="question.categories"/>:--%>

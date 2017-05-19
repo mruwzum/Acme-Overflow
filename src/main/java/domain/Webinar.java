@@ -25,11 +25,12 @@ public class Webinar extends DomainEntity {
     private double price;
     private String picture;
 
-    private Collection<Category> categories;
+
+    private Category categories;
     private Teacher owner;
     private Collection<Comment> comments;
-    private Collection<LearningMaterial> learningMaterials;
     private Collection<User> partakers;
+    private Collection<Module> modules;
 
 
     public Webinar() {
@@ -81,16 +82,16 @@ public class Webinar extends DomainEntity {
         this.picture = picture;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    public Collection<Category> getCategories() {
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Category getCategories() {
         return categories;
     }
 
-    public void setCategories(Collection<Category> categories) {
+    public void setCategories(Category categories) {
         this.categories = categories;
     }
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @NotNull
     public Teacher getOwner() {
         return owner;
@@ -109,15 +110,6 @@ public class Webinar extends DomainEntity {
         this.comments = comments;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @NotNull
-    public Collection<LearningMaterial> getLearningMaterials() {
-        return learningMaterials;
-    }
-
-    public void setLearningMaterials(Collection<LearningMaterial> learningMaterials) {
-        this.learningMaterials = learningMaterials;
-    }
 
    @ManyToMany(cascade = CascadeType.ALL)
     public Collection<User> getPartakers() {
@@ -126,5 +118,15 @@ public class Webinar extends DomainEntity {
 
     public void setPartakers(Collection<User> partakers) {
         this.partakers = partakers;
+    }
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "webinar")
+    public Collection<Module> getModules() {
+        return modules;
+    }
+
+    public void setModules(Collection<Module> modules) {
+        this.modules = modules;
     }
 }

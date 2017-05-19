@@ -19,6 +19,7 @@ public class Module extends DomainEntity{
     private String title;
     private String description;
     private Collection<LearningMaterial> learningMaterials;
+    private Webinar webinar;
 
 
     @NotBlank
@@ -41,12 +42,21 @@ public class Module extends DomainEntity{
     }
 
     @OneToMany(cascade = CascadeType.PERSIST)
-    @NotNull
     public Collection<LearningMaterial> getLearningMaterials() {
         return learningMaterials;
     }
 
     public void setLearningMaterials(Collection<LearningMaterial> learningMaterials) {
         this.learningMaterials = learningMaterials;
+    }
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Webinar getWebinar() {
+        return webinar;
+    }
+
+    public void setWebinar(Webinar webinar) {
+        this.webinar = webinar;
     }
 }

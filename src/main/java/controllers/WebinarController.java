@@ -1,6 +1,7 @@
 package controllers;
 
 
+import domain.Category;
 import domain.LearningMaterial;
 import domain.User;
 import domain.Webinar;
@@ -12,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import services.TeacherService;
-import services.UserService;
-import services.WebinarService;
+import services.*;
 
 
 import javax.validation.Valid;
@@ -33,6 +32,10 @@ public class WebinarController extends AbstractController {
    private TeacherService teacherService;
    @Autowired
    private UserService userService;
+   @Autowired
+   private CategoryService categoryService;
+   @Autowired
+   private OtherService otherService;
     //Constructors----------------------------------------------
 
     public WebinarController() {
@@ -82,34 +85,47 @@ public class WebinarController extends AbstractController {
     }
 
    @RequestMapping(value = "/listAn", method = RequestMethod.GET)
-   public ModelAndView webinarListAn() {
+    public ModelAndView webinarListAn() {
 
-      ModelAndView result;
-      Collection<Webinar> webinars;
+        ModelAndView result;
+        Collection<Webinar> webinars;
 
-      webinars = webinarService.findAll();
+        webinars = webinarService.findAll();
 
 
-      result = new ModelAndView("webinar/list");
-      result.addObject("webinars", webinars);
-      result.addObject("requestURI", "webinar/list.do");
+        result = new ModelAndView("webinar/list");
+        result.addObject("webinars", webinars);
+        result.addObject("requestURI", "webinar/list.do");
 
-      return result;
-   }
+        return result;
+    }
+
+
+
+    @RequestMapping(value = "/listMy", method = RequestMethod.GET)
+    public ModelAndView webinarMy() {
+
+        ModelAndView result;
+        Collection<Webinar> webinars;
+        Boolean bol = true;
+        webinars = webinarService.myWebinars(teacherService.findByPrincipal());
+
+
+        result = new ModelAndView("webinar/list");
+        result.addObject("webinars", webinars);
+        result.addObject("my", bol);
+        result.addObject("requestURI", "webinar/listMy.do");
+
+        return result;
+    }
 
    @RequestMapping(value = "/listToGo", method = RequestMethod.GET)
    public ModelAndView webinarListToGo() {
 
       ModelAndView result;
-      Collection<Webinar> webinars;
-      Collection<Webinar> res = new HashSet<>();
-      webinars = webinarService.findAll();
-      for (Webinar webinar : webinars) {
-         if (webinar.getPartakers().contains(userService.findByPrincipal())) {
-            res.add(webinar);
-         }
-      }
+      Collection<Webinar> res;
 
+       res= webinarService.webinarsToGo(userService.findByPrincipal());
       result = new ModelAndView("webinar/list");
       result.addObject("webinars", res);
       result.addObject("requestURI", "webinar/listToGo.do");
@@ -174,7 +190,10 @@ public class WebinarController extends AbstractController {
        Webinar webinar = webinarService.create();
        webinar.setOwner(teacherService.findByPrincipal());
 
+       Collection<Category> categories = categoryService.findAll();
+
        result = createEditModelAndView(webinar);
+       result.addObject("categories", categories);
 
         return result;
 
@@ -191,7 +210,8 @@ public class WebinarController extends AbstractController {
        webinar = webinarService.findOne(webinarId);
        Assert.notNull(webinar);
        result = createEditModelAndView(webinar);
-       result.addObject("categories", webinar.getCategories());
+       result.addObject("categories", categoryService.findAll());
+       webinarService.flush();
 
         return result;
     }
@@ -204,6 +224,7 @@ public class WebinarController extends AbstractController {
 //        } else {
 //            try {
       //TODO: no se guarda por los learning
+
                webinarService.save(webinar);
       result = new ModelAndView("redirect:listAn.do");
 //            } catch (Throwable oops) {
@@ -216,12 +237,13 @@ public class WebinarController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
     public ModelAndView delete(Webinar webinar) {
         ModelAndView result;
-        try {
+//        try {
+            webinar.setCategories(null);
            webinarService.delete(webinar);
            result = new ModelAndView("redirect:listAn.do");
-        } catch (Throwable oops) {
-           result = createEditModelAndView(webinar, "general.commit.error");
-        }
+//        } catch (Throwable oops) {
+//           result = createEditModelAndView(webinar, "general.commit.error");
+//        }
 
         return result;
     }
@@ -229,12 +251,19 @@ public class WebinarController extends AbstractController {
    @RequestMapping(value = "/view", method = RequestMethod.GET)
    public ModelAndView webinarView(@RequestParam int webinarId) {
       Boolean registered = false;
-      ModelAndView result;
+      Boolean my = false;
+
+       ModelAndView result;
       Webinar webinar = webinarService.findOne(webinarId);
 
-      if (webinar.getPartakers().contains(userService.findByPrincipal())) {
+      if (webinar.getPartakers().contains(otherService.findByPrincipal())) {
          registered = true;
       }
+
+//      if(webinarService.myWebinars(teacherService.findByPrincipal()).contains(webinar)){
+//          my = true;
+//      }
+
 
       result = new ModelAndView("webinar/view");
       result.addObject("name", webinar.getName());
@@ -246,7 +275,10 @@ public class WebinarController extends AbstractController {
       result.addObject("webinarId", webinar.getId());
       result.addObject("users", webinar.getPartakers());
       result.addObject("reg", registered);
-      result.addObject("requestURI", "webinar/view.do");
+      result.addObject("modules", webinar.getModules());
+//       result.addObject("my", my);
+//
+       result.addObject("requestURI", "webinar/view.do");
 
       return result;
    }

@@ -1,8 +1,6 @@
 package services;
 
-import domain.Message;
-import domain.User;
-import domain.Webinar;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -69,6 +67,11 @@ public class WebinarService {
     // Other business methods -------------------------------------------------------------------------------
 
 
+    public void flush(){
+        webinarRepository.flush();
+    }
+
+
     public boolean register(User user, Webinar webinar) {
         boolean res = true;
         if (webinar.getPartakers().contains(user)) {
@@ -88,6 +91,27 @@ public class WebinarService {
         webinar.getPartakers().remove(user);
         user.getWebinars().remove(webinar);
         return res;
+
+    }
+
+
+    public Collection<Webinar> myWebinars(Teacher t){
+
+        Assert.notNull(t);
+        return webinarRepository.myWebinars(t);
+    }
+
+    public Collection<Webinar> myWebinarsO(Other t){
+
+        Assert.notNull(t);
+        return webinarRepository.myWebinarso(t);
+    }
+
+
+    public Collection<Webinar> webinarsToGo(User u){
+
+        Assert.notNull(u);
+        return webinarRepository.webinarsToAssist(u);
 
     }
 }
