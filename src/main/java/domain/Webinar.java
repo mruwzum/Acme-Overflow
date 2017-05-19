@@ -100,7 +100,7 @@ public class Webinar extends DomainEntity {
         this.owner = owner;
     }
 
-   @OneToMany(cascade = CascadeType.ALL)
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "webinar")
     public Collection<Comment> getComments() {
         return comments;
     }

@@ -104,7 +104,6 @@ public class CommentController extends AbstractController {
         Comment comment = commentService.create();
        Webinar webinar = webinarService.findOne(webinarId);
        comment.setWebinar(webinar);
-       comment.setCreationDate(new Date(System.currentTimeMillis() - 1000));
         //webinar.getComments().add(comment);
         result = createEditModelAndView(comment);
 
@@ -143,22 +142,20 @@ public class CommentController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid Comment comment, BindingResult binding) {
         ModelAndView result;
-//        if (!binding.hasErrors()) {
-//            result = createEditModelAndView(comment);
-//        } else {
-//            try {
-       //TODO no se guardan bien los comments
+        if (binding.hasErrors()) {
+            result = createEditModelAndView(comment);
+        } else {
+            try {
        comment.setCreationDate(new Date(System.currentTimeMillis() - 1000));
        comment.setOwner(otherService.findByPrincipal());
-       comment.getWebinar().getComments().add(comment);
        commentService.save(comment);
 
 
        result = new ModelAndView("user/success");
-//            } catch (Throwable oops) {
-//                result = createEditModelAndView(comment, "general.commit.error");
-//            }
-//        }
+            } catch (Throwable oops) {
+                result = createEditModelAndView(comment, "general.commit.error");
+            }
+        }
         return result;
     }
 

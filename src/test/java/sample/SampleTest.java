@@ -12,9 +12,7 @@ package sample;
 
 import javax.transaction.Transactional;
 
-import domain.Answer;
-import domain.Category;
-import domain.Question;
+import domain.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +48,10 @@ public class SampleTest extends AbstractTest {
 	private QuestionService questionService;
 	@Autowired
 	private AnswerService answerService;
+	@Autowired
+	private WebinarService webinarService;
+	@Autowired
+	private CommentService commentService;
 
 	// Tests ------------------------------------------------------------------
 
@@ -131,6 +133,34 @@ public class SampleTest extends AbstractTest {
 
 
 	}
+
+	@Test
+	public void testComment(){
+
+		authenticate("user1");
+
+		List<Webinar> webinars =  new ArrayList<>(webinarService.findAll());
+
+		Comment comment = new Comment();
+		comment.setTitle("GENERIC");
+		comment.setText("GENERIC");
+		comment.setCreationDate(new Date(System.currentTimeMillis()));
+		comment.setOwner(otherService.findByPrincipal());
+		comment.setWebinar(webinars.get(0));
+
+
+
+		System.out.println(webinars.get(0).getComments());
+
+		webinars.get(0).getComments().add(comment);
+
+		System.out.println(webinars.get(0).getComments());
+
+
+		authenticate(null);
+
+	}
+
 	// Ancillary methods ------------------------------------------------------
 
 }
