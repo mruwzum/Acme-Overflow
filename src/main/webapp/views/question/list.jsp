@@ -26,9 +26,16 @@
 
 
     <!-- Attributes -->
-    <security:authorize access="permitAll()">
+    <security:authorize access="isAnonymous()">
         <display:column>
             <a href="question/viewAn.do?questionId=${row.id}"> <spring:message
+                    code="general.view"/>
+            </a>
+        </display:column>
+    </security:authorize>
+    <security:authorize access="hasRole('USER')">
+        <display:column>
+            <a href="question/view.do?questionId=${row.id}"> <spring:message
                     code="general.view"/>
             </a>
         </display:column>
@@ -73,6 +80,13 @@
         <display:column>
             <a href="question/edit.do?questionId=${row.id}"> <spring:message
                     code="general.edit" />
+            </a>
+        </display:column>
+    </security:authorize>
+    <security:authorize access="hasRole('USER')">
+        <display:column>
+            <a href="question/view.do?questionId=${row.id}"> <spring:message
+                    code="general.view"/>
             </a>
         </display:column>
     </security:authorize>

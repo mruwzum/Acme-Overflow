@@ -48,11 +48,38 @@
     <display:column property="summary" title="${description}" sortable="true" />
     <spring:message code="question.createdDate" var="originAddress" />
     <display:column property="createdDate" title="${originAddress}" sortable="true" />
-    <security:authorize access="permitAll">
+    <security:authorize access="isAnonymous()">
         <display:column>
-            <a href="question/view.do?questionId=${row.id}"> <spring:message
+            <a href="question/viewAn.do?questionId=${row.id}"> <spring:message
                     code="question.view"/>
             </a>
+        </display:column>
+    </security:authorize>
+    <security:authorize access="hasRole('USER')">
+        <display:column>
+            <a href="question/view.do?questionId=${row.id}"> <spring:message
+                    code="general.view"/>
+            </a>
+        </display:column>
+    </security:authorize>
+    <security:authorize access="hasRole('MODERATOR')">
+        <display:column>
+            <a href="question/view.do?questionId=${row.id}"> <spring:message
+                    code="general.view"/>
+            </a>
+        </display:column>
+    </security:authorize>
+    <security:authorize access="hasAnyRole('ADMIN','MODERATOR')">
+        <display:column>
+            <jstl:if test="${not row.banned}">
+                <a href="question/ban.do?questionId=${row.id}"> <spring:message
+                        code="user.ban"/>
+                </a>
+            </jstl:if>
+            <jstl:if test="${row.banned}">
+                <a href="question/unban.do?questionId=${row.id}"> <spring:message
+                    code="user.unban"/>
+            </jstl:if>
         </display:column>
     </security:authorize>
 </display:table>

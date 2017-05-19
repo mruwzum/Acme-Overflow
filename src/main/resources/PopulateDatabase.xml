@@ -1394,7 +1394,7 @@
             </array>
         </property>
         <property name="question" ref="question3"/>
-        <property name="owner" ref="teacher1"/>
+        <property name="owner" ref="teacher1q"/>
 
     </bean>
 

@@ -121,22 +121,17 @@ public class QuestionController extends AbstractController {
 
       ModelAndView result;
       Collection<Question> questions = new ArrayList<>();
-      questions = questionService.findAll();
-      List<Question> res = new ArrayList<>();
-      for (Question question : questions) {
-         if (!question.isBanned()) {
-            res.add(question);
-         }
-      }
-
-      Collections.sort(res, new Comparator<Question>() {
+      questions = questionService.notBannedQuestions();
+      List<Question> res1 = new ArrayList<>();
+      res1.addAll(questions);
+      Collections.sort(res1, new Comparator<Question>() {
          public int compare(Question m1, Question m2) {
             return m2.getCreatedDate().toString().compareTo(m1.getCreatedDate().toString());
          }
       });
 
       result = new ModelAndView("question/list");
-      result.addObject("questions", res);
+      result.addObject("questions", res1);
       result.addObject("requestURI", "question/list.do");
 
       return result;
