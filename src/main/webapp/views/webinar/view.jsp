@@ -61,12 +61,17 @@
 <spring:message code="webinar.price" var="price1"/>
 <h3><jstl:out value="${price1}"/></h3>
 <jstl:out value="${price}"/>
-
+<spring:message code="general.catego" var="catego11"/>
+<h3><jstl:out value="${catego11}"/></h3>
 
 <spring:message code="webinar.categories" var="cagetogies1"/>
 <h3><jstl:out value="${categories1}"/></h3>
 <jstl:out value="${categories}"/>
 <br/>
+
+<spring:message code="general.comments" var="register11"/>
+<h3><jstl:out value="${register11}"/></h3>
+
 <security:authorize access="hasAnyRole('USER','TEACHER')">
     <a href="comment/create.do?webinarId=${webinarId}"> <spring:message
                 code="general.create"/>
@@ -96,5 +101,29 @@
     <display:column property="owner" title="${owner}" sortable="true"/>
 </display:table>
 
+<spring:message code="general.registeredUsers" var="register112"/>
+<h3><jstl:out value="${register112}"/></h3>
+<display:table pagesize="15" class="displaytag" keepStatus="true"
+               name="users" requestURI="${requestURI}" id="row">
+    <!-- Attributes -->
+    <security:authorize access="hasAnyRole('ADMIN','MODERATOR')">
+        <display:column>
+            <jstl:if test="${not row.banned}">
+                <a href="user/ban.do?userId=${row.id}"> <spring:message
+                        code="user.ban"/>
+                </a>
+            </jstl:if>
+            <jstl:if test="${row.banned}">
+                <a href="user/unban.do?userId=${row.id}"> <spring:message
+                    code="user.unban"/>
+            </jstl:if>
+        </display:column>
+    </security:authorize>
 
-
+    <spring:message code="user.name" var="name"/>
+    <display:column property="name" title="${name}" sortable="true"/>
+    <spring:message code="user.surname" var="surname"/>
+    <display:column property="surname" title="${surname}" sortable="true"/>
+    <spring:message code="user.email" var="email"/>
+    <display:column property="email" title="${email}" sortable="true"/>
+</display:table>

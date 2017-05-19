@@ -41,4 +41,9 @@ public class User extends Other {
     public void setBanned(boolean banned) {
         this.banned = banned;
     }
+
+    @Override
+    public String toString() {
+        return super.getName() + " " + super.getSurname();
+    }
 }

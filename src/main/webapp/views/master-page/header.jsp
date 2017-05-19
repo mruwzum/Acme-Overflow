@@ -49,6 +49,8 @@
 					<li><a href="user/editp.do"><spring:message code="master.page.edit.profile" /> </a></li>
 				</ul>
 			<li><a class="fNiv" href="webinar/listAn.do"><spring:message code="master.page.webinar.list"/></a>
+			<li><a class="fNiv" href="webinar/listToGo.do"><spring:message code="master.page.webinar.mylist"/></a>
+
 			</li>
 
 
@@ -101,6 +103,14 @@
 			<%--****************************************AUTHENTICATED****************************************--%>
 
 			<security:authorize access="isAuthenticated()">
+		<li><a class="fNiv"><spring:message code="master.page.search"/></a>
+			<ul>
+				<li class="arrow"></li>
+				<li><a href="search/create.do"><spring:message code="master.page.search.new"/> </a></li>
+				<li><a href="search/mySearches.do"><spring:message code="master.page.search.last"/> </a></li>
+
+			</ul>
+		</li>
 		<li>
 				<a class="fNiv"> 
 					<spring:message code="master.page.profile" /> 
@@ -112,17 +122,8 @@
 				</ul>
 			</li>
 
-		<li><a href=" /create.do"><spring:message code="master.page.search.new" /> </a></li>
 
 
-		<li><a class="fNiv"><spring:message code="master.page.search"/></a>
-			<ul>
-				<li class="arrow"></li>
-				<li><a href="search/create.do"><spring:message code="master.page.search.new" /> </a></li>
-				<li><a href="search/mySearches.do"><spring:message code="master.page.search.last" /> </a></li>
-
-			</ul>
-		</li>
 
 
 

@@ -96,6 +96,28 @@ public class WebinarController extends AbstractController {
 
       return result;
    }
+
+   @RequestMapping(value = "/listToGo", method = RequestMethod.GET)
+   public ModelAndView webinarListToGo() {
+
+      ModelAndView result;
+      Collection<Webinar> webinars;
+      Collection<Webinar> res = new HashSet<>();
+      webinars = webinarService.findAll();
+      for (Webinar webinar : webinars) {
+         if (webinar.getPartakers().contains(userService.findByPrincipal())) {
+            res.add(webinar);
+         }
+      }
+
+      result = new ModelAndView("webinar/list");
+      result.addObject("webinars", res);
+      result.addObject("requestURI", "webinar/listToGo.do");
+
+      return result;
+   }
+
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView webinarList() {
 
@@ -222,6 +244,7 @@ public class WebinarController extends AbstractController {
       result.addObject("categories", webinar.getCategories());
       result.addObject("comments", webinar.getComments());
       result.addObject("webinarId", webinar.getId());
+      result.addObject("users", webinar.getPartakers());
       result.addObject("reg", registered);
       result.addObject("requestURI", "webinar/view.do");
 
