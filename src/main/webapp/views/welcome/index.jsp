@@ -55,7 +55,7 @@
             </a>
         </display:column>
     </security:authorize>
-    <security:authorize access="hasRole('USER')">
+    <security:authorize access="hasAnyRole('USER','TEACHER')">
         <display:column>
             <a href="question/view.do?questionId=${row.id}"> <spring:message
                     code="general.view"/>
