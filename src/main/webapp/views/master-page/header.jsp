@@ -35,6 +35,8 @@
 
 			<li><a href="category/list.do"><spring:message code="master.page.categories" /> </a></li>
 			<li><a href="search/editCache.do"><spring:message code="master.page.changecache" /> </a></li>
+			<li><a href="administrator/editDuty.do"><spring:message code="master.page.changeDuty" /> </a></li>
+
 
 		</security:authorize>
 
