@@ -1351,7 +1351,7 @@
             </array>
         </property>
         <property name="question" ref="question2"/>
-        <property name="owner" ref="user3"/>
+        <property name="owner" ref="teacher4"/>
 
     </bean>
     <bean id="answer4" class="domain.Answer">
@@ -1367,7 +1367,7 @@
             </array>
         </property>
         <property name="question" ref="question1"/>
-        <property name="owner" ref="user3"/>
+        <property name="owner" ref="teacher1"/>
     </bean>
     <bean id="answer5" class="domain.Answer">
         <property name="banned" value="false"/>

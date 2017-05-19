@@ -215,16 +215,12 @@ public class QuestionController extends AbstractController {
 
 
        if (otherService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)) {
-
-          result.addObject("answers", question.getAnswers());
+          Collection<Answer> answers1 = question.getAnswers();
+          result.addObject("answers", answers1);
        } else {
-
-          result.addObject("answers", questionService.notBannedAnswer(question));
+          Collection<Answer> answers = questionService.notBannedAnswer(question);
+          result.addObject("answers", answers);
        }
-
-
-
-
 
         result.addObject("questionId", question.getId());
         result.addObject("requestURI", "question/view.do");
