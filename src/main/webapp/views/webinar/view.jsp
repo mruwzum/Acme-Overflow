@@ -18,6 +18,32 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net" %>
 
 
+<security:authorize access="hasRole('USER')">
+
+
+    <jstl:if test="${reg}">
+
+        <a href="webinar/unregister.do?webinarId=${webinarId}"> <spring:message
+                code="general.unregister"/>
+        </a>
+
+
+    </jstl:if>
+
+
+    <jstl:if test="${not reg}">
+
+        <a href="webinar/register.do?webinarId=${webinarId}"> <spring:message
+                code="general.register"/>
+        </a>
+
+
+    </jstl:if>
+
+
+</security:authorize>
+
+
 <spring:message code="webinar.name" var="name1"/>
 <h3><jstl:out value="${name1}"/></h3>
 <jstl:out value="${name}"/>
@@ -45,6 +71,7 @@
     <a href="comment/create.do?webinarId=${webinarId}"> <spring:message
                 code="general.create"/>
         </a>
+
 </security:authorize>
 <br/>
 <!-- Listing grid comments -->

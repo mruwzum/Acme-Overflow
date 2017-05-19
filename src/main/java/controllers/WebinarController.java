@@ -2,6 +2,7 @@ package controllers;
 
 
 import domain.LearningMaterial;
+import domain.User;
 import domain.Webinar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.TeacherService;
+import services.UserService;
 import services.WebinarService;
 
 
@@ -29,7 +31,8 @@ public class WebinarController extends AbstractController {
     private WebinarService webinarService;
    @Autowired
    private TeacherService teacherService;
-
+   @Autowired
+   private UserService userService;
     //Constructors----------------------------------------------
 
     public WebinarController() {
@@ -203,10 +206,13 @@ public class WebinarController extends AbstractController {
 
    @RequestMapping(value = "/view", method = RequestMethod.GET)
    public ModelAndView webinarView(@RequestParam int webinarId) {
-
+      Boolean registered = false;
       ModelAndView result;
       Webinar webinar = webinarService.findOne(webinarId);
 
+      if (webinar.getPartakers().contains(userService.findByPrincipal())) {
+         registered = true;
+      }
 
       result = new ModelAndView("webinar/view");
       result.addObject("name", webinar.getName());
@@ -216,7 +222,44 @@ public class WebinarController extends AbstractController {
       result.addObject("categories", webinar.getCategories());
       result.addObject("comments", webinar.getComments());
       result.addObject("webinarId", webinar.getId());
+      result.addObject("reg", registered);
       result.addObject("requestURI", "webinar/view.do");
+
+      return result;
+   }
+
+   @RequestMapping(value = "/register", method = RequestMethod.GET)
+   public ModelAndView apply(@RequestParam int webinarId) {
+      ModelAndView result;
+
+      Webinar webinar = webinarService.findOne(webinarId);
+      User user = userService.findByPrincipal();
+      Boolean op = webinarService.register(user, webinar);
+
+
+      if (op.equals(false)) {
+         result = new ModelAndView("user/error");
+      } else {
+         result = new ModelAndView("user/success");
+      }
+
+      return result;
+   }
+
+   @RequestMapping(value = "/unregister", method = RequestMethod.GET)
+   public ModelAndView unapply(@RequestParam int webinarId) {
+      ModelAndView result;
+
+      Webinar webinar = webinarService.findOne(webinarId);
+      User user = userService.findByPrincipal();
+      Boolean op = webinarService.unregister(user, webinar);
+
+
+      if (op.equals(false)) {
+         result = new ModelAndView("user/error");
+      } else {
+         result = new ModelAndView("user/success");
+      }
 
       return result;
    }

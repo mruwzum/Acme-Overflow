@@ -1,6 +1,7 @@
 package services;
 
 import domain.Message;
+import domain.User;
 import domain.Webinar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,6 +68,28 @@ public class WebinarService {
 
     // Other business methods -------------------------------------------------------------------------------
 
+
+    public boolean register(User user, Webinar webinar) {
+        boolean res = true;
+        if (webinar.getPartakers().contains(user)) {
+            res = false;
+        }
+        user.getWebinars().add(webinar);
+        webinar.getPartakers().add(user);
+        return res;
+    }
+
+    public boolean unregister(User user, Webinar webinar) {
+        boolean res = true;
+
+        if (!webinar.getPartakers().contains(user)) {
+            res = false;
+        }
+        webinar.getPartakers().remove(user);
+        user.getWebinars().remove(webinar);
+        return res;
+
+    }
 }
 
 

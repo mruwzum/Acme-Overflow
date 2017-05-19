@@ -31,6 +31,7 @@
             <a href="webinar/view.do?webinarId=${row.id}"> <spring:message
                     code="general.view"/>
             </a>
+
         </display:column>
     </security:authorize>
     <spring:message code="webinar.name" var="title" />
