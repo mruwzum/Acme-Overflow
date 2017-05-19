@@ -59,6 +59,8 @@
 		<value>/views/user/tiles.xml</value>
 		<!--Webinar-->
 		<value>/views/webinar/tiles.xml</value>
+		<!--Duty-->
+		<value>/views/duty/tiles.xml</value>
 
 	</util:list>
 

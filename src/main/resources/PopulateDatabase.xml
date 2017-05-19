@@ -193,6 +193,10 @@
     <bean id="searhCache" class="domain.SearchCache">
         <property name="cacheValue" value="10"/>
     </bean>
+
+    <bean id="duty" class="domain.Duty">
+        <property name="dutyValue" value="40"/>
+    </bean>
     <bean id="admin1" class="domain.Administrator">
         <property name="name" value="admin"/>
         <property name="surname" value="admin sur"/>

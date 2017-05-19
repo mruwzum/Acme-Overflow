@@ -3,6 +3,8 @@ package controllers;
 
 import domain.Administrator;
 
+import domain.Duty;
+import domain.SearchCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -12,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.AdministratorService;
+import services.DutyService;
 
 import javax.validation.Valid;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 @Controller
@@ -27,6 +32,8 @@ public class AdministratorController extends AbstractController {
 
     @Autowired
     private AdministratorService administratorService;
+    @Autowired
+    private DutyService dutyService;
 
     //Constructors----------------------------------------------
 
@@ -127,6 +134,43 @@ public class AdministratorController extends AbstractController {
         result.addObject("message", message);
 
         return result;
+
+    }
+
+
+    @RequestMapping(value = "/editDuty", method = RequestMethod.GET)
+    public ModelAndView editDutyCache(){
+
+        ModelAndView res;
+        List<Duty> searchCaches =  new ArrayList<>(dutyService.findAll());
+        res = new ModelAndView("duty/edit");
+        res.addObject("duty", searchCaches.get(0));
+
+        return res;
+
+    }
+
+    @RequestMapping(value = "/changeDuty", method = RequestMethod.POST, params = "save")
+    public ModelAndView changeDuty(@Valid Duty searchCache){
+
+        ModelAndView res;
+//
+//        Authority authority = new Authority();
+//        authority.setAuthority("ADMIN");
+//
+//        if(otherService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
+
+        //TODO comprobar identidad de administrador antes de cambiar.
+        dutyService.save(searchCache);
+        res =  new ModelAndView("administrator/action-1");
+
+//        }else{
+//            res =  new ModelAndView("/welcome/index");
+//
+//        }
+
+        return res;
+
 
     }
 

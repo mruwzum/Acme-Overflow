@@ -129,10 +129,13 @@ public class SampleTest extends AbstractTest {
 	@Test
 	public void dsafsdfs() {
 
-      authenticate("user2");
-      User user = userService.findByPrincipal();
-      System.out.println(user.getAnswers());
-      unauthenticate();
+	authenticate("user1");
+
+	answerService.findAll();
+
+
+	authenticate(null);
+
 
 	}
 
