@@ -18,7 +18,7 @@ public abstract class Other extends Actor {
     private CreditCard creditCard;
 
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     public Collection<Answer> getAnswers() {
         return answers;
     }
@@ -27,7 +27,7 @@ public abstract class Other extends Actor {
         this.answers = answers;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     public Collection<Search> getSearches() {
         return searches;
     }
@@ -36,7 +36,7 @@ public abstract class Other extends Actor {
         this.searches = searches;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     public Collection<Comment> getComments() {
         return comments;
     }

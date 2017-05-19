@@ -75,7 +75,7 @@
 </display:table>
 
 
-<security:authorize access="isAuthenticated()">
+<security:authorize access="hasAnyRole('USER','TEACHER')">
     <div>
         <H5>
             <a href="answer/create.do?questionId=${questionId}"> <spring:message
