@@ -141,4 +141,12 @@ public class Webinar extends DomainEntity {
     public void setBills(Collection<Bill> bills) {
         this.bills = bills;
     }
+
+    @Override
+    public String toString() {
+        return
+                name + " - " +
+                        startDate +
+                        " [" + price + "] ";
+    }
 }

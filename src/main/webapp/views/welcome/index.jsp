@@ -69,7 +69,7 @@
             </a>
         </display:column>
     </security:authorize>
-    <security:authorize access="hasAnyRole('ADMIN','MODERATOR')">
+    <security:authorize access="hasRole('MODERATOR')">
         <display:column>
             <jstl:if test="${not row.banned}">
                 <a href="question/ban.do?questionId=${row.id}"> <spring:message

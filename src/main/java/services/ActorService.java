@@ -191,10 +191,10 @@ public class ActorService {
       aux.setBody(body);
       Collection<Folder> folders2 = recipient.getFolders();
 
-      Mezzage res1 = mezzageService.save(aux);
+
       for (Folder f : folders2) {
          if (f.getName().equals("Inbox")) {
-            f.getMezzages().add(res1);
+            f.getMezzages().add(aux);
          }
       }
 
@@ -205,10 +205,10 @@ public class ActorService {
 
       for (Folder f : folders) {
          if (f.getName().equals("Outbox")) {
-            f.getMezzages().add(res1);
+            f.getMezzages().add(aux);
          }
       }
-
+      Mezzage res1 = mezzageService.save(aux);
 
 //TODO quitar fors y hacer queris
 

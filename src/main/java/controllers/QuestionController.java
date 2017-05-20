@@ -214,10 +214,12 @@ public class QuestionController extends AbstractController {
 
 
         if (otherService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)) {
-            Collection<Answer> answers1 = question.getAnswers();
+           Set<Answer> answers1 = new HashSet<>();
+           answers1.addAll(question.getAnswers());
             result.addObject("answers", answers1);
         } else {
-            Collection<Answer> answers = questionService.notBannedAnswer(question);
+           Set<Answer> answers = new HashSet<>();
+           answers.addAll(questionService.notBannedAnswer(question));
             result.addObject("answers", answers);
         }
 
@@ -233,8 +235,8 @@ public class QuestionController extends AbstractController {
         ModelAndView result;
         Question question = questionService.findOne(questionId);
 
-        Collection<Answer> answers = questionService.notBannedAnswer(question);
-
+       Set<Answer> answers = new HashSet<>();
+       answers.addAll(questionService.notBannedAnswer(question));
         result = new ModelAndView("question/view");
         result.addObject("title", question.getTitle());
         result.addObject("summary", question.getSummary());

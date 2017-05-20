@@ -47,13 +47,13 @@
 
 
     <!-- Attributes -->
-    <security:authorize access="hasAnyRole('USER','TEACHER','MODERATOR')">
-        <display:column>
-            <a href="question/edit.do?questionId=${row.id}"> <spring:message
-                    code="general.edit" />
-            </a>
-        </display:column>
-    </security:authorize>
+    <%--<security:authorize access="hasAnyRole('USER','TEACHER','MODERATOR')">--%>
+    <%--<display:column>--%>
+    <%--<a href="answer/edit.do?answerId=${row.id}"> <spring:message--%>
+    <%--code="general.edit" />--%>
+    <%--</a>--%>
+    <%--</display:column>--%>
+    <%--</security:authorize>--%>
     <security:authorize access="hasAnyRole('ADMIN','MODERATOR')">
         <display:column>
             <jstl:if test="${not row.banned}">

@@ -83,7 +83,7 @@
 <display:table pagesize="5" class="displaytag" keepStatus="true"
                name="comments" requestURI="${requestURI}" id="row">
     <!-- Attributes -->
-    <security:authorize access="hasAnyRole('USER','TEACHER','MODERATOR')">
+    <security:authorize access="hasAnyRole('MODERATOR')">
         <display:column>
             <a href="comment/edit.do?commentId=${row.id}"> <spring:message
                     code="general.edit"/>

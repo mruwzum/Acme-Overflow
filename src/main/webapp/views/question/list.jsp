@@ -29,11 +29,11 @@
     <security:authorize access="isAnonymous()">
         <display:column>
             <a href="question/viewAn.do?questionId=${row.id}"> <spring:message
-                    code="general.view"/>
+                    code="question.view"/>
             </a>
         </display:column>
     </security:authorize>
-    <security:authorize access="hasRole('USER')">
+    <security:authorize access="hasAnyRole('USER','TEACHER')">
         <display:column>
             <a href="question/view.do?questionId=${row.id}"> <spring:message
                     code="general.view"/>
@@ -47,7 +47,7 @@
             </a>
         </display:column>
     </security:authorize>
-    <security:authorize access="hasAnyRole('ADMIN','MODERATOR')">
+    <security:authorize access="hasRole('MODERATOR')">
         <display:column>
             <jstl:if test="${not row.banned}">
                 <a href="question/ban.do?questionId=${row.id}"> <spring:message
