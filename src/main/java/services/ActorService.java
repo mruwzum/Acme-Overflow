@@ -191,15 +191,12 @@ public class ActorService {
       aux.setBody(body);
       Collection<Folder> folders2 = recipient.getFolders();
 
+      Mezzage res1 = mezzageService.save(aux);
       for (Folder f : folders2) {
          if (f.getName().equals("Inbox")) {
-            f.getMezzages().add(aux);
+            f.getMezzages().add(res1);
          }
       }
-
-
-      Mezzage copy = aux;
-      Mezzage res1 = mezzageService.save(aux);
 
 
       //Guardar en carpeta outbox de sender

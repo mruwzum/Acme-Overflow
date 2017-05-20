@@ -46,10 +46,10 @@
 </display:table>
 <security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">
     <div>
-        <H5>
+        <H3>
             <a href="mezzage/create.do"> <spring:message
                     code="message.send"/>
             </a>
-        </H5>
+        </H3>
     </div>
 </security:authorize>
