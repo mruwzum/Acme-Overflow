@@ -73,7 +73,8 @@ public class Message extends DomainEntity {
     public void setPriority(Priority priority) {
         this.priority = priority;
     }
-    @ManyToOne(optional = false, cascade = CascadeType.PERSIST)
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     public Folder getFolder() {
         return folder;
     }

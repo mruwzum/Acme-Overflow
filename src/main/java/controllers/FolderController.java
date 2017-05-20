@@ -3,6 +3,7 @@ package controllers;
 
 import domain.Folder;
 
+import domain.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.FolderService;
+import services.MessageService;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -25,6 +28,10 @@ public class FolderController extends AbstractController {
 
     @Autowired
     private FolderService folderService;
+   @Autowired
+   private ActorService actorService;
+   @Autowired
+   private MessageService messageService;
 
 
     //Constructors----------------------------------------------
@@ -58,28 +65,33 @@ public class FolderController extends AbstractController {
 
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ModelAndView foldersList() {
-
+    public ModelAndView list() {
         ModelAndView result;
-        Collection<Folder> folder;
-
-        folder = folderService.findAll();
+       Collection<Folder> folders = actorService.getFolders();
         result = new ModelAndView("folder/list");
-        result.addObject("folder", folder);
-        result.addObject("requestURI", "folder/list.do");
-
+       result.addObject("folders", folders);
         return result;
     }
+
+   @RequestMapping(value = "/view")
+   public ModelAndView insideFolder(@RequestParam int folderID) {
+      ModelAndView result;
+      Folder folder = folderService.findOne(folderID);
+      Boolean isTrashBox = folder.getName().equals("Trashbox");
+      Collection<Message> messages = folder.getMessages();
+      result = new ModelAndView("mensaje/list");
+      result.addObject("mensaje3", messages);
+      result.addObject("isTrashBox", isTrashBox);
+      return result;
+   }
 
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create() {
 
         ModelAndView result;
-
         Folder folder = folderService.create();
         result = createEditModelAndView(folder);
-
         return result;
 
     }
