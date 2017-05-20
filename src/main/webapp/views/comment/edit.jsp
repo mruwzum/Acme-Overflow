@@ -35,7 +35,7 @@
            value="<spring:message code="general.save" />"/>
 
 
-    <jstl:if test="\$\{comment.id != 0}">
+    <jstl:if test="${comment.id != 0}">
         <input type="submit" name="delete"
                value="<spring:message code="general.delete" />"
                onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
