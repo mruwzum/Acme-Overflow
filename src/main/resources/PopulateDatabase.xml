@@ -575,7 +575,7 @@
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountuser4"/>
         <property name="creditCard" ref="creditcard4"/>
-        <property name="banned" value="false"/>
+        <property name="banned" value="true"/>
         <property name="receivedMessages">
             <list>
                 <ref bean="message4"/>
@@ -1175,7 +1175,7 @@
     </bean>
     <bean id="question3" class="domain.Question">
         <property name="title" value="question3"/>
-        <property name="banned" value="false"/>
+        <property name="banned" value="true"/>
         <property name="summary" value="ddfdsafdsfasdfdsf"/>
         <property name="createdDate" value="2017/06/22"/>
         <property name="owner" ref="user3"/>
@@ -1337,7 +1337,7 @@
         <property name="owner" ref="teacher1"/>
     </bean>
     <bean id="answer5" class="domain.Answer">
-        <property name="banned" value="false"/>
+        <property name="banned" value="true"/>
         <property name="title" value="answ5"/>
         <property name="description" value="descrip5"/>
         <property name="likes" value="8765"/>
@@ -1353,7 +1353,7 @@
 
     </bean>
     <bean id="answer6" class="domain.Answer">
-        <property name="banned" value="false"/>
+        <property name="banned" value="true"/>
         <property name="title" value="answ6"/>
         <property name="description" value="descrip6"/>
         <property name="likes" value="8765"/>
