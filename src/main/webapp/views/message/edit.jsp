@@ -26,6 +26,8 @@
 
     <acme:textbox path="receiver" code="message.receiver"/>
     <br />
+    <acme:select path="receiver" code="message.receiver" items="${users}" itemLabel="name"/>
+    <br/>
 
     <acme:textbox path="subject" code="message.subject"/>
     <br />

@@ -3,6 +3,7 @@ package services;
 import domain.Actor;
 import domain.Folder;
 import domain.Message;
+import domain.Priority;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -14,6 +15,7 @@ import security.UserAccountService;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,6 +29,8 @@ public class ActorService {
     private UserAccountService userAccountService;
     @Autowired
     private FolderService folderService;
+   @Autowired
+   private MessageService messageService;
 
     // Supporting services -----------------------
 
@@ -114,6 +118,14 @@ public class ActorService {
         return res;
     }
 
+   public Actor findByName(String name) {
+      Assert.notNull(name);
+      Actor res = actorRepository.findByName(name);
+      return res;
+   }
+
+
+
     public Collection<Folder> getFolders() {
 
         Actor u;
@@ -159,4 +171,54 @@ public class ActorService {
         a.setFolders(folders);
         return message;
     }
+
+   public Message textMessage(String subject, String body, Actor recipient, Priority priority) {
+      Assert.notNull(subject, "El subject no existe");
+      Assert.notNull(body, "El body no existe");
+      Assert.notNull(recipient, "El actor no existe");
+      Actor u;
+      u = findByPrincipal();
+      Assert.notNull(u, "El actor no existe");
+      //Comprobaciones
+      List<Folder> auxFolder = new ArrayList<>(u.getFolders());
+      Message aux = messageService.create();
+      aux.setSender(u);
+      aux.setSubject(subject);
+      aux.setBody(body);
+      aux.setReceiver(recipient);
+      aux.setPriority(priority);
+      aux.setSendDate(new Date(System.currentTimeMillis() - 100));
+      aux.setBody(body);
+      aux.setFolder(auxFolder.get(0));
+      Message copy = aux;
+
+      Message res1 = messageService.save(aux);
+      Message res2 = messageService.save(copy);
+
+
+      //Guardar en carpeta outbox de sender
+
+      Collection<Folder> folders = u.getFolders();
+
+      for (Folder f : folders) {
+         if (f.getName().equals("Inbox")) {
+            f.getMessages().add(res1);
+         }
+      }
+
+
+      //Guardar en carpeta inbox de recipient
+
+
+      Collection<Folder> folders2 = recipient.getFolders();
+
+      for (Folder f : folders2) {
+         if (f.getName().equals("Outbox")) {
+            f.getMessages().add(res2);
+         }
+      }
+
+
+      return res1;
+   }
 }

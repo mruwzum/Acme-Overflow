@@ -10,7 +10,7 @@
           uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
+<security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">
     <div>
         <H5>
             <a href="message/create.do"> <spring:message
@@ -27,25 +27,30 @@
 
     <!-- Attributes -->
 
-    <security:authorize access="permitAll">
+    <security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">
         <display:column>
-            <a href="message/edit.do?messageId=${row.id}"> <spring:message
-                    code="general.edit" />
+            <a href="message/view.do?messageId=${row.id}"> <spring:message
+                    code="general.view"/>
+            </a>
+        </display:column>
+        <display:column>
+            <a href="message/delete.do?messageId=${row}"> <spring:message
+                    code="general.delete"/>
             </a>
         </display:column>
     </security:authorize>
 
-    <spring:message code="message.subject" var="title" />
-    <display:column property="subject" title="${title}" sortable="true" />
-    <spring:message code="message.body" var="description" />
-    <display:column property="body" title="${description}" sortable="true" />
-    <spring:message code="message.sendDate" var="originAddress" />
-    <display:column property="sendDate" title="${originAddress}" sortable="true" />
-    <spring:message code="message.sender" var="destinationAddress" />
-    <display:column property="sender" title="${destinationAddress}" sortable="true" />
-    <spring:message code="message.receiver" var="keyword" />
-    <display:column property="receiver" title="${keyword}" sortable="true" />
-    <spring:message code="message.folder" var="keyword" />
-    <display:column property="folder" title="${keyword}" sortable="true" />
+    <spring:message code="message.subject" var="subject"/>
+    <display:column property="subject" title="${subject}" sortable="true"/>
+    <spring:message code="message.body" var="body"/>
+    <display:column property="body" title="${body}" sortable="true"/>
+    <spring:message code="message.sendDate" var="sendDate"/>
+    <display:column property="sendDate" title="${sendDate}" sortable="true"/>
+    <spring:message code="message.sender" var="sender"/>
+    <display:column property="sender" title="${sender}" sortable="true"/>
+    <spring:message code="message.receiver" var="receiver"/>
+    <display:column property="receiver" title="${receiver}" sortable="true"/>
+    <spring:message code="message.priority" var="priority"/>
+    <display:column property="priority" title="${priority}" sortable="true"/>
 
 </display:table>

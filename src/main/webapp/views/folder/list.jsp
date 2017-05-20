@@ -10,7 +10,7 @@
           uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
+<security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">
     <div>
         <H5>
             <a href="folder/create.do"> <spring:message
@@ -27,10 +27,15 @@
 
     <!-- Attributes -->
 
-    <security:authorize access="permitAll">
+    <security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">
         <display:column>
             <a href="folder/edit.do?folderId=${row.id}"> <spring:message
                     code="general.edit" />
+            </a>
+        </display:column>
+        <display:column>
+            <a href="folder/view.do?folderId=${row.id}"> <spring:message
+                    code="general.view"/>
             </a>
         </display:column>
     </security:authorize>

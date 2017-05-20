@@ -44,4 +44,9 @@ public class Teacher extends Other {
     public void setIBAN(String IBAN) {
         this.IBAN = IBAN;
     }
+
+   @Override
+   public String toString() {
+      return super.getName() + " " + super.getSurname();
+   }
 }

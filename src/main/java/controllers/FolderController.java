@@ -74,13 +74,13 @@ public class FolderController extends AbstractController {
 
 
     @RequestMapping(value = "/view")
-    public ModelAndView insideFolder(@RequestParam int folderID) {
+    public ModelAndView insideFolder(@RequestParam int folderId) {
         ModelAndView result;
-        Folder folder = folderService.findOne(folderID);
+        Folder folder = folderService.findOne(folderId);
         Boolean isTrashBox = folder.getName().equals("Trashbox");
         Collection<Message> messages = folder.getMessages();
-        result = new ModelAndView("mensaje/list");
-        result.addObject("mensaje3", messages);
+        result = new ModelAndView("message/list");
+        result.addObject("messages1", messages);
         result.addObject("isTrashBox", isTrashBox);
         return result;
     }
@@ -120,42 +120,43 @@ public class FolderController extends AbstractController {
             result = createEditModelAndView(folder);
         } else {
             try {
+                folder.setOwner(actorService.findByPrincipal());
                 folderService.save(folder);
                 result = new ModelAndView("redirect:list.do");
             } catch (Throwable oops) {
-                result = createEditModelAndView(folder, "folder.commit.error");
+                result = createEditModelAndView(folder, "general.commit.error");
             }
         }
         return result;
     }
 
-    //    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-//    public ModelAndView delete(@Valid int folderId){
-//        ModelAndView result;
-//        try{
-//            Folder folder = folderService.findOne(folderId);
-//            folderService.delete(folder);
-//            result=new ModelAndView("redirect:list.do");
-//        }catch(Throwable oops){
-//            Folder folder = folderService.findOne(folderId);
-//            result= createEditModelAndView(folder, "folder.commit.error");
-//        }
-//
-//        return result;
-//    }
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public ModelAndView delete2(@RequestParam int folderId) {
+    @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+    public ModelAndView delete(@Valid Folder folder) {
         ModelAndView result;
         try {
-            Folder folder = folderService.findOne(folderId);
+
             folderService.delete(folder);
             result = new ModelAndView("redirect:list.do");
         } catch (Throwable oops) {
-            Folder folder = folderService.findOne(folderId);
-            result = createEditModelAndView(folder, "folder.commit.error");
+
+            result = createEditModelAndView(folder, "general.commit.error");
         }
 
         return result;
     }
+//    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+//    public ModelAndView delete2(@RequestParam int folderId) {
+//        ModelAndView result;
+//        try {
+//            Folder folder = folderService.findOne(folderId);
+//            folderService.delete(folder);
+//            result = new ModelAndView("redirect:list.do");
+//        } catch (Throwable oops) {
+//            Folder folder = folderService.findOne(folderId);
+//            result = createEditModelAndView(folder, "folder.commit.error");
+//        }
+//
+//        return result;
+//    }
 
 }

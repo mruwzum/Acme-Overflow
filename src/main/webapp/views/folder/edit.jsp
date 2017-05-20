@@ -24,7 +24,7 @@
 
     <acme:submit name="save" code="general.save"/>
 
-    <jstl:if test="\$\{folder.id != 0}">
+    <jstl:if test="${id!=0}">
         <input type="submit" name="delete"
                value="<spring:message code="general.delete" />"
                onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;

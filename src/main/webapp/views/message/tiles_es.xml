@@ -17,13 +17,17 @@
 <tiles-definitions>
 
 	<definition name="message/edit" extends="master.page">
-		<put-attribute name="title" value="message: Editar" />
+		<put-attribute name="title" value="Mensaje: Editar"/>
 		<put-attribute name="body" value="/views/message/edit.jsp" />
 	</definition>
 
 	<definition name="message/list" extends="master.page">
-		<put-attribute name="title" value="message: Listar" />
+		<put-attribute name="title" value="Mensaje: Listado"/>
 		<put-attribute name="body" value="/views/message/list.jsp" />
 	</definition>
-	
+	<definition name="message/view" extends="master.page">
+		<put-attribute name="title" value="Mensaje: "/>
+		<put-attribute name="body" value="/views/message/view.jsp"/>
+	</definition>
+
 </tiles-definitions>
