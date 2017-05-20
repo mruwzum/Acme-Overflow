@@ -21,7 +21,7 @@
 </security:authorize>
 
 <!-- Listing grid -->
-<display:table pagesize="5" class="displaytag" keepStatus="true"
+<display:table pagesize="200" class="displaytag" keepStatus="true"
                name="mezzages" requestURI="${requestURI}" id="row">
 
 

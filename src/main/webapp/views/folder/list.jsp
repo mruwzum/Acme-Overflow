@@ -44,3 +44,12 @@
     <display:column property="name" title="${title}" sortable="true" />
 
 </display:table>
+<security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">
+    <div>
+        <H5>
+            <a href="mezzage/create.do"> <spring:message
+                    code="message.send"/>
+            </a>
+        </H5>
+    </div>
+</security:authorize>
