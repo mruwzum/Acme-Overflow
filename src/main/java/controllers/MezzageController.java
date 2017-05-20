@@ -182,10 +182,10 @@ public class MezzageController extends AbstractController {
 
 
     @RequestMapping(value = "/view", method = RequestMethod.GET)
-    public ModelAndView messageView(@RequestParam int messageId) {
+    public ModelAndView messageView(@RequestParam int mezzageId) {
 
         ModelAndView result;
-        Mezzage mezzage = mezzageService.findOne(messageId);
+       Mezzage mezzage = mezzageService.findOne(mezzageId);
 
         result = new ModelAndView("mezzage/view");
         result.addObject("subject", mezzage.getSubject());
