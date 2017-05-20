@@ -63,6 +63,8 @@
 		<value>/views/bill/messages</value>
 		<!--Duty-->
 		<value>/views/duty/messages</value>
+		<!--Duty-->
+		<value>/views/evaluation-question/messages</value>
 	</util:list>
 
 </beans>

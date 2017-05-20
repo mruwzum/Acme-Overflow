@@ -101,6 +101,12 @@
 		<security:intercept-url pattern="/category/create.do" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/category/delete.do" access="hasRole('ADMIN')"/>
 
+		<!--Allow Admin to manage evaluation question-->
+		<security:intercept-url pattern="/evaluationQuestion/list.do" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/evaluationQuestion/edit.do" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/evaluationQuestion/create.do" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/evaluationQuestion/delete.do" access="hasRole('ADMIN')"/>
+
 		<!--Allow Admin to change de search cache-->
 		<security:intercept-url pattern="/search/editCache.do" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/search/changeCache.do" access="hasRole('ADMIN')"/>
