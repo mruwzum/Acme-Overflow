@@ -1,6 +1,8 @@
 package services;
 
 import domain.Teacher;
+import domain.User;
+import domain.Webinar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -89,6 +91,54 @@ public class TeacherService {
 
       return result;
    }
+
+
+
+   public Double averageNumberOfUserInMyWebinar(Teacher t){
+
+       Teacher teacher = findByPrincipal();
+       Assert.notNull(teacher);
+
+       return teacherRepository.averageNumberOfUserInMyWebinar(t);
+
+   }
+
+    public int maxNumberOfUserInMyWebinar(Teacher t){
+
+        Teacher teacher = findByPrincipal();
+        Assert.notNull(teacher);
+
+        return teacherRepository.maxNumberOfUserInMyWebinar(t);
+
+    }
+
+    public int minNumberOfUserInMyWebinar(Teacher t){
+
+        Teacher teacher = findByPrincipal();
+        Assert.notNull(teacher);
+
+        return teacherRepository.minNumberOfUserInMyWebinar(t);
+
+    }
+
+    public Collection<Webinar> webinarSortedByNumberOfUsers(Teacher t){
+
+        Teacher teacher = findByPrincipal();
+        Assert.notNull(teacher);
+
+        return teacherRepository.webinarSortedByNumberOfUsers(t);
+
+    }
+
+    public Collection<User> userRegisteredInMyWebinars(Teacher t){
+
+        Teacher teacher = findByPrincipal();
+        Assert.notNull(teacher);
+
+        return teacherRepository.userRegisteredInMyWebinars(t);
+
+    }
+
 }
 
 

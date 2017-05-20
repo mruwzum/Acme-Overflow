@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import services.AdministratorService;
+import services.TeacherService;
 
 import java.util.Collection;
 import java.util.Map;
@@ -21,6 +22,8 @@ public class DashboardController extends AbstractController {
 
     @Autowired
     private AdministratorService administratorService;
+    @Autowired
+    private TeacherService teacherService;
 
 
     public DashboardController() {
@@ -100,6 +103,32 @@ public class DashboardController extends AbstractController {
         res.addObject("q26",q26);
 
 
+
+
+        return res;
+    }
+
+
+    @RequestMapping(value = "/dashboardT")
+    public ModelAndView dashboardT() {
+        ModelAndView res;
+
+
+
+        Double q1 = teacherService.averageNumberOfUserInMyWebinar(teacherService.findByPrincipal());
+        int q2 = teacherService.maxNumberOfUserInMyWebinar(teacherService.findByPrincipal());
+        int q3 = teacherService.minNumberOfUserInMyWebinar(teacherService.findByPrincipal());
+        Collection<Webinar> q4 = teacherService.webinarSortedByNumberOfUsers(teacherService.findByPrincipal());
+        Collection<User> q5 = teacherService.userRegisteredInMyWebinars(teacherService.findByPrincipal());
+
+
+        res =  new ModelAndView("teacher/dashboard");
+
+        res.addObject("q1",q1);
+        res.addObject("q2",q2);
+        res.addObject("q3",q3);
+        res.addObject("q4",q4);
+        res.addObject("q5",q5);
 
 
         return res;

@@ -85,7 +85,9 @@
 			</ul>
 		</li>
 
-			</security:authorize>
+			<li><a href="admin/dashboardT.do"><spring:message code="master.page.dashboard" /> </a></li>
+
+		</security:authorize>
 
 
 			<%--****************************************MODERATOR****************************************--%>
