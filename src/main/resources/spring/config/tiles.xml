@@ -63,6 +63,8 @@
 		<value>/views/duty/tiles.xml</value>
 		<!--Bill-->
 		<value>/views/bill/tiles.xml</value>
+		<!--Evaluation Question-->
+		<value>/views/evaluation-question/tiles.xml</value>
 
 	</util:list>
 
