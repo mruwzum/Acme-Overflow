@@ -67,6 +67,17 @@
             </jstl:if>
         </display:column>
     </security:authorize>
+    <security:authorize access="hasAnyRole('USER')">
+        <spring:message code="anwer.rate" var="rate"/>
+        <display:column title="${rate}">
+            <a href="answer/ratenegative.do?answerId=${row.id}"> <spring:message
+                    code="user.ratenegative"/>
+            </a>
+
+            <a href="answer/ratepositive.do?answerId=${row.id}"> <spring:message
+                code="user.ratepositive"/>
+        </display:column>
+    </security:authorize>
     <spring:message code="answer.title" var="title"/>
     <display:column property="title" title="${title}" sortable="true"/>
     <spring:message code="answer.description" var="description"/>

@@ -83,6 +83,9 @@
 		<security:intercept-url pattern="/answer/unban.do" access="hasRole('MODERATOR')"/>
 		<security:intercept-url pattern="/question/unban.do" access="hasRole('MODERATOR')"/>
 
+		<security:intercept-url pattern="/answer/ratenegative.do" access="hasRole('USER')"/>
+		<security:intercept-url pattern="/answer/ratepositive.do" access="hasRole('USER')"/>
+
 		<!--Allow teacher to edit the profile-->
 		<security:intercept-url pattern="/teacher/editp.do" access="hasRole('TEACHER')"/>
 		<security:intercept-url pattern="/teacher/edit.do" access="hasRole('TEACHER')"/>

@@ -87,6 +87,7 @@ public class AnswerController extends AbstractController {
         ModelAndView result;
         Collection<Answer> answers;
 
+
         Collection<Answer> res = answerService.all();
         result = new ModelAndView("answer/list");
         result.addObject("answers", res);
@@ -209,5 +210,27 @@ public class AnswerController extends AbstractController {
 
         return result;
     }
+
+   @RequestMapping(value = "ratepositive", method = RequestMethod.GET)
+   public ModelAndView ratepositive(@RequestParam int answerId) {
+      ModelAndView result;
+      Answer answer = answerService.findOne(answerId);
+      int likes = answer.getLikes();
+      answer.setLikes(likes + 1);
+      answerService.save(answer);
+      result = new ModelAndView("user/success");
+      return result;
+   }
+
+   @RequestMapping(value = "ratenegative", method = RequestMethod.GET)
+   public ModelAndView ratenegative(@RequestParam int answerId) {
+      ModelAndView result;
+      Answer answer = answerService.findOne(answerId);
+      int dislikes = answer.getDislikes();
+      answer.setDislikes(dislikes + 1);
+      answerService.save(answer);
+      result = new ModelAndView("user/success");
+      return result;
+   }
 
 }

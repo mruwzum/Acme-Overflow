@@ -214,6 +214,7 @@ public class QuestionController extends AbstractController {
 
 
         if (otherService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)) {
+
            Set<Answer> answers1 = new HashSet<>();
            answers1.addAll(question.getAnswers());
             result.addObject("answers", answers1);
@@ -235,8 +236,8 @@ public class QuestionController extends AbstractController {
         ModelAndView result;
         Question question = questionService.findOne(questionId);
 
-       Set<Answer> answers = new HashSet<>();
-       answers.addAll(questionService.notBannedAnswer(question));
+        Set<Answer> answers = new HashSet<>(questionService.notBannedAnswer(question));
+
         result = new ModelAndView("question/view");
         result.addObject("title", question.getTitle());
         result.addObject("summary", question.getSummary());
