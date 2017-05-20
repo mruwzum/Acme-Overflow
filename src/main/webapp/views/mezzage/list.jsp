@@ -13,7 +13,7 @@
 <security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">
     <div>
         <H5>
-            <a href="message/create.do"> <spring:message
+            <a href="mezzage/create.do"> <spring:message
                     code="general.create" />
             </a>
         </H5>
@@ -22,35 +22,35 @@
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-               name="messages1" requestURI="${requestURI}" id="row">
+               name="mezzages" requestURI="${requestURI}" id="row">
 
 
     <!-- Attributes -->
 
     <security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">
         <display:column>
-            <a href="message/view.do?messageId=${row.id}"> <spring:message
+            <a href="mezzage/view.do?mezzageId=${row.id}"> <spring:message
                     code="general.view"/>
             </a>
         </display:column>
         <display:column>
-            <a href="message/delete.do?messageId=${row}"> <spring:message
+            <a href="mezzage/delete.do?mezzageId=${row}"> <spring:message
                     code="general.delete"/>
             </a>
         </display:column>
     </security:authorize>
 
-    <spring:message code="message.subject" var="subject"/>
+    <spring:message code="mezzage.subject" var="subject"/>
     <display:column property="subject" title="${subject}" sortable="true"/>
-    <spring:message code="message.body" var="body"/>
+    <spring:message code="mezzage.body" var="body"/>
     <display:column property="body" title="${body}" sortable="true"/>
-    <spring:message code="message.sendDate" var="sendDate"/>
+    <spring:message code="mezzage.sendDate" var="sendDate"/>
     <display:column property="sendDate" title="${sendDate}" sortable="true"/>
-    <spring:message code="message.sender" var="sender"/>
+    <spring:message code="mezzage.sender" var="sender"/>
     <display:column property="sender" title="${sender}" sortable="true"/>
-    <spring:message code="message.receiver" var="receiver"/>
+    <spring:message code="mezzage.receiver" var="receiver"/>
     <display:column property="receiver" title="${receiver}" sortable="true"/>
-    <spring:message code="message.priority" var="priority"/>
+    <spring:message code="mezzage.priority" var="priority"/>
     <display:column property="priority" title="${priority}" sortable="true"/>
 
 </display:table>

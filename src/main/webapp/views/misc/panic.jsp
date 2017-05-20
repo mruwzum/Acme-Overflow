@@ -21,7 +21,7 @@
 
 <p><spring:message code="panic.text"/> <code>${name}</code>.</p>
 
-<h2><spring:message code="panic.message"/></h2>
+<h2><spring:message code="panic.mezzage"/></h2>
 
 <p style="font-family: 'Courier New'">
     ${exception}

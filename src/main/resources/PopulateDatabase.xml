@@ -203,11 +203,11 @@
         <property name="email" value="admin@gmail.com"/>
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountadministrator1"/>
-        <property name="receivedMessages">
+        <property name="receivedMezzages">
             <list>
             </list>
         </property>
-        <property name="sendedMessages">
+        <property name="sendedMezzages">
             <list>
             </list>
         </property>
@@ -226,11 +226,11 @@
         <property name="email" value="admin2@gmail.com"/>
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountadministrator2"/>
-        <property name="receivedMessages">
+        <property name="receivedMezzages">
             <list>
             </list>
         </property>
-        <property name="sendedMessages">
+        <property name="sendedMezzages">
             <list>
             </list>
         </property>
@@ -249,13 +249,13 @@
         <property name="email" value="admin3@gmail.com"/>
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountadministrator3"/>
-        <property name="receivedMessages">
+        <property name="receivedMezzages">
             <list>
             </list>
         </property>
-        <property name="sendedMessages">
+        <property name="sendedMezzages">
             <list>
-                <ref bean="message4"/>
+                <ref bean="mezzage4"/>
             </list>
         </property>
         <property name="folders">
@@ -441,14 +441,14 @@
         <property name="userAccount" ref="userAccountUser1"/>
         <property name="creditCard" ref="creditcard1"/>
         <property name="banned" value="false"/>
-        <property name="receivedMessages">
+        <property name="receivedMezzages">
             <list>
-                <ref bean="message2"/>
+                <ref bean="mezzage2"/>
             </list>
         </property>
-        <property name="sendedMessages">
+        <property name="sendedMezzages">
             <list>
-                <ref bean="message"/>
+                <ref bean="mezzage"/>
             </list>
         </property>
 
@@ -487,14 +487,14 @@
         <property name="userAccount" ref="userAccountuser2"/>
         <property name="creditCard" ref="creditcard2"/>
         <property name="banned" value="false"/>
-        <property name="receivedMessages">
+        <property name="receivedMezzages">
             <list>
-                <ref bean="message"/>
+                <ref bean="mezzage"/>
             </list>
         </property>
-        <property name="sendedMessages">
+        <property name="sendedMezzages">
             <list>
-                <ref bean="message2"/>
+                <ref bean="mezzage2"/>
             </list>
         </property>
 
@@ -532,14 +532,14 @@
         <property name="userAccount" ref="userAccountuser3"/>
         <property name="creditCard" ref="creditcard3"/>
         <property name="banned" value="false"/>
-        <property name="receivedMessages">
+        <property name="receivedMezzages">
             <list>
-                <ref bean="message3"/>
+                <ref bean="mezzage3"/>
             </list>
         </property>
-        <property name="sendedMessages">
+        <property name="sendedMezzages">
             <list>
-                <ref bean="message4"/>
+                <ref bean="mezzage4"/>
             </list>
         </property>
 
@@ -576,14 +576,14 @@
         <property name="userAccount" ref="userAccountuser4"/>
         <property name="creditCard" ref="creditcard4"/>
         <property name="banned" value="true"/>
-        <property name="receivedMessages">
+        <property name="receivedMezzages">
             <list>
-                <ref bean="message4"/>
+                <ref bean="mezzage4"/>
             </list>
         </property>
-        <property name="sendedMessages">
+        <property name="sendedMezzages">
             <list>
-                <ref bean="message3"/>
+                <ref bean="mezzage3"/>
             </list>
         </property>
 
@@ -622,14 +622,14 @@
         <property name="userAccount" ref="userAccountteacher1"/>
         <property name="creditCard" ref="creditcard5"/>
         <property name="IBAN" value="ES8023100001180000012345"/>
-        <property name="receivedMessages">
+        <property name="receivedMezzages">
             <list>
-                <ref bean="message5"/>
+                <ref bean="mezzage5"/>
             </list>
         </property>
-        <property name="sendedMessages">
+        <property name="sendedMezzages">
             <list>
-                <ref bean="message6"/>
+                <ref bean="mezzage6"/>
             </list>
         </property>
 
@@ -706,14 +706,14 @@
         <property name="userAccount" ref="userAccountteacher2"/>
         <property name="creditCard" ref="creditcard6"/>
         <property name="IBAN" value="ES8023145623220000012345"/>
-        <property name="receivedMessages">
+        <property name="receivedMezzages">
             <list>
-                <ref bean="message6"/>
+                <ref bean="mezzage6"/>
             </list>
         </property>
-        <property name="sendedMessages">
+        <property name="sendedMezzages">
             <list>
-                <ref bean="message5"/>
+                <ref bean="mezzage5"/>
             </list>
         </property>
 
@@ -754,14 +754,14 @@
         <property name="userAccount" ref="userAccountteacher3"/>
         <property name="creditCard" ref="creditcard7"/>
         <property name="IBAN" value="ES8023145623221845612345"/>
-        <property name="receivedMessages">
+        <property name="receivedMezzages">
             <list>
-                <ref bean="message7"/>
+                <ref bean="mezzage7"/>
             </list>
         </property>
-        <property name="sendedMessages">
+        <property name="sendedMezzages">
             <list>
-                <ref bean="message8"/>
+                <ref bean="mezzage8"/>
             </list>
         </property>
 
@@ -789,14 +789,14 @@
         <property name="userAccount" ref="userAccountteacher4"/>
         <property name="creditCard" ref="creditcard8"/>
         <property name="IBAN" value="ES8023145665743879010045"/>
-        <property name="receivedMessages">
+        <property name="receivedMezzages">
             <list>
-                <ref bean="message8"/>
+                <ref bean="mezzage8"/>
             </list>
         </property>
-        <property name="sendedMessages">
+        <property name="sendedMezzages">
             <list>
-                <ref bean="message7"/>
+                <ref bean="mezzage7"/>
             </list>
         </property>
 
@@ -1787,8 +1787,8 @@
     <!--/folders-->
 
 
-    <!-- Message -->
-    <bean id="message" class="domain.Message">
+    <!-- Mezzagesage -->
+    <bean id="mezzage" class="domain.Mezzage">
         <property name="sender" ref="user1"/>
         <property name="receiver" ref="user2"/>
         <property name="sendDate" value="2017/04/23 23:12:00"/>
@@ -1797,7 +1797,7 @@
         <property name="folder" ref="inbox2"/>
         <property name="priority" value="HIGH"/>
     </bean>
-    <bean id="message2" class="domain.Message">
+    <bean id="mezzage2" class="domain.Mezzage">
         <property name="sender" ref="user2"/>
         <property name="receiver" ref="user1"/>
         <property name="sendDate" value="2017/04/24 23:12:00"/>
@@ -1806,7 +1806,7 @@
         <property name="folder" ref="inbox1"/>
         <property name="priority" value="MEDIUM"/>
     </bean>
-    <bean id="message3" class="domain.Message">
+    <bean id="mezzage3" class="domain.Mezzage">
         <property name="sender" ref="user3"/>
         <property name="receiver" ref="user4"/>
         <property name="sendDate" value="2017/02/23 23:12:00"/>
@@ -1815,7 +1815,7 @@
         <property name="folder" ref="inbox4"/>
         <property name="priority" value="LOW"/>
     </bean>
-    <bean id="message4" class="domain.Message">
+    <bean id="mezzage4" class="domain.Mezzage">
         <property name="sender" ref="user4"/>
         <property name="receiver" ref="user3"/>
         <property name="sendDate" value="2017/04/23 23:12:00"/>
@@ -1824,7 +1824,7 @@
         <property name="folder" ref="inbox3"/>
         <property name="priority" value="HIGH"/>
     </bean>
-    <bean id="message5" class="domain.Message">
+    <bean id="mezzage5" class="domain.Mezzage">
         <property name="sender" ref="teacher1"/>
         <property name="receiver" ref="teacher2"/>
         <property name="sendDate" value="2017/04/23 23:12:00"/>
@@ -1833,7 +1833,7 @@
         <property name="folder" ref="inbox6"/>
         <property name="priority" value="MEDIUM"/>
     </bean>
-    <bean id="message6" class="domain.Message">
+    <bean id="mezzage6" class="domain.Mezzage">
         <property name="sender" ref="teacher2"/>
         <property name="receiver" ref="teacher1"/>
         <property name="sendDate" value="2017/04/24 23:12:00"/>
@@ -1842,7 +1842,7 @@
         <property name="folder" ref="inbox5"/>
         <property name="priority" value="HIGH"/>
     </bean>
-    <bean id="message7" class="domain.Message">
+    <bean id="mezzage7" class="domain.Mezzage">
         <property name="sender" ref="teacher3"/>
         <property name="receiver" ref="teacher4"/>
         <property name="sendDate" value="2017/02/23 23:12:00"/>
@@ -1851,7 +1851,7 @@
         <property name="folder" ref="inbox8"/>
         <property name="priority" value="HIGH"/>
     </bean>
-    <bean id="message8" class="domain.Message">
+    <bean id="mezzage8" class="domain.Mezzage">
         <property name="sender" ref="teacher4"/>
         <property name="receiver" ref="teacher3"/>
         <property name="sendDate" value="2017/04/23 23:12:00"/>
@@ -1860,7 +1860,7 @@
         <property name="folder" ref="inbox7"/>
         <property name="priority" value="LOW"/>
     </bean>
-    <!-- /Message -->
+    <!--/Mezzagesage -->
 
     <!-- Search -->
 
@@ -1911,11 +1911,11 @@
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountModerator1"/>
 
-        <property name="receivedMessages">
+        <property name="receivedMezzages">
             <list>
             </list>
         </property>
-        <property name="sendedMessages">
+        <property name="sendedMezzages">
             <list>
             </list>
         </property>
@@ -1952,11 +1952,11 @@
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountModerator2"/>
 
-        <property name="receivedMessages">
+        <property name="receivedMezzages">
             <list>
             </list>
         </property>
-        <property name="sendedMessages">
+        <property name="sendedMezzages">
             <list>
             </list>
         </property>

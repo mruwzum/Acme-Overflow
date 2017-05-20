@@ -57,9 +57,9 @@
 		<!-- Learning Material -->
 		<bean class="converters.LearningMaterialToStringConverter"/>
 		<bean class="converters.StringToLearningMaterialConverter"/>
-		<!-- Message -->
-		<bean class="converters.MessageToStringConverter"/>
-		<bean class="converters.StringToMessageConverter"/>
+		<!-- Mezzagesage -->
+		<bean class="converters.MezzageToStringConverter"/>
+		<bean class="converters.StringToMezzageConverter"/>
 		<!-- Moderator -->
 		<bean class="converters.ModeratorToStringConverter"/>
 		<bean class="converters.StringToModeratorConverter"/>

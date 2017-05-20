@@ -14,7 +14,7 @@ import java.util.Collection;
 public class Folder extends DomainEntity {
 
     private String name;
-    private Collection<Message> messages;
+   private Collection<Mezzage> mezzages;
     private Actor owner;
 
 
@@ -29,12 +29,12 @@ public class Folder extends DomainEntity {
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "folder")
-    public Collection<Message> getMessages() {
-        return messages;
+    public Collection<Mezzage> getMezzages() {
+       return mezzages;
     }
 
-    public void setMessages(Collection<Message> messages) {
-        this.messages = messages;
+   public void setMezzages(Collection<Mezzage> mezzages) {
+      this.mezzages = mezzages;
     }
 
 

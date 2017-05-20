@@ -117,12 +117,12 @@
 		<security:intercept-url pattern="/folder/edit.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
 		<security:intercept-url pattern="/folder/create.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
 		<security:intercept-url pattern="/folder/view.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
-		<security:intercept-url pattern="/message/view.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
-		<security:intercept-url pattern="/message/create.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
+		<security:intercept-url pattern="/mezzage/view.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
+		<security:intercept-url pattern="/mezzage/create.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
 
-		<security:intercept-url pattern="/message/edit.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
-		<security:intercept-url pattern="/message/send.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
-		<security:intercept-url pattern="/message/delete.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
+		<security:intercept-url pattern="/mezzage/edit.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
+		<security:intercept-url pattern="/mezzage/send.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
+		<security:intercept-url pattern="/mezzage/delete.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
 
 		<!--/Messages-->
 

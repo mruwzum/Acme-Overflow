@@ -1,10 +1,11 @@
 package services;
 
-import domain.Message;
+import domain.Mezzage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import repositories.MezzageRepository;
 
 import java.util.Collection;
 
@@ -15,16 +16,16 @@ import java.util.Collection;
 
 @Service
 @Transactional
-public class MessageService {
+public class MezzageService {
 
     // Constructors--------------------------------------------------------------------------------------
 
     @Autowired
-    private repositories.MessageRepository MessageRepository;
+    private MezzageRepository MezzageRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    public MessageService() {
+   public MezzageService() {
         super();
     }
 
@@ -33,34 +34,34 @@ public class MessageService {
 
     // Simple CRUD method --------------------------------------------------------------------------------
 
-    public Message create() {
-        Message res = new Message();
+   public Mezzage create() {
+      Mezzage res = new Mezzage();
         return res;
     }
 
-    public Collection<Message> findAll() {
+   public Collection<Mezzage> findAll() {
 
-        Collection<Message> res = MessageRepository.findAll();
+      Collection<Mezzage> res = MezzageRepository.findAll();
         Assert.notNull(res);
         return res;
     }
 
-    public Message findOne(int Message) {
-        domain.Message res = MessageRepository.findOne(Message);
+   public Mezzage findOne(int mezzageId) {
+      Mezzage res = MezzageRepository.findOne(mezzageId);
         Assert.notNull(res);
         return res;
     }
 
-    public Message save(Message a) {
+   public Mezzage save(Mezzage a) {
         Assert.notNull(a);
-        Message res = MessageRepository.save(a);
+      Mezzage res = MezzageRepository.save(a);
         return res;
     }
 
-    public void delete(Message a) {
+   public void delete(Mezzage a) {
         Assert.notNull(a);
         Assert.isTrue(a.getId() != 0);
-        MessageRepository.delete(a);
+      MezzageRepository.delete(a);
     }
 
     // Other business methods -------------------------------------------------------------------------------

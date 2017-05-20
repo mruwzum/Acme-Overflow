@@ -20,8 +20,8 @@ public abstract class Actor extends DomainEntity {
     private String surname;
     private String phoneNumber;
     private String email;
-    private Collection<Message> receivedMessages;
-    private Collection<Message> sendedMessages;
+   private Collection<Mezzage> receivedMezzages;
+   private Collection<Mezzage> sendedMezzages;
     private Collection<Folder> folders;
 
     private UserAccount userAccount;
@@ -82,21 +82,21 @@ public abstract class Actor extends DomainEntity {
     }
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receiver")
-    public Collection<Message> getReceivedMessages() {
-        return receivedMessages;
+    public Collection<Mezzage> getReceivedMezzages() {
+       return receivedMezzages;
     }
 
-    public void setReceivedMessages(Collection<Message> receivedMessages) {
-        this.receivedMessages = receivedMessages;
+   public void setReceivedMezzages(Collection<Mezzage> receivedMezzages) {
+      this.receivedMezzages = receivedMezzages;
     }
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "sender")
-    public Collection<Message> getSendedMessages() {
-        return sendedMessages;
+    public Collection<Mezzage> getSendedMezzages() {
+       return sendedMezzages;
     }
 
-    public void setSendedMessages(Collection<Message> sendedMessages) {
-        this.sendedMessages = sendedMessages;
+   public void setSendedMezzages(Collection<Mezzage> sendedMezzages) {
+      this.sendedMezzages = sendedMezzages;
     }
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")

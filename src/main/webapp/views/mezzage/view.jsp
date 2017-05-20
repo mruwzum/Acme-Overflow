@@ -18,28 +18,28 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net" %>
 
 
-<spring:message code="message.subject" var="subject1"/>
+<spring:message code="mezzage.subject" var="subject1"/>
 <h3><jstl:out value="${subject1}"/></h3>
 <jstl:out value="${subject}"/>
 
 
-<spring:message code="message.body" var="body1"/>
+<spring:message code="mezzage.body" var="body1"/>
 <h3><jstl:out value="${body1}"/></h3>
 <jstl:out value="${body}"/>
 
 
-<spring:message code="message.sendDate" var="sendDate1"/>
+<spring:message code="mezzage.sendDate" var="sendDate1"/>
 <h3><jstl:out value="${sendDate1}"/></h3>
 <jstl:out value="${sendDate}"/>
 
-<spring:message code="message.sender" var="sender1"/>
+<spring:message code="mezzage.sender" var="sender1"/>
 <h3><jstl:out value="${sender1}"/></h3>
 <jstl:out value="${sender}"/>
 
 
-<spring:message code="message.priority" var="priority11"/>
+<spring:message code="mezzage.priority" var="priority11"/>
 <h3><jstl:out value="${priority11}"/></h3>
 
-<spring:message code="message.priority" var="priority1"/>
+<spring:message code="mezzage.priority" var="priority1"/>
 <h3><jstl:out value="${priority1}"/></h3>
 <jstl:out value="${priority}"/>

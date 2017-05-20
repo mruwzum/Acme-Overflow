@@ -2,7 +2,7 @@ package controllers;
 
 
 import domain.Folder;
-import domain.Message;
+import domain.Mezzage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import services.FolderService;
-import services.MessageService;
+import services.MezzageService;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -29,7 +29,7 @@ public class FolderController extends AbstractController {
     @Autowired
     private ActorService actorService;
     @Autowired
-    private MessageService messageService;
+    private MezzageService mezzageService;
 
 
     //Constructors----------------------------------------------
@@ -78,9 +78,9 @@ public class FolderController extends AbstractController {
         ModelAndView result;
         Folder folder = folderService.findOne(folderId);
         Boolean isTrashBox = folder.getName().equals("Trashbox");
-        Collection<Message> messages = folder.getMessages();
-        result = new ModelAndView("message/list");
-        result.addObject("messages1", messages);
+       Collection<Mezzage> mezzages = folder.getMezzages();
+       result = new ModelAndView("mezzage/list");
+       result.addObject("mezzages", mezzages);
         result.addObject("isTrashBox", isTrashBox);
         return result;
     }

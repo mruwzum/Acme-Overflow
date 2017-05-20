@@ -130,10 +130,10 @@
 			</ul>
 		</li>
 		<li><a href="/folder/list.do"><spring:message
-				code="master.page.actor.messages"/></a></li>
+				code="master.page.actor.mezzages"/></a></li>
 		<li>
-				<a class="fNiv"> 
-					<spring:message code="master.page.profile" /> 
+				<a class="fNiv">
+					<spring:message code="master.page.profile"/>
 			        (<security:authentication property="principal.username" />)
 				</a>
 				<ul>

@@ -113,10 +113,10 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
     Collection<User> numberOfNonBannedUser();
 
 
-    @Query("select a from Actor a order by a.sendedMessages.size")
+    @Query("select a from Actor a order by a.sendedMezzages.size")
     Collection<Actor> actorSortedByNumberOfSendMessage();
 
-    @Query("select a from Actor a order by a.receivedMessages.size")
+    @Query("select a from Actor a order by a.receivedMezzages.size")
     Collection<Actor> actorSortedByNumberOfReceivedMessages();
 
 

@@ -1,11 +1,9 @@
 package controllers;
 
 
-import converters.ActorToStringConverter;
 import domain.Actor;
-import domain.Message;
+import domain.Mezzage;
 import domain.Priority;
-import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -15,44 +13,44 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
-import services.MessageService;
+import services.MezzageService;
 
 import javax.validation.Valid;
 import java.util.Collection;
 
 @Controller
-@RequestMapping("/message")
-public class MessageController extends AbstractController {
+@RequestMapping("/mezzage")
+public class MezzageController extends AbstractController {
 
     //Services ----------------------------------------------------------------
 
     @Autowired
-    private MessageService messageService;
+    private MezzageService mezzageService;
     @Autowired
     private ActorService actorService;
 
 
     //Constructors----------------------------------------------
 
-    public MessageController() {
+    public MezzageController() {
         super();
     }
 
-    protected static ModelAndView createEditModelAndView(Message message) {
+    protected static ModelAndView createEditModelAndView(Mezzage mezzage) {
         ModelAndView result;
 
-        result = createEditModelAndView(message, null);
+        result = createEditModelAndView(mezzage, null);
 
         return result;
     }
 
 
-    protected static ModelAndView createEditModelAndView(Message message2, String message) {
+    protected static ModelAndView createEditModelAndView(Mezzage mezzage, String message) {
         ModelAndView result;
 
 
-        result = new ModelAndView("message/edit");
-        result.addObject("message2", message2);
+        result = new ModelAndView("mezzage/edit");
+        result.addObject("mezzage", mezzage);
         result.addObject("message", message);
 
 
@@ -68,12 +66,12 @@ public class MessageController extends AbstractController {
     public ModelAndView messagesList() {
 
         ModelAndView result;
-        Collection<Message> message;
+        Collection<Mezzage> mezzages;
 
-        message = messageService.findAll();
-        result = new ModelAndView("message/list");
-        result.addObject("message", message);
-        result.addObject("requestURI", "message/list.do");
+        mezzages = mezzageService.findAll();
+        result = new ModelAndView("mezzage/list");
+        result.addObject("mezzages", mezzages);
+        result.addObject("requestURI", "mezzage/list.do");
 
         return result;
     }
@@ -84,11 +82,11 @@ public class MessageController extends AbstractController {
 
         ModelAndView result;
 
-        Message message = messageService.create();
-        message.setSender(actorService.findByPrincipal());
+        Mezzage mezzage = mezzageService.create();
+        mezzage.setSender(actorService.findByPrincipal());
         Collection<Actor> users = actorService.findAll();
 
-        result = createEditModelAndView(message);
+        result = createEditModelAndView(mezzage);
         result.addObject("users", users);
         return result;
 
@@ -99,15 +97,15 @@ public class MessageController extends AbstractController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public ModelAndView edit(@RequestParam int messageId) {
+    public ModelAndView edit(@RequestParam int mezzageId) {
         ModelAndView result;
-        Message message;
+        Mezzage mezzage;
 
-        message = messageService.findOne(messageId);
+        mezzage = mezzageService.findOne(mezzageId);
         Collection<Actor> users = actorService.findAll();
 
-        Assert.notNull(message);
-        result = createEditModelAndView(message);
+        Assert.notNull(mezzage);
+        result = createEditModelAndView(mezzage);
         result.addObject("users", users);
 
         return result;
@@ -115,16 +113,16 @@ public class MessageController extends AbstractController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-    public ModelAndView save(@Valid Message message, BindingResult binding) {
+    public ModelAndView save(@Valid Mezzage mezzage, BindingResult binding) {
         ModelAndView result;
         if (binding.hasErrors()) {
-            result = createEditModelAndView(message);
+            result = createEditModelAndView(mezzage);
         } else {
             try {
-                messageService.save(message);
+                mezzageService.save(mezzage);
                 result = new ModelAndView("redirect:list.do");
             } catch (Throwable oops) {
-                result = createEditModelAndView(message, "general.commit.error");
+                result = createEditModelAndView(mezzage, "general.commit.error");
             }
         }
         return result;
@@ -134,26 +132,26 @@ public class MessageController extends AbstractController {
 //    public ModelAndView delete(@Valid int messageId){
 //        ModelAndView result;
 //        try{
-//            Message message = messageService.findOne(messageId);
-//            messageService.delete(message);
+//            Mezzage mezzage = messageService.findOne(messageId);
+//            messageService.delete(mezzage);
 //            result=new ModelAndView("redirect:list.do");
 //        }catch(Throwable oops){
-//            Message message = messageService.findOne(messageId);
-//            result= createEditModelAndView(message, "general.commit.error");
+//            Mezzage mezzage = messageService.findOne(messageId);
+//            result= createEditModelAndView(mezzage, "general.commit.error");
 //        }
 //
 //        return result;
 //    }
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public ModelAndView delete2(@RequestParam Message message) {
+    public ModelAndView delete2(@RequestParam Mezzage mezzage) {
         ModelAndView result;
         try {
-            message.getFolder().getMessages().remove(message);
-            messageService.delete(message);
+            mezzage.getFolder().getMezzages().remove(mezzage);
+            mezzageService.delete(mezzage);
             result = new ModelAndView("redirect:list.do");
         } catch (Throwable oops) {
 
-            result = createEditModelAndView(message, "general.commit.error");
+            result = createEditModelAndView(mezzage, "general.commit.error");
         }
 
         return result;
@@ -162,7 +160,7 @@ public class MessageController extends AbstractController {
 
     @RequestMapping(value = "/send")
     public ModelAndView sendMessage(@RequestParam String recipient, String subject, String body, String priority) {
-        ModelAndView res = new ModelAndView("mensaje/text");
+        ModelAndView res = new ModelAndView("mezzage/text");
         String replacerecipient = recipient.replaceAll(",", "");
         String replacesubject = subject.replaceAll(",", "");
         String replacebody = body.replaceAll(",", "");
@@ -172,7 +170,7 @@ public class MessageController extends AbstractController {
             Actor recipient2 = actorService.findByName(replacerecipient);
             Priority priority1 = Priority.valueOf(replacepriority);
             @SuppressWarnings("unused")
-            Message message = actorService.textMessage(replacesubject, replacebody, recipient2, priority1);
+            Mezzage mezzage = actorService.textMessage(replacesubject, replacebody, recipient2, priority1);
         } catch (IllegalArgumentException e) {
             String texto1 = "";
             res = new ModelAndView("sponsor/text");
@@ -187,16 +185,16 @@ public class MessageController extends AbstractController {
     public ModelAndView messageView(@RequestParam int messageId) {
 
         ModelAndView result;
-        Message message = messageService.findOne(messageId);
+        Mezzage mezzage = mezzageService.findOne(messageId);
 
-        result = new ModelAndView("message/view");
-        result.addObject("subject", message.getSubject());
-        result.addObject("body", message.getBody());
-        result.addObject("sendDate", message.getSendDate());
-        result.addObject("sender", message.getSender());
-        result.addObject("priority", message.getPriority());
-        result.addObject("messageId", message.getId());
-        result.addObject("requestURI", "message/view.do");
+        result = new ModelAndView("mezzage/view");
+        result.addObject("subject", mezzage.getSubject());
+        result.addObject("body", mezzage.getBody());
+        result.addObject("sendDate", mezzage.getSendDate());
+        result.addObject("sender", mezzage.getSender());
+        result.addObject("priority", mezzage.getPriority());
+        result.addObject("mezzageId", mezzage.getId());
+        result.addObject("requestURI", "mezzage/view.do");
 
         return result;
     }

@@ -20,7 +20,7 @@
 	<util:list id="messages">
 		<value>/views/master-page/messages</value>
 		<value>/views/misc/messages</value>
-		<value>/views/security/messages</value>		
+		<value>/views/security/messages</value>
 		<value>/views/welcome/messages</value>
 
 		<!--Administrator-->
@@ -41,8 +41,8 @@
 		<value>/views/folder/messages</value>
 		<!--Learning Material-->
 		<value>/views/learning-material/messages</value>
-		<!--Message-->
-		<value>/views/message/messages</value>
+		<!-- Mezzagesage-->
+		<value>/views/mezzage/messages</value>
 		<!--Module-->
 		<value>/views/module/messages</value>
 		<!--Other-->

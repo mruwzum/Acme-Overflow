@@ -41,8 +41,8 @@
 		<value>/views/folder/tiles.xml</value>
 		<!--Learning Material-->
 		<value>/views/learning-material/tiles.xml</value>
-		<!--Message-->
-		<value>/views/message/tiles.xml</value>
+		<!-- Mezzagesage-->
+		<value>/views/mezzage/tiles.xml</value>
 		<!--Module-->
 		<value>/views/module/tiles.xml</value>
 		<!--Other-->

@@ -33,7 +33,7 @@ public class UserService {
     @Autowired
     private FolderService folderService;
     @Autowired
-    private MessageService messageService;
+    private MezzageService mezzageService;
     @Autowired
     private SearchService searchService;
     @Autowired
@@ -132,29 +132,29 @@ public class UserService {
         u.setUserAccount(userAccount);
         Assert.notNull(u.getUserAccount().getAuthorities(), "authorities null al registrar");
         User resu = userRepository.save(u);
-        Collection<Message> received = new HashSet<>();
-        Collection<Message> sended = new HashSet<>();
+       Collection<Mezzage> received = new HashSet<>();
+       Collection<Mezzage> sended = new HashSet<>();
         Collection<Folder> folders = new HashSet<>();
         Folder inbox = folderService.create();
         inbox.setName("inbox");
         inbox.setOwner(resu);
-        Collection<Message> innnn = new HashSet<>();
-        inbox.setMessages(innnn);
+       Collection<Mezzage> innnn = new HashSet<>();
+       inbox.setMezzages(innnn);
         Folder outbox = folderService.create();
         outbox.setName("outbox");
         outbox.setOwner(resu);
-        Collection<Message> ouuuu = new HashSet<>();
-        outbox.setMessages(ouuuu);
+       Collection<Mezzage> ouuuu = new HashSet<>();
+       outbox.setMezzages(ouuuu);
         Folder spambox = folderService.create();
         spambox.setName("spambox");
         spambox.setOwner(resu);
-        Collection<Message> spaaaam = new HashSet<>();
-        spambox.setMessages(spaaaam);
+       Collection<Mezzage> spaaaam = new HashSet<>();
+       spambox.setMezzages(spaaaam);
         Folder trashBox = folderService.create();
         trashBox.setName("trashbox");
         trashBox.setOwner(resu);
-        Collection<Message> trashhh = new HashSet<>();
-        trashBox.setMessages(trashhh);
+       Collection<Mezzage> trashhh = new HashSet<>();
+       trashBox.setMezzages(trashhh);
         folders.add(inbox);
         folders.add(outbox);
         folders.add(spambox);
@@ -164,8 +164,8 @@ public class UserService {
         folderService.save(spambox);
         folderService.save(trashBox);
         resu.setFolders(folders);
-        resu.setReceivedMessages(received);
-        resu.setSendedMessages(sended);
+       resu.setReceivedMezzages(received);
+       resu.setSendedMezzages(sended);
 
         Collection<Answer> answers = new HashSet<>();
         Collection<Question> questions = new HashSet<>();
@@ -207,29 +207,29 @@ public class UserService {
 //        curriculaService.save(curricula);
 
 
-        Collection<Message> received = new HashSet<>();
-        Collection<Message> sended = new HashSet<>();
+       Collection<Mezzage> received = new HashSet<>();
+       Collection<Mezzage> sended = new HashSet<>();
         Collection<Folder> folders = new HashSet<>();
         Folder inbox = folderService.create();
         inbox.setName("inbox");
         inbox.setOwner(resu);
-        Collection<Message> innnn = new HashSet<>();
-        inbox.setMessages(innnn);
+       Collection<Mezzage> innnn = new HashSet<>();
+       inbox.setMezzages(innnn);
         Folder outbox = folderService.create();
         outbox.setName("outbox");
         outbox.setOwner(resu);
-        Collection<Message> ouuuu = new HashSet<>();
-        outbox.setMessages(ouuuu);
+       Collection<Mezzage> ouuuu = new HashSet<>();
+       outbox.setMezzages(ouuuu);
         Folder spambox = folderService.create();
         spambox.setName("spambox");
         spambox.setOwner(resu);
-        Collection<Message> spaaaam = new HashSet<>();
-        spambox.setMessages(spaaaam);
+       Collection<Mezzage> spaaaam = new HashSet<>();
+       spambox.setMezzages(spaaaam);
         Folder trashBox = folderService.create();
         trashBox.setName("trashbox");
         trashBox.setOwner(resu);
-        Collection<Message> trashhh = new HashSet<>();
-        trashBox.setMessages(trashhh);
+       Collection<Mezzage> trashhh = new HashSet<>();
+       trashBox.setMezzages(trashhh);
         folders.add(inbox);
         folders.add(outbox);
         folders.add(spambox);
@@ -239,8 +239,8 @@ public class UserService {
         folderService.save(spambox);
         folderService.save(trashBox);
         resu.setFolders(folders);
-        resu.setReceivedMessages(received);
-        resu.setSendedMessages(sended);
+       resu.setReceivedMezzages(received);
+       resu.setSendedMezzages(sended);
 
         Collection<Answer> answers = new HashSet<>();
         Collection<Comment> comments = new HashSet<>();

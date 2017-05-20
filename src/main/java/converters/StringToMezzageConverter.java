@@ -1,30 +1,30 @@
 package converters;
 
-import domain.Message;
+import domain.Mezzage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-import repositories.MessageRepository;
+import repositories.MezzageRepository;
 
 @Component
 @Transactional
-public class StringToMessageConverter implements Converter<String, Message> {
+public class StringToMezzageConverter implements Converter<String, Mezzage> {
 
     @Autowired
-    MessageRepository messageRepository;
+    MezzageRepository mezzageRepository;
 
     @Override
-    public Message convert(String text) {
-        Message result;
+    public Mezzage convert(String text) {
+        Mezzage result;
         int id;
         try {
             if (StringUtils.isEmpty(text))
                 result = null;
             else {
                 id = Integer.valueOf(text);
-                result = messageRepository.findOne(id);
+                result = mezzageRepository.findOne(id);
             }
         } catch (Throwable oops) {
             throw new IllegalArgumentException(oops);

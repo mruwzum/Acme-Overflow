@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Message extends DomainEntity {
+public class Mezzage extends DomainEntity {
 
 
     private Actor sender;

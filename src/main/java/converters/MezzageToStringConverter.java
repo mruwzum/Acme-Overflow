@@ -1,22 +1,22 @@
 package converters;
 
-import domain.Message;
+import domain.Mezzage;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional
-public class MessageToStringConverter implements Converter<Message, String> {
+public class MezzageToStringConverter implements Converter<Mezzage, String> {
 
     @Override
-    public String convert(Message message) {
+    public String convert(Mezzage mezzage) {
         String result;
 
-        if (message == null)
+        if (mezzage == null)
             result = null;
         else
-            result = String.valueOf(message.getId());
+            result = String.valueOf(mezzage.getId());
 
         return result;
     }

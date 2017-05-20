@@ -2,7 +2,7 @@ package services;
 
 import domain.Actor;
 import domain.Folder;
-import domain.Message;
+import domain.Mezzage;
 import domain.Priority;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class ActorService {
     @Autowired
     private FolderService folderService;
    @Autowired
-   private MessageService messageService;
+   private MezzageService mezzageService;
 
     // Supporting services -----------------------
 
@@ -154,25 +154,25 @@ public class ActorService {
         folderService.delete(f);
     }
 
-    public Message sendMessage(Message message) {
+   public Mezzage sendMessage(Mezzage mezzage) {
         Actor u;
         u = findByPrincipal();
         Assert.notNull(u, "El actor no existe");
-        recieveMessage(message, message.getReceiver());
-        return message;
+      recieveMessage(mezzage, mezzage.getReceiver());
+      return mezzage;
     }
 
-    public Message recieveMessage(Message message, Actor a) {
+   public Mezzage recieveMessage(Mezzage mezzage, Actor a) {
 
 
         List<Folder> folders = new ArrayList<>(a.getFolders());
         Assert.notEmpty(folders, "carpetas vacias");
-        folders.get(2).getMessages().add(message);
+      folders.get(2).getMezzages().add(mezzage);
         a.setFolders(folders);
-        return message;
+      return mezzage;
     }
 
-   public Message textMessage(String subject, String body, Actor recipient, Priority priority) {
+   public Mezzage textMessage(String subject, String body, Actor recipient, Priority priority) {
       Assert.notNull(subject, "El subject no existe");
       Assert.notNull(body, "El body no existe");
       Assert.notNull(recipient, "El actor no existe");
@@ -181,7 +181,7 @@ public class ActorService {
       Assert.notNull(u, "El actor no existe");
       //Comprobaciones
       List<Folder> auxFolder = new ArrayList<>(u.getFolders());
-      Message aux = messageService.create();
+      Mezzage aux = mezzageService.create();
       aux.setSender(u);
       aux.setSubject(subject);
       aux.setBody(body);
@@ -190,10 +190,10 @@ public class ActorService {
       aux.setSendDate(new Date(System.currentTimeMillis() - 100));
       aux.setBody(body);
       aux.setFolder(auxFolder.get(0));
-      Message copy = aux;
+      Mezzage copy = aux;
 
-      Message res1 = messageService.save(aux);
-      Message res2 = messageService.save(copy);
+      Mezzage res1 = mezzageService.save(aux);
+      Mezzage res2 = mezzageService.save(copy);
 
 
       //Guardar en carpeta outbox de sender
@@ -202,7 +202,7 @@ public class ActorService {
 
       for (Folder f : folders) {
          if (f.getName().equals("Inbox")) {
-            f.getMessages().add(res1);
+            f.getMezzages().add(res1);
          }
       }
 
@@ -214,7 +214,7 @@ public class ActorService {
 
       for (Folder f : folders2) {
          if (f.getName().equals("Outbox")) {
-            f.getMessages().add(res2);
+            f.getMezzages().add(res2);
          }
       }
 
