@@ -115,16 +115,20 @@ public class MezzageController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid Mezzage mezzage, BindingResult binding) {
         ModelAndView result;
-        if (binding.hasErrors()) {
-            result = createEditModelAndView(mezzage);
-        } else {
-            try {
-                mezzageService.save(mezzage);
-                result = new ModelAndView("redirect:list.do");
-            } catch (Throwable oops) {
-                result = createEditModelAndView(mezzage, "general.commit.error");
-            }
-        }
+//        if (binding.hasErrors()) {
+//            result = createEditModelAndView(mezzage);
+//        } else {
+//            try {
+       actorService.textMessage(mezzage.getSubject(), mezzage.getBody(), mezzage.getReceiver(), mezzage.getPriority());
+
+       result = new ModelAndView("folder/list");
+//            } catch (Throwable oops) {
+//                result = createEditModelAndView(mezzage, "general.commit.error");
+//                Collection<Actor> users = actorService.findAll();
+//                result.addObject("users", users);
+//
+//            }
+//        }
         return result;
     }
 

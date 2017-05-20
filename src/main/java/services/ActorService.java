@@ -180,7 +180,7 @@ public class ActorService {
       u = findByPrincipal();
       Assert.notNull(u, "El actor no existe");
       //Comprobaciones
-      List<Folder> auxFolder = new ArrayList<>(u.getFolders());
+
       Mezzage aux = mezzageService.create();
       aux.setSender(u);
       aux.setSubject(subject);
@@ -189,11 +189,17 @@ public class ActorService {
       aux.setPriority(priority);
       aux.setSendDate(new Date(System.currentTimeMillis() - 100));
       aux.setBody(body);
-      aux.setFolder(auxFolder.get(0));
-      Mezzage copy = aux;
+      Collection<Folder> folders2 = recipient.getFolders();
 
+      for (Folder f : folders2) {
+         if (f.getName().equals("Inbox")) {
+            f.getMezzages().add(aux);
+         }
+      }
+
+
+      Mezzage copy = aux;
       Mezzage res1 = mezzageService.save(aux);
-      Mezzage res2 = mezzageService.save(copy);
 
 
       //Guardar en carpeta outbox de sender
@@ -201,22 +207,14 @@ public class ActorService {
       Collection<Folder> folders = u.getFolders();
 
       for (Folder f : folders) {
-         if (f.getName().equals("Inbox")) {
+         if (f.getName().equals("Outbox")) {
             f.getMezzages().add(res1);
          }
       }
 
 
-      //Guardar en carpeta inbox de recipient
+//TODO quitar fors y hacer queris
 
-
-      Collection<Folder> folders2 = recipient.getFolders();
-
-      for (Folder f : folders2) {
-         if (f.getName().equals("Outbox")) {
-            f.getMezzages().add(res2);
-         }
-      }
 
 
       return res1;

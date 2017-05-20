@@ -27,7 +27,6 @@
 <h3><jstl:out value="${body1}"/></h3>
 <jstl:out value="${body}"/>
 
-
 <spring:message code="mezzage.sendDate" var="sendDate1"/>
 <h3><jstl:out value="${sendDate1}"/></h3>
 <jstl:out value="${sendDate}"/>
@@ -35,10 +34,6 @@
 <spring:message code="mezzage.sender" var="sender1"/>
 <h3><jstl:out value="${sender1}"/></h3>
 <jstl:out value="${sender}"/>
-
-
-<spring:message code="mezzage.priority" var="priority11"/>
-<h3><jstl:out value="${priority11}"/></h3>
 
 <spring:message code="mezzage.priority" var="priority1"/>
 <h3><jstl:out value="${priority1}"/></h3>
