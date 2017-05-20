@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import java.util.Collection;
 
 @Controller
-@RequestMapping("/folderz")
+@RequestMapping("/folder")
 public class FolderController extends AbstractController {
 
     //Services ----------------------------------------------------------------

@@ -106,7 +106,7 @@
 
 		<!-- Messages -->
 
-		<security:intercept-url pattern="/folderz/list.do" access="permitAll"/>
+		<security:intercept-url pattern="/folder/list.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
 		<security:intercept-url pattern="/folder/edit.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
 		<security:intercept-url pattern="/folder/create.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
 		<security:intercept-url pattern="/folder/view.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
