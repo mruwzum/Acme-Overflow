@@ -24,14 +24,14 @@ public class TeacherService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public TeacherService() {
-        super();
-    }
+    @Autowired
+    private TeacherRepository teacherRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    @Autowired
-    private TeacherRepository teacherRepository;
+    public TeacherService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------
@@ -70,40 +70,39 @@ public class TeacherService {
 
     // Other business methods -------------------------------------------------------------------------------
 
-   public Teacher findByPrincipal() {
-      Teacher result;
-      UserAccount userAccount;
+    public Teacher findByPrincipal() {
+        Teacher result;
+        UserAccount userAccount;
 
-      userAccount = LoginService.getPrincipal();
-      Assert.notNull(userAccount);
-      result = findByUserAccount(userAccount);
-      Assert.notNull(result);
+        userAccount = LoginService.getPrincipal();
+        Assert.notNull(userAccount);
+        result = findByUserAccount(userAccount);
+        Assert.notNull(result);
 
-      return result;
-   }
+        return result;
+    }
 
-   public Teacher findByUserAccount(UserAccount userAccount) {
-      Assert.notNull(userAccount);
+    public Teacher findByUserAccount(UserAccount userAccount) {
+        Assert.notNull(userAccount);
 
-      Teacher result;
+        Teacher result;
 
-      result = teacherRepository.findByUserAccountId(userAccount.getId());
+        result = teacherRepository.findByUserAccountId(userAccount.getId());
 
-      return result;
-   }
+        return result;
+    }
 
 
+    public Double averageNumberOfUserInMyWebinar(Teacher t) {
 
-   public Double averageNumberOfUserInMyWebinar(Teacher t){
+        Teacher teacher = findByPrincipal();
+        Assert.notNull(teacher);
 
-       Teacher teacher = findByPrincipal();
-       Assert.notNull(teacher);
+        return teacherRepository.averageNumberOfUserInMyWebinar(t);
 
-       return teacherRepository.averageNumberOfUserInMyWebinar(t);
+    }
 
-   }
-
-    public int maxNumberOfUserInMyWebinar(Teacher t){
+    public int maxNumberOfUserInMyWebinar(Teacher t) {
 
         Teacher teacher = findByPrincipal();
         Assert.notNull(teacher);
@@ -112,7 +111,7 @@ public class TeacherService {
 
     }
 
-    public int minNumberOfUserInMyWebinar(Teacher t){
+    public int minNumberOfUserInMyWebinar(Teacher t) {
 
         Teacher teacher = findByPrincipal();
         Assert.notNull(teacher);
@@ -121,7 +120,7 @@ public class TeacherService {
 
     }
 
-    public Collection<Webinar> webinarSortedByNumberOfUsers(Teacher t){
+    public Collection<Webinar> webinarSortedByNumberOfUsers(Teacher t) {
 
         Teacher teacher = findByPrincipal();
         Assert.notNull(teacher);
@@ -130,7 +129,7 @@ public class TeacherService {
 
     }
 
-    public Collection<User> userRegisteredInMyWebinars(Teacher t){
+    public Collection<User> userRegisteredInMyWebinars(Teacher t) {
 
         Teacher teacher = findByPrincipal();
         Assert.notNull(teacher);

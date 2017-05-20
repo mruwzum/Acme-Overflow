@@ -1,8 +1,5 @@
 package domain;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.SafeHtml;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
@@ -13,7 +10,7 @@ import java.util.Collection;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Evaluation extends DomainEntity{
+public class Evaluation extends DomainEntity {
 
     Collection<EvaluationQuestion> evaluationQuestions;
 

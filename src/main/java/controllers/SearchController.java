@@ -13,15 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import security.Authority;
-import services.*;
-
+import services.CategoryService;
+import services.OtherService;
+import services.SearchCacheService;
+import services.SearchService;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import java.util.HashSet;
 import java.util.List;
 
@@ -91,7 +90,6 @@ public class SearchController extends AbstractController {
     }
 
 
-
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView register(@Valid Search search, BindingResult binding) {
         ModelAndView result;
@@ -103,9 +101,9 @@ public class SearchController extends AbstractController {
                 otherService.findByPrincipal().getSearches().add(search);
                 search.setOwner(otherService.findByPrincipal());
                 Collection<Question> resut;
-                if (search.getCategory()==null){
-                    resut =  searchService.questionsByKeyword(search.getKeyword());
-                }else {
+                if (search.getCategory() == null) {
+                    resut = searchService.questionsByKeyword(search.getKeyword());
+                } else {
                     resut = searchService.questionsByKeywordAndCategory(search.getKeyword(), search.getCategory());
                 }
 
@@ -125,23 +123,21 @@ public class SearchController extends AbstractController {
         ModelAndView result;
 
 
-        Search search =  searchService.findOne(searchId);
+        Search search = searchService.findOne(searchId);
 
-                Collection<Question> resut = new ArrayList<>();
-                if (search.getCategory()==null){
-                    resut =  searchService.questionsByKeyword(search.getKeyword());
-                }else {
-                    resut = searchService.questionsByKeywordAndCategory(search.getKeyword(), search.getCategory());
-                }
+        Collection<Question> resut = new ArrayList<>();
+        if (search.getCategory() == null) {
+            resut = searchService.questionsByKeyword(search.getKeyword());
+        } else {
+            resut = searchService.questionsByKeywordAndCategory(search.getKeyword(), search.getCategory());
+        }
 
 
-                result = new ModelAndView("question/list");
-                result.addObject("questions", resut);
+        result = new ModelAndView("question/list");
+        result.addObject("questions", resut);
 
-      return result;
+        return result;
     }
-
-
 
 
 //    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
@@ -161,11 +157,11 @@ public class SearchController extends AbstractController {
 
 
     @RequestMapping(value = "/mySearches", method = RequestMethod.GET)
-    public ModelAndView myLastSearches(){
+    public ModelAndView myLastSearches() {
 
 
         ModelAndView res;
-        Collection<Search> searches =  searchService.trunkedSearch();
+        Collection<Search> searches = searchService.trunkedSearch();
 
 
         res = new ModelAndView("search/list");
@@ -174,15 +170,14 @@ public class SearchController extends AbstractController {
         return res;
 
 
-
     }
 
 
     @RequestMapping(value = "/editCache", method = RequestMethod.GET)
-    public ModelAndView editSearchCache(){
+    public ModelAndView editSearchCache() {
 
         ModelAndView res;
-        List<SearchCache> searchCaches =  new ArrayList<>(searchCacheService.findAll());
+        List<SearchCache> searchCaches = new ArrayList<>(searchCacheService.findAll());
         res = new ModelAndView("search-cache/edit");
         res.addObject("searchcache", searchCaches.get(0));
 
@@ -191,7 +186,7 @@ public class SearchController extends AbstractController {
     }
 
     @RequestMapping(value = "/changeCache", method = RequestMethod.POST, params = "save")
-    public ModelAndView changeSearchCache(@Valid SearchCache searchCache){
+    public ModelAndView changeSearchCache(@Valid SearchCache searchCache) {
 
         ModelAndView res;
 //
@@ -201,8 +196,8 @@ public class SearchController extends AbstractController {
 //        if(otherService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
 
         //TODO comprobar identidad de administrador antes de cambiar.
-            searchCacheService.save(searchCache);
-            res =  new ModelAndView("administrator/action-1");
+        searchCacheService.save(searchCache);
+        res = new ModelAndView("administrator/action-1");
 
 //        }else{
 //            res =  new ModelAndView("/welcome/index");

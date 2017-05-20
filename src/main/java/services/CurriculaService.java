@@ -19,14 +19,14 @@ public class CurriculaService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public CurriculaService() {
-        super();
-    }
+    @Autowired
+    private repositories.CurriculaRepository CurriculaRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    @Autowired
-    private repositories.CurriculaRepository CurriculaRepository;
+    public CurriculaService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------

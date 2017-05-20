@@ -11,7 +11,7 @@ import java.util.Collection;
  */
 @Entity
 @Access(AccessType.PROPERTY)
-public class Category extends DomainEntity{
+public class Category extends DomainEntity {
 
     private String name;
     private String description;
@@ -30,6 +30,7 @@ public class Category extends DomainEntity{
     public void setName(String name) {
         this.name = name;
     }
+
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getDescription() {
@@ -79,6 +80,6 @@ public class Category extends DomainEntity{
 
     @Override
     public String toString() {
-       return name;
+        return name;
     }
 }

@@ -4,7 +4,6 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 /**
@@ -13,7 +12,7 @@ import java.util.Collection;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Module extends DomainEntity{
+public class Module extends DomainEntity {
 
 
     private String title;

@@ -20,14 +20,14 @@ public class CommentService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public CommentService() {
-        super();
-    }
+    @Autowired
+    private CommentRepository CommentRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    @Autowired
-    private CommentRepository CommentRepository;
+    public CommentService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------

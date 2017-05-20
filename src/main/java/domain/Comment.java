@@ -1,10 +1,8 @@
 package domain;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -20,7 +18,6 @@ public class Comment extends DomainEntity {
     private Date creationDate;
     private Other owner;
     private Webinar webinar;
-
 
 
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
@@ -40,7 +37,8 @@ public class Comment extends DomainEntity {
     public void setText(String text) {
         this.text = text;
     }
-   // @NotNull
+
+    // @NotNull
     @Temporal(TemporalType.DATE)
     public Date getCreationDate() {
         return creationDate;
@@ -59,7 +57,7 @@ public class Comment extends DomainEntity {
         this.owner = owner;
     }
 
-   @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     public Webinar getWebinar() {
         return webinar;
     }

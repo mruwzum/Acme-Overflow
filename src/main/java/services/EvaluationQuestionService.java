@@ -1,6 +1,5 @@
 package services;
 
-import domain.Evaluation;
 import domain.EvaluationQuestion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,14 +20,14 @@ public class EvaluationQuestionService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public EvaluationQuestionService() {
-        super();
-    }
+    @Autowired
+    private EvaluationQuestionRepository evaluationQuestionRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    @Autowired
-    private EvaluationQuestionRepository evaluationQuestionRepository;
+    public EvaluationQuestionService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------

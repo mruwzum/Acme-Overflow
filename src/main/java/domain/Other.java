@@ -14,11 +14,11 @@ public abstract class Other extends Actor {
 
     private Collection<Answer> answers;
     private Collection<Search> searches;
-    private Collection<Comment> comments ;
+    private Collection<Comment> comments;
     private CreditCard creditCard;
 
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     public Collection<Answer> getAnswers() {
         return answers;
     }
@@ -27,7 +27,7 @@ public abstract class Other extends Actor {
         this.answers = answers;
     }
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     public Collection<Search> getSearches() {
         return searches;
     }
@@ -36,7 +36,7 @@ public abstract class Other extends Actor {
         this.searches = searches;
     }
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     public Collection<Comment> getComments() {
         return comments;
     }
@@ -44,6 +44,7 @@ public abstract class Other extends Actor {
     public void setComments(Collection<Comment> comments) {
         this.comments = comments;
     }
+
     @OneToOne(cascade = CascadeType.ALL)
     public CreditCard getCreditCard() {
         return creditCard;

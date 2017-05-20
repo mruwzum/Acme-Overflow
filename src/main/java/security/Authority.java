@@ -10,109 +10,101 @@
 
 package security;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.security.core.GrantedAuthority;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Embeddable
 @Access(AccessType.PROPERTY)
 public class Authority implements GrantedAuthority {
 
-	// Constructors -----------------------------------------------------------
+    // Constructors -----------------------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
-
-
-	public Authority() {
-		super();
-	}
+    public static final String ADMIN = "ADMIN";
+    public static final String USER = "USER";
 
 
-	// Values -----------------------------------------------------------------
-
-	public static final String	ADMIN		= "ADMIN";
-	public static final String	USER		= "USER";
-	public static final String	TEACHER		= "TEACHER";
-	public static final String	BAN		= "BAN";
-	public static final String	MODERATOR		= "MODERATOR";
-
+    // Values -----------------------------------------------------------------
+    public static final String TEACHER = "TEACHER";
+    public static final String BAN = "BAN";
+    public static final String MODERATOR = "MODERATOR";
+    private static final long serialVersionUID = 1L;
+    private String authority;
 
 
+    // Attributes -------------------------------------------------------------
 
+    public Authority() {
+        super();
+    }
 
-	// Attributes -------------------------------------------------------------
+    public static Collection<Authority> listAuthorities() {
+        Collection<Authority> result;
+        Authority authority;
 
-	private String				authority;
+        result = new ArrayList<Authority>();
 
+        authority = new Authority();
+        authority.setAuthority(Authority.ADMIN);
+        result.add(authority);
 
-	@NotBlank
-	@Pattern(regexp = "^" + Authority.ADMIN + "|" + Authority.USER + "|" + Authority.TEACHER + "|" + Authority.BAN +  "|" + Authority.MODERATOR +"$")
-	@Override
-	public String getAuthority() {
-		return this.authority;
-	}
+        authority = new Authority();
+        authority.setAuthority(Authority.USER);
+        result.add(authority);
 
-	public void setAuthority(final String authority) {
-		this.authority = authority;
-	}
+        authority = new Authority();
+        authority.setAuthority(Authority.TEACHER);
+        result.add(authority);
 
-	public static Collection<Authority> listAuthorities() {
-		Collection<Authority> result;
-		Authority authority;
+        authority = new Authority();
+        authority.setAuthority(Authority.BAN);
+        result.add(authority);
 
-		result = new ArrayList<Authority>();
+        authority = new Authority();
+        authority.setAuthority(Authority.MODERATOR);
+        result.add(authority);
 
-		authority = new Authority();
-		authority.setAuthority(Authority.ADMIN);
-		result.add(authority);
+        return result;
+    }
 
-		authority = new Authority();
-		authority.setAuthority(Authority.USER);
-		result.add(authority);
+    @NotBlank
+    @Pattern(regexp = "^" + Authority.ADMIN + "|" + Authority.USER + "|" + Authority.TEACHER + "|" + Authority.BAN + "|" + Authority.MODERATOR + "$")
+    @Override
+    public String getAuthority() {
+        return this.authority;
+    }
 
-		authority = new Authority();
-		authority.setAuthority(Authority.TEACHER);
-		result.add(authority);
+    public void setAuthority(final String authority) {
+        this.authority = authority;
+    }
 
-		authority = new Authority();
-		authority.setAuthority(Authority.BAN);
-		result.add(authority);
+    // Equality ---------------------------------------------------------------
 
-		authority = new Authority();
-		authority.setAuthority(Authority.MODERATOR);
-		result.add(authority);
+    @Override
+    public int hashCode() {
+        return this.getAuthority().hashCode();
+    }
 
-		return result;
-	}
+    @Override
+    public boolean equals(final Object other) {
+        boolean result;
 
-	// Equality ---------------------------------------------------------------
+        if (this == other)
+            result = true;
+        else if (other == null)
+            result = false;
+        else if (! this.getClass().isInstance(other))
+            result = false;
+        else
+            result = (this.getAuthority().equals(((Authority) other).getAuthority()));
 
-	@Override
-	public int hashCode() {
-		return this.getAuthority().hashCode();
-	}
-
-	@Override
-	public boolean equals(final Object other) {
-		boolean result;
-
-		if (this == other)
-			result = true;
-		else if (other == null)
-			result = false;
-		else if (!this.getClass().isInstance(other))
-			result = false;
-		else
-			result = (this.getAuthority().equals(((Authority) other).getAuthority()));
-
-		return result;
-	}
+        return result;
+    }
 
 }

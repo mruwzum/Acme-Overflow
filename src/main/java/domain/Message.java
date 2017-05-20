@@ -1,4 +1,5 @@
 package domain;
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 
@@ -6,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.util.Date;
+
 @Entity
 @Access(AccessType.PROPERTY)
 public class Message extends DomainEntity {
@@ -29,6 +31,7 @@ public class Message extends DomainEntity {
     public void setSender(Actor sender) {
         this.sender = sender;
     }
+
     @NotNull
     @ManyToOne(targetEntity = Actor.class, cascade = CascadeType.PERSIST)
     public Actor getReceiver() {
@@ -38,6 +41,7 @@ public class Message extends DomainEntity {
     public void setReceiver(Actor receiver) {
         this.receiver = receiver;
     }
+
     @Past
     @Temporal(TemporalType.TIMESTAMP)
     public Date getSendDate() {
@@ -47,6 +51,7 @@ public class Message extends DomainEntity {
     public void setSendDate(Date sendDate) {
         this.sendDate = sendDate;
     }
+
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getSubject() {
@@ -56,6 +61,7 @@ public class Message extends DomainEntity {
     public void setSubject(String subject) {
         this.subject = subject;
     }
+
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getBody() {

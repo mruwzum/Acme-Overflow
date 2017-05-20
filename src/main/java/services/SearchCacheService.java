@@ -1,19 +1,13 @@
 package services;
 
-import domain.Category;
-import domain.Question;
-import domain.Search;
 import domain.SearchCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.SearchCacheRepository;
-import repositories.SearchRepository;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Created by daviddelatorre on 28/3/17.
@@ -70,7 +64,7 @@ public class SearchCacheService {
 
     // Other business methods -----------------------
 
-    public void flush(){
+    public void flush() {
         searchCacheRepository.flush();
     }
 

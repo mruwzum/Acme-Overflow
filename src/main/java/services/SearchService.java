@@ -1,16 +1,17 @@
 package services;
 
-import domain.*;
+import domain.Category;
+import domain.Question;
+import domain.Search;
+import domain.SearchCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.SearchRepository;
-import security.Authority;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,12 +24,12 @@ public class SearchService {
     // Managed Repository ------------------------
     @Autowired
     private SearchRepository searchRepository;
-   @Autowired
-   private UserService userService;
-   @Autowired
-   private OtherService otherService;
-   @Autowired
-   private SearchCacheService searchCacheService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private OtherService otherService;
+    @Autowired
+    private SearchCacheService searchCacheService;
 
     // Supporting services -----------------------
 
@@ -73,7 +74,7 @@ public class SearchService {
 
     // Other business methods -----------------------
 
-    public void flush(){
+    public void flush() {
         searchRepository.flush();
     }
 
@@ -158,8 +159,7 @@ public class SearchService {
 //        }
 
 
-
-    public Collection<Question> questionsByKeyword(String keyword){
+    public Collection<Question> questionsByKeyword(String keyword) {
 
 
         Assert.notNull(otherService.findByPrincipal());
@@ -169,29 +169,28 @@ public class SearchService {
     }
 
 
-    public Collection<Question> questionsByKeywordAndCategory(String keyword, Category category){
+    public Collection<Question> questionsByKeywordAndCategory(String keyword, Category category) {
 
         Assert.notNull(otherService.findByPrincipal());
 
         Assert.notNull(keyword, "keyword vacía");
         Assert.notNull(category, "category vacía");
-        return searchRepository.questionsByKeywordAndCategory(keyword,category);
+        return searchRepository.questionsByKeywordAndCategory(keyword, category);
     }
 
 
+    public Collection<Search> trunkedSearch() {
 
-    public Collection<Search> trunkedSearch(){
-
-        List<Search> searches =  new ArrayList<>(otherService.findByPrincipal().getSearches());
-        List<SearchCache> searchCaches =  new ArrayList<>(searchCacheService.findAll());
+        List<Search> searches = new ArrayList<>(otherService.findByPrincipal().getSearches());
+        List<SearchCache> searchCaches = new ArrayList<>(searchCacheService.findAll());
         int searchcac = searchCaches.get(0).getCacheValue();
 
-        if(searches.size()>searchcac){
+        if (searches.size() > searchcac) {
 
-            Collection<Search> searches1 =  searches.subList(searches.size()-searchcac, searches.size());
+            Collection<Search> searches1 = searches.subList(searches.size() - searchcac, searches.size());
             return searches1;
 
-        }else {
+        } else {
             return searches;
         }
 

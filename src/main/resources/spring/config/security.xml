@@ -130,7 +130,7 @@
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 
-
+		<!-- Messages -->
 
 
 		<security:form-login 

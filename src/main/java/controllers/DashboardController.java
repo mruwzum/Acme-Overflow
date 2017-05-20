@@ -13,7 +13,6 @@ import services.AdministratorService;
 import services.TeacherService;
 
 import java.util.Collection;
-import java.util.Map;
 
 
 @Controller
@@ -50,7 +49,7 @@ public class DashboardController extends AbstractController {
         int q11 = administratorService.maxNumberOfCommentPerWebinar();
         int q12 = administratorService.minNumberOfCommentPerWebinar();
 
-       // User q13 = administratorService.userWhoHaveAutoredMoreAnswer();
+        // User q13 = administratorService.userWhoHaveAutoredMoreAnswer();
         Collection<User> q15 = administratorService.userSortedByQuestionNumber();
         Collection<User> q16 = administratorService.userSortedByNumberOfLikes();
         Collection<User> q17 = administratorService.usersWithCreditCards();
@@ -69,40 +68,32 @@ public class DashboardController extends AbstractController {
         String q26 = administratorService.percentageOfBannedQuestion();
 
 
-
-
-
-
-
-
         res = new ModelAndView("administrator/dashboard");
-        res.addObject("q1",q1);
-        res.addObject("q2",q2);
-        res.addObject("q3",q3);
-        res.addObject("q4",q4);
-        res.addObject("q5",q5);
-        res.addObject("q6",q6);
-        res.addObject("q7",q7);
-        res.addObject("q8",q8);
-        res.addObject("q9",q9);
-        res.addObject("q10",q10);
-        res.addObject("q11",q11);
-        res.addObject("q12",q12);
+        res.addObject("q1", q1);
+        res.addObject("q2", q2);
+        res.addObject("q3", q3);
+        res.addObject("q4", q4);
+        res.addObject("q5", q5);
+        res.addObject("q6", q6);
+        res.addObject("q7", q7);
+        res.addObject("q8", q8);
+        res.addObject("q9", q9);
+        res.addObject("q10", q10);
+        res.addObject("q11", q11);
+        res.addObject("q12", q12);
         //res.addObject("q13",q13);
-        res.addObject("q15",q15);
-        res.addObject("q16",q16);
-        res.addObject("q17",q17);
-        res.addObject("q18",q18);
-        res.addObject("q19",q19);
-        res.addObject("q20",q20);
-        res.addObject("q21",q21);
-        res.addObject("q22",q22);
-        res.addObject("q23",q23);
-        res.addObject("q24",q24);
-        res.addObject("q25",q25);
-        res.addObject("q26",q26);
-
-
+        res.addObject("q15", q15);
+        res.addObject("q16", q16);
+        res.addObject("q17", q17);
+        res.addObject("q18", q18);
+        res.addObject("q19", q19);
+        res.addObject("q20", q20);
+        res.addObject("q21", q21);
+        res.addObject("q22", q22);
+        res.addObject("q23", q23);
+        res.addObject("q24", q24);
+        res.addObject("q25", q25);
+        res.addObject("q26", q26);
 
 
         return res;
@@ -114,7 +105,6 @@ public class DashboardController extends AbstractController {
         ModelAndView res;
 
 
-
         Double q1 = teacherService.averageNumberOfUserInMyWebinar(teacherService.findByPrincipal());
         int q2 = teacherService.maxNumberOfUserInMyWebinar(teacherService.findByPrincipal());
         int q3 = teacherService.minNumberOfUserInMyWebinar(teacherService.findByPrincipal());
@@ -122,13 +112,13 @@ public class DashboardController extends AbstractController {
         Collection<User> q5 = teacherService.userRegisteredInMyWebinars(teacherService.findByPrincipal());
 
 
-        res =  new ModelAndView("teacher/dashboard");
+        res = new ModelAndView("teacher/dashboard");
 
-        res.addObject("q1",q1);
-        res.addObject("q2",q2);
-        res.addObject("q3",q3);
-        res.addObject("q4",q4);
-        res.addObject("q5",q5);
+        res.addObject("q1", q1);
+        res.addObject("q2", q2);
+        res.addObject("q3", q3);
+        res.addObject("q4", q4);
+        res.addObject("q5", q5);
 
 
         return res;

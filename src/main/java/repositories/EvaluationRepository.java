@@ -1,7 +1,6 @@
 package repositories;
 
 import domain.Evaluation;
-import domain.Folder;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

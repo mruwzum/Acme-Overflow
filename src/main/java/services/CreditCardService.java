@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import repositories.CreditCardRepository;
 
 import java.util.Collection;
 
@@ -20,14 +19,14 @@ public class CreditCardService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public CreditCardService() {
-        super();
-    }
+    @Autowired
+    private repositories.CreditCardRepository CreditCardRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    @Autowired
-    private repositories.CreditCardRepository CreditCardRepository;
+    public CreditCardService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------

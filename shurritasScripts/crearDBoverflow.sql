@@ -1,15 +1,17 @@
-drop database if exists `Acme-Overflow`;
-create database `Acme-Overflow`;
-drop user 'acme-user'@'%';
-drop user 'acme-manager'@'%';
-create user 'acme-user'@'%' identified by password '*4F10007AADA9EE3DBB2CC36575DFC6F4FDE27577';
-create user 'acme-manager'@'%' identified by password '*FDB8CD304EB2317D10C95D797A4BD7492560F55F';
-grant select, insert, update, delete
-	on `Acme-Overflow`.* to 'acme-user'@'%';
+DROP DATABASE IF EXISTS `Acme-Overflow`;
+CREATE DATABASE `Acme-Overflow`;
+DROP USER 'acme-user'@'%';
+DROP USER 'acme-manager'@'%';
+CREATE USER 'acme-user'@'%'
+  IDENTIFIED BY PASSWORD '*4F10007AADA9EE3DBB2CC36575DFC6F4FDE27577';
+CREATE USER 'acme-manager'@'%'
+  IDENTIFIED BY PASSWORD '*FDB8CD304EB2317D10C95D797A4BD7492560F55F';
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON `Acme-Overflow`.* TO 'acme-user'@'%';
 
-grant select, insert, update, delete, create, drop, references, index, alter,
-        create temporary tables, lock tables, create view, create routine,
-        alter routine, execute, trigger, show view
-    on `Acme-Overflow`.* to 'acme-manager'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER,
+CREATE TEMPORARY TABLES, LOCK TABLES, CREATE VIEW, CREATE ROUTINE,
+ALTER ROUTINE, EXECUTE, TRIGGER, SHOW VIEW
+ON `Acme-Overflow`.* TO 'acme-manager'@'%';
 
-commit;
+COMMIT;

@@ -19,14 +19,14 @@ public class MessageService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public MessageService() {
-        super();
-    }
+    @Autowired
+    private repositories.MessageRepository MessageRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    @Autowired
-    private repositories.MessageRepository MessageRepository;
+    public MessageService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------

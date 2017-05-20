@@ -18,14 +18,14 @@ public class BannerService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public BannerService() {
-        super();
-    }
+    @Autowired
+    private BannerRepository bannerRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    @Autowired
-    private BannerRepository bannerRepository;
+    public BannerService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------
@@ -66,7 +66,7 @@ public class BannerService {
     }
 
     // Other business methods -------------------------------------------------------------------------------
-    public void flush(){
+    public void flush() {
         bannerRepository.flush();
     }
 }

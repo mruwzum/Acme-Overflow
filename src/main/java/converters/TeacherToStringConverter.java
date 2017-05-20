@@ -1,6 +1,5 @@
 package converters;
 
-import domain.Search;
 import domain.Teacher;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -9,7 +8,8 @@ import org.springframework.util.Assert;
 
 /**
  * Created by daviddelatorre on 29/3/17.
- */@Component
+ */
+@Component
 @Transactional
 public class TeacherToStringConverter implements Converter<Teacher, String> {
 

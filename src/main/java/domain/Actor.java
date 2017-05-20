@@ -16,8 +16,6 @@ import java.util.Collection;
 public abstract class Actor extends DomainEntity {
 
 
-
-
     private String name;
     private String surname;
     private String phoneNumber;
@@ -49,6 +47,7 @@ public abstract class Actor extends DomainEntity {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @Pattern(regexp = "(\\+\\d{1,3})?(\\(\\d{3}\\))?([0-9a-zA-z][ -]?){4,}")
@@ -59,6 +58,7 @@ public abstract class Actor extends DomainEntity {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @Email
@@ -89,6 +89,7 @@ public abstract class Actor extends DomainEntity {
     public void setReceivedMessages(Collection<Message> receivedMessages) {
         this.receivedMessages = receivedMessages;
     }
+
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "sender")
     public Collection<Message> getSendedMessages() {
         return sendedMessages;

@@ -10,7 +10,7 @@ import java.util.Collection;
  * Created by daviddelatorre on 15/5/17.
  */
 public interface AnswerRepository extends JpaRepository<Answer, Integer> {
-   @Query("select a from Answer a")
-   Collection<Answer> all();
+    @Query("select a from Answer a")
+    Collection<Answer> all();
 
 }

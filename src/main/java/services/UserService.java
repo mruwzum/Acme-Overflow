@@ -12,7 +12,8 @@ import security.LoginService;
 import security.UserAccount;
 import security.UserAccountService;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * Created by david on 05/11/2016.
@@ -206,8 +207,6 @@ public class UserService {
 //        curriculaService.save(curricula);
 
 
-
-
         Collection<Message> received = new HashSet<>();
         Collection<Message> sended = new HashSet<>();
         Collection<Folder> folders = new HashSet<>();
@@ -254,7 +253,7 @@ public class UserService {
 
     public Boolean banUser(User user) {
         Boolean res = false;
-        if (!user.getUserAccount().getAuthorities().isEmpty()) {
+        if (! user.getUserAccount().getAuthorities().isEmpty()) {
             Authority authority = new Authority();
             authority.setAuthority("USER");
             Authority authority2 = new Authority();

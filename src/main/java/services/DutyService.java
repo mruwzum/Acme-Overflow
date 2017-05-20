@@ -1,12 +1,10 @@
 package services;
 
 import domain.Duty;
-import domain.SearchCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.DutyRepository;
-import repositories.SearchCacheRepository;
 
 import javax.transaction.Transactional;
 import java.util.Collection;
@@ -66,7 +64,7 @@ public class DutyService {
 
     // Other business methods -----------------------
 
-    public void flush(){
+    public void flush() {
         dutyRepository.flush();
     }
 

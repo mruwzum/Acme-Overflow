@@ -1,14 +1,12 @@
 package converters;
 
 import domain.Folder;
-import domain.Search;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import repositories.FolderRepository;
-import repositories.SearchRepository;
 
 /**
  * Created by daviddelatorre on 29/3/17.

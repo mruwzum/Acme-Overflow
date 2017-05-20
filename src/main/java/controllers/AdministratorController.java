@@ -2,9 +2,7 @@ package controllers;
 
 
 import domain.Administrator;
-
 import domain.Duty;
-import domain.SearchCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -17,7 +15,6 @@ import services.AdministratorService;
 import services.DutyService;
 
 import javax.validation.Valid;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -39,7 +36,7 @@ public class AdministratorController extends AbstractController {
 
     public AdministratorController() {
         super();
-	}
+    }
 
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -54,7 +51,7 @@ public class AdministratorController extends AbstractController {
         result.addObject("requestURI", "administrator/list.do");
 
         return result;
-	}
+    }
 
 
     //Create Method -----------------------------------------------------------
@@ -139,10 +136,10 @@ public class AdministratorController extends AbstractController {
 
 
     @RequestMapping(value = "/editDuty", method = RequestMethod.GET)
-    public ModelAndView editDutyCache(){
+    public ModelAndView editDutyCache() {
 
         ModelAndView res;
-        List<Duty> searchCaches =  new ArrayList<>(dutyService.findAll());
+        List<Duty> searchCaches = new ArrayList<>(dutyService.findAll());
         res = new ModelAndView("duty/edit");
         res.addObject("duty", searchCaches.get(0));
 
@@ -151,7 +148,7 @@ public class AdministratorController extends AbstractController {
     }
 
     @RequestMapping(value = "/changeDuty", method = RequestMethod.POST, params = "save")
-    public ModelAndView changeDuty(@Valid Duty searchCache){
+    public ModelAndView changeDuty(@Valid Duty searchCache) {
 
         ModelAndView res;
 //
@@ -162,7 +159,7 @@ public class AdministratorController extends AbstractController {
 
         //TODO comprobar identidad de administrador antes de cambiar.
         dutyService.save(searchCache);
-        res =  new ModelAndView("administrator/action-1");
+        res = new ModelAndView("administrator/action-1");
 
 //        }else{
 //            res =  new ModelAndView("/welcome/index");

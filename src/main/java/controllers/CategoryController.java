@@ -2,7 +2,6 @@ package controllers;
 
 import domain.Category;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
@@ -22,11 +21,12 @@ import java.util.Collection;
 @RequestMapping("category")
 public class CategoryController extends AbstractController {
 
-    public CategoryController(){super();}
-
     @Autowired
     private CategoryService categoryService;
 
+    public CategoryController() {
+        super();
+    }
 
     @RequestMapping(value = "/list")
     public ModelAndView list() {
@@ -73,8 +73,8 @@ public class CategoryController extends AbstractController {
         } else {
             try {
 
-        categoryService.save(categorie);
-        result = this.list();
+                categoryService.save(categorie);
+                result = this.list();
 
             } catch (Throwable oops) {
                 result = createEditModelAndView(categorie, "comment.commit.error");
@@ -83,6 +83,7 @@ public class CategoryController extends AbstractController {
 
         return result;
     }
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create() {
         ModelAndView r;
@@ -98,8 +99,8 @@ public class CategoryController extends AbstractController {
         Category category = categoryService.findOne(categoryId);
 
 
-            categoryService.delete(category);
-            result = new ModelAndView("redirect:list.do");
+        categoryService.delete(category);
+        result = new ModelAndView("redirect:list.do");
 
         return result;
     }
@@ -111,13 +112,13 @@ public class CategoryController extends AbstractController {
 
         return result;
     }
+
     protected ModelAndView createEditModelAndView(Category categorie, String message) {
         ModelAndView result;
         result = new ModelAndView("category/edit");
         result.addObject("category", categorie);
 //        result.addObject("name",categorie.getName());
 //       result.addObject("description",categorie.getDescription());
-
 
 
         return result;

@@ -2,8 +2,6 @@ package services;
 
 
 import domain.Other;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,21 +23,19 @@ public class OtherService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public OtherService() {
-        super();
-    }
-
-    // Managed repository--------------------------------------------------------------------------------
-
     @Autowired
     private OtherRepository otherRepository;
 
+    // Managed repository--------------------------------------------------------------------------------
+
+    public OtherService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------
 
     // Simple CRUD method --------------------------------------------------------------------------------
-
 
     public Collection<Other> findAll() {
 

@@ -8,7 +8,6 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 /**
@@ -23,7 +22,6 @@ public class Curricula extends DomainEntity {
     private String experienceSection;
     private Collection<String> referencias;
     private String hobbiesSection;
-
 
 
     @NotBlank

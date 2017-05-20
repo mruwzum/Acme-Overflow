@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class EvaluationQuestion extends DomainEntity{
+public class EvaluationQuestion extends DomainEntity {
 
 
     private String title;
@@ -28,6 +28,7 @@ public class EvaluationQuestion extends DomainEntity{
     public void setTitle(String title) {
         this.title = title;
     }
+
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getAnswer() {
         return answer;

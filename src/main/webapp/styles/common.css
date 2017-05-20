@@ -10,16 +10,17 @@ jmenu.css /* common.css
 .form-group {
     font-family: "Andale Mono";
 }
+
 .error {
     font-family: "Andale Mono";
-	color: red;
-	font-weight: bolder;
+    color: red;
+    font-weight: bolder;
 }
 
 .message {
     font-family: "Andale Mono";
-	color: red;
-	font-weight: bolder;
+    color: red;
+    font-weight: bolder;
 }
 
 .body {

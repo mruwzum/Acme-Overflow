@@ -11,19 +11,19 @@
  -->
 
 <!DOCTYPE tiles-definitions PUBLIC
-       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
-      
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
 <tiles-definitions>
 
-	<definition name="other/edit" extends="master.page">
-		<put-attribute name="title" value="other: Editar" />
-		<put-attribute name="body" value="/views/banner/edit.jsp" />
-	</definition>
+    <definition name="other/edit" extends="master.page">
+        <put-attribute name="title" value="other: Editar"/>
+        <put-attribute name="body" value="/views/banner/edit.jsp"/>
+    </definition>
 
-	<definition name="other/list" extends="master.page">
-		<put-attribute name="title" value="other: Listar" />
-		<put-attribute name="body" value="/views/other/list.jsp" />
-	</definition>
-	
+    <definition name="other/list" extends="master.page">
+        <put-attribute name="title" value="other: Listar"/>
+        <put-attribute name="body" value="/views/other/list.jsp"/>
+    </definition>
+
 </tiles-definitions>

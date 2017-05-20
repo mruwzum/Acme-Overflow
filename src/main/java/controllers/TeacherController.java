@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import services.TeacherService;
 import services.UserService;
 
-
 import javax.validation.Valid;
 import java.util.Collection;
 
@@ -25,8 +24,8 @@ public class TeacherController extends AbstractController {
 
     @Autowired
     private TeacherService teacherService;
-   @Autowired
-   private UserService userService;
+    @Autowired
+    private UserService userService;
 
     //Constructors----------------------------------------------
 
@@ -68,7 +67,7 @@ public class TeacherController extends AbstractController {
     protected static ModelAndView createEditModelAndView2(Teacher teacher, String message) {
         ModelAndView result;
 
-       result = new ModelAndView("teacher/register");
+        result = new ModelAndView("teacher/register");
         result.addObject("teacher", teacher);
         result.addObject("message", message);
 
@@ -93,44 +92,46 @@ public class TeacherController extends AbstractController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create() {
 
-       ModelAndView result;
+        ModelAndView result;
 
-       Teacher teacher = teacherService.create();
+        Teacher teacher = teacherService.create();
 
-       result = createEditModelAndView2(teacher);
+        result = createEditModelAndView2(teacher);
 
-       return result;
+        return result;
 
     }
 
-   @RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
-   public ModelAndView register(@Valid Teacher teacher, BindingResult binding) {
-      ModelAndView result;
-      if (!binding.hasErrors()) {
-         result = createEditModelAndView2(teacher);
-      } else {
-         try {
-            userService.registerAsTeacher(teacher);
-            result = new ModelAndView("welcome/index");
-         } catch (Throwable oops) {
-            result = createEditModelAndView2(teacher, "general.commit.error");
-         }
-      }
-      return result;
-   }
+    @RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
+    public ModelAndView register(@Valid Teacher teacher, BindingResult binding) {
+        ModelAndView result;
+        if (! binding.hasErrors()) {
+            result = createEditModelAndView2(teacher);
+        } else {
+            try {
+                userService.registerAsTeacher(teacher);
+                result = new ModelAndView("welcome/index");
+            } catch (Throwable oops) {
+                result = createEditModelAndView2(teacher, "general.commit.error");
+            }
+        }
+        return result;
+    }
+
     // Ancillary methods ------------------------------------------------
     @RequestMapping(value = "/editp", method = RequestMethod.GET)
     public ModelAndView editp() {
-       ModelAndView result;
-       Teacher teacher;
+        ModelAndView result;
+        Teacher teacher;
 
-       teacher = teacherService.findByPrincipal();
-       Assert.notNull(teacher);
+        teacher = teacherService.findByPrincipal();
+        Assert.notNull(teacher);
 
-       result = createEditModelAndView(teacher);
+        result = createEditModelAndView(teacher);
 
-       return result;
+        return result;
     }
+
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public ModelAndView edit(@RequestParam int teacherId) {
         ModelAndView result;
@@ -150,8 +151,8 @@ public class TeacherController extends AbstractController {
 //            result = createEditModelAndView(teacher);
 //        } else {
 //            try {
-                teacherService.save(teacher);
-                result = new ModelAndView("redirect:list.do");
+        teacherService.save(teacher);
+        result = new ModelAndView("redirect:list.do");
 //            } catch (Throwable oops) {
 //                result = createEditModelAndView(teacher, "teacher.commit.error");
 //            }

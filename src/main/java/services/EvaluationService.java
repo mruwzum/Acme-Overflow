@@ -1,12 +1,10 @@
 package services;
 
 import domain.Evaluation;
-import domain.Folder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import repositories.EvaluationQuestionRepository;
 import repositories.EvaluationRepository;
 
 import java.util.Collection;
@@ -22,14 +20,14 @@ public class EvaluationService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public EvaluationService() {
-        super();
-    }
+    @Autowired
+    private EvaluationRepository evaluationRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    @Autowired
-    private EvaluationRepository evaluationRepository;
+    public EvaluationService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------

@@ -27,12 +27,12 @@ public class CommentController extends AbstractController {
     private CommentService commentService;
     @Autowired
     private ActorService actorService;
-   @Autowired
-   private WebinarService webinarService;
-   @Autowired
-   private UserService userService;
-   @Autowired
-   private OtherService otherService;
+    @Autowired
+    private WebinarService webinarService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private OtherService otherService;
 
     //Constructors----------------------------------------------
 
@@ -102,8 +102,8 @@ public class CommentController extends AbstractController {
         ModelAndView result;
 
         Comment comment = commentService.create();
-       Webinar webinar = webinarService.findOne(webinarId);
-       comment.setWebinar(webinar);
+        Webinar webinar = webinarService.findOne(webinarId);
+        comment.setWebinar(webinar);
         //webinar.getComments().add(comment);
         result = createEditModelAndView(comment);
 
@@ -146,12 +146,12 @@ public class CommentController extends AbstractController {
             result = createEditModelAndView(comment);
         } else {
             try {
-       comment.setCreationDate(new Date(System.currentTimeMillis() - 1000));
-       comment.setOwner(otherService.findByPrincipal());
-       commentService.save(comment);
+                comment.setCreationDate(new Date(System.currentTimeMillis() - 1000));
+                comment.setOwner(otherService.findByPrincipal());
+                commentService.save(comment);
 
 
-       result = new ModelAndView("user/success");
+                result = new ModelAndView("user/success");
             } catch (Throwable oops) {
                 result = createEditModelAndView(comment, "general.commit.error");
             }

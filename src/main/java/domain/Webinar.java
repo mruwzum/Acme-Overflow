@@ -7,7 +7,6 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import java.util.Collection;
 import java.util.Date;
 
@@ -45,6 +44,7 @@ public class Webinar extends DomainEntity {
     public void setName(String name) {
         this.name = name;
     }
+
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getDescription() {
@@ -54,6 +54,7 @@ public class Webinar extends DomainEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
     @Temporal(TemporalType.TIMESTAMP)
     public Date getStartDate() {
         return startDate;
@@ -62,6 +63,7 @@ public class Webinar extends DomainEntity {
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
+
     @NotNull
     @Range(min = 1, max = 10000)
     public double getPrice() {
@@ -101,7 +103,7 @@ public class Webinar extends DomainEntity {
         this.owner = owner;
     }
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "webinar")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "webinar")
     public Collection<Comment> getComments() {
         return comments;
     }
@@ -111,7 +113,7 @@ public class Webinar extends DomainEntity {
     }
 
 
-   @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     public Collection<User> getPartakers() {
         return partakers;
     }

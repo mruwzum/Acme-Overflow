@@ -17,8 +17,6 @@ public class Banner extends DomainEntity {
     // Relationships ---------------------------------------------------------
 
 
-
-
     @NotNull
     @URL
     public String getUrl() {

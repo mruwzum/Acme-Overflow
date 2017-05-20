@@ -1,6 +1,9 @@
 package services;
 
-import domain.*;
+import domain.Other;
+import domain.Teacher;
+import domain.User;
+import domain.Webinar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,14 +23,14 @@ public class WebinarService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public WebinarService() {
-        super();
-    }
+    @Autowired
+    private WebinarRepository webinarRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    @Autowired
-    private WebinarRepository webinarRepository;
+    public WebinarService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------
@@ -67,7 +70,7 @@ public class WebinarService {
     // Other business methods -------------------------------------------------------------------------------
 
 
-    public void flush(){
+    public void flush() {
         webinarRepository.flush();
     }
 
@@ -85,7 +88,7 @@ public class WebinarService {
     public boolean unregister(User user, Webinar webinar) {
         boolean res = true;
 
-        if (!webinar.getPartakers().contains(user)) {
+        if (! webinar.getPartakers().contains(user)) {
             res = false;
         }
         webinar.getPartakers().remove(user);
@@ -95,20 +98,20 @@ public class WebinarService {
     }
 
 
-    public Collection<Webinar> myWebinars(Teacher t){
+    public Collection<Webinar> myWebinars(Teacher t) {
 
         Assert.notNull(t);
         return webinarRepository.myWebinars(t);
     }
 
-    public Collection<Webinar> myWebinarsO(Other t){
+    public Collection<Webinar> myWebinarsO(Other t) {
 
         Assert.notNull(t);
         return webinarRepository.myWebinarso(t);
     }
 
 
-    public Collection<Webinar> webinarsToGo(User u){
+    public Collection<Webinar> webinarsToGo(User u) {
 
         Assert.notNull(u);
         return webinarRepository.webinarsToAssist(u);

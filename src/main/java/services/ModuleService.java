@@ -1,6 +1,5 @@
 package services;
 
-import domain.Message;
 import domain.Module;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,14 +20,14 @@ public class ModuleService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public ModuleService() {
-        super();
-    }
+    @Autowired
+    private ModuleRepository moduleRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    @Autowired
-    private ModuleRepository moduleRepository;
+    public ModuleService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------

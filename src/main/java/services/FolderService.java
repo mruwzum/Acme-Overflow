@@ -19,14 +19,14 @@ public class FolderService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public FolderService() {
-        super();
-    }
+    @Autowired
+    private repositories.FolderRepository FolderRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    @Autowired
-    private repositories.FolderRepository FolderRepository;
+    public FolderService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------

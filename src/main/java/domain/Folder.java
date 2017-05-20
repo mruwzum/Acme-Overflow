@@ -28,7 +28,7 @@ public class Folder extends DomainEntity {
         this.name = name;
     }
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "folder")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "folder")
     public Collection<Message> getMessages() {
         return messages;
     }
@@ -38,7 +38,7 @@ public class Folder extends DomainEntity {
     }
 
 
-   @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     public Actor getOwner() {
         return owner;
     }

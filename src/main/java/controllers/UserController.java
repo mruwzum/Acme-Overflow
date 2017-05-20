@@ -1,7 +1,6 @@
 package controllers;
 
 
-import domain.CreditCard;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,13 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import security.Authority;
-import security.UserAccount;
 import security.UserAccountService;
 import services.CreditCardService;
 import services.UserService;
 
-
-import javax.jws.soap.SOAPBinding;
 import javax.validation.Valid;
 import java.util.Collection;
 import java.util.HashSet;
@@ -33,8 +29,8 @@ public class UserController extends AbstractController {
     private UserService userService;
     @Autowired
     private CreditCardService creditCardService;
-@Autowired
-private UserAccountService userAccountService;
+    @Autowired
+    private UserAccountService userAccountService;
 
     //Constructors----------------------------------------------
 
@@ -87,43 +83,43 @@ private UserAccountService userAccountService;
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView userList() {
 
-       ModelAndView result;
-       Collection<User> users;
+        ModelAndView result;
+        Collection<User> users;
 
-       Collection<User> res = new HashSet<>();
-       users = userService.findAll();
-       for (User user : users) {
-          if (!user.isBanned()) {
-             res.add(user);
-          }
-       }
-       result = new ModelAndView("user/list");
-       result.addObject("users", users);
-       result.addObject("requestURI", "user/list.do");
+        Collection<User> res = new HashSet<>();
+        users = userService.findAll();
+        for (User user : users) {
+            if (! user.isBanned()) {
+                res.add(user);
+            }
+        }
+        result = new ModelAndView("user/list");
+        result.addObject("users", users);
+        result.addObject("requestURI", "user/list.do");
 
-       return result;
+        return result;
     }
 
-   @RequestMapping(value = "/listAll", method = RequestMethod.GET)
-   public ModelAndView userListAll() {
+    @RequestMapping(value = "/listAll", method = RequestMethod.GET)
+    public ModelAndView userListAll() {
 
-      ModelAndView result;
-      Collection<User> users;
-      users = userService.findAll();
-      Collection<User> res = new HashSet<>();
-      Authority authority = new Authority();
-      authority.setAuthority("MODERATOR");
-      for (User u : users) {
-         if (!u.getUserAccount().getAuthorities().contains(authority)) {
-            res.add(u);
-         }
-      }
-      result = new ModelAndView("user/list");
-      result.addObject("users", res);
-      result.addObject("requestURI", "user/list.do");
+        ModelAndView result;
+        Collection<User> users;
+        users = userService.findAll();
+        Collection<User> res = new HashSet<>();
+        Authority authority = new Authority();
+        authority.setAuthority("MODERATOR");
+        for (User u : users) {
+            if (! u.getUserAccount().getAuthorities().contains(authority)) {
+                res.add(u);
+            }
+        }
+        result = new ModelAndView("user/list");
+        result.addObject("users", res);
+        result.addObject("requestURI", "user/list.do");
 
-      return result;
-   }
+        return result;
+    }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create() {
@@ -142,20 +138,18 @@ private UserAccountService userAccountService;
     public ModelAndView register(@Valid User user, BindingResult binding) {
         ModelAndView result;
 
-        if (!binding.hasErrors()) {
+        if (! binding.hasErrors()) {
             result = createEditModelAndView2(user);
         } else {
             try {
-        userService.registerAsUser(user);
-        result = new ModelAndView("redirect:list.do");
+                userService.registerAsUser(user);
+                result = new ModelAndView("redirect:list.do");
             } catch (Throwable oops) {
                 result = createEditModelAndView2(user, "general.commit.error");
             }
         }
         return result;
     }
-
-
 
 
     // Ancillary methods ------------------------------------------------
@@ -197,7 +191,7 @@ private UserAccountService userAccountService;
 
 
                 User user1 = userService.save(user);
-        creditCardService.save(user1.getCreditCard());
+                creditCardService.save(user1.getCreditCard());
 
                 result = new ModelAndView("welcome/index");
             } catch (Throwable oops) {
@@ -215,7 +209,7 @@ private UserAccountService userAccountService;
 
 //		try {
         userService.banUser(user);
-       res = new ModelAndView("redirect:listAll.do");
+        res = new ModelAndView("redirect:listAll.do");
 //		} catch (Exception e) {
 //			res = new ModelAndView("chorbi/error");
 //			res.addObject("trace", e.fillInStackTrace());
@@ -236,7 +230,7 @@ private UserAccountService userAccountService;
 
         try {
             userService.unbanUser(user);
-           res = new ModelAndView("redirect:listAll.do");
+            res = new ModelAndView("redirect:listAll.do");
         } catch (Exception e) {
             res = new ModelAndView("user/error");
             res.addObject("trace", e.toString());
@@ -247,12 +241,13 @@ private UserAccountService userAccountService;
 
 
     }
+
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
     public ModelAndView delete(User user) {
         ModelAndView result;
         try {
             userService.delete(user);
-           result = new ModelAndView("welcome/index");
+            result = new ModelAndView("welcome/index");
         } catch (Throwable oops) {
             result = createEditModelAndView(user, "user.commit.error");
         }

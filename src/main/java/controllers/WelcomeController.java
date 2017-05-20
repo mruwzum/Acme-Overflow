@@ -10,9 +10,6 @@
 
 package controllers;
 
-import java.text.SimpleDateFormat;
-import java.util.*;
-
 import domain.Banner;
 import domain.Question;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,55 +20,60 @@ import org.springframework.web.servlet.ModelAndView;
 import services.BannerService;
 import services.QuestionService;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
+
 @Controller
 @RequestMapping("/welcome")
 public class WelcomeController extends AbstractController {
 
-	@Autowired
-	private QuestionService questionService;
-	@Autowired
-	private BannerService bannerService;
+    @Autowired
+    private QuestionService questionService;
+    @Autowired
+    private BannerService bannerService;
 
-	// Constructors -----------------------------------------------------------
+    // Constructors -----------------------------------------------------------
 
-	public WelcomeController() {
-		super();
-	}
+    public WelcomeController() {
+        super();
+    }
 
-	// Index ------------------------------------------------------------------		
+    // Index ------------------------------------------------------------------
 
-	@RequestMapping(value = "/index")
-	public ModelAndView index(@RequestParam(required = false, defaultValue = "John Doe") final String name) {
-		ModelAndView result;
-		SimpleDateFormat formatter;
-		String moment;
-
-
-		Collection<Question> res = questionService.notBannedQuestions();
+    @RequestMapping(value = "/index")
+    public ModelAndView index(@RequestParam(required = false, defaultValue = "John Doe") final String name) {
+        ModelAndView result;
+        SimpleDateFormat formatter;
+        String moment;
 
 
-		Random randomGenerator = new Random();
+        Collection<Question> res = questionService.notBannedQuestions();
 
 
-		List<Banner> banner = new ArrayList<>();
-		banner.addAll(bannerService.findAll());
+        Random randomGenerator = new Random();
 
 
-		int index = randomGenerator.nextInt(banner.size());
-		String bannerOut = banner.get(index).getUrl();
-
-		String ppoImg = "<img src=\"";
-		String finImg = "\" alt=\"Banner\" height=\"400\" width=\"700\">";
-
-		String bannerFin = ppoImg + bannerOut + finImg;
+        List<Banner> banner = new ArrayList<>();
+        banner.addAll(bannerService.findAll());
 
 
-		result = new ModelAndView("welcome/index");
-      result.addObject("questions", res);
-      result.addObject("banner", bannerFin);
+        int index = randomGenerator.nextInt(banner.size());
+        String bannerOut = banner.get(index).getUrl();
+
+        String ppoImg = "<img src=\"";
+        String finImg = "\" alt=\"Banner\" height=\"400\" width=\"700\">";
+
+        String bannerFin = ppoImg + bannerOut + finImg;
 
 
+        result = new ModelAndView("welcome/index");
+        result.addObject("questions", res);
+        result.addObject("banner", bannerFin);
 
-		return result;
-	}
+
+        return result;
+    }
 }

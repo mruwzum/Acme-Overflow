@@ -8,7 +8,8 @@ import security.UserAccount;
 
 /**
  * Created by daviddelatorre on 29/3/17.
- */@Component
+ */
+@Component
 @Transactional
 public class UserAccountToStringConverter implements Converter<UserAccount, String> {
 

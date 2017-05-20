@@ -5,7 +5,6 @@ import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import java.util.Collection;
 import java.util.Date;
 
@@ -36,6 +35,7 @@ public class Question extends DomainEntity {
     public void setTitle(String title) {
         this.title = title;
     }
+
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getSummary() {
@@ -74,7 +74,7 @@ public class Question extends DomainEntity {
         this.pictures = pictures;
     }
 
-   @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @NotNull
     public User getOwner() {
         return owner;

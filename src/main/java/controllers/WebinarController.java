@@ -2,7 +2,6 @@ package controllers;
 
 
 import domain.Category;
-import domain.LearningMaterial;
 import domain.User;
 import domain.Webinar;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.*;
-
 
 import javax.validation.Valid;
 import java.util.*;
@@ -28,24 +26,24 @@ public class WebinarController extends AbstractController {
 
     @Autowired
     private WebinarService webinarService;
-   @Autowired
-   private TeacherService teacherService;
-   @Autowired
-   private UserService userService;
-   @Autowired
-   private CategoryService categoryService;
-   @Autowired
-   private OtherService otherService;
+    @Autowired
+    private TeacherService teacherService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private CategoryService categoryService;
+    @Autowired
+    private OtherService otherService;
     //Constructors----------------------------------------------
 
     public WebinarController() {
         super();
     }
 
-   protected static ModelAndView createEditModelAndView(Webinar webinar) {
+    protected static ModelAndView createEditModelAndView(Webinar webinar) {
         ModelAndView result;
 
-      result = createEditModelAndView(webinar, null);
+        result = createEditModelAndView(webinar, null);
 
         return result;
     }
@@ -53,38 +51,38 @@ public class WebinarController extends AbstractController {
 
     //Create Method -----------------------------------------------------------
 
-   protected static ModelAndView createEditModelAndView(Webinar webinar, String message) {
+    protected static ModelAndView createEditModelAndView(Webinar webinar, String message) {
         ModelAndView result;
 
-      result = new ModelAndView("webinar/edit");
-      result.addObject("webinar", webinar);
+        result = new ModelAndView("webinar/edit");
+        result.addObject("webinar", webinar);
         result.addObject("message", message);
 
         return result;
 
     }
 
-   protected static ModelAndView createEditModelAndView2(Webinar webinar) {
+    protected static ModelAndView createEditModelAndView2(Webinar webinar) {
         ModelAndView result;
 
-      result = createEditModelAndView2(webinar, null);
+        result = createEditModelAndView2(webinar, null);
 
         return result;
     }
     // Edition ---------------------------------------------------------
 
-   protected static ModelAndView createEditModelAndView2(Webinar webinar, String message) {
+    protected static ModelAndView createEditModelAndView2(Webinar webinar, String message) {
         ModelAndView result;
 
-      result = new ModelAndView("webinar/edit");
-      result.addObject("webinar", webinar);
+        result = new ModelAndView("webinar/edit");
+        result.addObject("webinar", webinar);
         result.addObject("message", message);
 
         return result;
 
     }
 
-   @RequestMapping(value = "/listAn", method = RequestMethod.GET)
+    @RequestMapping(value = "/listAn", method = RequestMethod.GET)
     public ModelAndView webinarListAn() {
 
         ModelAndView result;
@@ -99,7 +97,6 @@ public class WebinarController extends AbstractController {
 
         return result;
     }
-
 
 
     @RequestMapping(value = "/listMy", method = RequestMethod.GET)
@@ -119,81 +116,82 @@ public class WebinarController extends AbstractController {
         return result;
     }
 
-   @RequestMapping(value = "/listToGo", method = RequestMethod.GET)
-   public ModelAndView webinarListToGo() {
+    @RequestMapping(value = "/listToGo", method = RequestMethod.GET)
+    public ModelAndView webinarListToGo() {
 
-      ModelAndView result;
-      Collection<Webinar> res;
+        ModelAndView result;
+        Collection<Webinar> res;
 
-       res= webinarService.webinarsToGo(userService.findByPrincipal());
-      result = new ModelAndView("webinar/list");
-      result.addObject("webinars", res);
-      result.addObject("requestURI", "webinar/listToGo.do");
+        res = webinarService.webinarsToGo(userService.findByPrincipal());
+        result = new ModelAndView("webinar/list");
+        result.addObject("webinars", res);
+        result.addObject("requestURI", "webinar/listToGo.do");
 
-      return result;
-   }
+        return result;
+    }
 
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView webinarList() {
 
         ModelAndView result;
-       Collection<Webinar> webinars;
+        Collection<Webinar> webinars;
 
-       webinars = webinarService.findAll();
-       Collection<Webinar> mines = new HashSet<>();
+        webinars = webinarService.findAll();
+        Collection<Webinar> mines = new HashSet<>();
 
-       for (Webinar w : webinars) {
-          if (w.getOwner().equals(teacherService.findByPrincipal())) {
-             mines.add(w);
-          }
-       }
-       result = new ModelAndView("webinar/list");
-       result.addObject("webinars", webinars);
-       result.addObject("mywebinars", mines);
-       result.addObject("requestURI", "webinar/list.do");
+        for (Webinar w : webinars) {
+            if (w.getOwner().equals(teacherService.findByPrincipal())) {
+                mines.add(w);
+            }
+        }
+        result = new ModelAndView("webinar/list");
+        result.addObject("webinars", webinars);
+        result.addObject("mywebinars", mines);
+        result.addObject("requestURI", "webinar/list.do");
 
         return result;
     }
 
 
-   @RequestMapping(value = "/listIncoming", method = RequestMethod.GET)
-   public ModelAndView webinarListIncoming() {
+    @RequestMapping(value = "/listIncoming", method = RequestMethod.GET)
+    public ModelAndView webinarListIncoming() {
 
-      ModelAndView result;
-      Collection<Webinar> webinars;
-      List<Webinar> res = new ArrayList<>();
-      webinars = webinarService.findAll();
+        ModelAndView result;
+        Collection<Webinar> webinars;
+        List<Webinar> res = new ArrayList<>();
+        webinars = webinarService.findAll();
 
-      for (Webinar webinar : webinars) {
-         if (webinar.getStartDate().after(new Date(System.currentTimeMillis() - 30 * 24 * 60L)) && webinar.getStartDate().getYear() == 117) {
-            res.add(webinar);
-         }
+        for (Webinar webinar : webinars) {
+            if (webinar.getStartDate().after(new Date(System.currentTimeMillis() - 30 * 24 * 60L)) && webinar.getStartDate().getYear() == 117) {
+                res.add(webinar);
+            }
 
-      }
-      Collections.sort(res, new Comparator<Webinar>() {
-         public int compare(Webinar m1, Webinar m2) {
-            return m2.getStartDate().toString().compareTo(m1.getStartDate().toString());
-         }
-      });
+        }
+        Collections.sort(res, new Comparator<Webinar>() {
+            public int compare(Webinar m1, Webinar m2) {
+                return m2.getStartDate().toString().compareTo(m1.getStartDate().toString());
+            }
+        });
 
-      result = new ModelAndView("webinar/list");
-      result.addObject("webinars", res);
-      result.addObject("requestURI", "webinar/listIncoming.do");
+        result = new ModelAndView("webinar/list");
+        result.addObject("webinars", res);
+        result.addObject("requestURI", "webinar/listIncoming.do");
 
-      return result;
-   }
+        return result;
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create() {
         ModelAndView result;
-       //TODO gordito crear webminars
-       Webinar webinar = webinarService.create();
-       webinar.setOwner(teacherService.findByPrincipal());
+        //TODO gordito crear webminars
+        Webinar webinar = webinarService.create();
+        webinar.setOwner(teacherService.findByPrincipal());
 
-       Collection<Category> categories = categoryService.findAll();
+        Collection<Category> categories = categoryService.findAll();
 
-       result = createEditModelAndView(webinar);
-       result.addObject("categories", categories);
+        result = createEditModelAndView(webinar);
+        result.addObject("categories", categories);
 
         return result;
 
@@ -205,28 +203,28 @@ public class WebinarController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public ModelAndView edit(@RequestParam int webinarId) {
         ModelAndView result;
-       Webinar webinar;
+        Webinar webinar;
 
-       webinar = webinarService.findOne(webinarId);
-       Assert.notNull(webinar);
-       result = createEditModelAndView(webinar);
-       result.addObject("categories", categoryService.findAll());
-       webinarService.flush();
+        webinar = webinarService.findOne(webinarId);
+        Assert.notNull(webinar);
+        result = createEditModelAndView(webinar);
+        result.addObject("categories", categoryService.findAll());
+        webinarService.flush();
 
         return result;
     }
 
-   @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+    @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid Webinar webinar, BindingResult binding) {
         ModelAndView result;
 //        if (!binding.hasErrors()) {
 //           result = createEditModelAndView(webinar);
 //        } else {
 //            try {
-      //TODO: no se guarda por los learning
+        //TODO: no se guarda por los learning
 
-               webinarService.save(webinar);
-      result = new ModelAndView("redirect:listAn.do");
+        webinarService.save(webinar);
+        result = new ModelAndView("redirect:listAn.do");
 //            } catch (Throwable oops) {
 //               result = createEditModelAndView(webinar, "webinar.commit.error");
 //            }
@@ -238,9 +236,9 @@ public class WebinarController extends AbstractController {
     public ModelAndView delete(Webinar webinar) {
         ModelAndView result;
 //        try {
-            webinar.setCategories(null);
-           webinarService.delete(webinar);
-           result = new ModelAndView("redirect:listAn.do");
+        webinar.setCategories(null);
+        webinarService.delete(webinar);
+        result = new ModelAndView("redirect:listAn.do");
 //        } catch (Throwable oops) {
 //           result = createEditModelAndView(webinar, "general.commit.error");
 //        }
@@ -248,74 +246,74 @@ public class WebinarController extends AbstractController {
         return result;
     }
 
-   @RequestMapping(value = "/view", method = RequestMethod.GET)
-   public ModelAndView webinarView(@RequestParam int webinarId) {
-      Boolean registered = false;
-      Boolean my = false;
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    public ModelAndView webinarView(@RequestParam int webinarId) {
+        Boolean registered = false;
+        Boolean my = false;
 
-       ModelAndView result;
-      Webinar webinar = webinarService.findOne(webinarId);
+        ModelAndView result;
+        Webinar webinar = webinarService.findOne(webinarId);
 
-      if (webinar.getPartakers().contains(otherService.findByPrincipal())) {
-         registered = true;
-      }
+        if (webinar.getPartakers().contains(otherService.findByPrincipal())) {
+            registered = true;
+        }
 
 //      if(webinarService.myWebinars(teacherService.findByPrincipal()).contains(webinar)){
 //          my = true;
 //      }
 
 
-      result = new ModelAndView("webinar/view");
-      result.addObject("name", webinar.getName());
-      result.addObject("description", webinar.getDescription());
-      result.addObject("startDate", webinar.getStartDate());
-      result.addObject("price", webinar.getPrice());
-      result.addObject("categories", webinar.getCategories());
-      result.addObject("comments", webinar.getComments());
-      result.addObject("webinarId", webinar.getId());
-      result.addObject("users", webinar.getPartakers());
-      result.addObject("reg", registered);
-      result.addObject("modules", webinar.getModules());
+        result = new ModelAndView("webinar/view");
+        result.addObject("name", webinar.getName());
+        result.addObject("description", webinar.getDescription());
+        result.addObject("startDate", webinar.getStartDate());
+        result.addObject("price", webinar.getPrice());
+        result.addObject("categories", webinar.getCategories());
+        result.addObject("comments", webinar.getComments());
+        result.addObject("webinarId", webinar.getId());
+        result.addObject("users", webinar.getPartakers());
+        result.addObject("reg", registered);
+        result.addObject("modules", webinar.getModules());
 //       result.addObject("my", my);
 //
-       result.addObject("requestURI", "webinar/view.do");
+        result.addObject("requestURI", "webinar/view.do");
 
-      return result;
-   }
+        return result;
+    }
 
-   @RequestMapping(value = "/register", method = RequestMethod.GET)
-   public ModelAndView apply(@RequestParam int webinarId) {
-      ModelAndView result;
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView apply(@RequestParam int webinarId) {
+        ModelAndView result;
 
-      Webinar webinar = webinarService.findOne(webinarId);
-      User user = userService.findByPrincipal();
-      Boolean op = webinarService.register(user, webinar);
-
-
-      if (op.equals(false)) {
-         result = new ModelAndView("user/error");
-      } else {
-         result = new ModelAndView("user/success");
-      }
-
-      return result;
-   }
-
-   @RequestMapping(value = "/unregister", method = RequestMethod.GET)
-   public ModelAndView unapply(@RequestParam int webinarId) {
-      ModelAndView result;
-
-      Webinar webinar = webinarService.findOne(webinarId);
-      User user = userService.findByPrincipal();
-      Boolean op = webinarService.unregister(user, webinar);
+        Webinar webinar = webinarService.findOne(webinarId);
+        User user = userService.findByPrincipal();
+        Boolean op = webinarService.register(user, webinar);
 
 
-      if (op.equals(false)) {
-         result = new ModelAndView("user/error");
-      } else {
-         result = new ModelAndView("user/success");
-      }
+        if (op.equals(false)) {
+            result = new ModelAndView("user/error");
+        } else {
+            result = new ModelAndView("user/success");
+        }
 
-      return result;
-   }
+        return result;
+    }
+
+    @RequestMapping(value = "/unregister", method = RequestMethod.GET)
+    public ModelAndView unapply(@RequestParam int webinarId) {
+        ModelAndView result;
+
+        Webinar webinar = webinarService.findOne(webinarId);
+        User user = userService.findByPrincipal();
+        Boolean op = webinarService.unregister(user, webinar);
+
+
+        if (op.equals(false)) {
+            result = new ModelAndView("user/error");
+        } else {
+            result = new ModelAndView("user/success");
+        }
+
+        return result;
+    }
 }

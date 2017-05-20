@@ -19,14 +19,14 @@ public class LearningMaterialService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public LearningMaterialService() {
-        super();
-    }
+    @Autowired
+    private repositories.LearningMaterialRepository LearningMaterialRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    @Autowired
-    private repositories.LearningMaterialRepository LearningMaterialRepository;
+    public LearningMaterialService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------

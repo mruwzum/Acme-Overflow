@@ -6,10 +6,8 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
-import java.util.Collection;
 
 /**
  * Created by daviddelatorre on 15/5/17.

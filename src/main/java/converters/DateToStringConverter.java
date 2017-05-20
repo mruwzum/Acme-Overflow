@@ -16,7 +16,7 @@ public class DateToStringConverter implements Converter<Date, String> {
         if (date == null)
             result = null;
         else
-            result = date.toString().replace("-","/");
+            result = date.toString().replace("-", "/");
 
         return result;
     }

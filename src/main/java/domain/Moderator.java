@@ -1,7 +1,8 @@
 package domain;
 
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
 
 /**
  * Created by daviddelatorre on 15/5/17.
@@ -10,7 +11,6 @@ import java.util.Collection;
 @Entity
 @Access(AccessType.PROPERTY)
 public class Moderator extends User {
-
 
 
 }

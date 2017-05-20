@@ -51,7 +51,6 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
     Collection<User> userSortedByNumberOfDislikes();
 
 
-
     //*************************** LEVEL B ***************************
 
     @Query("select u from User u where u.creditCard is not null")
@@ -90,26 +89,28 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
     //*************************** LEVEL A ***************************
 
 
-    @Query("select avg(c.answers.size) from User c join c.answers a where a.banned=true") //ESTO DA NULL
+    @Query("select avg(c.answers.size) from User c join c.answers a where a.banned=true")
+        //ESTO DA NULL
     Double averageNumberOfBannedAnswerPerUser();
 
 
     @Query("select c from Question c where c.banned=true")
     Collection<Question> numberOfBannedQuestions();
+
     @Query("select c from Question c ")
     Collection<Question> numberOfNonBannedQuestions();
 
     @Query("select c from Answer c where c.banned=true")
     Collection<Answer> numberOfBannedAnswer();
+
     @Query("select c from Answer c")
     Collection<Answer> numberOfNonBannedAnswer();
 
     @Query("select c from User c where c.banned=true")
-    Collection<User>  numberOfBannedUser();
+    Collection<User> numberOfBannedUser();
+
     @Query("select c from User c")
     Collection<User> numberOfNonBannedUser();
-
-
 
 
     @Query("select a from Actor a order by a.sendedMessages.size")
@@ -117,22 +118,6 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 
     @Query("select a from Actor a order by a.receivedMessages.size")
     Collection<Actor> actorSortedByNumberOfReceivedMessages();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     //A listing with the number of chorbies per country and city.

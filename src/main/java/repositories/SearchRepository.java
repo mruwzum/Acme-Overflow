@@ -14,7 +14,6 @@ import java.util.Collection;
 public interface SearchRepository extends JpaRepository<Search, Integer> {
 
 
-
     @Query("select c from Question c where c.title like %?1 or c.summary like %?1")
     Collection<Question> questionsByKeyword(String keyword);
 

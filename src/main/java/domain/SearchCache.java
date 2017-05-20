@@ -16,7 +16,6 @@ public class SearchCache extends DomainEntity {
     private int cacheValue;
 
 
-
     @NotNull
     public int getCacheValue() {
         return cacheValue;

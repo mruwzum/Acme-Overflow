@@ -13,7 +13,7 @@ import repositories.SearchRepository;
  */
 @Component
 @Transactional
-public class StringToSearchConverter  implements Converter<String, Search> {
+public class StringToSearchConverter implements Converter<String, Search> {
 
     @Autowired
     SearchRepository searchRepository;

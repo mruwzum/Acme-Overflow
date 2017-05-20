@@ -8,7 +8,8 @@ import org.springframework.util.Assert;
 
 /**
  * Created by daviddelatorre on 29/3/17.
- */@Component
+ */
+@Component
 @Transactional
 public class SearchToStringConverter implements Converter<Search, String> {
 

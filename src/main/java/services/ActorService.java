@@ -4,11 +4,9 @@ import domain.Actor;
 import domain.Folder;
 import domain.Message;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.ActorRepository;
-import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import security.UserAccountService;
@@ -16,18 +14,17 @@ import security.UserAccountService;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 @Service
 @Transactional
 public class ActorService {
 
-	// Managed Repository ------------------------
-	@Autowired
-	private ActorRepository actorRepository;
-	@Autowired
-	private UserAccountService userAccountService;
+    // Managed Repository ------------------------
+    @Autowired
+    private ActorRepository actorRepository;
+    @Autowired
+    private UserAccountService userAccountService;
     @Autowired
     private FolderService folderService;
 
@@ -38,38 +35,36 @@ public class ActorService {
         super();
     }
 
-	// Simple CRUD methods -----------------------
+    // Simple CRUD methods -----------------------
 
-	public Actor findOne(int actorId) {
-		Actor result;
+    public Actor findOne(int actorId) {
+        Actor result;
 
-		result = actorRepository.findOne(actorId);
+        result = actorRepository.findOne(actorId);
 
-		return result;
-	}
+        return result;
+    }
 
-	public Collection<Actor> findAll() {
-		Collection<Actor> result;
+    public Collection<Actor> findAll() {
+        Collection<Actor> result;
 
-		result = actorRepository.findAll();
+        result = actorRepository.findAll();
 
-		return result;
-	}
+        return result;
+    }
 
-	public Actor save(Actor actor) {
-		Assert.notNull(actor);
-		return actorRepository.save(actor);
-	}
+    public Actor save(Actor actor) {
+        Assert.notNull(actor);
+        return actorRepository.save(actor);
+    }
 
-	public void delete(Actor actor) {
-		Assert.notNull(actor);
-		Assert.isTrue(actorRepository.exists(actor.getId()));
-		actorRepository.delete(actor);
-	}
+    public void delete(Actor actor) {
+        Assert.notNull(actor);
+        Assert.isTrue(actorRepository.exists(actor.getId()));
+        actorRepository.delete(actor);
+    }
 
-	// Other business methods -----------------------
-
-
+    // Other business methods -----------------------
 
 
     public Actor findByPrincipal() {
@@ -94,9 +89,9 @@ public class ActorService {
         return result;
     }
 
-	public void flush(){
-		actorRepository.flush();
-	}
+    public void flush() {
+        actorRepository.flush();
+    }
 
     //Manage Folder
 

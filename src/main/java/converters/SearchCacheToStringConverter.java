@@ -1,6 +1,5 @@
 package converters;
 
-import domain.Search;
 import domain.SearchCache;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -9,7 +8,8 @@ import org.springframework.util.Assert;
 
 /**
  * Created by daviddelatorre on 29/3/17.
- */@Component
+ */
+@Component
 @Transactional
 public class SearchCacheToStringConverter implements Converter<SearchCache, String> {
 

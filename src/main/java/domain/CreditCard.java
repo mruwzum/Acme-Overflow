@@ -4,7 +4,9 @@ import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 
-import javax.persistence.*;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -32,6 +34,7 @@ public class CreditCard extends DomainEntity {
     public void setHolderName(String holderName) {
         this.holderName = holderName;
     }
+
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @CreditCardNumber
@@ -60,6 +63,7 @@ public class CreditCard extends DomainEntity {
     public void setMonth(int month) {
         this.month = month;
     }
+
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @Pattern(regexp = "\\d{3}$")

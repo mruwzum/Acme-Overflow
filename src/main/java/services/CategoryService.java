@@ -21,14 +21,14 @@ public class CategoryService {
 
     // Constructors--------------------------------------------------------------------------------------
 
-    public CategoryService() {
-        super();
-    }
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
-    @Autowired
-    private CategoryRepository categoryRepository;
+    public CategoryService() {
+        super();
+    }
 
 
     // Suporting services --------------------------------------------------------------------------------

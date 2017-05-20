@@ -12,14 +12,14 @@ public class StringToDateConverter implements Converter<String, Date> {
 
 
     @SuppressWarnings("deprecation")
-	@Override
+    @Override
     public Date convert(String source) {
         Date result;
         try {
             if (StringUtils.isEmpty(source))
                 result = null;
             else {
-                result=new Date(source);
+                result = new Date(source);
             }
         } catch (Throwable oops) {
             throw new IllegalArgumentException(oops);

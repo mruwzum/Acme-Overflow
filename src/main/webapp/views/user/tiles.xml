@@ -11,33 +11,33 @@
  -->
 
 <!DOCTYPE tiles-definitions PUBLIC
-       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
-       
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
 <tiles-definitions>
 
-	<definition name="user/edit" extends="master.page">
-		<put-attribute name="title" value="user: Edit" />
-		<put-attribute name="body" value="/views/user/edit.jsp" />
-	</definition>
-	
-	<definition name="user/list" extends="master.page">
-		<put-attribute name="title" value="user: List" />
-		<put-attribute name="body" value="/views/user/list.jsp" />
-	</definition>
+    <definition name="user/edit" extends="master.page">
+        <put-attribute name="title" value="user: Edit"/>
+        <put-attribute name="body" value="/views/user/edit.jsp"/>
+    </definition>
+
+    <definition name="user/list" extends="master.page">
+        <put-attribute name="title" value="user: List"/>
+        <put-attribute name="body" value="/views/user/list.jsp"/>
+    </definition>
 
 
     <definition name="user/register" extends="master.page">
         <put-attribute name="title" value="user: Register"/>
         <put-attribute name="body" value="/views/user/register.jsp"/>
     </definition>
-	<definition name="user/success" extends="master.page">
-		<put-attribute name="title" value="user: success"/>
-		<put-attribute name="body" value="/views/user/success.jsp"/>
-	</definition>
-	<definition name="user/error" extends="master.page">
-		<put-attribute name="title" value="user: error"/>
-		<put-attribute name="body" value="/views/user/error.jsp"/>
-	</definition>
+    <definition name="user/success" extends="master.page">
+        <put-attribute name="title" value="user: success"/>
+        <put-attribute name="body" value="/views/user/success.jsp"/>
+    </definition>
+    <definition name="user/error" extends="master.page">
+        <put-attribute name="title" value="user: error"/>
+        <put-attribute name="body" value="/views/user/error.jsp"/>
+    </definition>
 
 </tiles-definitions>

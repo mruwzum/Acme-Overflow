@@ -1,8 +1,6 @@
 package converters;
 
-import domain.Evaluation;
 import domain.EvaluationQuestion;
-import domain.Search;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +8,8 @@ import org.springframework.util.Assert;
 
 /**
  * Created by daviddelatorre on 29/3/17.
- */@Component
+ */
+@Component
 @Transactional
 public class EvaluationQuestionToStringConverter implements Converter<EvaluationQuestion, String> {
 

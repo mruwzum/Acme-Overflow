@@ -1,6 +1,5 @@
 package converters;
 
-import domain.Search;
 import domain.SearchCache;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,6 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import repositories.SearchCacheRepository;
-import repositories.SearchRepository;
 
 /**
  * Created by daviddelatorre on 29/3/17.

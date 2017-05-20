@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import repositories.AnswerRepository;
 
-import java.text.CollationElementIterator;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -22,8 +21,8 @@ public class AnswerService {
     // Managed Repository ------------------------
     @Autowired
     private AnswerRepository answerRepository;
-   @Autowired
-   private UserService userService;
+    @Autowired
+    private UserService userService;
 
 
     // Supporting services -----------------------
@@ -48,12 +47,12 @@ public class AnswerService {
         return result;
     }
 
-   public Collection<Answer> findAll() {
+    public Collection<Answer> findAll() {
 
-      Collection<Answer> res = answerRepository.findAll();
-      Assert.notNull(res);
-      return res;
-   }
+        Collection<Answer> res = answerRepository.findAll();
+        Assert.notNull(res);
+        return res;
+    }
 
     public Answer save(Answer actor) {
         Assert.notNull(actor);
@@ -68,61 +67,61 @@ public class AnswerService {
 
     // Other business methods -----------------------
 
-    public void flush(){
+    public void flush() {
         answerRepository.flush();
     }
 
-   public Boolean banAnswer(Answer answer) {
+    public Boolean banAnswer(Answer answer) {
 
-      Boolean res = false;
-      if (answer.isBanned()) {
-         res = false;
-      } else if (!answer.isBanned()) {
-         answer.setBanned(true);
-         answerRepository.save(answer);
-         res = true;
-      }
-      return res;
-   }
-
-
-   public Boolean unbanAnswer(Answer answer) {
-      Boolean res = false;
-      if (!answer.isBanned()) {
-         res = true;
-      } else if (answer.isBanned()) {
-         answer.setBanned(false);
-         answerRepository.save(answer);
-         res = true;
-      }
-      return res;
-   }
-
-   public Collection<Answer> notBannedAnswers() {
-      Collection<Answer> res = new HashSet<>();
-      Collection<Answer> questions = answerRepository.findAll();
-      for (Answer question : questions) {
-         if (!question.isBanned()) {
-            res.add(question);
-         }
-      }
-      return res;
-   }
+        Boolean res = false;
+        if (answer.isBanned()) {
+            res = false;
+        } else if (! answer.isBanned()) {
+            answer.setBanned(true);
+            answerRepository.save(answer);
+            res = true;
+        }
+        return res;
+    }
 
 
-   public Collection<Answer> myAnswers() {
-      Collection<Answer> res = new HashSet<>();
-      Collection<Answer> all = answerRepository.findAll();
-      for (Answer q : all) {
-         if (q.getOwner().equals(userService.findByPrincipal())) {
-            res.add(q);
-         }
-      }
-      return res;
-   }
+    public Boolean unbanAnswer(Answer answer) {
+        Boolean res = false;
+        if (! answer.isBanned()) {
+            res = true;
+        } else if (answer.isBanned()) {
+            answer.setBanned(false);
+            answerRepository.save(answer);
+            res = true;
+        }
+        return res;
+    }
 
-   public Collection<Answer> all() {
-      Collection<Answer> all = answerRepository.all();
-      return all;
-   }
+    public Collection<Answer> notBannedAnswers() {
+        Collection<Answer> res = new HashSet<>();
+        Collection<Answer> questions = answerRepository.findAll();
+        for (Answer question : questions) {
+            if (! question.isBanned()) {
+                res.add(question);
+            }
+        }
+        return res;
+    }
+
+
+    public Collection<Answer> myAnswers() {
+        Collection<Answer> res = new HashSet<>();
+        Collection<Answer> all = answerRepository.findAll();
+        for (Answer q : all) {
+            if (q.getOwner().equals(userService.findByPrincipal())) {
+                res.add(q);
+            }
+        }
+        return res;
+    }
+
+    public Collection<Answer> all() {
+        Collection<Answer> all = answerRepository.all();
+        return all;
+    }
 }

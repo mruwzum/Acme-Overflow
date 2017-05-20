@@ -13,7 +13,7 @@ import java.util.Collection;
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
 
-   @Query("select c.answers from Question c join c.answers a where c=?1 and a.banned=false")
-   Collection<Answer> notBannedAnswer(Question q);
+    @Query("select c.answers from Question c join c.answers a where c=?1 and a.banned=false")
+    Collection<Answer> notBannedAnswer(Question q);
 
 }

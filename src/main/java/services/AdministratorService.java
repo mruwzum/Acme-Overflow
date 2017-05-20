@@ -2,7 +2,6 @@ package services;
 
 import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.AdministratorRepository;
@@ -91,10 +90,7 @@ public class AdministratorService {
     }
 
 
-
-
-    public Double averageNumberOfQuestionPerUser(){
-
+    public Double averageNumberOfQuestionPerUser() {
 
 
         Administrator administrator = findByPrincipal();
@@ -103,7 +99,7 @@ public class AdministratorService {
         return administratorRepository.averageNumberOfQuestionPerUser();
     }
 
-    public int maxNumberOfQuestionPerUser(){
+    public int maxNumberOfQuestionPerUser() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -111,7 +107,7 @@ public class AdministratorService {
         return administratorRepository.maxNumberOfQuestionPerUser();
     }
 
-    public int minNumberOfQuestionPerUser(){
+    public int minNumberOfQuestionPerUser() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -119,7 +115,7 @@ public class AdministratorService {
         return administratorRepository.minNumberOfQuestionPerUser();
     }
 
-    public Double averageNumberOfAnswerPerUser(){
+    public Double averageNumberOfAnswerPerUser() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -128,7 +124,7 @@ public class AdministratorService {
     }
 
 
-    public int maxNumberOfAnswerPerUser(){
+    public int maxNumberOfAnswerPerUser() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -136,7 +132,7 @@ public class AdministratorService {
         return administratorRepository.maxNumberOfAnswerPerUser();
     }
 
-    public int minNumberOfAnswerPerUser(){
+    public int minNumberOfAnswerPerUser() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -153,21 +149,23 @@ public class AdministratorService {
 //        return administratorRepository.userWhoHaveAutoredMoreAnswer();
 //    }
 
-    public Collection<User>  userSortedByQuestionNumber(){
+    public Collection<User> userSortedByQuestionNumber() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
 
         return administratorRepository.userSortedByQuestionNumber();
     }
-    public Collection<User>  userSortedByNumberOfLikes(){
+
+    public Collection<User> userSortedByNumberOfLikes() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
 
         return administratorRepository.userSortedByNumberOfLikes();
     }
-    public Collection<User>  usersWithCreditCards(){
+
+    public Collection<User> usersWithCreditCards() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -175,7 +173,7 @@ public class AdministratorService {
         return administratorRepository.usersWithCreditCards();
     }
 
-    public Double averageNumberOfWebinarsPerTeacher(){
+    public Double averageNumberOfWebinarsPerTeacher() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -183,7 +181,7 @@ public class AdministratorService {
         return administratorRepository.averageNumberOfWebinarsPerTeacher();
     }
 
-    public Collection<Teacher> teachersSortedByNumberOfWebinars(){
+    public Collection<Teacher> teachersSortedByNumberOfWebinars() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -191,7 +189,7 @@ public class AdministratorService {
         return administratorRepository.teachersSortedByNumberOfWebinars();
     }
 
-    public Collection<Webinar> webinarSortedByNumberOfAssistance(){
+    public Collection<Webinar> webinarSortedByNumberOfAssistance() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -199,7 +197,7 @@ public class AdministratorService {
         return administratorRepository.webinarSortedByNumberOfAssistance();
     }
 
-    public Double averageNumberOfCommentsPerWebinar(){
+    public Double averageNumberOfCommentsPerWebinar() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -207,7 +205,7 @@ public class AdministratorService {
         return administratorRepository.averageNumberOfCommentsPerWebinar();
     }
 
-    public int maxNumberOfCommentPerWebinar(){
+    public int maxNumberOfCommentPerWebinar() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -215,7 +213,7 @@ public class AdministratorService {
         return administratorRepository.maxNumberOfCommentPerWebinar();
     }
 
-    public int  minNumberOfCommentPerWebinar(){
+    public int minNumberOfCommentPerWebinar() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -223,7 +221,7 @@ public class AdministratorService {
         return administratorRepository.minNumberOfCommentPerWebinar();
     }
 
-    public Collection<User>  userSortedByNumberOfQuestionBanned(){
+    public Collection<User> userSortedByNumberOfQuestionBanned() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -231,7 +229,7 @@ public class AdministratorService {
         return administratorRepository.userSortedByNumberOfQuestionBanned();
     }
 
-    public Collection<User> userSortedByNumberOfAnswerBanned(){
+    public Collection<User> userSortedByNumberOfAnswerBanned() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -239,7 +237,7 @@ public class AdministratorService {
         return administratorRepository.userSortedByNumberOfAnswerBanned();
     }
 
-    public Double averageNumberOfBannedQuestionPerUser(){
+    public Double averageNumberOfBannedQuestionPerUser() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -247,7 +245,7 @@ public class AdministratorService {
         return administratorRepository.averageNumberOfBannedQuestionPerUser();
     }
 
-    public Double averageNumberOfBannedAnswerPerUser(){
+    public Double averageNumberOfBannedAnswerPerUser() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -257,14 +255,15 @@ public class AdministratorService {
 
     //Question banned percentaje
 
-    public int numberOfBannedQuestions(){
+    public int numberOfBannedQuestions() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
 
         return administratorRepository.numberOfBannedQuestions().size();
     }
-    public int numberOfNonBannedQuestions(){
+
+    public int numberOfNonBannedQuestions() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -273,7 +272,7 @@ public class AdministratorService {
     }
 
 
-    public String percentageOfBannedQuestion(){
+    public String percentageOfBannedQuestion() {
 
 
         Administrator administrator = findByPrincipal();
@@ -283,7 +282,7 @@ public class AdministratorService {
         int not = this.numberOfNonBannedQuestions();
 
 
-        double total =  not/banned;
+        double total = not / banned;
 
         return total + "%";
 
@@ -292,14 +291,15 @@ public class AdministratorService {
     //Answer banned percentaje
 
 
-    public int numberOfBannedAnswer(){
+    public int numberOfBannedAnswer() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
 
         return administratorRepository.numberOfBannedAnswer().size();
     }
-    public int numberOfNonBannedAnswer(){
+
+    public int numberOfNonBannedAnswer() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -307,7 +307,7 @@ public class AdministratorService {
         return administratorRepository.numberOfNonBannedAnswer().size();
     }
 
-    public String percentageofBannedAnswer(){
+    public String percentageofBannedAnswer() {
 
 
         Administrator administrator = findByPrincipal();
@@ -317,7 +317,7 @@ public class AdministratorService {
         int not = this.numberOfNonBannedAnswer();
 
 
-        double total =  not/banned;
+        double total = not / banned;
 
         return total + "%";
 
@@ -325,14 +325,15 @@ public class AdministratorService {
 
     //User banned percentaje
 
-    public int numberOfBannedUser(){
+    public int numberOfBannedUser() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
 
         return administratorRepository.numberOfBannedUser().size();
     }
-    public int numberOfNonBannedUser(){
+
+    public int numberOfNonBannedUser() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -340,7 +341,7 @@ public class AdministratorService {
         return administratorRepository.numberOfNonBannedUser().size();
     }
 
-    public String percentageofBannedUser(){
+    public String percentageofBannedUser() {
 
 
         Administrator administrator = findByPrincipal();
@@ -350,14 +351,14 @@ public class AdministratorService {
         int not = this.numberOfNonBannedUser();
 
 
-        double total =  not/banned;
+        double total = not / banned;
 
         return total + "%";
 
     }
 
 
-    public Collection<Actor> actorSortedByNumberOfSendMessage(){
+    public Collection<Actor> actorSortedByNumberOfSendMessage() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -365,15 +366,13 @@ public class AdministratorService {
         return administratorRepository.actorSortedByNumberOfSendMessage();
     }
 
-    public Collection<Actor> actorSortedByNumberOfReceivedMessages(){
+    public Collection<Actor> actorSortedByNumberOfReceivedMessages() {
 
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
 
         return administratorRepository.actorSortedByNumberOfReceivedMessages();
     }
-
-
 
 
 //    public Boolean banUser(User chorbi){

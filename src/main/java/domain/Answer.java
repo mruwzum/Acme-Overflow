@@ -5,7 +5,6 @@ import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 /**
@@ -15,14 +14,14 @@ import java.util.Collection;
 @Access(AccessType.PROPERTY)
 public class Answer extends DomainEntity {
 
-    private  String title;
+    private String title;
     private String description;
     private Collection<String> pictures;
     private int likes;
     private int dislikes;
     private Question question;
-   private boolean banned;
-   private Other owner;
+    private boolean banned;
+    private Other owner;
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
@@ -33,6 +32,7 @@ public class Answer extends DomainEntity {
     public void setTitle(String title) {
         this.title = title;
     }
+
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getDescription() {
@@ -70,13 +70,13 @@ public class Answer extends DomainEntity {
         this.dislikes = dislikes;
     }
 
-   public boolean isBanned() {
-      return banned;
-   }
+    public boolean isBanned() {
+        return banned;
+    }
 
-   public void setBanned(boolean banned) {
-      this.banned = banned;
-   }
+    public void setBanned(boolean banned) {
+        this.banned = banned;
+    }
 
     @ManyToOne(cascade = CascadeType.ALL)
     public Question getQuestion() {

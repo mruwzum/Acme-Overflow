@@ -17,56 +17,55 @@ import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import security.LoginService;
 
 public abstract class AbstractTest {
 
-	// Supporting services --------------------------------
+    // Supporting services --------------------------------
 
-	@Autowired
-	private LoginService	loginService;
+    @Autowired
+    private LoginService loginService;
 
 
-	// Set up and tear down -------------------------------
+    // Set up and tear down -------------------------------
 
-	@Before
-	public void setUp() {
-	}
+    @Before
+    public void setUp() {
+    }
 
-	@After
-	public void tearDown() {
-	}
+    @After
+    public void tearDown() {
+    }
 
-	// Supporting methods ---------------------------------
+    // Supporting methods ---------------------------------
 
-	public void authenticate(final String username) {
-		UserDetails userDetails;
-		TestingAuthenticationToken authenticationToken;
-		SecurityContext context;
+    public void authenticate(final String username) {
+        UserDetails userDetails;
+        TestingAuthenticationToken authenticationToken;
+        SecurityContext context;
 
-		if (username == null)
-			authenticationToken = null;
-		else {
-			userDetails = this.loginService.loadUserByUsername(username);
-			authenticationToken = new TestingAuthenticationToken(userDetails, null);
-		}
+        if (username == null)
+            authenticationToken = null;
+        else {
+            userDetails = this.loginService.loadUserByUsername(username);
+            authenticationToken = new TestingAuthenticationToken(userDetails, null);
+        }
 
-		context = SecurityContextHolder.getContext();
-		context.setAuthentication(authenticationToken);
-	}
+        context = SecurityContextHolder.getContext();
+        context.setAuthentication(authenticationToken);
+    }
 
-	public void unauthenticate() {
-		this.authenticate(null);
-	}
+    public void unauthenticate() {
+        this.authenticate(null);
+    }
 
-	public void checkExceptions(final Class<?> expected, final Class<?> caught) {
-		if (expected != null && caught == null)
-			throw new RuntimeException(expected.getName() + " was expected");
-		else if (expected == null && caught != null)
-			throw new RuntimeException(caught.getName() + " was unexpected");
-		else if (expected != null && caught != null && !expected.equals(caught))
-			throw new RuntimeException(expected.getName() + " was expected, but " + caught.getName() + " was thrown");
-	}
+    public void checkExceptions(final Class<?> expected, final Class<?> caught) {
+        if (expected != null && caught == null)
+            throw new RuntimeException(expected.getName() + " was expected");
+        else if (expected == null && caught != null)
+            throw new RuntimeException(caught.getName() + " was unexpected");
+        else if (expected != null && caught != null && ! expected.equals(caught))
+            throw new RuntimeException(expected.getName() + " was expected, but " + caught.getName() + " was thrown");
+    }
 
 }

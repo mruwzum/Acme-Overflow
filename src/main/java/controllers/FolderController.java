@@ -2,7 +2,6 @@ package controllers;
 
 
 import domain.Folder;
-
 import domain.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import services.ActorService;
 import services.FolderService;
 import services.MessageService;
@@ -28,17 +26,17 @@ public class FolderController extends AbstractController {
 
     @Autowired
     private FolderService folderService;
-   @Autowired
-   private ActorService actorService;
-   @Autowired
-   private MessageService messageService;
+    @Autowired
+    private ActorService actorService;
+    @Autowired
+    private MessageService messageService;
 
 
     //Constructors----------------------------------------------
 
-   public FolderController() {
-      super();
-   }
+    public FolderController() {
+        super();
+    }
 
     protected static ModelAndView createEditModelAndView(Folder folder) {
         ModelAndView result;
@@ -67,24 +65,25 @@ public class FolderController extends AbstractController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView listFolder() {
         ModelAndView result;
-       Collection<Folder> folders = actorService.findByPrincipal().getFolders();
+        Collection<Folder> folders = actorService.findByPrincipal().getFolders();
         result = new ModelAndView("folder/list");
-       result.addObject("folders", folders);
-       result.addObject("requestURI", "folder/list.do");
+        result.addObject("folders", folders);
+        result.addObject("requestURI", "folder/list.do");
         return result;
     }
 
-   @RequestMapping(value = "/view")
-   public ModelAndView insideFolder(@RequestParam int folderID) {
-      ModelAndView result;
-      Folder folder = folderService.findOne(folderID);
-      Boolean isTrashBox = folder.getName().equals("Trashbox");
-      Collection<Message> messages = folder.getMessages();
-      result = new ModelAndView("mensaje/list");
-      result.addObject("mensaje3", messages);
-      result.addObject("isTrashBox", isTrashBox);
-      return result;
-   }
+
+    @RequestMapping(value = "/view")
+    public ModelAndView insideFolder(@RequestParam int folderID) {
+        ModelAndView result;
+        Folder folder = folderService.findOne(folderID);
+        Boolean isTrashBox = folder.getName().equals("Trashbox");
+        Collection<Message> messages = folder.getMessages();
+        result = new ModelAndView("mensaje/list");
+        result.addObject("mensaje3", messages);
+        result.addObject("isTrashBox", isTrashBox);
+        return result;
+    }
 
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)

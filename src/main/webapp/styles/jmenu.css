@@ -10,87 +10,87 @@
 
 .jMenu {
     font-family: "Andale Mono";
-	display: table;
-	margin: 0px;
-	padding: 0px;
+    display: table;
+    margin: 0px;
+    padding: 0px;
 }
 
 /* First level */
 
 .jMenu li {
     font-family: "Andale Mono";
-	display: table-cell;
-	background-color: #737476;
-	margin: 0px;
+    display: table-cell;
+    background-color: #737476;
+    margin: 0px;
 }
 
 .jMenu li a {
     font-family: "Andale Mono";
-	padding: 10px;
-	display: block;
-	background-color: transparent;
-	color: white;
-	text-transform: uppercase;
-	cursor: pointer;
-	font-size: 12px;
-	text-decoration: none;
+    padding: 10px;
+    display: block;
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none;
 }
 
 /* Lower levels */
 
 .jMenu li ul {
     font-family: "Andale Mono";
-	display: none;
-	position: absolute;
-	z-index: 9999;
-	padding: 0;
-	margin: 0;
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    padding: 0;
+    margin: 0;
 }
 
 .jMenu li ul li {
     font-family: "Andale Mono";
-	background-color: #737476;
-	display: block;
-	border-bottom: 1px solid #737476;
-	padding: 0;
+    background-color: #737476;
+    display: block;
+    border-bottom: 1px solid #737476;
+    padding: 0;
 }
 
 .jMenu li ul li.arrow {
     font-family: "Andale Mono";
-	background-color: #737476;
-	background-image: url('../images/arrow_down.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	height: 6px;
-	padding: 0;
-	border-bottom: none;
-	padding-bottom: 10px
+    background-color: #737476;
+    background-image: url('../images/arrow_down.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 6px;
+    padding: 0;
+    border-bottom: none;
+    padding-bottom: 10px
 }
 
 .jMenu li ul li a {
     font-family: "Andale Mono";
-	font-size: 11px;
-	text-transform: none;
-	padding: 7px;
-	display: block;
-	border-top: 1px solid transparent;
-	border-bottom: 1px solid transparent;
-	text-decoration: none;
+    font-size: 11px;
+    text-transform: none;
+    padding: 7px;
+    display: block;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    text-decoration: none;
 }
 
 .jMenu li ul li a.isParent {
     font-family: "Andale Mono";
-	background-color: #737476;
-	background-image: url('../images/arrow_right.png');
-	background-repeat: no-repeat;
-	background-position: right center;
-	text-decoration: none;
+    background-color: #737476;
+    background-image: url('../images/arrow_right.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    text-decoration: none;
 }
 
 .jMenu li ul li a:hover {
     font-family: "Andale Mono";
-	background-color: rgba(152, 153, 156, 0.83);
-	border-top: 1px solid #737476;
-	border-bottom: 1px solid #444546;
-	text-decoration: none;
+    background-color: rgba(152, 153, 156, 0.83);
+    border-top: 1px solid #737476;
+    border-bottom: 1px solid #444546;
+    text-decoration: none;
 }
