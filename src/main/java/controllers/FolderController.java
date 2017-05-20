@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import java.util.Collection;
 
 @Controller
-@RequestMapping("/folder")
+@RequestMapping("/folderz")
 public class FolderController extends AbstractController {
 
     //Services ----------------------------------------------------------------
@@ -36,7 +36,9 @@ public class FolderController extends AbstractController {
 
     //Constructors----------------------------------------------
 
-
+   public FolderController() {
+      super();
+   }
 
     protected static ModelAndView createEditModelAndView(Folder folder) {
         ModelAndView result;
@@ -65,9 +67,10 @@ public class FolderController extends AbstractController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView listFolder() {
         ModelAndView result;
-       Collection<Folder> folders = actorService.getFolders();
+       Collection<Folder> folders = actorService.findByPrincipal().getFolders();
         result = new ModelAndView("folder/list");
        result.addObject("folders", folders);
+       result.addObject("requestURI", "folder/list.do");
         return result;
     }
 

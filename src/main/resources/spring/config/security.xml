@@ -104,7 +104,13 @@
 		<security:intercept-url pattern="/admin/dashboard.do" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/admin/dashboardT.do" access="hasRole('TEACHER')"/>
 
+		<!-- Messages -->
 
+		<security:intercept-url pattern="/folderz/list.do" access="permitAll"/>
+		<security:intercept-url pattern="/folder/edit.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
+		<security:intercept-url pattern="/folder/create.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
+		<security:intercept-url pattern="/folder/view.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
+		<!--/Messages-->
 
 
 		<security:intercept-url pattern="/webinar/listMy.do" access="hasRole('TEACHER')"/>
@@ -124,13 +130,7 @@
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 
-		<!-- Messages -->
 
-		<security:intercept-url pattern="/folder/list.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
-		<security:intercept-url pattern="/folder/edit.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
-		<security:intercept-url pattern="/folder/create.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
-		<security:intercept-url pattern="/folder/view.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
-		<!--/Messages-->
 
 
 		<security:form-login 

@@ -126,7 +126,7 @@
 
 			</ul>
 		</li>
-		<li><a href="folder/list.do"><spring:message
+		<li><a href="/folderz/list.do"><spring:message
 				code="master.page.actor.messages"/></a></li>
 		<li>
 				<a class="fNiv"> 
