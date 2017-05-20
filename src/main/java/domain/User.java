@@ -13,6 +13,7 @@ public class User extends Other {
 
     private Collection<Question> questions;
     private Collection<Webinar> webinars;
+    private Collection<Bill> bills;
     private boolean banned;
 
 
@@ -45,5 +46,14 @@ public class User extends Other {
     @Override
     public String toString() {
         return super.getName() + " " + super.getSurname();
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    public Collection<Bill> getBills() {
+        return bills;
+    }
+
+    public void setBills(Collection<Bill> bills) {
+        this.bills = bills;
     }
 }

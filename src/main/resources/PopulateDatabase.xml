@@ -2060,4 +2060,51 @@
     <!-- /Evaluation Question -->
 
 
+    <!-- Bill -->
+
+    <bean id="bill1" class="domain.Bill">
+
+        <property name="number" value="2334sf43"/>
+        <property name="value" value="20.0"/>
+        <property name="webinar" ref="webinar1"/>
+        <property name="owner" ref="user1"/>
+
+
+    </bean>
+
+    <bean id="bill2" class="domain.Bill">
+
+        <property name="number" value="4334sf43"/>
+        <property name="value" value="20.0"/>
+        <property name="webinar" ref="webinar1"/>
+        <property name="owner" ref="user2"/>
+
+
+    </bean>
+
+    <bean id="bill3" class="domain.Bill">
+
+        <property name="number" value="6734sf43"/>
+        <property name="value" value="120.0"/>
+        <property name="webinar" ref="webinar2"/>
+        <property name="owner" ref="user3"/>
+
+
+    </bean>
+
+    <bean id="bill4" class="domain.Bill">
+
+        <property name="number" value="7834sf43"/>
+        <property name="value" value="1.0"/>
+        <property name="webinar" ref="webinar3"/>
+        <property name="owner" ref="user4"/>
+
+
+    </bean>
+
+
+    <!-- /Bill -->
+
+
+
 </beans>

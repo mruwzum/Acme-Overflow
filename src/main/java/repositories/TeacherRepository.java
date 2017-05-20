@@ -1,5 +1,6 @@
 package repositories;
 
+import domain.Bill;
 import domain.Teacher;
 import domain.User;
 import domain.Webinar;
@@ -31,5 +32,12 @@ public interface TeacherRepository extends JpaRepository<Teacher, Integer> {
 
     @Query("select w.partakers from Webinar w where w.owner = ?1")
     Collection<User> userRegisteredInMyWebinars(Teacher t);
+
+
+    @Query("select sum(b.value) from Webinar w join w.bills b where w.owner = ?1")
+    Double totalEarnWithoutComission(Teacher t);
+
+    @Query("select w.bills from Webinar w where w.owner = ?1")
+    Collection<Bill> billsOfMyWebinars(Teacher t);
 
 }

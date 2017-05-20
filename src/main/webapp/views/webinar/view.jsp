@@ -21,14 +21,14 @@
 <security:authorize access="hasRole('USER')">
 
 
-    <jstl:if test="${reg}">
+    <%--<jstl:if test="${reg}">--%>
 
-        <a href="webinar/unregister.do?webinarId=${webinarId}"> <spring:message
-                code="general.unregister"/>
-        </a>
+        <%--<a href="webinar/unregister.do?webinarId=${webinarId}"> <spring:message--%>
+                <%--code="general.unregister"/>--%>
+        <%--</a>--%>
 
 
-    </jstl:if>
+    <%--</jstl:if>--%>
 
 
     <jstl:if test="${not reg}">

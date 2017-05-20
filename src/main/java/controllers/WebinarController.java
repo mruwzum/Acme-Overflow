@@ -299,21 +299,21 @@ public class WebinarController extends AbstractController {
         return result;
     }
 
-    @RequestMapping(value = "/unregister", method = RequestMethod.GET)
-    public ModelAndView unapply(@RequestParam int webinarId) {
-        ModelAndView result;
-
-        Webinar webinar = webinarService.findOne(webinarId);
-        User user = userService.findByPrincipal();
-        Boolean op = webinarService.unregister(user, webinar);
-
-
-        if (op.equals(false)) {
-            result = new ModelAndView("user/error");
-        } else {
-            result = new ModelAndView("user/success");
-        }
-
-        return result;
-    }
+//    @RequestMapping(value = "/unregister", method = RequestMethod.GET)
+//    public ModelAndView unapply(@RequestParam int webinarId) {
+//        ModelAndView result;
+//
+//        Webinar webinar = webinarService.findOne(webinarId);
+//        User user = userService.findByPrincipal();
+//        Boolean op = webinarService.unregister(user, webinar);
+//
+//
+//        if (op.equals(false)) {
+//            result = new ModelAndView("user/error");
+//        } else {
+//            result = new ModelAndView("user/success");
+//        }
+//
+//        return result;
+//    }
 }

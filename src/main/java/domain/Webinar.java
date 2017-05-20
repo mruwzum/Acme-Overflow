@@ -30,6 +30,7 @@ public class Webinar extends DomainEntity {
     private Collection<Comment> comments;
     private Collection<User> partakers;
     private Collection<Module> modules;
+    Collection<Bill> bills;
 
 
     public Webinar() {
@@ -130,5 +131,14 @@ public class Webinar extends DomainEntity {
 
     public void setModules(Collection<Module> modules) {
         this.modules = modules;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "webinar")
+    public Collection<Bill> getBills() {
+        return bills;
+    }
+
+    public void setBills(Collection<Bill> bills) {
+        this.bills = bills;
     }
 }

@@ -59,6 +59,10 @@
 		<value>/views/user/messages</value>
 		<!--Webinar-->
 		<value>/views/webinar/messages</value>
+		<!--Bill-->
+		<value>/views/bill/messages</value>
+		<!--Duty-->
+		<value>/views/duty/messages</value>
 	</util:list>
 
 </beans>

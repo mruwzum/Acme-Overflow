@@ -62,6 +62,13 @@
         <security:intercept-url pattern="/answer/create.do" access="hasAnyRole('USER','TEACHER')"/>
         <security:intercept-url pattern="/answer/edit.do" access="hasAnyRole('USER','TEACHER')"/>
 
+		<!--Allow user to view the bills-->
+		<security:intercept-url pattern="/bill/list.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/bill/view.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/teacher/bill.do" access="hasRole('TEACHER')"/>
+
+
+
 		<!--Allow User to edit the profile-->
 		<security:intercept-url pattern="/user/editp.do" access="hasRole('USER')" />
 		<security:intercept-url pattern="/user/edit.do" access="hasRole('USER')" />

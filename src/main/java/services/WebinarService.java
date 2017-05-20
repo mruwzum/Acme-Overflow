@@ -1,9 +1,6 @@
 package services;
 
-import domain.Other;
-import domain.Teacher;
-import domain.User;
-import domain.Webinar;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +8,7 @@ import org.springframework.util.Assert;
 import repositories.WebinarRepository;
 
 import java.util.Collection;
+import java.util.Random;
 
 /**
  * Created by david on 05/11/2016.
@@ -25,6 +23,8 @@ public class WebinarService {
 
     @Autowired
     private WebinarRepository webinarRepository;
+    @Autowired
+    private BillService billService;
 
     // Managed repository--------------------------------------------------------------------------------
 
@@ -80,6 +80,15 @@ public class WebinarService {
         if (webinar.getPartakers().contains(user)) {
             res = false;
         }
+
+
+        Bill bill =  billService.create();
+        bill.setOwner(user);
+        bill.setWebinar(webinar);
+        bill.setValue(webinar.getPrice());
+        bill.setNumber(getSaltString());
+        billService.save(bill);
+
         user.getWebinars().add(webinar);
         webinar.getPartakers().add(user);
         return res;
@@ -115,6 +124,20 @@ public class WebinarService {
 
         Assert.notNull(u);
         return webinarRepository.webinarsToAssist(u);
+
+    }
+
+
+    protected String getSaltString() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 18) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
 
     }
 }

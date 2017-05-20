@@ -1,6 +1,7 @@
 package controllers;
 
 
+import domain.Bill;
 import domain.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -171,6 +172,23 @@ public class TeacherController extends AbstractController {
         }
 
         return result;
+    }
+
+
+    @RequestMapping(value = "/bill", method = RequestMethod.GET)
+    public ModelAndView bills(){
+
+        ModelAndView res;
+
+        Collection<Bill> bills =  teacherService.myBills(teacherService.findByPrincipal());
+        String total = teacherService.totalEarn(teacherService.findByPrincipal());
+
+        res =  new ModelAndView("bill/list");
+        res.addObject("bills", bills);
+        res.addObject("total", total);
+        return res;
+
+
     }
 
 }

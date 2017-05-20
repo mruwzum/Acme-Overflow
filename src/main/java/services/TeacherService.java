@@ -1,8 +1,6 @@
 package services;
 
-import domain.Teacher;
-import domain.User;
-import domain.Webinar;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +9,9 @@ import repositories.TeacherRepository;
 import security.LoginService;
 import security.UserAccount;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by david on 05/11/2016.
@@ -26,6 +26,8 @@ public class TeacherService {
 
     @Autowired
     private TeacherRepository teacherRepository;
+    @Autowired
+    private DutyService dutyService;
 
     // Managed repository--------------------------------------------------------------------------------
 
@@ -82,6 +84,20 @@ public class TeacherService {
         return result;
     }
 
+
+    public String totalEarn(Teacher t){
+
+        List<Duty> duties =  new ArrayList<>(dutyService.findAll());
+
+        Double total = teacherRepository.totalEarnWithoutComission(t);
+
+        int duty = duties.get(0).getDutyValue();
+
+        Double res = total*duty/100;
+
+        return res.toString()+"euros";
+    }
+
     public Teacher findByUserAccount(UserAccount userAccount) {
         Assert.notNull(userAccount);
 
@@ -135,6 +151,15 @@ public class TeacherService {
         Assert.notNull(teacher);
 
         return teacherRepository.userRegisteredInMyWebinars(t);
+
+    }
+
+    public Collection<Bill> myBills(Teacher t){
+
+        Teacher teacher = findByPrincipal();
+        Assert.notNull(teacher);
+
+        return teacherRepository.billsOfMyWebinars(t);
 
     }
 

@@ -55,6 +55,7 @@
 			<li><a href="question/list.do"><spring:message code="master.page.question.list"/> </a></li>
 			<li><a class="fNiv" href="webinar/listAn.do"><spring:message code="master.page.webinar.list"/></a>
 			<li><a class="fNiv" href="webinar/listToGo.do"><spring:message code="master.page.webinar.mylist"/></a>
+			<li><a class="fNiv" href="bill/list.do"><spring:message code="master.page.webinar.mybill"/></a>
 
 			</li>
 
@@ -86,6 +87,8 @@
 		</li>
 
 			<li><a href="admin/dashboardT.do"><spring:message code="master.page.dashboard" /> </a></li>
+			<li><a href="teacher/bill.do"><spring:message code="master.page.earns" /> </a></li>
+
 
 		</security:authorize>
 
