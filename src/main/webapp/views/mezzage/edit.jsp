@@ -21,8 +21,6 @@
     <form:hidden path="folder" />
 
 
-    <acme:textbox path="receiver" code="mezzage.receiver"/>
-    <br />
     <acme:select path="receiver" code="mezzage.receiver" items="${users}" itemLabel="name"/>
     <br/>
 
