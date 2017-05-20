@@ -24,6 +24,7 @@ import services.*;
 import utilities.AbstractTest;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -131,8 +132,8 @@ public class SampleTest extends AbstractTest {
 
 	authenticate("user1");
 
-	answerService.findAll();
-
+		Collection<Folder> folders = actorService.getFolders();
+		System.out.println(folders);
 
 	authenticate(null);
 

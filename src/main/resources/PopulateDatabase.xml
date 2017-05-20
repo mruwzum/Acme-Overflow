@@ -1375,36 +1375,44 @@
     <!-- Folder1 -->
 	<bean id="outbox1" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+        <property name="owner" ref="user1"/>
 	</bean>
 
 	<bean id="trashbox1" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+        <property name="owner" ref="user1"/>
 	</bean>
 
 	<bean id="inbox1" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+        <property name="owner" ref="user1"/>
 	</bean>
 
 	<bean id="spambox1" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+        <property name="owner" ref="user1"/>
 	</bean>
 
 	<!-- Folder2 -->
 
 	<bean id="outbox2" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+        <property name="owner" ref="user2"/>
 	</bean>
 
 	<bean id="trashbox2" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+        <property name="owner" ref="user2"/>
 	</bean>
 
 	<bean id="inbox2" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+        <property name="owner" ref="user2"/>
 	</bean>
 
 	<bean id="spambox2" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+        <property name="owner" ref="user2"/>
 	</bean>
 
 
@@ -1412,18 +1420,22 @@
 
 	<bean id="outbox3" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+        <property name="owner" ref="user3"/>
 	</bean>
 
 	<bean id="trashbox3" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+        <property name="owner" ref="user3"/>
 	</bean>
 
 	<bean id="inbox3" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+        <property name="owner" ref="user3"/>
 	</bean>
 
 	<bean id="spambox3" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+        <property name="owner" ref="user3"/>
 	</bean>
 
 	<!-- Folder4 -->
@@ -1431,18 +1443,22 @@
 
 	<bean id="outbox4" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+        <property name="owner" ref="user4"/>
 	</bean>
 
 	<bean id="trashbox4" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+        <property name="owner" ref="user4"/>
 	</bean>
 
 	<bean id="inbox4" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+        <property name="owner" ref="user4"/>
 	</bean>
 
 	<bean id="spambox4" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+        <property name="owner" ref="user4"/>
 	</bean>
 
 	<!-- Folder5 -->
@@ -1450,36 +1466,44 @@
 
 	<bean id="outbox5" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+        <property name="owner" ref="teacher1"/>
 	</bean>
 
 	<bean id="trashbox5" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+        <property name="owner" ref="teacher1"/>
 	</bean>
 
 	<bean id="inbox5" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+        <property name="owner" ref="teacher1"/>
 	</bean>
 
 	<bean id="spambox5" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+        <property name="owner" ref="teacher1"/>
 	</bean>
 	<!-- Folder6 -->
 
 
 	<bean id="outbox6" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+        <property name="owner" ref="teacher2"/>
 	</bean>
 
 	<bean id="trashbox6" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+        <property name="owner" ref="teacher2"/>
 	</bean>
 
 	<bean id="inbox6" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+        <property name="owner" ref="teacher2"/>
 	</bean>
 
 	<bean id="spambox6" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+        <property name="owner" ref="teacher2"/>
 	</bean>
 
 	<!-- Folder7 -->
@@ -1487,18 +1511,22 @@
 
 	<bean id="outbox7" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+        <property name="owner" ref="teacher3"/>
 	</bean>
 
 	<bean id="trashbox7" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+        <property name="owner" ref="teacher3"/>
 	</bean>
 
 	<bean id="inbox7" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+        <property name="owner" ref="teacher3"/>
 	</bean>
 
 	<bean id="spambox7" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+        <property name="owner" ref="teacher3"/>
 	</bean>
 
 
@@ -1507,72 +1535,88 @@
 
 	<bean id="outbox8" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+        <property name="owner" ref="teacher4"/>
 	</bean>
 
 	<bean id="trashbox8" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+        <property name="owner" ref="teacher4"/>
 	</bean>
 
 	<bean id="inbox8" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+        <property name="owner" ref="teacher4"/>
 	</bean>
 
 	<bean id="spambox8" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+        <property name="owner" ref="teacher4"/>
 	</bean>
 	<!-- Folder9 -->
 
 
 	<bean id="outbox9" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+        <property name="owner" ref="admin1"/>
 	</bean>
 
 	<bean id="trashbox9" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+        <property name="owner" ref="admin1"/>
 	</bean>
 
 	<bean id="inbox9" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+        <property name="owner" ref="admin1"/>
 	</bean>
 
 	<bean id="spambox9" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+        <property name="owner" ref="admin1"/>
 	</bean>
 	<!-- Folder10 -->
 
 
 	<bean id="outbox10" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+        <property name="owner" ref="admin2"/>
 	</bean>
 
 	<bean id="trashbox10" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+        <property name="owner" ref="admin2"/>
 	</bean>
 
 	<bean id="inbox10" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+        <property name="owner" ref="admin2"/>
 	</bean>
 
 	<bean id="spambox10" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+        <property name="owner" ref="admin2"/>
 	</bean>
 	<!-- Folder11 -->
 
 
 	<bean id="outbox11" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+        <property name="owner" ref="admin3"/>
 	</bean>
 
 	<bean id="trashbox11" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+        <property name="owner" ref="admin3"/>
 	</bean>
 
 	<bean id="inbox11" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+        <property name="owner" ref="admin3"/>
 	</bean>
 
 	<bean id="spambox11" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+        <property name="owner" ref="admin3"/>
 	</bean>
 
 	<!-- Folder12 -->
@@ -1580,42 +1624,51 @@
 
 	<bean id="outbox12" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+
 	</bean>
 
 	<bean id="trashbox12" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+
 	</bean>
 
 	<bean id="inbox12" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+
 	</bean>
 
 	<bean id="spambox12" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+
 	</bean>
 	<!-- Folder13 -->
 
 
 	<bean id="outbox13" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+
 	</bean>
 
 	<bean id="trashbox13" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+
 	</bean>
 
 	<bean id="inbox13" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+
 	</bean>
 
 	<bean id="spambox13" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+
 	</bean>
 
 	<!-- Folder14 -->
 	<bean id="outbox14" class="domain.Folder">
 		<property name="name" value="Outbox"/>
-	</bean>
+
+    </bean>
 
 	<bean id="trashbox14" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
@@ -1693,34 +1746,42 @@
 
 	<bean id="outbox19" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+        <property name="owner" ref="moderator2"/>
 	</bean>
 
 	<bean id="trashbox19" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+        <property name="owner" ref="moderator2"/>
 	</bean>
 
 	<bean id="inbox19" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+        <property name="owner" ref="moderator2"/>
 	</bean>
 
 	<bean id="spambox19" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+        <property name="owner" ref="moderator2"/>
 	</bean>
 	<!-- Folder20 -->
 	<bean id="outbox20" class="domain.Folder">
 		<property name="name" value="Outbox"/>
+        <property name="owner" ref="moderator1"/>
 	</bean>
 
 	<bean id="trashbox20" class="domain.Folder">
 		<property name="name" value="Trashbox"/>
+        <property name="owner" ref="moderator1"/>
 	</bean>
 
 	<bean id="inbox20" class="domain.Folder">
 		<property name="name" value="Inbox"/>
+        <property name="owner" ref="moderator1"/>
 	</bean>
 
 	<bean id="spambox20" class="domain.Folder">
 		<property name="name" value="Spambox"/>
+        <property name="owner" ref="moderator1"/>
 	</bean>
 
 	<!--/folders-->

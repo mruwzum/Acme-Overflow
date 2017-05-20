@@ -36,9 +36,7 @@ public class FolderController extends AbstractController {
 
     //Constructors----------------------------------------------
 
-    public FolderController() {
-        super();
-    }
+
 
     protected static ModelAndView createEditModelAndView(Folder folder) {
         ModelAndView result;
@@ -65,7 +63,7 @@ public class FolderController extends AbstractController {
 
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ModelAndView list() {
+    public ModelAndView listFolder() {
         ModelAndView result;
        Collection<Folder> folders = actorService.getFolders();
         result = new ModelAndView("folder/list");
