@@ -71,15 +71,15 @@ public class SampleTest extends AbstractTest {
     }
 
 
-    @Test
-    public void testSearches() {
-
-        List<Category> categoryList = new ArrayList<>(categoryService.findAll());
-
-        System.out.println(searchService.questionsByKeyword("1"));
-        System.out.println(searchService.questionsByKeywordAndCategory("1", categoryList.get(1)));
-
-    }
+//    @Test
+//    public void testSearches() {
+//
+//        List<Category> categoryList = new ArrayList<>(categoryService.findAll());
+//
+//        System.out.println(searchService.questionsByKeyword("1"));
+//        System.out.println(searchService.questionsByKeywordAndCategory("1", categoryList.get(1)));
+//
+//    }
 
 
     @Test
