@@ -92,6 +92,10 @@ public class UserService {
 
     }
 
+   public void flush() {
+      userRepository.flush();
+   }
+
     // Other business methods -------------------------------------------------------------------------------
 
 

@@ -69,6 +69,9 @@ public class QuestionService {
         questionRepository.delete(a);
     }
 
+    public void flush() {
+        questionRepository.flush();
+    }
     // Other business methods -------------------------------------------------------------------------------
     public Boolean banQuestion(Question question) {
 
