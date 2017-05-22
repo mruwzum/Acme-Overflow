@@ -93,6 +93,8 @@ public class UserController extends AbstractController {
                 res.add(user);
             }
         }
+
+       //TODO ponerlo en el service y quitar el for
         result = new ModelAndView("user/list");
         result.addObject("users", users);
         result.addObject("requestURI", "user/list.do");
@@ -114,6 +116,7 @@ public class UserController extends AbstractController {
                 res.add(u);
             }
         }
+       //TODO ponerlo en el service y quitar el for
         result = new ModelAndView("user/list");
         result.addObject("users", res);
         result.addObject("requestURI", "user/list.do");
@@ -188,8 +191,6 @@ public class UserController extends AbstractController {
             result = createEditModelAndView(user);
         } else {
             try {
-
-
                 User user1 = userService.save(user);
                 creditCardService.save(user1.getCreditCard());
 
@@ -255,4 +256,20 @@ public class UserController extends AbstractController {
         return result;
     }
 
+   @RequestMapping(value = "/view", method = RequestMethod.GET)
+   public ModelAndView lessorViewAn(@RequestParam int userId) {
+
+      ModelAndView result;
+      User user = userService.findOne(userId);
+
+
+      result = new ModelAndView("user/view");
+      result.addObject("name", user.getName());
+      result.addObject("surname", user.getSurname());
+      result.addObject("email", user.getEmail());
+      result.addObject("phoneNumber", user.getPhoneNumber());
+      result.addObject("questions", user.getQuestions());
+      result.addObject("requestURI", "user/view.do");
+      return result;
+   }
 }

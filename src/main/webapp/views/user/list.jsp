@@ -31,7 +31,13 @@
             </jstl:if>
         </display:column>
     </security:authorize>
-
+    <security:authorize access="hasRole('USER')">
+        <display:column>
+            <a href="user/view.do?userId=${row.id}"> <spring:message
+                    code="user.view"/>
+            </a>
+        </display:column>
+    </security:authorize>
     <spring:message code="user.name" var="name"/>
     <display:column property="name" title="${name}" sortable="true"/>
     <spring:message code="user.surname" var="surname"/>

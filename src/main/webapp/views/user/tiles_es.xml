@@ -17,26 +17,29 @@
 <tiles-definitions>
 
     <definition name="user/edit" extends="master.page">
-        <put-attribute name="title" value="usuario: Editar"/>
+        <put-attribute name="title" value="Usuario: Editar"/>
         <put-attribute name="body" value="/views/user/edit.jsp"/>
     </definition>
 
     <definition name="user/list" extends="master.page">
-        <put-attribute name="title" value="usuario: Listar"/>
+        <put-attribute name="title" value="Usuario: Listar"/>
         <put-attribute name="body" value="/views/user/list.jsp"/>
     </definition>
     <definition name="user/register" extends="master.page">
-        <put-attribute name="title" value="usuario: Registro"/>
+        <put-attribute name="title" value="Usuario: Registro"/>
         <put-attribute name="body" value="/views/user/register.jsp"/>
     </definition>
 
     <definition name="user/success" extends="master.page">
-        <put-attribute name="title" value="user: éxito"/>
+        <put-attribute name="title" value="Usuario: éxito"/>
         <put-attribute name="body" value="/views/user/success.jsp"/>
     </definition>
     <definition name="user/error" extends="master.page">
-        <put-attribute name="title" value="user: error"/>
+        <put-attribute name="title" value="Usuario: error"/>
         <put-attribute name="body" value="/views/user/error.jsp"/>
     </definition>
-
+    <definition name="user/view" extends="master.page">
+        <put-attribute name="title" value="Usuario: perfil"/>
+        <put-attribute name="body" value="/views/user/view.jsp"/>
+    </definition>
 </tiles-definitions>

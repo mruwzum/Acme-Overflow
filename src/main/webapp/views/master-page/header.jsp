@@ -53,6 +53,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="user/editp.do"><spring:message code="master.page.edit.profile" /> </a></li>
+                    <li><a href="user/list.do"><spring:message code="master.page.user.list"/> </a></li>
 				</ul>
 			<li><a href="question/list.do"><spring:message code="master.page.question.list"/> </a></li>
 			<li><a class="fNiv" href="webinar/listAn.do"><spring:message code="master.page.webinar.list"/></a>

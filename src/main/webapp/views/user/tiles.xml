@@ -39,5 +39,8 @@
         <put-attribute name="title" value="user: error"/>
         <put-attribute name="body" value="/views/user/error.jsp"/>
     </definition>
-
+    <definition name="user/view" extends="master.page">
+        <put-attribute name="title" value="user: profile"/>
+        <put-attribute name="body" value="/views/user/view.jsp"/>
+    </definition>
 </tiles-definitions>
