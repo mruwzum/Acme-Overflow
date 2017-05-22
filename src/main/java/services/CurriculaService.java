@@ -67,7 +67,7 @@ public class CurriculaService {
     public Boolean unapprobeCurricula(Curricula curricula) {
 
         Boolean res = false;
-        if (curricula.isApprobed()) {
+       if (!curricula.isApprobed()) {
             res = false;
         } else if (curricula.isApprobed()) {
             curricula.setApprobed(false);
@@ -80,7 +80,7 @@ public class CurriculaService {
 
     public Boolean approbeCurricula(Curricula curricula) {
         Boolean res = false;
-        if (!curricula.isApprobed()) {
+       if (curricula.isApprobed()) {
             res = false;
         } else if (!curricula.isApprobed()) {
             curricula.setApprobed(true);
