@@ -33,7 +33,7 @@ public class WebinarController extends AbstractController {
     @Autowired
     private CategoryService categoryService;
     @Autowired
-    private OtherService otherService;
+    private ActorService actorService;
     //Constructors----------------------------------------------
 
     public WebinarController() {
@@ -254,7 +254,7 @@ public class WebinarController extends AbstractController {
         ModelAndView result;
         Webinar webinar = webinarService.findOne(webinarId);
 
-        if (webinar.getPartakers().contains(otherService.findByPrincipal())) {
+        if (webinar.getPartakers().contains(actorService.findByPrincipal())) {
             registered = true;
         }
 

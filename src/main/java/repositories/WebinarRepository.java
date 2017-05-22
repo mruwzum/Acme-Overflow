@@ -1,6 +1,6 @@
 package repositories;
 
-import domain.Other;
+import domain.Actor;
 import domain.Teacher;
 import domain.User;
 import domain.Webinar;
@@ -19,7 +19,7 @@ public interface WebinarRepository extends JpaRepository<Webinar, Integer> {
     Collection<Webinar> myWebinars(Teacher t);
 
     @Query("select c from Webinar c where c.owner = ?1")
-    Collection<Webinar> myWebinarso(Other t);
+    Collection<Webinar> myWebinarso(Actor t);
 
     @Query("select u.webinars from User u where u=?1")
     Collection<Webinar> webinarsToAssist(User u);

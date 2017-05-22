@@ -113,7 +113,7 @@ public class WebinarService {
         return webinarRepository.myWebinars(t);
     }
 
-    public Collection<Webinar> myWebinarsO(Other t) {
+   public Collection<Webinar> myWebinarsO(Actor t) {
 
         Assert.notNull(t);
         return webinarRepository.myWebinarso(t);

@@ -27,9 +27,9 @@ public class SearchService {
     @Autowired
     private UserService userService;
     @Autowired
-    private OtherService otherService;
-    @Autowired
     private SearchCacheService searchCacheService;
+    @Autowired
+    private ActorService actorService;
 
     // Supporting services -----------------------
 
@@ -162,7 +162,7 @@ public class SearchService {
     public Collection<Question> questionsByKeyword(String keyword) {
 
 
-        Assert.notNull(otherService.findByPrincipal());
+        Assert.notNull(actorService.findByPrincipal());
 
         Assert.notNull(keyword, "keyword vacía");
         return searchRepository.questionsByKeyword(keyword);
@@ -171,7 +171,7 @@ public class SearchService {
 
     public Collection<Question> questionsByKeywordAndCategory(String keyword, Category category) {
 
-        Assert.notNull(otherService.findByPrincipal());
+        Assert.notNull(actorService.findByPrincipal());
 
         Assert.notNull(keyword, "keyword vacía");
         Assert.notNull(category, "category vacía");
@@ -181,7 +181,7 @@ public class SearchService {
 
     public Collection<Search> trunkedSearch() {
 
-        List<Search> searches = new ArrayList<>(otherService.findByPrincipal().getSearches());
+        List<Search> searches = new ArrayList<>(actorService.findByPrincipal().getSearches());
         List<SearchCache> searchCaches = new ArrayList<>(searchCacheService.findAll());
         int searchcac = searchCaches.get(0).getCacheValue();
 

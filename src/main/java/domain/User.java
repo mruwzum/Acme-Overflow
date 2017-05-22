@@ -9,7 +9,7 @@ import java.util.Collection;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class User extends Other {
+public class User extends Actor {
 
     private Collection<Question> questions;
     private Collection<Webinar> webinars;

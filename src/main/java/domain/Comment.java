@@ -16,7 +16,7 @@ public class Comment extends DomainEntity {
     private String title;
     private String text;
     private Date creationDate;
-    private Other owner;
+   private Actor owner;
     private Webinar webinar;
 
 
@@ -49,11 +49,11 @@ public class Comment extends DomainEntity {
     }
 
     @ManyToOne(cascade = CascadeType.ALL)
-    public Other getOwner() {
+    public Actor getOwner() {
         return owner;
     }
 
-    public void setOwner(Other owner) {
+   public void setOwner(Actor owner) {
         this.owner = owner;
     }
 

@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import services.ActorService;
 import services.CategoryService;
-import services.OtherService;
+
 import services.SearchCacheService;
 import services.SearchService;
 
@@ -36,7 +37,7 @@ public class SearchController extends AbstractController {
     @Autowired
     private CategoryService categoryService;
     @Autowired
-    private OtherService otherService;
+    private ActorService actorService;
     @Autowired
     private SearchCacheService searchCacheService;
     //Constructors----------------------------------------------
@@ -98,8 +99,8 @@ public class SearchController extends AbstractController {
         } else {
             try {
 
-                otherService.findByPrincipal().getSearches().add(search);
-                search.setOwner(otherService.findByPrincipal());
+                actorService.findByPrincipal().getSearches().add(search);
+                search.setOwner(actorService.findByPrincipal());
                 Collection<Question> resut;
                 if (search.getCategory() == null) {
                     resut = searchService.questionsByKeyword(search.getKeyword());

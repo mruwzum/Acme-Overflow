@@ -27,8 +27,6 @@ public class AnswerController extends AbstractController {
     @Autowired
     private QuestionService questionService;
     @Autowired
-    private OtherService otherService;
-    @Autowired
     private UserService userService;
     @Autowired
     private ActorService actorService;
@@ -151,7 +149,7 @@ public class AnswerController extends AbstractController {
 //        } else {
 //            try {
         //answer.setOwner(otherService.findByPrincipal());
-        answer.setOwner(otherService.findByPrincipal());
+       answer.setOwner(actorService.findByPrincipal());
         answer.setQuestion(answer.getQuestion());
         answerService.save(answer);
 

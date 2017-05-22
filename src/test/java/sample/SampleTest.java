@@ -42,8 +42,7 @@ public class SampleTest extends AbstractTest {
     private CategoryService categoryService;
     @Autowired
     private ActorService actorService;
-    @Autowired
-    private OtherService otherService;
+
     @Autowired
     private QuestionService questionService;
     @Autowired
@@ -91,7 +90,7 @@ public class SampleTest extends AbstractTest {
 
         authenticate("user1");
 
-        otherService.findByPrincipal();
+        actorService.findByPrincipal();
 
 
         authenticate(null);
@@ -109,7 +108,7 @@ public class SampleTest extends AbstractTest {
         Answer answer = new Answer();
         answer.setQuestion(questions.get(0));
         answer.setBanned(false);
-        answer.setOwner(otherService.findByPrincipal());
+        answer.setOwner(actorService.findByPrincipal());
         answer.setTitle("Prueba");
         answer.setDescription("Prueba");
 
@@ -149,7 +148,7 @@ public class SampleTest extends AbstractTest {
         comment.setTitle("GENERIC");
         comment.setText("GENERIC");
         comment.setCreationDate(new Date(System.currentTimeMillis()));
-        comment.setOwner(otherService.findByPrincipal());
+        comment.setOwner(actorService.findByPrincipal());
         comment.setWebinar(webinars.get(0));
 
 

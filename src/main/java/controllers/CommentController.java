@@ -31,8 +31,6 @@ public class CommentController extends AbstractController {
     private WebinarService webinarService;
     @Autowired
     private UserService userService;
-    @Autowired
-    private OtherService otherService;
 
     //Constructors----------------------------------------------
 
@@ -147,7 +145,7 @@ public class CommentController extends AbstractController {
         } else {
             try {
                 comment.setCreationDate(new Date(System.currentTimeMillis() - 1000));
-                comment.setOwner(otherService.findByPrincipal());
+                comment.setOwner(actorService.findByPrincipal());
                 commentService.save(comment);
 
 

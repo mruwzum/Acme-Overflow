@@ -31,9 +31,9 @@ public class QuestionController extends AbstractController {
     @Autowired
     private UserService userService;
     @Autowired
-    private OtherService otherService;
-    @Autowired
     private AnswerService answerService;
+    @Autowired
+    private ActorService actorService;
 
     //Constructors----------------------------------------------
 
@@ -213,7 +213,7 @@ public class QuestionController extends AbstractController {
         authority.setAuthority("MODERATOR");
 
 
-        if (otherService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)) {
+        if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)) {
 
            Set<Answer> answers1 = new HashSet<>();
            answers1.addAll(question.getAnswers());

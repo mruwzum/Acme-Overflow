@@ -16,7 +16,7 @@ public class Search extends DomainEntity {
     private String keyword;
     private Category category;
     private Collection<Question> results;
-    private Other owner;
+   private Actor owner;
 
 
     @NotBlank
@@ -48,11 +48,11 @@ public class Search extends DomainEntity {
     }
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    public Other getOwner() {
+    public Actor getOwner() {
         return owner;
     }
 
-    public void setOwner(Other owner) {
+   public void setOwner(Actor owner) {
         this.owner = owner;
     }
 }
