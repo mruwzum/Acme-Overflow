@@ -66,9 +66,6 @@
 		<!-- Module -->
 		<bean class="converters.ModuleToStringConverter"/>
 		<bean class="converters.StringToModuleConverter"/>
-		<!-- Other -->
-		<bean class="converters.OtherToStringConverter"/>
-		<bean class="converters.StringToOtherConverter"/>
 		<!-- Question -->
 		<bean class="converters.QuestionToStringConverter"/>
 		<bean class="converters.StringToQuestionConverter"/>
