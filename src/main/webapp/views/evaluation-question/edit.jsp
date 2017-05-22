@@ -17,10 +17,15 @@
     <form:hidden path="id" />
     <form:hidden path="version" />
     <form:hidden path="answer"/>
-q
+
     <acme:textbox path="title" code="evaluationq.title"/>
     <br />
+    <security:authorize access="hasRole('USER')">
 
+        <acme:textbox path="answer" code="evaluationq.answer"/>
+        <br />
+
+    </security:authorize>
 
     <!---------------------------- BOTONES -------------------------->
 

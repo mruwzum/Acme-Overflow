@@ -30,7 +30,9 @@ public class Webinar extends DomainEntity {
     private Collection<Comment> comments;
     private Collection<User> partakers;
     private Collection<Module> modules;
-    Collection<Bill> bills;
+    private Collection<Bill> bills;
+    private Collection<Evaluation> evaluations;
+    private String URL;
 
 
     public Webinar() {
@@ -140,6 +142,26 @@ public class Webinar extends DomainEntity {
 
     public void setBills(Collection<Bill> bills) {
         this.bills = bills;
+    }
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "webinar")
+    public Collection<Evaluation> getEvaluations() {
+        return evaluations;
+    }
+
+    public void setEvaluations(Collection<Evaluation> evaluations) {
+        this.evaluations = evaluations;
+    }
+
+    @URL
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+    public String getURL() {
+        return URL;
+    }
+
+    public void setURL(String URL) {
+        this.URL = URL;
     }
 
     @Override

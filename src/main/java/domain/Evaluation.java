@@ -12,7 +12,8 @@ import java.util.Collection;
 @Access(AccessType.PROPERTY)
 public class Evaluation extends DomainEntity {
 
-    Collection<EvaluationQuestion> evaluationQuestions;
+    private Collection<EvaluationQuestion> evaluationQuestions;
+    private Webinar webinar;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "evaluation")
     @NotNull
@@ -22,5 +23,14 @@ public class Evaluation extends DomainEntity {
 
     public void setEvaluationQuestions(Collection<EvaluationQuestion> evaluationQuestions) {
         this.evaluationQuestions = evaluationQuestions;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Webinar getWebinar() {
+        return webinar;
+    }
+
+    public void setWebinar(Webinar webinar) {
+        this.webinar = webinar;
     }
 }

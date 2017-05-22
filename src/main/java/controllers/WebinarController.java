@@ -274,6 +274,7 @@ public class WebinarController extends AbstractController {
         result.addObject("users", webinar.getPartakers());
         result.addObject("reg", registered);
         result.addObject("modules", webinar.getModules());
+        result.addObject("url", webinar.getURL());
 //       result.addObject("my", my);
 //
         result.addObject("requestURI", "webinar/view.do");

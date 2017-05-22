@@ -16,19 +16,11 @@
 <%@taglib prefix="security"
           uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="display" uri="http://displaytag.sf.net" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
+<div id="wrapper">
+<div id="sidebar">
 <security:authorize access="hasRole('USER')">
-
-
-    <%--<jstl:if test="${reg}">--%>
-
-        <%--<a href="webinar/unregister.do?webinarId=${webinarId}"> <spring:message--%>
-                <%--code="general.unregister"/>--%>
-        <%--</a>--%>
-
-
-    <%--</jstl:if>--%>
 
 
     <jstl:if test="${not reg}">
@@ -68,41 +60,65 @@
 <h3><jstl:out value="${categories1}"/></h3>
 <jstl:out value="${categories}"/>
 <br/>
+</div>
+    <div id="content">
+
+        <h2 class="highlighted"><jstl:out value="${name}"/></h2>
+
+        <iframe width="850" height="500" src="${url}" frameborder="0" allowfullscreen></iframe>
 
 <spring:message code="general.comments" var="register11"/>
-<h3><jstl:out value="${register11}"/></h3>
+<h2 class="highlighted"><jstl:out value="${register11}"/></h2>
 
-<security:authorize access="hasAnyRole('USER','TEACHER')">
-    <a href="comment/create.do?webinarId=${webinarId}"> <spring:message
-                code="general.create"/>
-        </a>
 
-</security:authorize>
 <br/>
-<!-- Listing grid comments -->
-<display:table pagesize="5" class="displaytag" keepStatus="true"
-               name="comments" requestURI="${requestURI}" id="row">
-    <!-- Attributes -->
-    <security:authorize access="hasAnyRole('MODERATOR')">
-        <display:column>
-            <a href="comment/edit.do?commentId=${row.id}"> <spring:message
-                    code="general.edit"/>
-            </a>
-        </display:column>
-    </security:authorize>
 
-    <spring:message code="comment.title" var="title"/>
-    <display:column property="title" title="${title}" sortable="true"/>
-    <spring:message code="comment.text" var="text"/>
-    <display:column property="text" title="${text}" sortable="true"/>
-    <spring:message code="comment.creationDate" var="creationDate"/>
-    <display:column property="creationDate" title="${creationDate}" sortable="true"/>
-    <spring:message code="comment.owner" var="owner"/>
-    <display:column property="owner" title="${owner}" sortable="true"/>
-</display:table>
+
+<!-- Listing grid comments -->
+
+
+
+
+        <c:forEach items="${comments}" var="comment">
+                <h3 class="highlighted2">${comment.title}</h3>
+                ${comment.text}
+                <br>
+            <hr>
+
+        </c:forEach>
+
+        <security:authorize access="hasAnyRole('USER','TEACHER')">
+            <a class="button" href="comment/create.do?webinarId=${webinarId}"> <spring:message
+                    code="general.create"/>
+            </a>
+
+        </security:authorize>
+
+
+<%--<display:table pagesize="5" class="displaytag" keepStatus="true"--%>
+               <%--name="comments" requestURI="${requestURI}" id="row">--%>
+    <%--<!-- Attributes -->--%>
+    <%--<security:authorize access="hasAnyRole('MODERATOR')">--%>
+        <%--<display:column>--%>
+            <%--<a href="comment/edit.do?commentId=${row.id}"> <spring:message--%>
+                    <%--code="general.edit"/>--%>
+            <%--</a>--%>
+        <%--</display:column>--%>
+    <%--</security:authorize>--%>
+
+    <%--<spring:message code="comment.title" var="title"/>--%>
+    <%--<display:column property="title" title="${title}" sortable="true"/>--%>
+    <%--<spring:message code="comment.text" var="text"/>--%>
+    <%--<display:column property="text" title="${text}" sortable="true"/>--%>
+    <%--<spring:message code="comment.creationDate" var="creationDate"/>--%>
+    <%--<display:column property="creationDate" title="${creationDate}" sortable="true"/>--%>
+    <%--<spring:message code="comment.owner" var="owner"/>--%>
+    <%--<display:column property="owner" title="${owner}" sortable="true"/>--%>
+<%--</display:table>--%>
 
 <spring:message code="general.registeredUsers" var="register112"/>
-<h3><jstl:out value="${register112}"/></h3>
+<h2 class="highlighted"><jstl:out value="${register112}"/></h2>
+
 <display:table pagesize="15" class="displaytag" keepStatus="true"
                name="users" requestURI="${requestURI}" id="row">
     <!-- Attributes -->
@@ -127,3 +143,23 @@
     <spring:message code="user.email" var="email"/>
     <display:column property="email" title="${email}" sortable="true"/>
 </display:table>
+
+
+<security:authorize access="hasRole('USER')">
+
+
+    <%--<jstl:if test="${not reg}">--%>
+
+        <a href="webinar/register.do?webinarId=${webinarId}"> <spring:message
+                code="webinar.evaluation"/>
+        </a>
+
+
+    <%--</jstl:if>--%>
+
+
+</security:authorize>
+    </div>
+</div
+
+<div id="cleared"></div>

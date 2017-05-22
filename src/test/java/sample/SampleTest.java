@@ -167,12 +167,11 @@ public class SampleTest extends AbstractTest {
     @Test
     public void testMessage() {
 
-        authenticate("user1");
+        authenticate("teacher1");
 
         List<Actor> actors =  new ArrayList<>(actorService.findAll());
 
-        Actor actor = actors.get(5);
-        Folder actor2 = actorRepository.folderByName(actors.get(5),"Inbox");
+       // Actor actor = actors.get(5);
 
         Priority p = Priority.HIGH;
         Mezzage mezzage = mezzageService.create();
@@ -180,7 +179,7 @@ public class SampleTest extends AbstractTest {
         mezzage.setSubject("HOLA");
         mezzage.setBody("TOCHO");
         mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
-       // mezzage.setSender(actorService.findByPrincipal());
+        mezzage.setSender(actorService.findByPrincipal());
         mezzage.setSendDate(new Date(System.currentTimeMillis()-1000));
         mezzage.setReceiverEmail("user1mail@gmail.com");
         mezzage.setPriority(p);
@@ -191,8 +190,9 @@ public class SampleTest extends AbstractTest {
 
 
         //List<Folder> folders = new ArrayList<>(mezzage.getSender().getFolders());
+        Folder actor2 = actorRepository.folderByName(actorService.findByPrincipal(),"Outbox");
 
-        System.out.println(actor2);
+        System.out.println(actor2.getMezzages());
 
         authenticate(null);
 

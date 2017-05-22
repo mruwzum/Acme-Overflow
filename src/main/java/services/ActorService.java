@@ -206,6 +206,8 @@ public class ActorService {
        //fs.getMezzages().add(mezzage);
 
        mezzageService.save(mezzage);
+       mezzageService.save(mezzage1);
+
 //       mezzageService.save(mezzage1);
 
 

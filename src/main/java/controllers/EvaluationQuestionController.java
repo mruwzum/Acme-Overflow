@@ -1,6 +1,7 @@
 package controllers;
 
 import domain.Category;
+import domain.Evaluation;
 import domain.EvaluationQuestion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.CategoryService;
 import services.EvaluationQuestionService;
+import services.EvaluationService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by mruwzum on 19/12/16.
@@ -25,6 +29,8 @@ public class EvaluationQuestionController extends AbstractController {
 
     @Autowired
     private EvaluationQuestionService evaluationQuestionService;
+    @Autowired
+    private EvaluationService evaluationService;
 
     public EvaluationQuestionController() {
         super();
@@ -33,7 +39,8 @@ public class EvaluationQuestionController extends AbstractController {
     @RequestMapping(value = "/list")
     public ModelAndView list() {
         ModelAndView result;
-        Collection<EvaluationQuestion> aux = evaluationQuestionService.findAll();
+        List<Evaluation> evaluations = new ArrayList<>(evaluationService.findAll());
+        Collection<EvaluationQuestion> aux = evaluations.get(0).getEvaluationQuestions();
         result = new ModelAndView("evaluation-question/list");
         result.addObject("categories", aux);
         result.addObject("requestURI", "evaluationQuestion/list.do");
@@ -70,7 +77,8 @@ public class EvaluationQuestionController extends AbstractController {
             result = createEditModelAndView(evaluationQuestion);
         } else {
             try {
-
+                List<Evaluation> evaluations = new ArrayList<>(evaluationService.findAll());
+                evaluationQuestion.setEvaluation(evaluations.get(0));
                 evaluationQuestionService.save(evaluationQuestion);
                 result = this.list();
 
@@ -114,5 +122,18 @@ public class EvaluationQuestionController extends AbstractController {
 
 
     }
+
+
+
+    //EVALUATIONS ----------------------------------------------------------------------------------------------------
+
+
+//
+//    @RequestMapping()
+//    public ModelAndView createEvaluation(){
+//        return null;
+//
+//    }
+
 
 }
