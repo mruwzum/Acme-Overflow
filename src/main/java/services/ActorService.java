@@ -184,20 +184,20 @@ public class ActorService {
        Actor sender = actorRepository.findUserByEmail(mezzage.getSenderEmail());
 
 
-//     Mezzage mezzage1 = mezzageService.create();
-//     mezzage1.setSendDate(mezzage.getSendDate());
-//     mezzage1.setSenderEmail(mezzage.getSenderEmail());
-//     //mezzage1.setSender(mezzage.getSender());
-//     mezzage1.setBody(mezzage.getBody());
-//     mezzage1.setSubject(mezzage.getSubject());
-//     mezzage1.setPriority(mezzage.getPriority());
-//     mezzage1.setReceiver(mezzage.getReceiver());
-//     mezzage1.setReceiverEmail(mezzage.getReceiverEmail());
-//
-//
-//      Folder f = actorRepository.folderByName(receiver, "Inbox");
-//      mezzage1.setFolder(f);
-//      //f.getMezzages().add(mezzage1);
+      Mezzage mezzage1 = mezzageService.create();
+      mezzage1.setSendDate(mezzage.getSendDate());
+      mezzage1.setSenderEmail(mezzage.getSenderEmail());
+      //mezzage1.setSender(mezzage.getSender());
+      mezzage1.setBody(mezzage.getBody());
+      mezzage1.setSubject(mezzage.getSubject());
+      mezzage1.setPriority(mezzage.getPriority());
+      mezzage1.setReceiver(mezzage.getReceiver());
+      mezzage1.setReceiverEmail(mezzage.getReceiverEmail());
+
+
+      Folder f = actorRepository.folderByName(receiver, "Inbox");
+      mezzage1.setFolder(f);
+      //f.getMezzages().add(mezzage1);
 
 
 
