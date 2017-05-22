@@ -670,6 +670,8 @@
         <property name="experienceSection" value="INDRA"/>
         <property name="hobbiesSection" value="raspis"/>
         <property name="referencias" value="sdfsdfsd"/>
+        <property name="approbed" value="true"/>
+        <property name="owner" ref="teacher1"/>
     </bean>
     <bean id="currricula2" class="domain.Curricula">
         <property name="photo" value="http://wwww.pic.jpg"/>
@@ -677,6 +679,8 @@
         <property name="experienceSection" value="RAE"/>
         <property name="hobbiesSection" value="raspis"/>
         <property name="referencias" value="sdfsdfsd"/>
+        <property name="approbed" value="true"/>
+        <property name="owner" ref="teacher2"/>
     </bean>
     <bean id="currricula3" class="domain.Curricula">
         <property name="photo" value="http://wwww.pic.jpg"/>
@@ -684,6 +688,8 @@
         <property name="experienceSection" value="RAE"/>
         <property name="hobbiesSection" value="raspis"/>
         <property name="referencias" value="sdfsdfsd"/>
+        <property name="approbed" value="true"/>
+        <property name="owner" ref="teacher3"/>
     </bean>
     <bean id="currricula4" class="domain.Curricula">
         <property name="photo" value="http://wwww.pic.jpg"/>
@@ -691,14 +697,18 @@
         <property name="experienceSection" value="INDIEGOGO"/>
         <property name="hobbiesSection" value="raspis"/>
         <property name="referencias" value="sdfsdfsd"/>
+        <property name="approbed" value="true"/>
+        <property name="owner" ref="teacher4"/>
     </bean>
-    <bean id="currricula5" class="domain.Curricula">
-        <property name="photo" value="http://wwww.pic.jpg"/>
-        <property name="educationSection" value="INGENIERO"/>
-        <property name="experienceSection" value="GOOGLE"/>
-        <property name="hobbiesSection" value="raspis"/>
-        <property name="referencias" value="sdfsdfsd"/>
-    </bean>
+    <!--<bean id="currricula5" class="domain.Curricula">-->
+    <!--<property name="photo" value="http://wwww.pic.jpg"/>-->
+    <!--<property name="educationSection" value="INGENIERO"/>-->
+    <!--<property name="experienceSection" value="GOOGLE"/>-->
+    <!--<property name="hobbiesSection" value="raspis"/>-->
+    <!--<property name="referencias" value="sdfsdfsd"/>-->
+    <!--<property name="approbed" value="false"/>-->
+    <!--<property name="owner" ref="teacher5"/>-->
+    <!--</bean>-->
     <bean id="teacher2" class="domain.Teacher">
         <property name="name" value="teacher2name"/>
         <property name="surname" value="teacher2surname"/>

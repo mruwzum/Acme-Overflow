@@ -64,7 +64,31 @@ public class CurriculaService {
     }
 
     // Other business methods -------------------------------------------------------------------------------
+    public Boolean unapprobeCurricula(Curricula curricula) {
 
+        Boolean res = false;
+        if (curricula.isApprobed()) {
+            res = false;
+        } else if (curricula.isApprobed()) {
+            curricula.setApprobed(false);
+            CurriculaRepository.save(curricula);
+            res = true;
+        }
+        return res;
+    }
+
+
+    public Boolean approbeCurricula(Curricula curricula) {
+        Boolean res = false;
+        if (!curricula.isApprobed()) {
+            res = false;
+        } else if (!curricula.isApprobed()) {
+            curricula.setApprobed(true);
+            CurriculaRepository.save(curricula);
+            res = true;
+        }
+        return res;
+    }
 }
 
 

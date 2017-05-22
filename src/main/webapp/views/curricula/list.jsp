@@ -10,15 +10,7 @@
           uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
-    <div>
-        <H5>
-            <a href="curricula/create.do"> <spring:message
-                    code="general.create" />
-            </a>
-        </H5>
-    </div>
-</security:authorize>
+
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
@@ -27,23 +19,29 @@
 
     <!-- Attributes -->
 
-    <security:authorize access="permitAll">
+    <security:authorize access="hasRole('ADMIN')">
         <display:column>
-            <a href="curricula/edit.do?curriculaId=${row.id}"> <spring:message
-                    code="general.edit" />
-            </a>
+            <jstl:if test="${not row.approbed}">
+                <a href="curricula/approbe.do?curriculaId=${row.id}"> <spring:message
+                        code="user.approbe"/>
+                </a>
+            </jstl:if>
+            <jstl:if test="${row.approbed}">
+                <a href="curricula/unapprobe.do?curriculaId=${row.id}"> <spring:message
+                    code="user.unapprobe"/>
+            </jstl:if>
         </display:column>
     </security:authorize>
-
-    <spring:message code="curricula.photo" var="title" />
-    <display:column property="title" title="${title}" sortable="true" />
-    <spring:message code="curricula.educationSection" var="description" />
-    <display:column property="description" title="${description}" sortable="true" />
-    <spring:message code="curricula.experienceSection" var="originAddress" />
-    <display:column property="originAddress" title="${originAddress}" sortable="true" />
-    <spring:message code="curricula.referencias" var="destinationAddress" />
-    <display:column property="destinationAddress" title="${destinationAddress}" sortable="true" />
-    <spring:message code="curricula.hobbiesSection" var="keyword" />
-    <display:column property="keyword" title="${keyword}" sortable="true" />
-
+    <spring:message code="curricula.photo" var="photo"/>
+    <display:column property="photo" title="${photo}" sortable="false"/>
+    <spring:message code="curricula.educationSection" var="educationSection"/>
+    <display:column property="educationSection" title="${educationSection}" sortable="true"/>
+    <spring:message code="curricula.experienceSection" var="experienceSection"/>
+    <display:column property="experienceSection" title="${experienceSection}" sortable="true"/>
+    <spring:message code="curricula.referencias" var="referencias"/>
+    <display:column property="referencias" title="${referencias}" sortable="true"/>
+    <spring:message code="curricula.hobbiesSection" var="hobbiesSection"/>
+    <display:column property="hobbiesSection" title="${hobbiesSection}" sortable="true"/>
+    <spring:message code="curricula.approbed" var="approbed"/>
+    <display:column property="approbed" title="${approbed}" sortable="true"/>
 </display:table>

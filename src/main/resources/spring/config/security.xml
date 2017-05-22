@@ -110,7 +110,14 @@
 		<security:intercept-url pattern="/evaluationQuestion/create.do" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/evaluationQuestion/delete.do" access="hasRole('ADMIN')"/>
 
-		<!--Allow Admin to change de search cache-->
+
+        <!--Allow Admin to manage curriculas-->
+        <security:intercept-url pattern="/curricula/list.do" access="hasRole('ADMIN')"/>
+        <security:intercept-url pattern="/curricula/unapprobe.do" access="hasRole('ADMIN')"/>
+        <security:intercept-url pattern="/curricula/approbe.do" access="hasRole('ADMIN')"/>
+
+
+        <!--Allow Admin to change de search cache-->
 		<security:intercept-url pattern="/search/editCache.do" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/search/changeCache.do" access="hasRole('ADMIN')"/>
 

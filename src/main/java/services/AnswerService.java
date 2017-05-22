@@ -88,7 +88,7 @@ public class AnswerService {
     public Boolean unbanAnswer(Answer answer) {
         Boolean res = false;
         if (! answer.isBanned()) {
-            res = true;
+            res = false;
         } else if (answer.isBanned()) {
             answer.setBanned(false);
             answerRepository.save(answer);

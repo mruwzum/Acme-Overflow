@@ -195,8 +195,8 @@ public class UserService {
         teacher.setUserAccount(userAccount);
         Assert.notNull(teacher.getUserAccount().getAuthorities(), "authorities null al registrar");
 
+       teacher.getCurricula().setApprobed(false);
 
-//        curriculaService.save(teacher.getCurricula());
         Teacher resu = teacherService.save(teacher);
 
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import services.ActorService;
 import services.TeacherService;
 import services.UserService;
 
@@ -27,6 +28,8 @@ public class TeacherController extends AbstractController {
     private TeacherService teacherService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ActorService actorService;
 
     //Constructors----------------------------------------------
 
@@ -153,6 +156,9 @@ public class TeacherController extends AbstractController {
 //        } else {
 //            try {
         teacherService.save(teacher);
+        teacher.getCurricula().setApprobed(false);
+        teacher.getCurricula().setOwner(teacherService.findByPrincipal());
+
         result = new ModelAndView("redirect:list.do");
 //            } catch (Throwable oops) {
 //                result = createEditModelAndView(teacher, "teacher.commit.error");

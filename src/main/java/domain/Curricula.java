@@ -4,10 +4,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
@@ -22,6 +19,8 @@ public class Curricula extends DomainEntity {
     private String experienceSection;
     private Collection<String> referencias;
     private String hobbiesSection;
+    private boolean isApprobed;
+    private Teacher owner;
 
 
     @NotBlank
@@ -71,5 +70,22 @@ public class Curricula extends DomainEntity {
 
     public void setHobbiesSection(String hobbiesSection) {
         this.hobbiesSection = hobbiesSection;
+    }
+
+    public boolean isApprobed() {
+        return isApprobed;
+    }
+
+    public void setApprobed(boolean approbed) {
+        isApprobed = approbed;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL)
+    public Teacher getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Teacher owner) {
+        this.owner = owner;
     }
 }
