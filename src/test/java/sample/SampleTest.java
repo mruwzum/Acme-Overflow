@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
+import repositories.ActorRepository;
 import services.*;
 import utilities.AbstractTest;
 
@@ -53,7 +54,10 @@ public class SampleTest extends AbstractTest {
     private CommentService commentService;
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private MezzageService mezzageService;
+    @Autowired
+    private ActorRepository actorRepository;
     // Tests ------------------------------------------------------------------
 
     // The following are fictitious test cases that are intended to check that
@@ -155,6 +159,41 @@ public class SampleTest extends AbstractTest {
 
         System.out.println(webinars.get(0).getComments());
 
+
+        authenticate(null);
+
+    }
+
+
+    @Test
+    public void testMessage() {
+
+        authenticate("user1");
+
+        List<Actor> actors =  new ArrayList<>(actorService.findAll());
+
+        Actor actor = actors.get(5);
+        Folder actor2 = actorRepository.folderByName(actors.get(5),"Inbox");
+
+        Priority p = Priority.HIGH;
+        Mezzage mezzage = mezzageService.create();
+
+        mezzage.setSubject("HOLA");
+        mezzage.setBody("TOCHO");
+        mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
+       // mezzage.setSender(actorService.findByPrincipal());
+        mezzage.setSendDate(new Date(System.currentTimeMillis()-1000));
+        mezzage.setReceiverEmail("user1mail@gmail.com");
+        mezzage.setPriority(p);
+
+
+
+        actorService.textMessage(mezzage);
+
+
+        //List<Folder> folders = new ArrayList<>(mezzage.getSender().getFolders());
+
+        System.out.println(actor2);
 
         authenticate(null);
 

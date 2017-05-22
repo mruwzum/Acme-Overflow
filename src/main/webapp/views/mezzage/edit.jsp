@@ -19,16 +19,31 @@
     <form:hidden path="sender" />
     <form:hidden path="sendDate" />
     <form:hidden path="folder" />
+    <form:hidden path="receiver" />
+    <%--<form:hidden path="senderEmail" />--%>
 
 
-    <acme:select path="receiver" code="mezzage.receiver" items="${users}" itemLabel="name"/>
-    <br/>
+
+
+    <%--<acme:select path="receiver" code="mezzage.receiver" items="${users}" itemLabel="name"/>--%>
+    <%--<br/>--%>
+
+    <acme:textbox path="receiverEmail" code="mezzage.receiver"/>
+    <br />
+
+    <acme:textbox path="sender" code="mezzage.receiver"/>
+    <br />
+
+    <acme:textbox path="senderEmail" code="mezzage.receiver"/>
+    <br />
 
     <acme:textbox path="subject" code="mezzage.subject"/>
     <br />
 
     <acme:textarea path="body" code="mezzage.body"/>
     <br/>
+
+
 
     <form:label path="priority">
         <spring:message code="mezzage.priority"/>:

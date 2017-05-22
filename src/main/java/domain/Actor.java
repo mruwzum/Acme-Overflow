@@ -81,7 +81,7 @@ public abstract class Actor extends DomainEntity {
         this.userAccount = userAccount;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "receiver")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
     public Collection<Mezzage> getReceivedMezzages() {
        return receivedMezzages;
     }
@@ -90,7 +90,7 @@ public abstract class Actor extends DomainEntity {
       this.receivedMezzages = receivedMezzages;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "sender")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
     public Collection<Mezzage> getSendedMezzages() {
        return sendedMezzages;
     }

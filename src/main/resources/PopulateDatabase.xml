@@ -498,6 +498,7 @@
             </list>
         </property>
 
+
         <property name="folders">
             <list>
                 <ref bean="outbox2"/>
@@ -1789,6 +1790,8 @@
 
     <!-- Mezzagesage -->
     <bean id="mezzage" class="domain.Mezzage">
+        <property name="senderEmail" value="user1mail@gmail.com"/>
+        <property name="receiverEmail" value="user2mail@gmail.com"/>
         <property name="sender" ref="user1"/>
         <property name="receiver" ref="user2"/>
         <property name="sendDate" value="2017/04/23 23:12:00"/>
@@ -1798,6 +1801,8 @@
         <property name="priority" value="HIGH"/>
     </bean>
     <bean id="mezzage2" class="domain.Mezzage">
+        <property name="senderEmail" value="user2mail@gmail.com"/>
+        <property name="receiverEmail" value="user1mail@gmail.com"/>
         <property name="sender" ref="user2"/>
         <property name="receiver" ref="user1"/>
         <property name="sendDate" value="2017/04/24 23:12:00"/>
@@ -1807,6 +1812,8 @@
         <property name="priority" value="MEDIUM"/>
     </bean>
     <bean id="mezzage3" class="domain.Mezzage">
+        <property name="senderEmail" value="user3mail@gmail.com"/>
+        <property name="receiverEmail" value="user4mail@gmail.com"/>
         <property name="sender" ref="user3"/>
         <property name="receiver" ref="user4"/>
         <property name="sendDate" value="2017/02/23 23:12:00"/>
@@ -1816,6 +1823,8 @@
         <property name="priority" value="LOW"/>
     </bean>
     <bean id="mezzage4" class="domain.Mezzage">
+        <property name="senderEmail" value="user4mail@gmail.com"/>
+        <property name="receiverEmail" value="user3mail@gmail.com"/>
         <property name="sender" ref="user4"/>
         <property name="receiver" ref="user3"/>
         <property name="sendDate" value="2017/04/23 23:12:00"/>
@@ -1825,6 +1834,8 @@
         <property name="priority" value="HIGH"/>
     </bean>
     <bean id="mezzage5" class="domain.Mezzage">
+        <property name="senderEmail" value="teacher1mail@gmail.com"/>
+        <property name="receiverEmail" value="teacher2mail@gmail.com"/>
         <property name="sender" ref="teacher1"/>
         <property name="receiver" ref="teacher2"/>
         <property name="sendDate" value="2017/04/23 23:12:00"/>
@@ -1834,6 +1845,8 @@
         <property name="priority" value="MEDIUM"/>
     </bean>
     <bean id="mezzage6" class="domain.Mezzage">
+        <property name="senderEmail" value="teacher2mail@gmail.com"/>
+        <property name="receiverEmail" value="teacher1mail@gmail.com"/>
         <property name="sender" ref="teacher2"/>
         <property name="receiver" ref="teacher1"/>
         <property name="sendDate" value="2017/04/24 23:12:00"/>
@@ -1843,6 +1856,8 @@
         <property name="priority" value="HIGH"/>
     </bean>
     <bean id="mezzage7" class="domain.Mezzage">
+        <property name="senderEmail" value="teacher3mail@gmail.com"/>
+        <property name="receiverEmail" value="teacher4mail@gmail.com"/>
         <property name="sender" ref="teacher3"/>
         <property name="receiver" ref="teacher4"/>
         <property name="sendDate" value="2017/02/23 23:12:00"/>
@@ -1852,6 +1867,8 @@
         <property name="priority" value="HIGH"/>
     </bean>
     <bean id="mezzage8" class="domain.Mezzage">
+        <property name="senderEmail" value="teacher4mail@gmail.com"/>
+        <property name="receiverEmail" value="teacher3mail@gmail.com"/>
         <property name="sender" ref="teacher4"/>
         <property name="receiver" ref="teacher3"/>
         <property name="sendDate" value="2017/04/23 23:12:00"/>

@@ -34,7 +34,7 @@
             </a>
         </display:column>
         <display:column>
-            <a href="mezzage/delete.do?mezzageId=${row}"> <spring:message
+            <a href="mezzage/delete.do?mezzageId=${row.id}"> <spring:message
                     code="general.delete"/>
             </a>
         </display:column>

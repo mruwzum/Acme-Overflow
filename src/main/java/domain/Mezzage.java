@@ -13,6 +13,8 @@ import java.util.Date;
 public class Mezzage extends DomainEntity {
 
 
+    private String senderEmail;
+    private String receiverEmail;
     private Actor sender;
     private Actor receiver;
     private Date sendDate;
@@ -21,9 +23,26 @@ public class Mezzage extends DomainEntity {
     private Priority priority;
     private Folder folder;
 
+    @NotBlank
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+    public String getSenderEmail() {
+        return senderEmail;
+    }
 
-    @NotNull
-    @ManyToOne(targetEntity = Actor.class, cascade = CascadeType.PERSIST)
+    public void setSenderEmail(String senderEmail) {
+        this.senderEmail = senderEmail;
+    }
+    @NotBlank
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+    public String getReceiverEmail() {
+        return receiverEmail;
+    }
+
+    public void setReceiverEmail(String receiverEmail) {
+        this.receiverEmail = receiverEmail;
+    }
+
+    @ManyToOne(targetEntity = Actor.class, cascade = CascadeType.ALL)
     public Actor getSender() {
         return sender;
     }
@@ -32,8 +51,7 @@ public class Mezzage extends DomainEntity {
         this.sender = sender;
     }
 
-    @NotNull
-    @ManyToOne(targetEntity = Actor.class, cascade = CascadeType.PERSIST)
+    @ManyToOne(targetEntity = Actor.class, cascade = CascadeType.ALL)
     public Actor getReceiver() {
         return receiver;
     }

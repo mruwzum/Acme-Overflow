@@ -2,6 +2,7 @@ package controllers;
 
 
 import domain.Actor;
+import domain.Folder;
 import domain.Mezzage;
 import domain.Priority;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import services.MezzageService;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/mezzage")
@@ -83,7 +85,9 @@ public class MezzageController extends AbstractController {
         ModelAndView result;
 
         Mezzage mezzage = mezzageService.create();
-        mezzage.setSender(actorService.findByPrincipal());
+        //mezzage.setSender(actorService.findByPrincipal());
+        mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
+        mezzage.setSendDate(new Date(System.currentTimeMillis()-100));
         Collection<Actor> users = actorService.findAll();
 
         result = createEditModelAndView(mezzage);
@@ -119,9 +123,13 @@ public class MezzageController extends AbstractController {
 //            result = createEditModelAndView(mezzage);
 //        } else {
 //            try {
-       actorService.textMessage(mezzage.getSubject(), mezzage.getBody(), mezzage.getReceiver(), mezzage.getPriority());
 
-       result = new ModelAndView("folder/list");
+        mezzage.setSender(actorService.findByPrincipal());
+        mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
+        mezzage.setSendDate(new Date(System.currentTimeMillis()-100));
+       actorService.textMessage(mezzage);
+
+       result = new ModelAndView("administrator/action-1");
 //            } catch (Throwable oops) {
 //                result = createEditModelAndView(mezzage, "general.commit.error");
 //                Collection<Actor> users = actorService.findAll();
@@ -147,42 +155,56 @@ public class MezzageController extends AbstractController {
 //        return result;
 //    }
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public ModelAndView delete2(@RequestParam Mezzage mezzage) {
+    public ModelAndView delete2(@Valid int mezzageId) {
         ModelAndView result;
-        try {
-            mezzage.getFolder().getMezzages().remove(mezzage);
-            mezzageService.delete(mezzage);
-            result = new ModelAndView("redirect:list.do");
-        } catch (Throwable oops) {
+        Mezzage mezzage = mezzageService.findOne(mezzageId);
+//        try {
 
-            result = createEditModelAndView(mezzage, "general.commit.error");
-        }
+                        mezzage.getFolder().getMezzages().remove(mezzage);
+                mezzageService.delete(mezzage);
+
+//            if(mezzage.getFolder().getName().equals("Trashbox")){
+//                mezzage.getFolder().getMezzages().remove(mezzage);
+//                mezzageService.delete(mezzage);
+//            }else{
+//                mezzage.getFolder().getMezzages().remove(mezzage);
+//                Folder f = actorService.folderByName(actorService.findByPrincipal(),"Trashbox");
+//                mezzage.setFolder(f);
+//                f.getMezzages().add(mezzage);
+//            }
+
+
+            result = new ModelAndView("administrator/action-1");
+//        } catch (Throwable oops) {
+//
+//            result = createEditModelAndView(mezzage, "general.commit.error");
+//        }
 
         return result;
     }
 
 
-    @RequestMapping(value = "/send")
-    public ModelAndView sendMessage(@RequestParam String recipient, String subject, String body, String priority) {
-        ModelAndView res = new ModelAndView("mezzage/text");
-        String replacerecipient = recipient.replaceAll(",", "");
-        String replacesubject = subject.replaceAll(",", "");
-        String replacebody = body.replaceAll(",", "");
-        String replacepriority = priority.replaceAll(",", "");
-
-        try {
-            Actor recipient2 = actorService.findByName(replacerecipient);
-            Priority priority1 = Priority.valueOf(replacepriority);
-            @SuppressWarnings("unused")
-            Mezzage mezzage = actorService.textMessage(replacesubject, replacebody, recipient2, priority1);
-        } catch (IllegalArgumentException e) {
-            String texto1 = "";
-            res = new ModelAndView("sponsor/text");
-            res.addObject("texto1", texto1);
-        }
-
-        return res;
-    }
+//    @RequestMapping(value = "/send")
+//    public ModelAndView sendMessage(@RequestParam String recipient, String subject, String body, String priority) {
+//        ModelAndView res = new ModelAndView("mezzage/text");
+//        String replacerecipient = recipient.replaceAll(",", "");
+//        String replacesubject = subject.replaceAll(",", "");
+//        String replacebody = body.replaceAll(",", "");
+//        String replacepriority = priority.replaceAll(",", "");
+//
+//        try {
+//            Actor recipient2 = actorService.findByName(replacerecipient);
+//            Priority priority1 = Priority.valueOf(replacepriority);
+//            @SuppressWarnings("unused")
+//            Mezzage mezzage = actorService.textMessage(replacesubject, replacebody, recipient2, priority1);
+//        } catch (IllegalArgumentException e) {
+//            String texto1 = "";
+//            res = new ModelAndView("sponsor/text");
+//            res.addObject("texto1", texto1);
+//        }
+//
+//        return res;
+//    }
 
 
     @RequestMapping(value = "/view", method = RequestMethod.GET)
@@ -195,7 +217,7 @@ public class MezzageController extends AbstractController {
         result.addObject("subject", mezzage.getSubject());
         result.addObject("body", mezzage.getBody());
         result.addObject("sendDate", mezzage.getSendDate());
-        result.addObject("sender", mezzage.getSender());
+       // result.addObject("sender", mezzage.getSender());
         result.addObject("priority", mezzage.getPriority());
         result.addObject("mezzageId", mezzage.getId());
         result.addObject("requestURI", "mezzage/view.do");
