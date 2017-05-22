@@ -87,11 +87,13 @@ public class UserController extends AbstractController {
         Collection<User> users;
 
         Collection<User> res = new HashSet<>();
-        users = userService.findAll();
+       users = userService.findAll();
        Authority authority = new Authority();
-       authority.setAuthority("USER");
+       authority.setAuthority("MODERATOR");
+
+
         for (User user : users) {
-           if (!user.isBanned() && user.getUserAccount().getAuthorities().contains(authority)) {
+           if (!user.isBanned() && !user.getUserAccount().getAuthorities().contains(authority)) {
                 res.add(user);
             }
         }
