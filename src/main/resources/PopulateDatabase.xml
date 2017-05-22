@@ -271,11 +271,9 @@
     <bean id="banner1" class="domain.Banner">
         <property name="url" value="http://i.imgur.com/UY1x8KM.png"/>
     </bean>
-
     <bean id="banner2" class="domain.Banner">
         <property name="url" value="http://i.imgur.com/LtQYadW.png"/>
     </bean>
-
     <bean id="banner3" class="domain.Banner">
         <property name="url" value="http://i.imgur.com/eViE38q.png"/>
     </bean>
@@ -445,14 +443,12 @@
                 <ref bean="mezzage"/>
             </list>
         </property>
-
         <property name="folders">
             <list>
                 <ref bean="outbox1"/>
                 <ref bean="trashbox1"/>
                 <ref bean="inbox1"/>
                 <ref bean="spambox1"/>
-
             </list>
         </property>
         <property name="answers">
@@ -471,7 +467,6 @@
                 <ref bean="comment7"/>
             </list>
         </property>
-
     </bean>
     <bean id="user2" class="domain.User">
         <property name="name" value="user2name"/>
@@ -491,15 +486,12 @@
                 <ref bean="mezzage2"/>
             </list>
         </property>
-
-
         <property name="folders">
             <list>
                 <ref bean="outbox2"/>
                 <ref bean="trashbox2"/>
                 <ref bean="inbox2"/>
                 <ref bean="spambox2"/>
-
             </list>
         </property>
         <property name="answers">
@@ -537,24 +529,20 @@
                 <ref bean="mezzage4"/>
             </list>
         </property>
-
         <property name="folders">
             <list>
                 <ref bean="outbox3"/>
                 <ref bean="trashbox3"/>
                 <ref bean="inbox3"/>
                 <ref bean="spambox3"/>
-
             </list>
         </property>
         <property name="answers">
             <list>
-
             </list>
         </property>
         <property name="searches">
             <list>
-
             </list>
         </property>
         <property name="comments">
@@ -581,14 +569,12 @@
                 <ref bean="mezzage3"/>
             </list>
         </property>
-
         <property name="folders">
             <list>
                 <ref bean="outbox4"/>
                 <ref bean="trashbox4"/>
                 <ref bean="inbox4"/>
                 <ref bean="spambox4"/>
-
             </list>
         </property>
         <property name="answers">
@@ -627,14 +613,12 @@
                 <ref bean="mezzage6"/>
             </list>
         </property>
-
         <property name="folders">
             <list>
                 <ref bean="outbox5"/>
                 <ref bean="trashbox5"/>
                 <ref bean="inbox5"/>
                 <ref bean="spambox5"/>
-
             </list>
         </property>
         <property name="answers">
@@ -721,14 +705,12 @@
                 <ref bean="mezzage5"/>
             </list>
         </property>
-
         <property name="folders">
             <list>
                 <ref bean="outbox6"/>
                 <ref bean="trashbox6"/>
                 <ref bean="inbox6"/>
                 <ref bean="spambox6"/>
-
             </list>
         </property>
         <property name="answers">
@@ -769,14 +751,12 @@
                 <ref bean="mezzage8"/>
             </list>
         </property>
-
         <property name="folders">
             <list>
                 <ref bean="outbox7"/>
                 <ref bean="trashbox7"/>
                 <ref bean="inbox7"/>
                 <ref bean="spambox7"/>
-
             </list>
         </property>
         <property name="webinars">
@@ -804,14 +784,12 @@
                 <ref bean="mezzage7"/>
             </list>
         </property>
-
         <property name="folders">
             <list>
                 <ref bean="outbox8"/>
                 <ref bean="trashbox8"/>
                 <ref bean="inbox8"/>
                 <ref bean="spambox8"/>
-
             </list>
         </property>
         <property name="answers">
@@ -838,9 +816,7 @@
         <property name="price" value="20.0"/>
         <property name="picture" value="http://picture.png"/>
         <property name="owner" ref="teacher1"/>
-        <property name="categories">
-            <ref bean="categorie3"/>
-        </property>
+        <property name="categories" ref="categorie3"/>
         <property name="modules">
             <list>
                 <ref bean="module1"/>
@@ -868,9 +844,7 @@
         <property name="price" value="120.0"/>
         <property name="picture" value="http://picture2.png"/>
         <property name="owner" ref="teacher2"/>
-        <property name="categories">
-            <ref bean="categorie2"/>
-        </property>
+        <property name="categories" ref="categorie2"/>
         <property name="modules">
             <list>
                 <ref bean="module2"/>
@@ -894,9 +868,7 @@
         <property name="price" value="1.0"/>
         <property name="picture" value="http://picture3.png"/>
         <property name="owner" ref="teacher3"/>
-        <property name="categories">
-            <ref bean="categorie1"/>
-        </property>
+        <property name="categories" ref="categorie1"/>
         <property name="modules">
             <list>
                 <ref bean="module3"/>
@@ -921,9 +893,8 @@
         <property name="price" value="202.0"/>
         <property name="picture" value="http://picture6.png"/>
         <property name="owner" ref="teacher4"/>
-        <property name="categories">
-            <ref bean="categorie3"/>
-        </property>
+        <property name="categories" ref="categorie3"/>
+
         <property name="partakers">
             <list>
 
@@ -942,12 +913,9 @@
         <property name="price" value="20.0"/>
         <property name="picture" value="http://picture6.png"/>
         <property name="owner" ref="teacher2"/>
-        <property name="categories">
-            <ref bean="categorie1"/>
-        </property>
+        <property name="categories" ref="categorie1"/>
         <property name="partakers">
             <list>
-
             </list>
         </property>
         <property name="comments">
@@ -963,18 +931,13 @@
         <property name="price" value="2000.0"/>
         <property name="picture" value="http://picture6.png"/>
         <property name="owner" ref="teacher1"/>
-        <property name="categories">
-            <ref bean="categorie1"/>
-        </property>
-
+        <property name="categories" ref="categorie1"/>
         <property name="partakers">
             <list>
-
             </list>
         </property>
         <property name="comments">
             <list>
-
             </list>
         </property>
     </bean>
@@ -985,17 +948,13 @@
         <property name="price" value="2000.0"/>
         <property name="picture" value="http://picture6.png"/>
         <property name="owner" ref="teacher1"/>
-        <property name="categories">
-            <ref bean="categorie1"/>
-        </property>
+        <property name="categories" ref="categorie1"/>
         <property name="partakers">
             <list>
-
             </list>
         </property>
         <property name="comments">
             <list>
-
             </list>
         </property>
     </bean>
@@ -1098,32 +1057,27 @@
     <bean id="learningmaterial1" class="domain.LearningMaterial">
         <property name="title" value="libro"/>
         <property name="type" value="FILE"/>
-        <property name="attachmentsURLs">
-            <value>http://wwww.perri.com/pictures/pic1.png</value>
-        </property>
+        <property name="attachmentsURLs" value="http://wwww.perri.com/pictures/pic1.png"/>
     </bean>
     <!-- LearningMaterial2 -->
     <bean id="learningmaterial2" class="domain.LearningMaterial">
         <property name="title" value="libro"/>
         <property name="type" value="URL"/>
-        <property name="attachmentsURLs">
-            <value>http://wwww.perri.com/pictures/pic2.png</value>
-        </property>
+        <property name="attachmentsURLs" value="http://wwww.perri.com/pictures/pic2.png"/>
     </bean>
     <!-- LearningMaterial3 -->
     <bean id="learningmaterial3" class="domain.LearningMaterial">
         <property name="title" value="libro3"/>
         <property name="type" value="FILE"/>
-        <property name="attachmentsURLs">
-            <value>http://wwww.perri.com/pictures/pic3.pngg</value>
-        </property>
+        <property name="attachmentsURLs" value="http://wwww.perri.com/pictures/pic3.png"/>
+
     </bean>
     <!-- LearningMaterial4 -->
     <bean id="learningmaterial4" class="domain.LearningMaterial">
         <property name="title" value="libro4"/>
         <property name="type" value="FILE"/>
-        <property name="attachmentsURLs">
-            <value>http://wwww.perri.com/pictures/pic4.png</value>
+        <property name="attachmentsURLs" value="http://wwww.perri.com/pictures/pic4.png">
+
         </property>
     </bean>
 
@@ -1141,11 +1095,7 @@
                 <value>http://www.pic3.jpg</value>
             </array>
         </property>
-        <property name="categories">
-
-            <ref bean="categorie1"/>
-
-        </property>
+        <property name="categories" ref="categorie1"/>
         <property name="answers">
             <list>
                 <ref bean="answer1"/>
@@ -1166,11 +1116,7 @@
                 <value>http://www.pic3.jpg</value>
             </array>
         </property>
-        <property name="categories">
-
-            <ref bean="categorie2"/>
-
-        </property>
+        <property name="categories" ref="categorie2"/>
         <property name="answers">
             <list>
                 <ref bean="answer2"/>
@@ -1190,11 +1136,7 @@
                 <value>http://www.pic3.jpg</value>
             </array>
         </property>
-        <property name="categories">
-
-            <ref bean="categorie3"/>
-
-        </property>
+        <property name="categories" ref="categorie3"/>
         <property name="answers">
             <list>
                 <ref bean="answer5"/>
@@ -1214,14 +1156,9 @@
                 <value>http://www.pic3.jpg</value>
             </array>
         </property>
-        <property name="categories">
-
-            <ref bean="categorie2"/>
-
-        </property>
+        <property name="categories" ref="categorie2"/>
         <property name="answers">
             <list>
-
             </list>
         </property>
     </bean>
@@ -1237,14 +1174,9 @@
                 <value>http://www.pic3.jpg</value>
             </array>
         </property>
-        <property name="categories">
-
-            <ref bean="categorie1"/>
-
-        </property>
+        <property name="categories" ref="categorie1"/>
         <property name="answers">
             <list>
-
             </list>
         </property>
     </bean>
@@ -1260,14 +1192,9 @@
                 <value>http://www.pic3.jpg</value>
             </array>
         </property>
-        <property name="categories">
-
-            <ref bean="categorie3"/>
-
-        </property>
+        <property name="categories" ref="categorie3"/>
         <property name="answers">
             <list>
-
             </list>
         </property>
     </bean>
@@ -1308,7 +1235,6 @@
         </property>
         <property name="question" ref="question2"/>
         <property name="owner" ref="user2"/>
-
     </bean>
     <bean id="answer3" class="domain.Answer">
         <property name="title" value="answ3"/>
@@ -1324,7 +1250,6 @@
         </property>
         <property name="question" ref="question2"/>
         <property name="owner" ref="teacher4"/>
-
     </bean>
     <bean id="answer4" class="domain.Answer">
         <property name="title" value="answ4"/>
@@ -1355,7 +1280,6 @@
         </property>
         <property name="question" ref="question3"/>
         <property name="owner" ref="teacher2"/>
-
     </bean>
     <bean id="answer6" class="domain.Answer">
         <property name="banned" value="true"/>
@@ -1371,7 +1295,6 @@
         </property>
         <property name="question" ref="question3"/>
         <property name="owner" ref="teacher1"/>
-
     </bean>
 
     <!--/Answers-->
@@ -1382,17 +1305,14 @@
         <property name="name" value="Outbox"/>
         <property name="owner" ref="user1"/>
     </bean>
-
     <bean id="trashbox1" class="domain.Folder">
         <property name="name" value="Trashbox"/>
         <property name="owner" ref="user1"/>
     </bean>
-
     <bean id="inbox1" class="domain.Folder">
         <property name="name" value="Inbox"/>
         <property name="owner" ref="user1"/>
     </bean>
-
     <bean id="spambox1" class="domain.Folder">
         <property name="name" value="Spambox"/>
         <property name="owner" ref="user1"/>
@@ -1404,17 +1324,14 @@
         <property name="name" value="Outbox"/>
         <property name="owner" ref="user2"/>
     </bean>
-
     <bean id="trashbox2" class="domain.Folder">
         <property name="name" value="Trashbox"/>
         <property name="owner" ref="user2"/>
     </bean>
-
     <bean id="inbox2" class="domain.Folder">
         <property name="name" value="Inbox"/>
         <property name="owner" ref="user2"/>
     </bean>
-
     <bean id="spambox2" class="domain.Folder">
         <property name="name" value="Spambox"/>
         <property name="owner" ref="user2"/>
@@ -1427,40 +1344,32 @@
         <property name="name" value="Outbox"/>
         <property name="owner" ref="user3"/>
     </bean>
-
     <bean id="trashbox3" class="domain.Folder">
         <property name="name" value="Trashbox"/>
         <property name="owner" ref="user3"/>
     </bean>
-
     <bean id="inbox3" class="domain.Folder">
         <property name="name" value="Inbox"/>
         <property name="owner" ref="user3"/>
     </bean>
-
     <bean id="spambox3" class="domain.Folder">
         <property name="name" value="Spambox"/>
         <property name="owner" ref="user3"/>
     </bean>
 
     <!-- Folder4 -->
-
-
     <bean id="outbox4" class="domain.Folder">
         <property name="name" value="Outbox"/>
         <property name="owner" ref="user4"/>
     </bean>
-
     <bean id="trashbox4" class="domain.Folder">
         <property name="name" value="Trashbox"/>
         <property name="owner" ref="user4"/>
     </bean>
-
     <bean id="inbox4" class="domain.Folder">
         <property name="name" value="Inbox"/>
         <property name="owner" ref="user4"/>
     </bean>
-
     <bean id="spambox4" class="domain.Folder">
         <property name="name" value="Spambox"/>
         <property name="owner" ref="user4"/>
@@ -1473,17 +1382,14 @@
         <property name="name" value="Outbox"/>
         <property name="owner" ref="teacher1"/>
     </bean>
-
     <bean id="trashbox5" class="domain.Folder">
         <property name="name" value="Trashbox"/>
         <property name="owner" ref="teacher1"/>
     </bean>
-
     <bean id="inbox5" class="domain.Folder">
         <property name="name" value="Inbox"/>
         <property name="owner" ref="teacher1"/>
     </bean>
-
     <bean id="spambox5" class="domain.Folder">
         <property name="name" value="Spambox"/>
         <property name="owner" ref="teacher1"/>
@@ -1495,40 +1401,32 @@
         <property name="name" value="Outbox"/>
         <property name="owner" ref="teacher2"/>
     </bean>
-
     <bean id="trashbox6" class="domain.Folder">
         <property name="name" value="Trashbox"/>
         <property name="owner" ref="teacher2"/>
     </bean>
-
     <bean id="inbox6" class="domain.Folder">
         <property name="name" value="Inbox"/>
         <property name="owner" ref="teacher2"/>
     </bean>
-
     <bean id="spambox6" class="domain.Folder">
         <property name="name" value="Spambox"/>
         <property name="owner" ref="teacher2"/>
     </bean>
 
     <!-- Folder7 -->
-
-
     <bean id="outbox7" class="domain.Folder">
         <property name="name" value="Outbox"/>
         <property name="owner" ref="teacher3"/>
     </bean>
-
     <bean id="trashbox7" class="domain.Folder">
         <property name="name" value="Trashbox"/>
         <property name="owner" ref="teacher3"/>
     </bean>
-
     <bean id="inbox7" class="domain.Folder">
         <property name="name" value="Inbox"/>
         <property name="owner" ref="teacher3"/>
     </bean>
-
     <bean id="spambox7" class="domain.Folder">
         <property name="name" value="Spambox"/>
         <property name="owner" ref="teacher3"/>
@@ -1542,147 +1440,109 @@
         <property name="name" value="Outbox"/>
         <property name="owner" ref="teacher4"/>
     </bean>
-
     <bean id="trashbox8" class="domain.Folder">
         <property name="name" value="Trashbox"/>
         <property name="owner" ref="teacher4"/>
     </bean>
-
     <bean id="inbox8" class="domain.Folder">
         <property name="name" value="Inbox"/>
         <property name="owner" ref="teacher4"/>
     </bean>
-
     <bean id="spambox8" class="domain.Folder">
         <property name="name" value="Spambox"/>
         <property name="owner" ref="teacher4"/>
     </bean>
     <!-- Folder9 -->
-
-
     <bean id="outbox9" class="domain.Folder">
         <property name="name" value="Outbox"/>
         <property name="owner" ref="admin1"/>
     </bean>
-
     <bean id="trashbox9" class="domain.Folder">
         <property name="name" value="Trashbox"/>
         <property name="owner" ref="admin1"/>
     </bean>
-
     <bean id="inbox9" class="domain.Folder">
         <property name="name" value="Inbox"/>
         <property name="owner" ref="admin1"/>
     </bean>
-
     <bean id="spambox9" class="domain.Folder">
         <property name="name" value="Spambox"/>
         <property name="owner" ref="admin1"/>
     </bean>
     <!-- Folder10 -->
-
-
     <bean id="outbox10" class="domain.Folder">
         <property name="name" value="Outbox"/>
         <property name="owner" ref="admin2"/>
     </bean>
-
     <bean id="trashbox10" class="domain.Folder">
         <property name="name" value="Trashbox"/>
         <property name="owner" ref="admin2"/>
     </bean>
-
     <bean id="inbox10" class="domain.Folder">
         <property name="name" value="Inbox"/>
         <property name="owner" ref="admin2"/>
     </bean>
-
     <bean id="spambox10" class="domain.Folder">
         <property name="name" value="Spambox"/>
         <property name="owner" ref="admin2"/>
     </bean>
     <!-- Folder11 -->
-
-
     <bean id="outbox11" class="domain.Folder">
         <property name="name" value="Outbox"/>
         <property name="owner" ref="admin3"/>
     </bean>
-
     <bean id="trashbox11" class="domain.Folder">
         <property name="name" value="Trashbox"/>
         <property name="owner" ref="admin3"/>
     </bean>
-
     <bean id="inbox11" class="domain.Folder">
         <property name="name" value="Inbox"/>
         <property name="owner" ref="admin3"/>
     </bean>
-
     <bean id="spambox11" class="domain.Folder">
         <property name="name" value="Spambox"/>
         <property name="owner" ref="admin3"/>
     </bean>
 
     <!-- Folder12 -->
-
-
     <bean id="outbox12" class="domain.Folder">
         <property name="name" value="Outbox"/>
-
     </bean>
-
     <bean id="trashbox12" class="domain.Folder">
         <property name="name" value="Trashbox"/>
-
     </bean>
-
     <bean id="inbox12" class="domain.Folder">
         <property name="name" value="Inbox"/>
-
     </bean>
-
     <bean id="spambox12" class="domain.Folder">
         <property name="name" value="Spambox"/>
-
     </bean>
     <!-- Folder13 -->
 
 
     <bean id="outbox13" class="domain.Folder">
         <property name="name" value="Outbox"/>
-
     </bean>
-
     <bean id="trashbox13" class="domain.Folder">
         <property name="name" value="Trashbox"/>
-
     </bean>
-
     <bean id="inbox13" class="domain.Folder">
         <property name="name" value="Inbox"/>
-
     </bean>
-
     <bean id="spambox13" class="domain.Folder">
         <property name="name" value="Spambox"/>
-
     </bean>
 
     <!-- Folder14 -->
     <bean id="outbox14" class="domain.Folder">
         <property name="name" value="Outbox"/>
-
     </bean>
-
     <bean id="trashbox14" class="domain.Folder">
         <property name="name" value="Trashbox"/>
     </bean>
-
     <bean id="inbox14" class="domain.Folder">
         <property name="name" value="Inbox"/>
     </bean>
-
     <bean id="spambox14" class="domain.Folder">
         <property name="name" value="Spambox"/>
     </bean>
@@ -1690,15 +1550,12 @@
     <bean id="outbox15" class="domain.Folder">
         <property name="name" value="Outbox"/>
     </bean>
-
     <bean id="trashbox15" class="domain.Folder">
         <property name="name" value="Trashbox"/>
     </bean>
-
     <bean id="inbox15" class="domain.Folder">
         <property name="name" value="Inbox"/>
     </bean>
-
     <bean id="spambox15" class="domain.Folder">
         <property name="name" value="Spambox"/>
     </bean>
@@ -1706,15 +1563,12 @@
     <bean id="outbox16" class="domain.Folder">
         <property name="name" value="Outbox"/>
     </bean>
-
     <bean id="trashbox16" class="domain.Folder">
         <property name="name" value="Trashbox"/>
     </bean>
-
     <bean id="inbox16" class="domain.Folder">
         <property name="name" value="Inbox"/>
     </bean>
-
     <bean id="spambox16" class="domain.Folder">
         <property name="name" value="Spambox"/>
     </bean>
@@ -1725,11 +1579,9 @@
     <bean id="trashbox17" class="domain.Folder">
         <property name="name" value="Trashbox"/>
     </bean>
-
     <bean id="inbox17" class="domain.Folder">
         <property name="name" value="Inbox"/>
     </bean>
-
     <bean id="spambox17" class="domain.Folder">
         <property name="name" value="Spambox"/>
     </bean>
@@ -1747,23 +1599,18 @@
         <property name="name" value="Spambox"/>
     </bean>
     <!-- Folder19 -->
-
-
     <bean id="outbox19" class="domain.Folder">
         <property name="name" value="Outbox"/>
         <property name="owner" ref="moderator2"/>
     </bean>
-
     <bean id="trashbox19" class="domain.Folder">
         <property name="name" value="Trashbox"/>
         <property name="owner" ref="moderator2"/>
     </bean>
-
     <bean id="inbox19" class="domain.Folder">
         <property name="name" value="Inbox"/>
         <property name="owner" ref="moderator2"/>
     </bean>
-
     <bean id="spambox19" class="domain.Folder">
         <property name="name" value="Spambox"/>
         <property name="owner" ref="moderator2"/>
@@ -1773,17 +1620,14 @@
         <property name="name" value="Outbox"/>
         <property name="owner" ref="moderator1"/>
     </bean>
-
     <bean id="trashbox20" class="domain.Folder">
         <property name="name" value="Trashbox"/>
         <property name="owner" ref="moderator1"/>
     </bean>
-
     <bean id="inbox20" class="domain.Folder">
         <property name="name" value="Inbox"/>
         <property name="owner" ref="moderator1"/>
     </bean>
-
     <bean id="spambox20" class="domain.Folder">
         <property name="name" value="Spambox"/>
         <property name="owner" ref="moderator1"/>
@@ -1897,7 +1741,6 @@
             </list>
         </property>
     </bean>
-
     <bean id="search2" class="domain.Search">
         <property name="keyword" value="spring"/>
         <property name="owner" ref="teacher1"/>
@@ -1909,7 +1752,6 @@
             </list>
         </property>
     </bean>
-
     <bean id="search3" class="domain.Search">
         <property name="keyword" value="spring"/>
         <property name="owner" ref="user4"/>
@@ -1931,7 +1773,6 @@
         <property name="email" value="moderator1@gmail.com"/>
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountModerator1"/>
-
         <property name="receivedMezzages">
             <list>
             </list>
@@ -1940,7 +1781,6 @@
             <list>
             </list>
         </property>
-
         <property name="folders">
             <list>
                 <ref bean="inbox20"/>
@@ -1951,19 +1791,16 @@
         </property>
         <property name="answers">
             <list>
-
             </list>
         </property>
         <property name="searches">
             <list>
-
             </list>
         </property>
         <property name="comments">
             <list>
             </list>
         </property>
-
     </bean>
 
     <bean id="moderator2" class="domain.Moderator">
@@ -1972,7 +1809,6 @@
         <property name="email" value="moderator2@gmail.com"/>
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountModerator2"/>
-
         <property name="receivedMezzages">
             <list>
             </list>
@@ -1981,7 +1817,6 @@
             <list>
             </list>
         </property>
-
         <property name="folders">
             <list>
                 <ref bean="inbox19"/>
@@ -1992,19 +1827,16 @@
         </property>
         <property name="answers">
             <list>
-
             </list>
         </property>
         <property name="searches">
             <list>
-
             </list>
         </property>
         <property name="comments">
             <list>
             </list>
         </property>
-
     </bean>
 
 
@@ -2012,30 +1844,21 @@
 
     <!-- Evaluation -->
     <bean id="evaluation1" class="domain.Evaluation">
-
-
         <property name="evaluationQuestions">
             <list>
                 <ref bean="evaluationQuestion1"/>
                 <ref bean="evaluationQuestion2"/>
-
             </list>
         </property>
-
     </bean>
 
     <bean id="evaluation2" class="domain.Evaluation">
-
         <property name="evaluationQuestions">
             <list>
                 <ref bean="evaluationQuestion3"/>
                 <ref bean="evaluationQuestion4"/>
-
             </list>
-
         </property>
-
-
     </bean>
     <!-- /Evaluation -->
 
@@ -2043,39 +1866,27 @@
     <!-- Evaluation Question -->
 
     <bean id="evaluationQuestion1" class="domain.EvaluationQuestion">
-
         <property name="title" value="¿Te ha gustado?"/>
         <property name="answer" value="SIII"/>
         <property name="evaluation" ref="evaluation1"/>
-
-
     </bean>
 
     <bean id="evaluationQuestion2" class="domain.EvaluationQuestion">
-
         <property name="title" value="¿El profe es guapo?"/>
         <property name="answer" value="NOOO"/>
         <property name="evaluation" ref="evaluation1"/>
-
-
     </bean>
 
     <bean id="evaluationQuestion3" class="domain.EvaluationQuestion">
-
         <property name="title" value="¿Te ha gustado?"/>
         <property name="answer" value="SIII"/>
         <property name="evaluation" ref="evaluation2"/>
-
-
     </bean>
 
     <bean id="evaluationQuestion4" class="domain.EvaluationQuestion">
-
         <property name="title" value="¿El profe es guapo?"/>
         <property name="answer" value="NOOO"/>
         <property name="evaluation" ref="evaluation2"/>
-
-
     </bean>
 
     <!-- /Evaluation Question -->
@@ -2084,48 +1895,33 @@
     <!-- Bill -->
 
     <bean id="bill1" class="domain.Bill">
-
         <property name="number" value="2334sf43"/>
         <property name="value" value="20.0"/>
         <property name="webinar" ref="webinar1"/>
         <property name="owner" ref="user1"/>
-
-
     </bean>
 
     <bean id="bill2" class="domain.Bill">
-
         <property name="number" value="4334sf43"/>
         <property name="value" value="20.0"/>
         <property name="webinar" ref="webinar1"/>
         <property name="owner" ref="user2"/>
-
-
     </bean>
 
     <bean id="bill3" class="domain.Bill">
-
         <property name="number" value="6734sf43"/>
         <property name="value" value="120.0"/>
         <property name="webinar" ref="webinar2"/>
         <property name="owner" ref="user3"/>
-
-
     </bean>
 
     <bean id="bill4" class="domain.Bill">
-
         <property name="number" value="7834sf43"/>
         <property name="value" value="1.0"/>
         <property name="webinar" ref="webinar3"/>
         <property name="owner" ref="user4"/>
-
-
     </bean>
 
-
     <!-- /Bill -->
-
-
 
 </beans>
