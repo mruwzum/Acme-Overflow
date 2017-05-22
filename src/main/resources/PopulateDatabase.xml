@@ -288,7 +288,7 @@
 
     <!-- Comment -->
     <bean id="comment1" class="domain.Comment">
-        <property name="title" value="genial"/>
+        <property name="title" value="maravilloso"/>
         <property name="text" value="works 4 me!"/>
         <property name="creationDate" value="2017/04/22"/>
         <property name="owner" ref="user2"/>
@@ -297,17 +297,17 @@
 
     <!-- Comment2 -->
     <bean id="comment2" class="domain.Comment">
-        <property name="title" value="genial"/>
-        <property name="text" value="works 4 me!"/>
-        <property name="creationDate" value="2017/05/22"/>
+        <property name="title" value="no se como hacerlo"/>
+        <property name="text" value="he probado, pero no funciona"/>
+        <property name="creationDate" value="2017/05/26"/>
         <property name="owner" ref="user1"/>
         <property name="webinar" ref="webinar1"/>
     </bean>
     <!-- Comment3 -->
 
     <bean id="comment3" class="domain.Comment">
-        <property name="title" value="genial"/>
-        <property name="text" value="works 4 me!"/>
+        <property name="title" value="psss"/>
+        <property name="text" value="insulso"/>
         <property name="creationDate" value="2017/04/22"/>
         <property name="owner" ref="user3"/>
         <property name="webinar" ref="webinar2"/>
@@ -315,26 +315,26 @@
     <!-- Comment4 -->
 
     <bean id="comment4" class="domain.Comment">
-        <property name="title" value="genial"/>
-        <property name="text" value="works 4 me!"/>
-        <property name="creationDate" value="2017/04/22"/>
+        <property name="title" value="que guay, va estupendo"/>
+        <property name="text" value="corre a la parfección"/>
+        <property name="creationDate" value="2017/04/14"/>
         <property name="owner" ref="user4"/>
         <property name="webinar" ref="webinar3"/>
     </bean>
     <!-- Comment5 -->
 
     <bean id="comment5" class="domain.Comment">
-        <property name="title" value="genial"/>
-        <property name="text" value="works 4 me!"/>
-        <property name="creationDate" value="2017/04/22"/>
+        <property name="title" value="chachi"/>
+        <property name="text" value="woooooooohh"/>
+        <property name="creationDate" value="2017/05/22"/>
         <property name="owner" ref="user4"/>
         <property name="webinar" ref="webinar3"/>
     </bean>
     <!-- Comment6 -->
 
     <bean id="comment6" class="domain.Comment">
-        <property name="title" value="genial"/>
-        <property name="text" value="works 4 me!"/>
+        <property name="title" value="gr8!"/>
+        <property name="text" value="works fine"/>
         <property name="creationDate" value="2017/04/22"/>
         <property name="owner" ref="user2"/>
         <property name="webinar" ref="webinar1"/>
@@ -342,8 +342,8 @@
     <!-- Comment7 -->
 
     <bean id="comment7" class="domain.Comment">
-        <property name="title" value="genial"/>
-        <property name="text" value="works 4 me!"/>
+        <property name="title" value="awesome"/>
+        <property name="text" value="works 4 me pretty well!"/>
         <property name="creationDate" value="2017/04/22"/>
         <property name="webinar" ref="webinar1"/>
         <property name="owner" ref="user3"/>
@@ -361,7 +361,6 @@
     </bean>
     <!-- CreditCard2 -->
     <bean id="creditcard2" class="domain.CreditCard">
-
         <property name="holderName" value="user2"/>
         <property name="type" value="DINNERS"/>
         <property name="number" value="54275498043695577"/>
@@ -371,7 +370,6 @@
     </bean>
     <!-- CreditCard3 -->
     <bean id="creditcard3" class="domain.CreditCard">
-
         <property name="holderName" value="user3"/>
         <property name="type" value="AMEX"/>
         <property name="number" value="54275498043695577"/>
@@ -381,7 +379,6 @@
     </bean>
     <!-- CreditCard4 -->
     <bean id="creditcard4" class="domain.CreditCard">
-
         <property name="holderName" value="user4"/>
         <property name="type" value="MASTERCARD"/>
         <property name="number" value="54275498043695577"/>
@@ -401,7 +398,6 @@
     </bean>
     <!-- CreditCard2 -->
     <bean id="creditcard6" class="domain.CreditCard">
-
         <property name="holderName" value="teacher2"/>
         <property name="type" value="DISCOVER"/>
         <property name="number" value="54275498043695577"/>
@@ -411,7 +407,6 @@
     </bean>
     <!-- CreditCard3 -->
     <bean id="creditcard7" class="domain.CreditCard">
-
         <property name="holderName" value="teacher3"/>
         <property name="type" value="AMEX"/>
         <property name="number" value="54275498043695577"/>
@@ -421,7 +416,6 @@
     </bean>
     <!-- CreditCard4 -->
     <bean id="creditcard8" class="domain.CreditCard">
-
         <property name="holderName" value="teacher4"/>
         <property name="type" value="MASTERCARD"/>
         <property name="number" value="54275498043695577"/>
@@ -1036,7 +1030,7 @@
 
     <!-- Categorie -->
     <bean id="categorie1" class="domain.Category">
-        <property name="name" value="soft"/>
+        <property name="name" value="software"/>
         <property name="description" value="Lorem ipsum dolor sit amet."/>
         <property name="father" ref="categorie2"/>
         <property name="sons">
@@ -1079,7 +1073,7 @@
 
     <!-- Categorie3 -->
     <bean id="categorie3" class="domain.Category">
-        <property name="name" value="soft"/>
+        <property name="name" value="hardware"/>
         <property name="description" value="Lorem ipsum dolor sit amet."/>
         <property name="sons">
             <list>
