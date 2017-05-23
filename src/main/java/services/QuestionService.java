@@ -8,8 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import repositories.QuestionRepository;
 
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * Created by david on 05/11/2016.
@@ -145,6 +144,20 @@ public class QuestionService {
         }
         return res;
     }
+
+   public Collection<Question> listPopular() {
+      Collection<Question> questions;
+      questions = notBannedQuestions();
+      List<Question> res1 = new ArrayList<>();
+      res1.addAll(questions);
+      Collections.sort(res1, new Comparator<Question>() {
+         public int compare(Question m1, Question m2) {
+            return m2.getCreatedDate().toString().compareTo(m1.getCreatedDate().toString());
+         }
+      });
+      return res1;
+
+   }
 }
 
 

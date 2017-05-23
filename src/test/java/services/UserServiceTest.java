@@ -439,7 +439,29 @@ public class UserServiceTest extends AbstractTest {
       Assert.notEmpty(answers);
    }
 
+   //Browse the list of questions ordered by popularity
+   @Test
+   public void questionsListPopularityOk() {
+      Set<Question> questions = new HashSet<>();
+      questions.addAll(questionService.listPopular());
+      Assert.notEmpty(questions);
+   }
 
+
+   @Test(expected = IllegalArgumentException.class)
+   public void questionsListPopularitysNotOk() {
+
+
+      Set<Question> questions = new HashSet<>();
+      questions.addAll(questionService.listPopular());
+      questions.removeAll(questions);
+      Assert.notEmpty(questions);
+      Collection<Answer> answers = new HashSet<>();
+      for (Question q : questions) {
+         answers.addAll(q.getAnswers());
+      }
+      Assert.notEmpty(answers);
+   }
 
 
    @Test
