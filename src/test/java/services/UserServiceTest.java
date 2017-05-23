@@ -252,7 +252,7 @@ public class UserServiceTest extends AbstractTest {
       cc.setMonth(3);
       cc.setHolderName("ussdad");
       u.setCreditCard(cc);
-      Actor a = userService.registerAsUser(u);
+      userService.registerAsUser(u);
       userService.flush();
    }
 
