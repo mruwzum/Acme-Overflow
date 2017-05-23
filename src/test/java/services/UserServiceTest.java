@@ -544,6 +544,27 @@ public class UserServiceTest extends AbstractTest {
    }
 
 
+   // A moderator must be able to list all users
+
+   @Test
+   public void ListAllUsersAndProfileOkModetator() {
+      authenticate("moderator1");
+      List<User> users = new ArrayList<>(userService.findAll());
+      Assert.notEmpty(users);
+      unauthenticate();
+   }
+
+   @Test(expected = IndexOutOfBoundsException.class)
+   public void listAllUsersAndProfilesNotOkModerator() {
+      authenticate("moderator1");
+      List<User> users = new ArrayList<>();
+      User u = users.get(0);
+      org.junit.Assert.assertNotNull(u);
+      unauthenticate();
+   }
+
+
+
    // a non authenticated user must be able to register as a teacher positive & negative cases
    @Test
    public void registerAsTeacher() {
@@ -630,4 +651,58 @@ public class UserServiceTest extends AbstractTest {
       unauthenticate();
    }
 
+
+   //A moderator is able to ban or unban a question positive & negative cases
+
+   @Test
+   public void banQuestionOk() {
+      authenticate("moderator1");
+      List<Question> users = new ArrayList<>(questionService.notBannedQuestions());
+      int size0 = users.size();
+      Question u = users.get(0);
+      Boolean res = questionService.banQuestion(u);
+      Assert.isTrue(res);
+      List<Question> users2 = new ArrayList<>(questionService.notBannedQuestions());
+      int size1 = users2.size();
+      org.junit.Assert.assertNotEquals(size0, size1);
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void banCuestionNotOk() {
+      authenticate("moderator1");
+      List<Question> users = new ArrayList<>(questionService.findAll());
+      Question u = users.get(0);
+      questionService.banQuestion(u);
+      Boolean res = questionService.banQuestion(u);
+      Assert.isTrue(res);
+      unauthenticate();
+   }
+
+
+   //A moderator is able to ban or unban a answer positive & negative cases
+   @Test
+   public void banAnsOk() {
+      authenticate("moderator1");
+      List<Question> users = new ArrayList<>(questionService.notBannedQuestions());
+      Assert.isTrue(questionService.banQuestion(users.get(0)));
+      List<Answer> answers = new ArrayList<>(users.get(0).getAnswers());
+      int size0 = answers.size();
+      List<Question> users2 = new ArrayList<>(questionService.notBannedQuestions());
+      List<Answer> answers2 = new ArrayList<>(users2.get(0).getAnswers());
+      int size1 = answers2.size();
+      org.junit.Assert.assertNotEquals(size0, size1);
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void banAnsNotOk() {
+      authenticate("moderator1");
+      List<Question> users = new ArrayList<>(questionService.notBannedQuestions());
+      List<Answer> answers = new ArrayList<>(users.get(0).getAnswers());
+      answerService.banAnswer(answers.get(0));
+      Boolean res = answerService.banAnswer(answers.get(0));
+      Assert.isTrue(res);
+      unauthenticate();
+   }
 }
