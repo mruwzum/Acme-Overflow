@@ -47,12 +47,14 @@ public class UserServiceTest extends AbstractTest {
    private CreditCardService creditCardService;
    @Autowired
    private TeacherService teacherService;
+   @Autowired
+   private CurriculaService curriculaService;
 
 
    @Before
    public void setUp() {
 
-//USER1A
+////USER1A
       User user1 = new User();
       user1.setBanned(false);
       user1.setEmail("user1a@email.com");
@@ -82,40 +84,40 @@ public class UserServiceTest extends AbstractTest {
       user1.setUserAccount(res);
       Assert.notNull(user1.getUserAccount().getAuthorities(), "authorities null al registrar");
       User resu = userService.save(user1);
-      Collection<Mezzage> received = new HashSet<>();
-      Collection<Mezzage> sended = new HashSet<>();
-      Collection<Folder> folders = new HashSet<>();
-      Folder inbox = folderService.create();
-      inbox.setName("inbox");
-      inbox.setOwner(resu);
-      Collection<Mezzage> innnn = new HashSet<>();
-      inbox.setMezzages(innnn);
-      Folder outbox = folderService.create();
-      outbox.setName("outbox");
-      outbox.setOwner(resu);
-      Collection<Mezzage> ouuuu = new HashSet<>();
-      outbox.setMezzages(ouuuu);
-      Folder spambox = folderService.create();
-      spambox.setName("spambox");
-      spambox.setOwner(resu);
-      Collection<Mezzage> spaaaam = new HashSet<>();
-      spambox.setMezzages(spaaaam);
-      Folder trashBox = folderService.create();
-      trashBox.setName("trashbox");
-      trashBox.setOwner(resu);
-      Collection<Mezzage> trashhh = new HashSet<>();
-      trashBox.setMezzages(trashhh);
-      folders.add(inbox);
-      folders.add(outbox);
-      folders.add(spambox);
-      folders.add(trashBox);
-      folderService.save(inbox);
-      folderService.save(outbox);
-      folderService.save(spambox);
-      folderService.save(trashBox);
-      resu.setFolders(folders);
-      resu.setReceivedMezzages(received);
-      resu.setSendedMezzages(sended);
+//      Collection<Mezzage> received = new HashSet<>();
+//      Collection<Mezzage> sended = new HashSet<>();
+//      Collection<Folder> folders = new HashSet<>();
+//      Folder inbox = folderService.create();
+//      inbox.setName("Inbox");
+//      inbox.setOwner(resu);
+//      Collection<Mezzage> innnn = new HashSet<>();
+//      inbox.setMezzages(innnn);
+//      Folder outbox = folderService.create();
+//      outbox.setName("Outbox");
+//      outbox.setOwner(resu);
+//      Collection<Mezzage> ouuuu = new HashSet<>();
+//      outbox.setMezzages(ouuuu);
+//      Folder spambox = folderService.create();
+//      spambox.setName("Spambox");
+//      spambox.setOwner(resu);
+//      Collection<Mezzage> spaaaam = new HashSet<>();
+//      spambox.setMezzages(spaaaam);
+//      Folder trashBox = folderService.create();
+//      trashBox.setName("Trashbox");
+//      trashBox.setOwner(resu);
+//      Collection<Mezzage> trashhh = new HashSet<>();
+//      trashBox.setMezzages(trashhh);
+//      folders.add(inbox);
+//      folders.add(outbox);
+//      folders.add(spambox);
+//      folders.add(trashBox);
+//      folderService.save(inbox);
+//      folderService.save(outbox);
+//      folderService.save(spambox);
+//      folderService.save(trashBox);
+//      resu.setFolders(folders);
+//      resu.setReceivedMezzages(received);
+//      resu.setSendedMezzages(sended);
       Collection<Answer> answers = new HashSet<>();
       Collection<Question> questions = new HashSet<>();
       Collection<Comment> comments = new HashSet<>();
@@ -123,8 +125,8 @@ public class UserServiceTest extends AbstractTest {
       resu.setAnswers(answers);
       resu.setComments(comments);
       userService.save(resu);
-
-      //USER2A
+//
+//  USER2A
       User user2 = new User();
       user2.setBanned(false);
       user2.setEmail("user2a@email.com");
@@ -146,46 +148,62 @@ public class UserServiceTest extends AbstractTest {
       autoh2.setAuthority("USER");
       UserAccount res1 = new UserAccount();
       res1.addAuthority(autoh2);
-      res1.setUsername("user1a");
+      res1.setUsername("user2a");
       Md5PasswordEncoder encoder1;
       encoder1 = new Md5PasswordEncoder();
       String hash1 = encoder1.encodePassword("user2a", null);
       res1.setPassword(hash1);
       user2.setUserAccount(res1);
       Assert.notNull(user2.getUserAccount().getAuthorities(), "authorities null al registrar");
+      Collection<Folder> folders3 = new HashSet<>();
+      user2.setFolders(folders3);
       User resu2 = userService.save(user2);
+
+
+//      Folder inbox2 = folderService.create();
+//      inbox2.setName("inbox");
+//     // Folder ddfsdf  = folderService.save(inbox2);
+////       inbox2.setOwner(user2);
+//
+//      resu2.getFolders().add(inbox2);
+      //Collection<Mezzage> innnn2 = new HashSet<>();
+      //ddfsdf.setMezzages(innnn2);
+//      Folder outbox2 = folderService.create();
+//      outbox2.setName("outbox");
+//      outbox2.setOwner(user2);
+//      Collection<Mezzage> ouuuu2 = new HashSet<>();
+//      outbox2.setMezzages(ouuuu2);
+//      Folder spambox2 = folderService.create();
+//      spambox2.setName("spambox");
+//      spambox2.setOwner(user2);
+//      Collection<Mezzage> spaaaam2 = new HashSet<>();
+//      spambox2.setMezzages(spaaaam2);
+//      Folder trashBox2 = folderService.create();
+//      trashBox2.setName("trashbox");
+//      trashBox2.setOwner(user2);
+//      Collection<Mezzage> trashhh2 = new HashSet<>();
+//      trashBox2.setMezzages(trashhh2);
+
+//      folderService.save(inbox2);
+//      folderService.save(outbox2);
+//      folderService.save(spambox2);
+//      folderService.save(trashBox2);
+//
+//      user2.getFolders().add(inbox2);
+//      user2.getFolders().add(outbox2);
+//      user2.getFolders().add(spambox2);
+//      user2.getFolders().add(trashBox2);
+
+
+
+
       Collection<Mezzage> received2 = new HashSet<>();
       Collection<Mezzage> sended2 = new HashSet<>();
       Collection<Folder> folders2 = new HashSet<>();
-      Folder inbox2 = folderService.create();
-      inbox2.setName("inbox");
-      inbox2.setOwner(resu2);
-      Collection<Mezzage> innnn2 = new HashSet<>();
-      inbox2.setMezzages(innnn2);
-      Folder outbox2 = folderService.create();
-      outbox2.setName("outbox");
-      outbox2.setOwner(resu2);
-      Collection<Mezzage> ouuuu2 = new HashSet<>();
-      outbox2.setMezzages(ouuuu2);
-      Folder spambox2 = folderService.create();
-      spambox2.setName("spambox");
-      spambox2.setOwner(resu2);
-      Collection<Mezzage> spaaaam2 = new HashSet<>();
-      spambox2.setMezzages(spaaaam2);
-      Folder trashBox2 = folderService.create();
-      trashBox2.setName("trashbox");
-      trashBox2.setOwner(resu2);
-      Collection<Mezzage> trashhh2 = new HashSet<>();
-      trashBox2.setMezzages(trashhh2);
-      folders2.add(inbox2);
-      folders2.add(outbox2);
-      folders2.add(spambox2);
-      folders2.add(trashBox2);
-      folderService.save(inbox2);
-      folderService.save(outbox2);
-      folderService.save(spambox2);
-      folderService.save(trashBox2);
-      resu2.setFolders(folders2);
+
+
+      //resu2.setFolders(folders2);
+      //resu2.getFolders().addAll(folders2);
       resu2.setReceivedMezzages(received2);
       resu2.setSendedMezzages(sended2);
       Collection<Answer> answers2 = new HashSet<>();
@@ -196,7 +214,8 @@ public class UserServiceTest extends AbstractTest {
       resu2.setComments(comments2);
       userService.save(resu2);
 
-      //USER2A
+
+//      //teacher2a
       Teacher teacher = new Teacher();
       teacher.setEmail("teachera@email.com");
       teacher.setSurname("iser");
@@ -217,7 +236,7 @@ public class UserServiceTest extends AbstractTest {
       autoh3.setAuthority("USER");
       UserAccount res2 = new UserAccount();
       res2.addAuthority(autoh3);
-      res2.setUsername("user1a");
+      res2.setUsername("teacher1a");
       Md5PasswordEncoder encoder2;
       encoder2 = new Md5PasswordEncoder();
       String hash2 = encoder2.encodePassword("teachera", null);
@@ -225,70 +244,85 @@ public class UserServiceTest extends AbstractTest {
       teacher.setUserAccount(res2);
       Assert.notNull(teacher.getUserAccount().getAuthorities(), "authorities null al registrar");
       Teacher resu3 = teacherService.save(teacher);
-      Collection<Mezzage> received3 = new HashSet<>();
-      Collection<Mezzage> sended3 = new HashSet<>();
-      Collection<Folder> folders3 = new HashSet<>();
-      Folder inbox3 = folderService.create();
-      inbox3.setName("inbox");
-      inbox3.setOwner(resu3);
-      Collection<Mezzage> innnn3 = new HashSet<>();
-      inbox3.setMezzages(innnn3);
-      Folder outbox3 = folderService.create();
-      outbox3.setName("outbox");
-      outbox3.setOwner(resu3);
-      Collection<Mezzage> ouuuu3 = new HashSet<>();
-      outbox3.setMezzages(ouuuu3);
-      Folder spambox3 = folderService.create();
-      spambox3.setName("spambox");
-      spambox3.setOwner(resu3);
-      Collection<Mezzage> spaaaam3 = new HashSet<>();
-      spambox3.setMezzages(spaaaam3);
-      Folder trashBox3 = folderService.create();
-      trashBox3.setName("trashbox");
-      trashBox3.setOwner(resu3);
-      Collection<Mezzage> trashhh3 = new HashSet<>();
-      trashBox3.setMezzages(trashhh3);
-      folders3.add(inbox3);
-      folders3.add(outbox3);
-      folders3.add(spambox3);
-      folders3.add(trashBox3);
-      folderService.save(inbox3);
-      folderService.save(outbox3);
-      folderService.save(spambox);
-      folderService.save(trashBox3);
-      resu3.setFolders(folders3);
-      resu3.setReceivedMezzages(received3);
-      resu3.setSendedMezzages(sended3);
+//      Collection<Mezzage> received3 = new HashSet<>();
+//      Collection<Mezzage> sended3 = new HashSet<>();
+//      Collection<Folder> folders4 = new HashSet<>();
+//      Folder inbox3 = folderService.create();
+//      inbox3.setName("inbox");
+//      inbox3.setOwner(resu3);
+//      Collection<Mezzage> innnn3 = new HashSet<>();
+//      inbox3.setMezzages(innnn3);
+//      Folder outbox3 = folderService.create();
+//      outbox3.setName("outbox");
+//      outbox3.setOwner(resu3);
+//      Collection<Mezzage> ouuuu3 = new HashSet<>();
+//      outbox3.setMezzages(ouuuu3);
+//      Folder spambox3 = folderService.create();
+//      spambox3.setName("spambox");
+//      spambox3.setOwner(resu3);
+//      Collection<Mezzage> spaaaam3 = new HashSet<>();
+//      spambox3.setMezzages(spaaaam3);
+//      Folder trashBox3 = folderService.create();
+//      trashBox3.setName("trashbox");
+//      trashBox3.setOwner(resu3);
+//      Collection<Mezzage> trashhh3 = new HashSet<>();
+//      trashBox3.setMezzages(trashhh3);
+//      folders4.add(inbox3);
+//      folders4.add(outbox3);
+//      folders4.add(spambox3);
+//      folders4.add(trashBox3);
+//      folderService.save(inbox3);
+//      folderService.save(outbox3);
+//      folderService.save(spambox3);
+//      folderService.save(trashBox3);
+//      resu3.setFolders(folders4);
+//      resu3.setReceivedMezzages(received3);
+//      resu3.setSendedMezzages(sended3);
+
+
       Collection<Answer> answers3 = new HashSet<>();
       Collection<Comment> comments3 = new HashSet<>();
       resu3.setAnswers(answers3);
       resu3.setComments(comments3);
-      teacherService.save(resu3);
-      Question question = new Question();
-      question.setBanned(false);
-      Category category = new Category();
-      category.setDescription("esdfd");
-      category.setName("dsfdf");
-      question.setCategories(category);
-      question.setCreatedDate(new Date(System.currentTimeMillis() - 100));
-      Collection<String> pics = new HashSet<>();
-      pics.add("http://pic.jpg");
-      question.setPictures(pics);
-      question.setSummary("sdfsdfsd");
-      question.setTitle("dsfsdf");
-      question.setOwner(user2);
-      Collection<Answer> answers22 = new HashSet<>();
-      Answer answer = new Answer();
-      answer.setOwner(teacher);
-      answer.setDescription("safsfd");
-      answer.setDislikes(23);
-      answer.setLikes(2222);
-      answer.setBanned(false);
-      answer.setPictures(pics);
-      answer.setQuestion(question);
-      answers22.add(answer);
-      question.setAnswers(answers22);
-      questionService.save(question);
+      Curricula curricula = new Curricula();
+      curricula.setApprobed(true);
+
+      Collection<String> referemcoas = new HashSet<>();
+      curricula.setReferencias(referemcoas);
+      curricula.setPhoto("http://www.goto.png");
+      curricula.setHobbiesSection("dsfadsfsdafsdf");
+      curricula.setEducationSection("dfgdfgdagfsg");
+      curricula.setExperienceSection("sdfsdfdf");
+      curricula.setOwner(resu3);
+      resu3.setCurricula(curricula);
+      curriculaService.save(curricula);
+
+
+//      Question question = new Question();
+//      question.setBanned(false);
+//      Category category = new Category();
+//      category.setDescription("esdfd");
+//      category.setName("dsfdf");
+//      question.setCategories(category);
+//      question.setCreatedDate(new Date(System.currentTimeMillis() - 100));
+//      Collection<String> pics = new HashSet<>();
+//      pics.add("http://pic.jpg");
+//      question.setPictures(pics);
+//      question.setSummary("sdfsdfsd");
+//      question.setTitle("dsfsdf");
+//      question.setOwner(user2);
+//      Collection<Answer> answers22 = new HashSet<>();
+//      Answer answer = new Answer();
+//
+//      answer.setDescription("safsfd");
+//      answer.setDislikes(23);
+//      answer.setLikes(2222);
+//      answer.setBanned(false);
+//      answer.setPictures(pics);
+//      answer.setQuestion(question);
+//      answers22.add(answer);
+//      question.setAnswers(answers22);
+//      questionService.save(question);
 
 
 
@@ -379,22 +413,33 @@ public class UserServiceTest extends AbstractTest {
 
    @Test
    public void questionsListAndAnswersOk() {
-//TODO Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'user1a' for key 'UK_csivo9yqa08nrbkog71ycilh5'
-//      at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-//      at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-//      at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-//      at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
 
-//      Set<Question> questions = new HashSet<>();
-//      questions.addAll(questionService.notBannedQuestions());
-//      Assert.notEmpty(questions);
-
+      Set<Question> questions = new HashSet<>();
+      questions.addAll(questionService.notBannedQuestions());
+      Assert.notEmpty(questions);
+      Collection<Answer> answers = new HashSet<>();
+      for (Question q : questions) {
+         answers.addAll(q.getAnswers());
+      }
+      Assert.notEmpty(answers);
    }
 
 
-   @Test
+   @Test(expected = IllegalArgumentException.class)
    public void questionsListAndAnswersNotOk() {
+
+      Set<Question> questions = new HashSet<>();
+      questions.addAll(questionService.notBannedQuestions());
+      questions.removeAll(questions);
+      Assert.notEmpty(questions);
+      Collection<Answer> answers = new HashSet<>();
+      for (Question q : questions) {
+         answers.addAll(q.getAnswers());
+      }
+      Assert.notEmpty(answers);
    }
+
+
 
 
    @Test
