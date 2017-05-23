@@ -399,7 +399,6 @@ public class UserServiceTest extends AbstractTest {
       UserAccount userAccount = new UserAccount();
       userAccount.setUsername("dfasdfsdf");
       userAccount.setPassword("safsafd");
-
       u.setPhoneNumber("956789543");
       u.setName("ussdad");
       u.setSurname("dsfsdf");
@@ -413,7 +412,6 @@ public class UserServiceTest extends AbstractTest {
 
    @Test
    public void questionsListAndAnswersOk() {
-
       Set<Question> questions = new HashSet<>();
       questions.addAll(questionService.notBannedQuestions());
       Assert.notEmpty(questions);
@@ -427,7 +425,6 @@ public class UserServiceTest extends AbstractTest {
 
    @Test(expected = IllegalArgumentException.class)
    public void questionsListAndAnswersNotOk() {
-
       Set<Question> questions = new HashSet<>();
       questions.addAll(questionService.notBannedQuestions());
       questions.removeAll(questions);
@@ -450,8 +447,6 @@ public class UserServiceTest extends AbstractTest {
 
    @Test(expected = IllegalArgumentException.class)
    public void questionsListPopularitysNotOk() {
-
-
       Set<Question> questions = new HashSet<>();
       questions.addAll(questionService.listPopular());
       questions.removeAll(questions);
