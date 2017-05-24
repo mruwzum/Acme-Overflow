@@ -150,7 +150,7 @@
 
     <%--<jstl:if test="${not reg}">--%>
 
-        <a href="webinar/register.do?webinarId=${webinarId}"> <spring:message
+        <a href="/evaluationQuestion/write.do?webinarId=${webinarId}"> <spring:message
                 code="webinar.evaluation"/>
         </a>
 

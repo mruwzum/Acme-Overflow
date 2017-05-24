@@ -66,6 +66,7 @@
 		<security:intercept-url pattern="/bill/list.do" access="hasRole('USER')" />
 		<security:intercept-url pattern="/bill/view.do" access="hasRole('USER')" />
 		<security:intercept-url pattern="/teacher/bill.do" access="hasRole('TEACHER')"/>
+		<security:intercept-url pattern="/evaluationQuestion/write.do" access="hasRole('USER')" />
 
 
 

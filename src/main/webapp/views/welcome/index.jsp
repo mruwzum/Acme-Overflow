@@ -48,20 +48,20 @@
     </security:authorize>
 
     <security:authorize access="hasRole('MODERATOR')">
-            <a href="question/view.do?questionId=${question.id}"> <spring:message
-                    code="general.view"/>
-            </a>
+        <a href="question/view.do?questionId=${question.id}"> <spring:message
+                code="general.view"/>
+        </a>
     </security:authorize>
     <security:authorize access="hasRole('MODERATOR')">
-            <jstl:if test="${not row.banned}">
-                <a href="question/ban.do?questionId=${question.id}"> <spring:message
-                        code="user.ban"/>
-                </a>
-            </jstl:if>
-            <jstl:if test="${row.banned}">
-                <a href="question/unban.do?questionId=${question.id}"> <spring:message
-                    code="user.unban"/>
-            </jstl:if>
+        <jstl:if test="${not row.banned}">
+            <a href="question/ban.do?questionId=${question.id}"> <spring:message
+                    code="user.ban"/>
+            </a>
+        </jstl:if>
+        <jstl:if test="${row.banned}">
+            <a href="question/unban.do?questionId=${question.id}"> <spring:message
+                code="user.unban"/>
+        </jstl:if>
     </security:authorize>
     <hr>
 

@@ -3,6 +3,7 @@ package controllers;
 import domain.Category;
 import domain.Evaluation;
 import domain.EvaluationQuestion;
+import domain.Webinar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.CategoryService;
 import services.EvaluationQuestionService;
 import services.EvaluationService;
+import services.WebinarService;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -31,6 +33,8 @@ public class EvaluationQuestionController extends AbstractController {
     private EvaluationQuestionService evaluationQuestionService;
     @Autowired
     private EvaluationService evaluationService;
+    @Autowired
+    private WebinarService webinarService;
 
     public EvaluationQuestionController() {
         super();
@@ -128,12 +132,30 @@ public class EvaluationQuestionController extends AbstractController {
     //EVALUATIONS ----------------------------------------------------------------------------------------------------
 
 
-//
-//    @RequestMapping()
-//    public ModelAndView createEvaluation(){
-//        return null;
-//
-//    }
+
+    @RequestMapping(value = "/write")
+    public ModelAndView createEvaluation(@RequestParam int webinarId){
+
+        ModelAndView res;
+
+        Webinar webinar = webinarService.findOne(webinarId);
+        List<Evaluation> evaluations = new ArrayList<>(evaluationService.findAll());
+        Evaluation master = evaluations.get(0);
+        Collection<EvaluationQuestion> evaluationQuestions = master.getEvaluationQuestions();
+
+        Evaluation evaluation = evaluationService.create();
+        evaluation.setEvaluationQuestions(evaluationQuestions);
+        evaluation.setWebinar(webinar);
+
+        res = new ModelAndView("evaluation-question/write");
+        res.addObject("evaluation", evaluation);
+        res.addObject("questions", evaluation.getEvaluationQuestions());
+
+
+
+        return res;
+
+    }
 
 
 }

@@ -25,5 +25,10 @@
 		<put-attribute name="title" value="evaluation-question: List" />
 		<put-attribute name="body" value="/views/evaluation-question/list.jsp" />
 	</definition>
+
+	<definition name="evaluation-question/write" extends="master.page">
+		<put-attribute name="title" value="Answer honestly :)" />
+		<put-attribute name="body" value="/views/evaluation-question/write.jsp" />
+	</definition>
 	
 </tiles-definitions>

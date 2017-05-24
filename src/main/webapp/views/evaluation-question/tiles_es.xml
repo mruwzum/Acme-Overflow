@@ -25,5 +25,11 @@
 		<put-attribute name="title" value="Preguntas de evaluación: Listar" />
 		<put-attribute name="body" value="/views/evaluation-question/list.jsp" />
 	</definition>
-	
+
+	<definition name="evaluation-question/write" extends="master.page">
+		<put-attribute name="title" value="Contesta sinceramente :)" />
+		<put-attribute name="body" value="/views/evaluation-question/write.jsp" />
+	</definition>
+
+
 </tiles-definitions>
