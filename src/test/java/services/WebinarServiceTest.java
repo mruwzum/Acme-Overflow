@@ -1,6 +1,7 @@
 package services;
 
 import domain.Bill;
+import domain.Curricula;
 import domain.User;
 import domain.Webinar;
 import org.junit.Before;
@@ -155,7 +156,6 @@ public class WebinarServiceTest extends AbstractTest {
    }
 
    //An user registered as a teacher must be able to watch his/her webinars and edit them
-
    @Test
    public void myWebinarsOk() {
       authenticate("teacher1");
@@ -163,7 +163,6 @@ public class WebinarServiceTest extends AbstractTest {
       Assert.notEmpty(webinars);
       unauthenticate();
    }
-
    @Test(expected = IllegalArgumentException.class)
    public void myWebinarsnotOk() {
       authenticate(null);
@@ -171,7 +170,6 @@ public class WebinarServiceTest extends AbstractTest {
       Assert.notEmpty(webinars);
       unauthenticate();
    }
-
    @Test
    public void editMyWebinarsOk() {
       authenticate("teacher1");
@@ -184,7 +182,6 @@ public class WebinarServiceTest extends AbstractTest {
       org.junit.Assert.assertNotEquals(prevDescr, webinar.getDescription());
       unauthenticate();
    }
-
    @Test(expected = IllegalArgumentException.class)
    public void editMyWebinarsnotOk() {
       authenticate(null);
@@ -198,5 +195,73 @@ public class WebinarServiceTest extends AbstractTest {
       unauthenticate();
    }
 
+   //An user registered as a teacher must be able to edit & delete them
+   @Test
+   public void deleteWebinarOk() {
+      authenticate("teacher1");
+      List<Webinar> webinars = new ArrayList<>(webinarService.myWebinars(teacherService.findByPrincipal()));
+      Assert.notEmpty(webinars);
+      Webinar webinar = webinars.get(0);
+      webinarService.delete(webinar);
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void deleteWebinarNotOk() {
+      authenticate(null);
+      List<Webinar> webinars = new ArrayList<>(webinarService.myWebinars(teacherService.findByPrincipal()));
+      Assert.notEmpty(webinars);
+      Webinar webinar = webinars.get(0);
+      webinarService.delete(webinar);
+      unauthenticate();
+   }
+
+
+   //An user registered as a teacher must be able to edit his/her curricula
+   @Test
+   public void editCurriculaOk() {
+      authenticate("teacher1");
+      Curricula curricula = teacherService.findByPrincipal().getCurricula();
+      Assert.notNull(curricula);
+      String hob = curricula.getHobbiesSection();
+      String newHob = "aaaaaaaaaaaaaaaaaa";
+      curricula.setHobbiesSection(newHob);
+      org.junit.Assert.assertNotEquals(hob, curricula.getHobbiesSection());
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void editCurriculaNotOk() {
+      authenticate(null);
+      Curricula curricula = teacherService.findByPrincipal().getCurricula();
+      Assert.notNull(curricula);
+      String hob = curricula.getHobbiesSection();
+      String newHob = "aaaaaaaaaaaaaaaaaa";
+      curricula.setHobbiesSection(newHob);
+      org.junit.Assert.assertNotEquals(hob, curricula.getHobbiesSection());
+      unauthenticate();
+   }
+
+
+   //An user registered as a teacher must be able to view the created webinars and theirs assistants
+   @Test
+   public void myWebinarsAssitantsOk() {
+      authenticate("teacher1");
+      List<Webinar> webinars = new ArrayList<>(webinarService.myWebinars(teacherService.findByPrincipal()));
+      Assert.notEmpty(webinars);
+      Collection<User> ass = webinars.get(0).getPartakers();
+      Assert.notEmpty(ass);
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void myWebinarsAssistantsNotOk() {
+      authenticate(null);
+      List<Webinar> webinars = new ArrayList<>(webinarService.myWebinars(teacherService.findByPrincipal()));
+      Assert.notEmpty(webinars);
+      Collection<User> ass = webinars.get(0).getPartakers();
+      Assert.notEmpty(ass);
+      unauthenticate();
+   }
 
 }

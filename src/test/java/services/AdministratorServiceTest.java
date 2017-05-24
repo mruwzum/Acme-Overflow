@@ -1,8 +1,6 @@
 package services;
 
-import domain.Category;
-import domain.Search;
-import domain.SearchCache;
+import domain.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,7 +39,14 @@ public class AdministratorServiceTest extends AbstractTest {
    private SearchService searchService;
    @Autowired
    private SearchCacheService searchCacheService;
-
+   @Autowired
+   private DutyService dutyService;
+   @Autowired
+   private CurriculaService curriculaService;
+   @Autowired
+   private EvaluationQuestionService evaluationQuestionService;
+   @Autowired
+   private EvaluationService evaluationService;
 
    @Before
    public void setUp() {
@@ -50,7 +55,6 @@ public class AdministratorServiceTest extends AbstractTest {
 
    //An user authenticated as administrator must be able to manage the taxonomy og categories, which involves creating,
    // listing, moidfifying and deleting them.
-
    @Test
    public void createCategory() {
       authenticate("admin1");
@@ -68,7 +72,6 @@ public class AdministratorServiceTest extends AbstractTest {
       Assert.assertNotNull(c);
       unauthenticate();
    }
-
    @Test
    public void deleteCategory() {
       authenticate("admin1");
@@ -77,7 +80,6 @@ public class AdministratorServiceTest extends AbstractTest {
       categoryService.delete(cat);
       unauthenticate();
    }
-
    @Test
    public void listingCategory() {
       authenticate("admin1");
@@ -85,7 +87,6 @@ public class AdministratorServiceTest extends AbstractTest {
       org.springframework.util.Assert.notEmpty(categories);
       unauthenticate();
    }
-
    @Test
    public void modifyCategory() {
       authenticate("admin1");
@@ -96,7 +97,6 @@ public class AdministratorServiceTest extends AbstractTest {
       org.springframework.util.Assert.notNull(ca);
       unauthenticate();
    }
-
    @Test(expected = IllegalArgumentException.class)
    public void createCategoryNotOk() {
       authenticate(null);
@@ -108,7 +108,6 @@ public class AdministratorServiceTest extends AbstractTest {
       Assert.assertNotNull(c);
       unauthenticate();
    }
-
    @Test(expected = IllegalArgumentException.class)
    public void deleteCategoryNotOk() {
       authenticate("admin1");
@@ -116,7 +115,6 @@ public class AdministratorServiceTest extends AbstractTest {
       categoryService.delete(cat);
       unauthenticate();
    }
-
    @Test(expected = IllegalArgumentException.class)
    public void listingCategoryNotOk() {
       authenticate(null);
@@ -125,7 +123,6 @@ public class AdministratorServiceTest extends AbstractTest {
       org.springframework.util.Assert.notEmpty(categories);
       unauthenticate();
    }
-
    @Test(expected = IndexOutOfBoundsException.class)
    public void modifyCategoryNotOk() {
       authenticate("admin1");
@@ -140,7 +137,6 @@ public class AdministratorServiceTest extends AbstractTest {
 
    //An user authenticated as administrator must be able to change the number of searches
    // that are going to be saved on the system per user.
-
    @Test
    public void changeTheNumberOfSearchesPerUserOk() {
       authenticate("admin1");
@@ -165,4 +161,105 @@ public class AdministratorServiceTest extends AbstractTest {
       Assert.assertNotEquals(cach0, cach1);
       unauthenticate();
    }
+
+
+   //An user authenticated as administrator must be able to change fee charged on a webinar creation
+   @Test
+   public void changeDutyOk() {
+      authenticate("admin1");
+      List<Duty> duties = new ArrayList<>(dutyService.findAll());
+      Duty duty = duties.get(0);
+      int dut0 = duty.getDutyValue();
+      int dut1 = 20000;
+      duty.setDutyValue(dut1);
+      Assert.assertNotEquals(dut0, duty.getDutyValue());
+      unauthenticate();
+   }
+
+   @Test(expected = IndexOutOfBoundsException.class)
+   public void changeDutyNotOk() {
+      authenticate(null);
+      List<Duty> duties = new ArrayList<>();
+      Duty duty = duties.get(0);
+      int dut0 = duty.getDutyValue();
+      int dut1 = 20000;
+      duty.setDutyValue(dut1);
+      Assert.assertNotEquals(dut0, duty.getDutyValue());
+      unauthenticate();
+   }
+
+   //An user authenticated as administrator must be able to approve or deny a teacher's curricula
+   @Test
+   public void approveCurriculaOK() {
+      authenticate("admin1");
+      List<Curricula> curricula = new ArrayList<>(curriculaService.findAll());
+      org.springframework.util.Assert.notEmpty(curricula);
+      Curricula curricula1 = curricula.get(0);
+      curricula1.setApprobed(true);
+      Assert.assertTrue(curricula1.isApprobed());
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void approveCurriculaNotOk() {
+      authenticate("admin1");
+      List<Curricula> curricula = new ArrayList<>();
+      org.springframework.util.Assert.notEmpty(curricula);
+      Curricula curricula1 = curricula.get(0);
+      curricula1.setApprobed(true);
+      Assert.assertTrue(curricula1.isApprobed());
+      unauthenticate();
+   }
+
+   @Test
+   public void denyCurriculaOk() {
+      authenticate("admin1");
+      List<Curricula> curricula = new ArrayList<>(curriculaService.findAll());
+      org.springframework.util.Assert.notEmpty(curricula);
+      Curricula curricula1 = curricula.get(0);
+      curricula1.setApprobed(false);
+      Assert.assertTrue(!curricula1.isApprobed());
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void denyCurriculaNotOk() {
+      authenticate("admin1");
+      List<Curricula> curricula = new ArrayList<>();
+      org.springframework.util.Assert.notEmpty(curricula);
+      Curricula curricula1 = curricula.get(0);
+      curricula1.setApprobed(false);
+      Assert.assertTrue(!curricula1.isApprobed());
+      unauthenticate();
+   }
+
+   //An administrator must be able to change the evaluation questions
+   @Test
+   public void changeEvalQOk() {
+      authenticate("admin1");
+      List<Evaluation> evaluations = new ArrayList<>(evaluationService.findAll());
+      Evaluation evaluation = evaluations.get(0);
+      List<EvaluationQuestion> evaluationQuestions = new ArrayList<>(evaluation.getEvaluationQuestions());
+      EvaluationQuestion evQ = evaluationQuestions.get(0);
+      String prevTitl = evQ.getTitle();
+      String title = "dddddddd";
+      evQ.setTitle(title);
+      Assert.assertNotEquals(prevTitl, evQ.getTitle());
+      unauthenticate();
+   }
+
+   @Test(expected = IndexOutOfBoundsException.class)
+   public void changeEvalQNotOk() {
+      authenticate("admin1");
+      List<Evaluation> evaluations = new ArrayList<>(evaluationService.findAll());
+      Evaluation evaluation = evaluations.get(0);
+      List<EvaluationQuestion> evaluationQuestions = new ArrayList<>();
+      EvaluationQuestion evQ = evaluationQuestions.get(0);
+      String prevTitl = evQ.getTitle();
+      String title = "dddddddd";
+      evQ.setTitle(title);
+      Assert.assertNotEquals(prevTitl, evQ.getTitle());
+      unauthenticate();
+   }
+
 }
