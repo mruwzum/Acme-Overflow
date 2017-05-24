@@ -134,7 +134,6 @@ public class AdministratorServiceTest extends AbstractTest {
       cat.setName("");
       Category ca = categoryService.save(cat);
       org.springframework.util.Assert.notNull(ca);
-
       unauthenticate();
    }
 
