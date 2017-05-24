@@ -23,7 +23,12 @@ public class MezzageServiceTest extends AbstractTest {
    }
 
    @Test
-   public void test() {
+   public void sendOk() {
+
+   }
+
+   @Test
+   public void sendNotOk() {
 
    }
 }
