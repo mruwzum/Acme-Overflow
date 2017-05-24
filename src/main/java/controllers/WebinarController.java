@@ -158,24 +158,10 @@ public class WebinarController extends AbstractController {
     public ModelAndView webinarListIncoming() {
 
         ModelAndView result;
-        Collection<Webinar> webinars;
-        List<Webinar> res = new ArrayList<>();
-        webinars = webinarService.findAll();
-
-        for (Webinar webinar : webinars) {
-            if (webinar.getStartDate().after(new Date(System.currentTimeMillis() - 30 * 24 * 60L)) && webinar.getStartDate().getYear() == 117) {
-                res.add(webinar);
-            }
-
-        }
-        Collections.sort(res, new Comparator<Webinar>() {
-            public int compare(Webinar m1, Webinar m2) {
-                return m2.getStartDate().toString().compareTo(m1.getStartDate().toString());
-            }
-        });
+        Collection<Webinar> webinars = webinarService.listIncoming();
 
         result = new ModelAndView("webinar/list");
-        result.addObject("webinars", res);
+        result.addObject("webinars", webinars);
         result.addObject("requestURI", "webinar/listIncoming.do");
 
         return result;

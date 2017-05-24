@@ -7,8 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import repositories.WebinarRepository;
 
-import java.util.Collection;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by david on 05/11/2016.
@@ -140,6 +139,26 @@ public class WebinarService {
         return saltStr;
 
     }
+
+   public Collection<Webinar> listIncoming() {
+      Collection<Webinar> webinars;
+      List<Webinar> res = new ArrayList<>();
+      webinars = webinarRepository.findAll();
+
+      for (Webinar webinar : webinars) {
+         if (webinar.getStartDate().after(new Date(System.currentTimeMillis() - 30 * 24 * 60L)) && webinar.getStartDate().getYear() == 117) {
+            res.add(webinar);
+         }
+
+      }
+      Collections.sort(res, new Comparator<Webinar>() {
+         public int compare(Webinar m1, Webinar m2) {
+            return m2.getStartDate().toString().compareTo(m1.getStartDate().toString());
+         }
+      });
+      return res;
+   }
+
 }
 
 

@@ -1,6 +1,8 @@
 package services;
 
 import domain.Category;
+import domain.Search;
+import domain.SearchCache;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +37,10 @@ public class AdministratorServiceTest extends AbstractTest {
    private CategoryService categoryService;
    @Autowired
    private AdministratorService administratorService;
-
+   @Autowired
+   private SearchService searchService;
+   @Autowired
+   private SearchCacheService searchCacheService;
 
 
    @Before
@@ -138,8 +143,27 @@ public class AdministratorServiceTest extends AbstractTest {
    // that are going to be saved on the system per user.
 
    @Test
-   public void test() {
-
+   public void changeTheNumberOfSearchesPerUserOk() {
+      authenticate("admin1");
+      List<SearchCache> searchCaches = new ArrayList<>(searchCacheService.findAll());
+      SearchCache searchCache = searchCaches.get(0);
+      int cach0 = searchCache.getCacheValue();
+      Collection<Search> search0 = searchService.trunkedSearch();
+      int cach1 = 20;
+      searchCache.setCacheValue(cach1);
+      Assert.assertNotEquals(cach0, cach1);
+      unauthenticate();
    }
 
+   @Test(expected = IndexOutOfBoundsException.class)
+   public void changeTheNumberOfSearchesPerUserNotOk() {
+      authenticate("admin1");
+      List<SearchCache> searchCaches = new ArrayList<>(searchCacheService.findAll());
+      SearchCache searchCache = searchCaches.get(2222);
+      int cach0 = searchCache.getCacheValue();
+      int cach1 = 20;
+      searchCache.setCacheValue(cach1);
+      Assert.assertNotEquals(cach0, cach1);
+      unauthenticate();
+   }
 }
