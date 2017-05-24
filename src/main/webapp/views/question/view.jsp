@@ -16,86 +16,166 @@
 <%@taglib prefix="security"
           uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="display" uri="http://displaytag.sf.net" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<div id="wrapper">
+
+    <div id="sidebar">
+
+        <spring:message code="question.related" var="rel"/>
+        <h1><jstl:out value="${rel}"/></h1>
+
+        <c:forEach items="${webinars}" var="webinar">
+
+            <img src="${webinar.picture}" width="190px" height="100%" alt="webinar_picture"/>
+            <br>
 
 
-<spring:message code="question.title" var="title1"/>
-<h3><jstl:out value="${title1}"/></h3>
-<jstl:out value="${title}"/>
+            <a href="/webinar/view.do?webinarId=${webinar.id}"><h3><jstl:out value="${webinar.name}"/></h3></a>
 
 
-<spring:message code="question.summary" var="summary1"/>
-<h3><jstl:out value="${summary1}"/></h3>
-<jstl:out value="${summary}"/>
 
 
-<spring:message code="question.owner" var="owner1"/>
-<h3><jstl:out value="${owner1}"/></h3>
-<jstl:out value="${owner}"/>
-
-<spring:message code="general.catego" var="catego11"/>
-<h3><jstl:out value="${catego11}"/></h3>
-
-<spring:message code="question.categorie" var="cagetogie1"/>
-<h3><jstl:out value="${categorie1}"/></h3>
-<jstl:out value="${categorie}"/>
-
-<spring:message code="general.answers" var="register11"/>
-<h3><jstl:out value="${register11}"/></h3>
-<!-- Listing grid socialIdentities -->
-<display:table pagesize="5" class="displaytag" keepStatus="true"
-               name="answers" requestURI="${requestURI}" id="row">
+            <jstl:out value="${webinar.description}"/>
+            <br>
 
 
-    <!-- Attributes -->
-    <%--<security:authorize access="hasAnyRole('USER','TEACHER','MODERATOR')">--%>
-    <%--<display:column>--%>
-    <%--<a href="answer/edit.do?answerId=${row.id}"> <spring:message--%>
-    <%--code="general.edit" />--%>
-    <%--</a>--%>
-    <%--</display:column>--%>
-    <%--</security:authorize>--%>
-    <security:authorize access="hasAnyRole('ADMIN','MODERATOR')">
-        <display:column>
-            <jstl:if test="${not row.banned}">
-                <a href="answer/ban.do?answerId=${row.id}"> <spring:message
-                        code="user.ban"/>
-                </a>
-            </jstl:if>
-            <jstl:if test="${row.banned}">
-                <a href="answer/unban.do?answerId=${row.id}"> <spring:message
-                    code="user.unban"/>
-            </jstl:if>
-        </display:column>
-    </security:authorize>
-    <security:authorize access="hasAnyRole('USER')">
-        <spring:message code="anwer.rate" var="rate"/>
-        <display:column title="${rate}">
-            <a href="answer/ratenegative.do?answerId=${row.id}"> <spring:message
-                    code="user.ratenegative"/>
-            </a>
+        </c:forEach>
 
-            <a href="answer/ratepositive.do?answerId=${row.id}"> <spring:message
-                code="user.ratepositive"/>
-        </display:column>
-    </security:authorize>
-    <spring:message code="answer.title" var="title"/>
-    <display:column property="title" title="${title}" sortable="true"/>
-    <spring:message code="answer.description" var="description"/>
-    <display:column property="description" title="${description}" sortable="true"/>
-    <spring:message code="answer.likes" var="likes"/>
-    <display:column property="likes" title="${likes}" sortable="true"/>
-    <spring:message code="answer.dislikes" var="dislikes"/>
-    <display:column property="dislikes" title="${dislikes}" sortable="true"/>
-</display:table>
-
-
-<security:authorize access="hasAnyRole('USER','TEACHER')">
-    <div>
-        <H5>
-            <a href="answer/create.do?questionId=${questionId}"> <spring:message
-                    code="answer.create"/>
-            </a>
-        </H5>
     </div>
-</security:authorize>
 
+    <div id="content">
+
+        <%--<spring:message code="question.title" var="title1"/>--%>
+        <%--<h3><jstl:out value="${title1}"/></h3>--%>
+        <h2><jstl:out value="${title}"/></h2>
+
+
+        <%--<spring:message code="question.summary" var="summary1"/>--%>
+        <%--<h3><jstl:out value="${summary1}"/></h3>--%>
+        <jstl:out value="${summary}"/>
+
+
+        <spring:message code="question.owner" var="owner1"/>
+        <h3><jstl:out value="${owner1}"/></h3>
+        <jstl:out value="${owner}"/>
+
+        <spring:message code="general.catego" var="catego11"/>
+        <h3><jstl:out value="${catego11}"/></h3>
+
+        <spring:message code="question.categorie" var="cagetogie1"/>
+        <h3><jstl:out value="${categorie1}"/></h3>
+        <jstl:out value="${categorie}"/>
+
+        <spring:message code="general.answers" var="register11"/>
+        <h3 class="highlighted"><jstl:out value="${register11}"/></h3>
+        <!-- Listing grid socialIdentities -->
+
+
+
+
+
+        <c:forEach items="${answers}" var="answer">
+
+            <jstl:if test="${answer.teacher}">
+
+                <div class="highlighted3">
+
+                    <h3 class="highlighted2">${answer.title}</h3>
+                        ${answer.description}
+                        ${answer.likes}
+                    <br>
+
+
+
+                    <security:authorize access="hasAnyRole('ADMIN','MODERATOR')">
+                        <jstl:if test="${not answer.banned}">
+                            <a href="answer/ban.do?answerId=${answer.id}"> <spring:message
+                                    code="user.ban"/>
+                            </a>
+                        </jstl:if>
+                        <jstl:if test="${answer.banned}">
+                            <a href="answer/unban.do?answerId=${answer.id}"> <spring:message
+                                    code="user.unban"/>
+                            </a>
+                        </jstl:if>
+                    </security:authorize>
+                    <security:authorize access="hasAnyRole('USER')">
+                        <spring:message code="anwer.rate" var="rate"/>
+                        <a href="answer/ratenegative.do?answerId=${answer.id}"> <img src="images/disk.jpg" width="40px" height="40px" alt="dislike"/>
+
+                        </a>
+                        ${answer.dislikes}
+
+                        <a href="answer/ratepositive.do?answerId=${answer.id}"> <img src="images/like.png" width="50px" height="50px" alt="like"/>
+
+                        </a>
+                        ${answer.likes}
+
+                    </security:authorize>
+                    <hr>
+                </div>
+            </jstl:if>
+
+
+            <jstl:if test="${not answer.teacher}">
+
+                <h3 class="highlighted2">${answer.title}</h3>
+                ${answer.description}
+                <br>
+
+
+
+                <br>
+
+
+
+                <security:authorize access="hasAnyRole('ADMIN','MODERATOR')">
+                    <jstl:if test="${not answer.banned}">
+                        <a href="answer/ban.do?answerId=${answer.id}"> <spring:message
+                                code="user.ban"/>
+                        </a>
+                    </jstl:if>
+                    <jstl:if test="${answer.banned}">
+                        <a href="answer/unban.do?answerId=${answer.id}"> <spring:message
+                                code="user.unban"/>
+                        </a>
+
+                    </jstl:if>
+                </security:authorize>
+                <security:authorize access="hasAnyRole('USER')">
+                    <spring:message code="anwer.rate" var="rate"/>
+                    <a href="answer/ratenegative.do?answerId=${answer.id}"> <img src="images/disk.jpg" width="40px" height="40px" alt="dislike"/>
+                    </a>
+                    ${answer.dislikes}
+
+                    <a href="answer/ratepositive.do?answerId=${answer.id}"> <img src="images/like.png" width="50px" height="50px" alt="like"/>
+                </a>
+                ${answer.likes}
+                </security:authorize>
+
+                <hr>
+            </jstl:if>
+
+        </c:forEach>
+
+
+
+
+
+        <security:authorize access="hasAnyRole('USER','TEACHER')">
+            <div>
+                <H5>
+                    <a class="button2" href="answer/create.do?questionId=${questionId}"> <spring:message
+                            code="answer.create"/>
+                    </a>
+                </H5>
+            </div>
+        </security:authorize>
+
+    </div>
+
+
+
+
+</div>

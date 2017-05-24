@@ -814,7 +814,7 @@
         <property name="description" value="web1"/>
         <property name="startDate" value="2017/06/22"/>
         <property name="price" value="20.0"/>
-        <property name="picture" value="http://picture.png"/>
+        <property name="picture" value="https://www.ellibrepensador.com/wp-content/uploads/2016/12/webinar.jpg"/>
         <property name="owner" ref="teacher1"/>
         <property name="categories" ref="categorie3"/>
         <property name="URL" value="https://www.youtube.com/embed/90MBOV6mOPM"/>
@@ -848,10 +848,10 @@
         <property name="description" value="web2"/>
         <property name="startDate" value="2017/07/22"/>
         <property name="price" value="120.0"/>
-        <property name="picture" value="http://picture2.png"/>
+        <property name="picture" value="https://pymex.pe/wp-content/uploads/2016/11/webinar.jpeg"/>
         <property name="owner" ref="teacher2"/>
         <property name="categories" ref="categorie2"/>
-        <property name="URL" value="https://www.youtube.com/watch?v=e4Jo_xJYcYg"/>
+        <property name="URL" value="https://www.youtube.com/embed/90MBOV6mOPM"/>
         <property name="modules">
             <list>
                 <ref bean="module2"/>
@@ -873,9 +873,10 @@
         <property name="description" value="web3"/>
         <property name="startDate" value="2017/06/12"/>
         <property name="price" value="1.0"/>
-        <property name="picture" value="http://picture3.png"/>
+        <property name="picture" value="http://www.synergo.es/wp-content/uploads/2012/05/webinar-big.jpg"/>
         <property name="owner" ref="teacher3"/>
         <property name="categories" ref="categorie1"/>
+        <property name="URL" value="https://www.youtube.com/embed/90MBOV6mOPM"/>
         <property name="modules">
             <list>
                 <ref bean="module3"/>
@@ -898,8 +899,9 @@
         <property name="description" value="web4"/>
         <property name="startDate" value="2017/06/11"/>
         <property name="price" value="202.0"/>
-        <property name="picture" value="http://picture6.png"/>
+        <property name="picture" value="https://elearningindustry.com/wp-content/uploads/2015/10/top-7-webinar-tips-successful-webinar-host.jpg"/>
         <property name="owner" ref="teacher4"/>
+        <property name="URL" value="https://www.youtube.com/embed/90MBOV6mOPM"/>
         <property name="categories" ref="categorie3"/>
 
         <property name="partakers">
@@ -918,8 +920,9 @@
         <property name="description" value="web4"/>
         <property name="startDate" value="2016/06/11"/>
         <property name="price" value="20.0"/>
-        <property name="picture" value="http://picture6.png"/>
+        <property name="picture" value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6nOmDgD9qIKGOCWkJjgF3wd0TZjBcJW56MlKqgO4cFOqjfCV7"/>
         <property name="owner" ref="teacher2"/>
+        <property name="URL" value="https://www.youtube.com/embed/90MBOV6mOPM"/>
         <property name="categories" ref="categorie1"/>
         <property name="partakers">
             <list>
@@ -936,9 +939,10 @@
         <property name="description" value="web6"/>
         <property name="startDate" value="2018/06/11"/>
         <property name="price" value="2000.0"/>
-        <property name="picture" value="http://picture6.png"/>
+        <property name="picture" value="http://www.terrainfirma.co.uk/blog/wp-content/uploads/2011/02/webinar-headset-pc.jpg"/>
         <property name="owner" ref="teacher1"/>
         <property name="categories" ref="categorie1"/>
+        <property name="URL" value="https://www.youtube.com/embed/90MBOV6mOPM"/>
         <property name="partakers">
             <list>
             </list>
@@ -953,9 +957,10 @@
         <property name="description" value="web6"/>
         <property name="startDate" value="2017/05/17"/>
         <property name="price" value="2000.0"/>
-        <property name="picture" value="http://picture6.png"/>
+        <property name="picture" value="http://fernandorubio.es/wp-content/uploads/2016/10/webinar-marketing.png"/>
         <property name="owner" ref="teacher1"/>
         <property name="categories" ref="categorie1"/>
+        <property name="URL" value="https://www.youtube.com/embed/90MBOV6mOPM"/>
         <property name="partakers">
             <list>
             </list>
@@ -1219,6 +1224,7 @@
         <property name="description" value="descrip1"/>
         <property name="likes" value="112"/>
         <property name="dislikes" value="12"/>
+        <property name="teacher" value="false"/>
         <property name="pictures">
             <array value-type="java.lang.String">
                 <value>http://www.pic.jpg</value>
@@ -1243,6 +1249,8 @@
         </property>
         <property name="question" ref="question2"/>
         <property name="owner" ref="user2"/>
+        <property name="teacher" value="false"/>
+
     </bean>
     <bean id="answer3" class="domain.Answer">
         <property name="title" value="answ3"/>
@@ -1258,6 +1266,8 @@
         </property>
         <property name="question" ref="question2"/>
         <property name="owner" ref="teacher4"/>
+        <property name="teacher" value="true"/>
+
     </bean>
     <bean id="answer4" class="domain.Answer">
         <property name="title" value="answ4"/>
@@ -1273,6 +1283,8 @@
         </property>
         <property name="question" ref="question1"/>
         <property name="owner" ref="teacher1"/>
+        <property name="teacher" value="true"/>
+
     </bean>
     <bean id="answer5" class="domain.Answer">
         <property name="banned" value="true"/>
@@ -1288,6 +1300,8 @@
         </property>
         <property name="question" ref="question3"/>
         <property name="owner" ref="teacher2"/>
+        <property name="teacher" value="true"/>
+
     </bean>
     <bean id="answer6" class="domain.Answer">
         <property name="banned" value="true"/>
@@ -1303,6 +1317,8 @@
         </property>
         <property name="question" ref="question3"/>
         <property name="owner" ref="teacher1"/>
+        <property name="teacher" value="true"/>
+
     </bean>
 
     <!--/Answers-->

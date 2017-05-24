@@ -40,10 +40,18 @@ jmenu.css /* common.css
     text-decoration: underline;
     text-transform: uppercase;
     text-align: center;
+    background-color: #ffff01;
+
 }
 
 .highlighted2 {
     background-color: #86878a;
+}
+
+.highlighted3 {
+    text-align: left;
+    background-color: #ffff01;
+
 }
 
 .button {
@@ -101,4 +109,8 @@ jmenu.css /* common.css
 }
 #cleared {
     clear: both;
+}
+
+#rate{
+    align-content: flex-end;
 }
