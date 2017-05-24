@@ -19,11 +19,13 @@
     <form:hidden path="likes"/>
     <form:hidden path="dislikes"/>
     <form:hidden path="question"/>
+    <form:hidden path="teacher"/>
+
 
 
     <acme:textbox path="title" code="answer.title"/>
     <br/>
-    <acme:textbox path="description" code="answer.description"/>
+    <acme:textarea path="description" code="answer.description"/>
     <br/>
 
 

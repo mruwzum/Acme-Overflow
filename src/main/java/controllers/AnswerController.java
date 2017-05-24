@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import security.Authority;
 import services.*;
 
 import javax.validation.Valid;
@@ -117,6 +118,7 @@ public class AnswerController extends AbstractController {
         Answer answer = answerService.create();
         answer.setQuestion(question);
         answer.setBanned(false);
+        answer.setTeacher(false);
         // question.getAnswers().add(answer);
 
         result = createEditModelAndView(answer);
@@ -149,9 +151,21 @@ public class AnswerController extends AbstractController {
 //        } else {
 //            try {
         //answer.setOwner(otherService.findByPrincipal());
-       answer.setOwner(actorService.findByPrincipal());
-        answer.setQuestion(answer.getQuestion());
-        answerService.save(answer);
+
+        Authority authority = new Authority();
+        authority.setAuthority("TEACHER");
+        if(actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
+            answer.setOwner(actorService.findByPrincipal());
+            answer.setTeacher(true);
+            answer.setQuestion(answer.getQuestion());
+            answerService.save(answer);
+
+        }else{
+            answer.setOwner(actorService.findByPrincipal());
+            answer.setQuestion(answer.getQuestion());
+            answerService.save(answer);
+
+        }
 
 
         result = new ModelAndView("welcome/index");

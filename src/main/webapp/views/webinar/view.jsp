@@ -35,6 +35,8 @@
 
 </security:authorize>
 
+    <img src="${picture}" width="190px" height="100%" alt="webinar_picture"/>
+    <br>
 
 <spring:message code="webinar.name" var="name1"/>
 <h3><jstl:out value="${name1}"/></h3>
@@ -150,7 +152,7 @@
 
     <%--<jstl:if test="${not reg}">--%>
 
-        <a href="/evaluationQuestion/write.do?webinarId=${webinarId}"> <spring:message
+        <a class="button2" href="/evaluationQuestion/write.do?webinarId=${webinarId}"> <spring:message
                 code="webinar.evaluation"/>
         </a>
 

@@ -1,10 +1,12 @@
 package domain;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 /**
@@ -22,6 +24,7 @@ public class Answer extends DomainEntity {
     private Question question;
     private boolean banned;
    private Actor owner;
+   private boolean isTeacher;
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
@@ -35,6 +38,7 @@ public class Answer extends DomainEntity {
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+    @Column(length = 10000)
     public String getDescription() {
         return description;
     }
@@ -94,5 +98,13 @@ public class Answer extends DomainEntity {
 
    public void setOwner(Actor owner) {
         this.owner = owner;
+    }
+
+    public boolean isTeacher() {
+        return isTeacher;
+    }
+
+    public void setTeacher(boolean teacher) {
+        isTeacher = teacher;
     }
 }

@@ -1,5 +1,6 @@
 package domain;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 
@@ -100,4 +101,5 @@ public class Question extends DomainEntity {
     public void setBanned(boolean banned) {
         this.banned = banned;
     }
+
 }

@@ -4,6 +4,7 @@ package controllers;
 import domain.Answer;
 import domain.Category;
 import domain.Question;
+import domain.Webinar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -134,6 +135,7 @@ public class QuestionController extends AbstractController {
         ModelAndView result;
 
         Question question = questionService.create();
+
         Collection<Category> categories = categoryService.findAll();
 
         result = createEditModelAndView(question);
@@ -202,6 +204,8 @@ public class QuestionController extends AbstractController {
         result.addObject("owner", question.getOwner().getName());
         result.addObject("categorie", question.getCategories().toString());
 
+        Collection<Webinar> webinar = question.getCategories().getWebinars();
+
         Authority authority = new Authority();
         authority.setAuthority("MODERATOR");
 
@@ -219,6 +223,7 @@ public class QuestionController extends AbstractController {
 
         result.addObject("questionId", question.getId());
         result.addObject("requestURI", "question/view.do");
+        result.addObject("webinars", webinar);
 
         return result;
     }

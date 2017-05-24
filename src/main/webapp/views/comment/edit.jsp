@@ -40,7 +40,7 @@
                value="<spring:message code="general.delete" />"
                onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
     </jstl:if>
-    <acme:cancel url="comment/list.do" code="general.cancel"/>
+    <acme:cancel url="welcome/index.do" code="general.cancel"/>
 
 
 </form:form>
