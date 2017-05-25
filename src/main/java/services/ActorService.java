@@ -184,6 +184,7 @@ public class ActorService {
        Actor sender = actorRepository.findUserByEmail(mezzage.getSenderEmail());
 
 
+      mezzage.setReceiver(receiver);
       Mezzage mezzage1 = mezzageService.create();
       mezzage1.setSendDate(mezzage.getSendDate());
       mezzage1.setSenderEmail(mezzage.getSenderEmail());

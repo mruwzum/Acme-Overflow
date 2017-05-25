@@ -169,8 +169,6 @@ public class SampleTest extends AbstractTest {
 
         authenticate("teacher1");
 
-        List<Actor> actors =  new ArrayList<>(actorService.findAll());
-
        // Actor actor = actors.get(5);
 
         Priority p = Priority.HIGH;
@@ -181,7 +179,7 @@ public class SampleTest extends AbstractTest {
         mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
         mezzage.setSender(actorService.findByPrincipal());
         mezzage.setSendDate(new Date(System.currentTimeMillis()-1000));
-        mezzage.setReceiverEmail("user1mail@gmail.com");
+        mezzage.setReceiverEmail("teacher2mail@gmail.com");
         mezzage.setPriority(p);
 
 

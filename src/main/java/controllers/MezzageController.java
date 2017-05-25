@@ -88,10 +88,10 @@ public class MezzageController extends AbstractController {
         //mezzage.setSender(actorService.findByPrincipal());
         mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
         mezzage.setSendDate(new Date(System.currentTimeMillis()-100));
-        Collection<Actor> users = actorService.findAll();
+//        Collection<Actor> users = actorService.findAll();
 
         result = createEditModelAndView(mezzage);
-        result.addObject("users", users);
+//        result.addObject("users", users);
         return result;
 
     }
@@ -106,11 +106,11 @@ public class MezzageController extends AbstractController {
         Mezzage mezzage;
 
         mezzage = mezzageService.findOne(mezzageId);
-        Collection<Actor> users = actorService.findAll();
+//        Collection<Actor> users = actorService.findAll();
 
         Assert.notNull(mezzage);
         result = createEditModelAndView(mezzage);
-        result.addObject("users", users);
+//        result.addObject("users", users);
 
         return result;
     }
