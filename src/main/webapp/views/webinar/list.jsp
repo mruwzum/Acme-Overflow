@@ -51,6 +51,11 @@
                 code="general.edit"/>
         </a>
     </display:column>
+    <display:column>
+        <a href="webinar/broadcastMessage.do?webinarId=${row.id}"> <spring:message
+                code="general.broadcastMessage"/>
+        </a>
+    </display:column>
 </jstl:if>
 </display:table>
 

@@ -1,6 +1,7 @@
 package controllers;
 
 
+import com.apple.eawt.AppEvent;
 import domain.Folder;
 import domain.Mezzage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import security.Authority;
 import services.ActorService;
 import services.FolderService;
 import services.MezzageService;
+import services.UserService;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -30,6 +33,8 @@ public class FolderController extends AbstractController {
     private ActorService actorService;
     @Autowired
     private MezzageService mezzageService;
+    @Autowired
+    private UserService userService;
 
 
     //Constructors----------------------------------------------
@@ -79,6 +84,11 @@ public class FolderController extends AbstractController {
         Folder folder = folderService.findOne(folderId);
         Boolean isTrashBox = folder.getName().equals("Trashbox");
        Collection<Mezzage> mezzages = folder.getMezzages();
+        Authority user = new Authority();
+        user.setAuthority("USER");
+        if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(user)) {
+            userService.addMyWebinnarMezzagesToMyImbox(userService.findByPrincipal());
+        }
        result = new ModelAndView("mezzage/list");
        result.addObject("mezzages", mezzages);
         result.addObject("isTrashBox", isTrashBox);

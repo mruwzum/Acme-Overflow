@@ -63,6 +63,11 @@
                 code="user.unban"/>
         </jstl:if>
     </security:authorize>
+    <security:authorize access="isAnonymous()">
+        <a class="button" href="question/viewAn.do?questionId=${question.id}"> <spring:message
+                code="question.view"/>
+        </a>
+    </security:authorize>
     <hr>
 
 

@@ -32,8 +32,8 @@ public class Mezzage extends DomainEntity {
     public void setSenderEmail(String senderEmail) {
         this.senderEmail = senderEmail;
     }
-    @NotBlank
-    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+
+   @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getReceiverEmail() {
         return receiverEmail;
     }

@@ -34,6 +34,8 @@ public class WebinarController extends AbstractController {
     private ActorService actorService;
     @Autowired
     private EvaluationService evaluationService;
+    @Autowired
+    private MezzageService mezzageService;
     //Constructors----------------------------------------------
 
     public WebinarController() {
@@ -302,6 +304,30 @@ public class WebinarController extends AbstractController {
 
         return result;
     }
+
+
+    @RequestMapping(value = "/broadcastMessage", method = RequestMethod.GET)
+    public ModelAndView broadcastToWebinar(@RequestParam int webinarId) {
+        ModelAndView result;
+
+        Webinar webinar = webinarService.findOne(webinarId);
+
+        Teacher teacher = teacherService.findByPrincipal();
+        Mezzage mezzage = mezzageService.create();
+        mezzage.setSenderEmail(teacher.getEmail());
+        mezzage.setBody("GENERIC");
+        mezzage.setSubject("GENERIC");
+        webinar.getWebiMezzages().add(mezzage);
+
+        result = new ModelAndView("mezzage/broadcast");
+        result.addObject("mezzage", mezzage);
+
+        return result;
+    }
+
+
+
+
 
 //    @RequestMapping(value = "/unregister", method = RequestMethod.GET)
 //    public ModelAndView unapply(@RequestParam int webinarId) {

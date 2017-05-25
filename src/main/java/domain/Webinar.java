@@ -33,6 +33,7 @@ public class Webinar extends DomainEntity {
     private Collection<Bill> bills;
     private Collection<Evaluation> evaluations;
     private String URL;
+    private Collection<Mezzage> webiMezzages;
 
 
     public Webinar() {
@@ -162,6 +163,15 @@ public class Webinar extends DomainEntity {
 
     public void setURL(String URL) {
         this.URL = URL;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public Collection<Mezzage> getWebiMezzages() {
+        return webiMezzages;
+    }
+
+    public void setWebiMezzages(Collection<Mezzage> webiMezzages) {
+        this.webiMezzages = webiMezzages;
     }
 
     @Override

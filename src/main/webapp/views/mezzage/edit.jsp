@@ -21,6 +21,8 @@
     <form:hidden path="folder" />
     <form:hidden path="receiver" />
     <%--<form:hidden path="senderEmail" />--%>
+    <form:hidden path="senderEmail"/>
+
 
 
 
@@ -29,12 +31,6 @@
     <%--<br/>--%>
 
     <acme:textbox path="receiverEmail" code="mezzage.receiver"/>
-    <br />
-
-    <acme:textbox path="sender" code="mezzage.receiver"/>
-    <br />
-
-    <acme:textbox path="senderEmail" code="mezzage.receiver"/>
     <br />
 
     <acme:textbox path="subject" code="mezzage.subject"/>
@@ -58,11 +54,7 @@
 
     <acme:submit name="save" code="general.save"/>
 
-    <jstl:if test="${id != 0}">
-        <input type="submit" name="delete"
-               value="<spring:message code="general.delete" />"
-               onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
-    </jstl:if>
+
     <acme:cancel url="mezzage/list.do" code="general.cancel"/>
 
 

@@ -1,10 +1,7 @@
 package controllers;
 
 
-import domain.Actor;
-import domain.Folder;
-import domain.Mezzage;
-import domain.Priority;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -212,16 +209,32 @@ public class MezzageController extends AbstractController {
     public ModelAndView messageView(@RequestParam int mezzageId) {
 
         ModelAndView result;
-       Mezzage mezzage = mezzageService.findOne(mezzageId);
+        Mezzage mezzage = mezzageService.findOne(mezzageId);
 
         result = new ModelAndView("mezzage/view");
         result.addObject("subject", mezzage.getSubject());
         result.addObject("body", mezzage.getBody());
         result.addObject("sendDate", mezzage.getSendDate());
-       // result.addObject("sender", mezzage.getSender());
+        // result.addObject("sender", mezzage.getSender());
         result.addObject("priority", mezzage.getPriority());
         result.addObject("mezzageId", mezzage.getId());
         result.addObject("requestURI", "mezzage/view.do");
+
+        return result;
+    }
+
+    @RequestMapping(value = "/broadcast", method = RequestMethod.POST, params = "save")
+    public ModelAndView broadcast(@Valid Mezzage mezzage, BindingResult binding) {
+        ModelAndView result;
+        Actor teacher = actorService.findByPrincipal();
+        Folder f = actorService.folderByName(teacher, "Outbox");
+        mezzage.setFolder(f);
+        mezzage.setSendDate(new Date(System.currentTimeMillis() - 100));
+        //TODO cuando broadcasteas el message, no se asigna bien a los webimensajes en el otro controller
+        mezzageService.save(mezzage);
+
+
+        result = new ModelAndView("administrator/action-1");
 
         return result;
     }

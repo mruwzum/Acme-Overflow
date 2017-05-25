@@ -48,6 +48,8 @@ public class UserService {
     private TeacherService teacherService;
     @Autowired
     private CurriculaService curriculaService;
+   @Autowired
+   private ActorService actorService;
 
     // Managed repository--------------------------------------------------------------------------------
 
@@ -282,6 +284,20 @@ public class UserService {
         res = true;
         return res;
     }
+
+   public Collection<Mezzage> myWebbinarMezzages(User user) {
+      Collection<Mezzage> res = new HashSet<>();
+      res = userRepository.myWebbinarMezzages(user);
+      return res;
+   }
+
+   public void addMyWebinnarMezzagesToMyImbox(User u) {
+      Collection<Mezzage> myWebis = myWebbinarMezzages(u);
+      Folder folder = actorService.folderByName(u, "Inbox");
+      folder.getMezzages().addAll(myWebis);
+
+
+   }
 }
 
 

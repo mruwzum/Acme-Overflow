@@ -842,6 +842,10 @@
                 <ref bean="evaluation2"/>
             </list>
         </property>
+        <property name="webiMezzages">
+            <list>
+            </list>
+        </property>
     </bean>
     <bean id="webinar2" class="domain.Webinar">
         <property name="name" value="webinar2"/>
@@ -865,6 +869,10 @@
         <property name="comments">
             <list>
                 <ref bean="comment3"/>
+            </list>
+        </property>
+        <property name="webiMezzages">
+            <list>
             </list>
         </property>
     </bean>
@@ -893,6 +901,10 @@
                 <ref bean="comment5"/>
             </list>
         </property>
+        <property name="webiMezzages">
+            <list>
+            </list>
+        </property>
     </bean>
     <bean id="webinar4" class="domain.Webinar">
         <property name="name" value="webinar4"/>
@@ -903,7 +915,10 @@
         <property name="owner" ref="teacher4"/>
         <property name="URL" value="https://www.youtube.com/embed/90MBOV6mOPM"/>
         <property name="categories" ref="categorie3"/>
-
+        <property name="webiMezzages">
+            <list>
+            </list>
+        </property>
         <property name="partakers">
             <list>
 
@@ -928,6 +943,10 @@
             <list>
             </list>
         </property>
+        <property name="webiMezzages">
+            <list>
+            </list>
+        </property>
         <property name="comments">
             <list>
 
@@ -943,6 +962,10 @@
         <property name="owner" ref="teacher1"/>
         <property name="categories" ref="categorie1"/>
         <property name="URL" value="https://www.youtube.com/embed/90MBOV6mOPM"/>
+        <property name="webiMezzages">
+            <list>
+            </list>
+        </property>
         <property name="partakers">
             <list>
             </list>
