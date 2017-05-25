@@ -292,4 +292,21 @@ public class TeacherServiceTest extends AbstractTest {
    public void myBills() throws Exception {
    }
 
+   //TODO: (A1) An actor who is authenticated as user or teacher must be able to exchange messages with other actors of the system
+
+
+   //TODO: (A1) An actor who is authenticated as user or teacher must be able to manage his/her message folders which includes creating, listing, midify and the deletion of them.
+
+
+   //TODO: (A1) An actor who is authenticated as user or teacher must be able to manage his or her messages, which includes send them, delete them ,move from one folder to another.
+
+
+   //TODO: (A1) An actor who is authenticated as user or teacher must be able to reply and forward any message.
+
+
+   //TODO: (A2) An actor who is authenticated as teacher, must be able to send a broadcast message to all the users assistants to a webinar.
+
+
+
+
 }
