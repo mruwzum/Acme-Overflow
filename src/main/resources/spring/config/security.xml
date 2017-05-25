@@ -106,6 +106,7 @@
 		<security:intercept-url pattern="/category/create.do" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/category/delete.do" access="hasRole('ADMIN')"/>
 
+
 		<!--Allow Admin to manage evaluation question-->
 		<security:intercept-url pattern="/evaluationQuestion/list.do" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/evaluationQuestion/edit.do" access="hasRole('ADMIN')"/>

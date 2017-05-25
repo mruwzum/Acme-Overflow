@@ -49,11 +49,5 @@
     <input type="submit" name="save"
            value="<spring:message code="general.save" />"/>
 
-    <jstl:if test="${webinar.id != 0}">
-        <input type="submit" name="delete"
-               value="<spring:message code="general.delete" />"
-               onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
-    </jstl:if>
-
     <acme:cancel url="welcome/index" code="general.cancel"/>
 </form:form>

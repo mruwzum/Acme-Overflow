@@ -218,19 +218,24 @@ public class WebinarController extends AbstractController {
         return result;
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-    public ModelAndView delete(Webinar webinar) {
-        ModelAndView result;
-//        try {
-        webinar.setCategories(null);
-        webinarService.delete(webinar);
-        result = new ModelAndView("redirect:listAn.do");
-//        } catch (Throwable oops) {
-//           result = createEditModelAndView(webinar, "general.commit.error");
-//        }
-
-        return result;
-    }
+//    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+//    public ModelAndView delete(@RequestParam int webinarId) {
+//        ModelAndView result;
+////        try {
+//        Webinar webinar = webinarService.findOne(webinarId);
+//        webinar.getCategories().getWebinars().remove(webinar);
+//        webinar.setBills(null);
+//        webinar.setComments(null);
+//        webinar.setEvaluations(null);
+//
+//        webinarService.delete(webinar);
+//        result = new ModelAndView("redirect:listAn.do");
+////        } catch (Throwable oops) {
+////           result = createEditModelAndView(webinar, "general.commit.error");
+////        }
+//
+//        return result;
+//    }
 
     @RequestMapping(value = "/view", method = RequestMethod.GET)
     public ModelAndView webinarView(@RequestParam int webinarId) {
