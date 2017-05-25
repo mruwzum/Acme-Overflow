@@ -1,9 +1,7 @@
 package controllers;
 
 
-import domain.Category;
-import domain.User;
-import domain.Webinar;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -34,6 +32,8 @@ public class WebinarController extends AbstractController {
     private CategoryService categoryService;
     @Autowired
     private ActorService actorService;
+    @Autowired
+    private EvaluationService evaluationService;
     //Constructors----------------------------------------------
 
     public WebinarController() {
@@ -249,6 +249,16 @@ public class WebinarController extends AbstractController {
 //      }
 
 
+        List<Evaluation> evaluations = new ArrayList<>(evaluationService.findAll());
+        Evaluation master = evaluations.get(0);
+        Collection<EvaluationQuestion> evaluationQuestions = master.getEvaluationQuestions();
+
+        Evaluation evaluation = evaluationService.create();
+        evaluation.setEvaluationQuestions(evaluationQuestions);
+        evaluation.setWebinar(webinar);
+
+
+
         result = new ModelAndView("webinar/view");
         result.addObject("name", webinar.getName());
         result.addObject("description", webinar.getDescription());
@@ -262,6 +272,7 @@ public class WebinarController extends AbstractController {
         result.addObject("modules", webinar.getModules());
         result.addObject("url", webinar.getURL());
         result.addObject("picture",webinar.getPicture());
+        result.addObject("questions", evaluation.getEvaluationQuestions());
 //       result.addObject("my", my);
 //
         result.addObject("requestURI", "webinar/view.do");

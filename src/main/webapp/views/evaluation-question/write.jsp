@@ -12,19 +12,18 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:forEach items="${questions}" var="evaluationQuestions">
 
-<form:form action="evaluationQuestion/e/save.do" modelAttribute="evaluationQuestion">
+<form:form action="evaluationQuestion/edit.do" modelAttribute="evaluationQuestion">
+    <form:hidden path="id"/>
+    <form:hidden path="version"/>
+    <%--<c:forEach items="${questions}" var="evaluationQuestion">--%>
 
 
 
-
-
-        <form:hidden path="id" />
-        <form:hidden path="version" />
 
         <acme:textbox path="title" code="evaluationq.title"/>
         <br />
+
         <security:authorize access="hasRole('USER')">
 
             <acme:textbox path="answer" code="evaluationq.answer"/>
@@ -32,8 +31,7 @@
 
         </security:authorize>
 
-
-
+    <%--</c:forEach>--%>
 
 
 
@@ -41,14 +39,13 @@
 
     <acme:submit name="save" code="general.save"/>
 
- <%--   <jstl:if test="\$\{evaluationquestion.id != 0}">
+    <jstl:if test="\$\{evaluationquestion.id != 0}">
         <input type="submit" name="delete"
                value="<spring:message code="general.delete" />"
                onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
     </jstl:if>
-    <acme:cancel url="evaluationQuestion/list.do" code="general.cancel"/>--%>
+    <acme:cancel url="evaluationQuestion/list.do" code="general.cancel"/>
 
 
 </form:form>
 
-</c:forEach>

@@ -111,6 +111,7 @@
 		<security:intercept-url pattern="/evaluationQuestion/edit.do" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/evaluationQuestion/create.do" access="hasRole('ADMIN')"/>
 		<security:intercept-url pattern="/evaluationQuestion/delete.do" access="hasRole('ADMIN')"/>
+		<security:intercept-url pattern="/evaluationQuestion/saveQ.do" access="hasRole('USER')"/>
 
 
         <!--Allow Admin to manage curriculas-->

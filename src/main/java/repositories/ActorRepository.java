@@ -2,6 +2,7 @@ package repositories;
 
 import domain.Actor;
 import domain.Folder;
+import domain.Mezzage;
 import domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -32,6 +33,8 @@ public interface ActorRepository extends JpaRepository<Actor, Integer> {
     @Query("select u.folders from Actor u where u.id = ?1")
     Collection<Folder> getFolder(int aci);
 
+    @Query("select f.mezzages from Actor u join u.folders f where u=?1")
+    Collection<Mezzage> allMessages(Actor u);
 
 
 }

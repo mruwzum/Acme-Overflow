@@ -214,6 +214,12 @@ public class ActorService {
 
    }
 
+
+   public Collection<Mezzage> allMessages(Actor a) {
+
+      return actorRepository.allMessages(a);
+   }
+
    public Folder folderByName(Actor a, String name){
 
         return actorRepository.folderByName(a,name);

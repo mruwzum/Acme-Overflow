@@ -160,18 +160,19 @@ public class MezzageController extends AbstractController {
         Mezzage mezzage = mezzageService.findOne(mezzageId);
 //        try {
 
-                        mezzage.getFolder().getMezzages().remove(mezzage);
-                mezzageService.delete(mezzage);
 
-//            if(mezzage.getFolder().getName().equals("Trashbox")){
-//                mezzage.getFolder().getMezzages().remove(mezzage);
-//                mezzageService.delete(mezzage);
-//            }else{
-//                mezzage.getFolder().getMezzages().remove(mezzage);
-//                Folder f = actorService.folderByName(actorService.findByPrincipal(),"Trashbox");
-//                mezzage.setFolder(f);
-//                f.getMezzages().add(mezzage);
-//            }
+        if (mezzage.getFolder().getName().equals("Trashbox")) {
+
+            mezzage.setSender(null);
+            mezzage.setReceiver(null);
+            mezzage.setFolder(null);
+                mezzageService.delete(mezzage);
+        } else {
+            Folder f = actorService.folderByName(actorService.findByPrincipal(), "Trashbox");
+            mezzage.setFolder(f);
+            mezzageService.save(mezzage);
+            // f.getMezzages().add(mezzage);
+        }
 
 
             result = new ModelAndView("administrator/action-1");

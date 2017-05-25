@@ -147,21 +147,42 @@
 </display:table>
 
 
-<security:authorize access="hasRole('USER')">
+                    <%--<security:authorize access="hasRole('USER')">--%>
 
 
-    <%--<jstl:if test="${not reg}">--%>
+                    <%--&lt;%&ndash;<jstl:if test="${not reg}">&ndash;%&gt;--%>
 
-        <a class="button2" href="/evaluationQuestion/write.do?webinarId=${webinarId}"> <spring:message
-                code="webinar.evaluation"/>
-        </a>
-
-
-    <%--</jstl:if>--%>
+                    <%--<a class="button2" href="/evaluationQuestion/write.do?webinarId=${webinarId}"> <spring:message--%>
+                    <%--code="webinar.evaluation"/>--%>
+                    <%--</a>--%>
 
 
-</security:authorize>
+                    <%--&lt;%&ndash;</jstl:if>&ndash;%&gt;--%>
+
+
+                    <%--</security:authorize>--%>
+
+                    <display:table pagesize="5" class="displaytag" keepStatus="true"
+                                   name="questions" requestURI="${requestURI}" id="row">
+
+
+                    <!-- Attributes -->
+
+                    <security:authorize access="hasRole('USER')">
+                    <display:column>
+                    <a href="evaluationQuestion/write.do?evaluationQuestionId=${row.id}"> <spring:message
+                            code="general.answer"/>
+                    </a>
+                    </display:column>
+                    </security:authorize>
+
+                        <spring:message code="evaluationq.title" var="title"/>
+                        <display:column property="title" title="${title}" sortable="true"/>
+
+                    </display:table>
+
+
     </div>
-</div
+</div>
 
 <div id="cleared"></div>

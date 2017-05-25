@@ -134,28 +134,45 @@ public class EvaluationQuestionController extends AbstractController {
 
 
     @RequestMapping(value = "/write")
-    public ModelAndView createEvaluation(@RequestParam int webinarId){
+    public ModelAndView createEvaluation(@RequestParam int evaluationQuestionId) {
 
         ModelAndView res;
 
-        Webinar webinar = webinarService.findOne(webinarId);
-        List<Evaluation> evaluations = new ArrayList<>(evaluationService.findAll());
-        Evaluation master = evaluations.get(0);
-        Collection<EvaluationQuestion> evaluationQuestions = master.getEvaluationQuestions();
+       EvaluationQuestion evaluationQuestion = evaluationQuestionService.findOne(evaluationQuestionId);
+       Assert.notNull(evaluationQuestion);
 
-        Evaluation evaluation = evaluationService.create();
-        evaluation.setEvaluationQuestions(evaluationQuestions);
-        evaluation.setWebinar(webinar);
-
-        res = new ModelAndView("evaluation-question/write");
-        res.addObject("evaluation", evaluation);
-        res.addObject("questions", evaluation.getEvaluationQuestions());
-
+       res = new ModelAndView("evaluation-question/edit");
+       res.addObject("evaluationQuestion", evaluationQuestion);
 
 
         return res;
 
     }
 
+
+   @RequestMapping(value = "/saveQ", method = RequestMethod.POST, params = "save")
+   public ModelAndView saveQuestion(@Valid EvaluationQuestion evaluationQuestion, BindingResult binding) {
+
+      ModelAndView result;
+
+//        if (binding.hasErrors()) {
+//            result = createEditModelAndView(evaluationQuestion);
+//        } else {
+//            try {
+
+      evaluationQuestionService.save(evaluationQuestion);
+
+
+      result = new ModelAndView("administrator/action-1");
+
+//            } catch (Throwable oops) {
+//                result = createEditModelAndView(evaluationQuestion, "comment.commit.error");
+//            }
+//        }
+
+      return result;
+
+
+   }
 
 }

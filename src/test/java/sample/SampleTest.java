@@ -196,6 +196,32 @@ public class SampleTest extends AbstractTest {
 
     }
 
+
+   @Test
+   public void deleteMessage() {
+
+      authenticate("teacher1");
+
+      // System.out.println(actorService.findByPrincipal());
+
+      Actor a = actorService.findByPrincipal();
+      List<Mezzage> mezzages = new ArrayList<>(actorService.allMessages(a));
+      System.out.println(mezzages);
+
+      mezzages.get(0).setReceiver(null);
+      mezzages.get(0).setSender(null);
+      mezzages.get(0).setFolder(null);
+      mezzageService.save(mezzages.get(0));
+
+      mezzageService.delete(mezzages.get(0));
+
+      System.out.println(actorService.allMessages(a));
+
+
+      authenticate(null);
+
+   }
+
     // Ancillary methods ------------------------------------------------------
 
 }
