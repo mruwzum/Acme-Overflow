@@ -53,4 +53,19 @@
     <spring:message code="mezzage.priority" var="priority"/>
     <display:column property="priority" title="${priority}" sortable="true"/>
 
+
+
+    <security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">
+        <display:column>
+            <a href="mezzage/forward.do?mezzageId=${row.id}"> <spring:message
+                    code="general.forward"/>
+            </a>
+        </display:column>
+        <display:column>
+            <a href="mezzage/reply.do?mezzageId=${row.id}"> <spring:message
+                    code="general.reply"/>
+            </a>
+        </display:column>
+    </security:authorize>
+
 </display:table>

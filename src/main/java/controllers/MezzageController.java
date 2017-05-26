@@ -242,4 +242,45 @@ public class MezzageController extends AbstractController {
         return result;
     }
 
+
+    @RequestMapping(value = "/reply", method = RequestMethod.GET)
+    public ModelAndView reply(@RequestParam int mezzageId) {
+        ModelAndView result;
+
+
+        Mezzage mezzage2 = mezzageService.findOne(mezzageId);
+
+        Mezzage mezzage = mezzageService.create();
+        mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
+        mezzage.setSendDate(new Date(System.currentTimeMillis()-100));
+        mezzage.setReceiverEmail(mezzage2.getSenderEmail());
+        mezzage.setSubject("RE: " + mezzage2.getSubject());
+
+        result = createEditModelAndView(mezzage);
+        return result;
+
+
+    }
+
+
+    @RequestMapping(value = "/forward", method = RequestMethod.GET)
+    public ModelAndView forward(@RequestParam int mezzageId) {
+        ModelAndView result;
+
+
+
+        Mezzage mezzage2 = mezzageService.findOne(mezzageId);
+
+        Mezzage mezzage = mezzageService.create();
+        mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
+        mezzage.setSendDate(new Date(System.currentTimeMillis()-100));
+        mezzage.setSubject("FWD: " + mezzage2.getSubject());
+        mezzage.setBody(mezzage2.getBody());
+
+        result = createEditModelAndView(mezzage);
+        return result;
+
+
+    }
+
 }
