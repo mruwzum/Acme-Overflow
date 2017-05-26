@@ -56,8 +56,10 @@
     <button name="save" type="submit" class="button2">
         <spring:message code="general.send"/>
     </button>
+    <button name="cancel" type="reset" class="button">
+        <spring:message code="general.empty"/>
+    </button>
 
-    <acme:cancel url="redirect:folder/list.do" code="general.cancel"/>
 
 
 </form:form>

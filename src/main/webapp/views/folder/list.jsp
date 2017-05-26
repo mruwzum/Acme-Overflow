@@ -12,6 +12,15 @@
 
 <security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">
     <div>
+        <H3>
+            <a class="button" href="mezzage/create.do"> <spring:message
+                    code="message.send"/>
+            </a>
+        </H3>
+    </div>
+</security:authorize>
+<security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">
+    <div>
         <H5>
             <a href="folder/create.do"> <spring:message
                     code="general.create" />
@@ -44,12 +53,4 @@
     <display:column property="name" title="${title}" sortable="true" />
 
 </display:table>
-<security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">
-    <div>
-        <H3>
-            <a href="mezzage/create.do"> <spring:message
-                    code="message.send"/>
-            </a>
-        </H3>
-    </div>
-</security:authorize>
+
