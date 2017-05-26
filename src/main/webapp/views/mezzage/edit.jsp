@@ -52,10 +52,12 @@
 
     <!---------------------------- BOTONES -------------------------->
 
-    <acme:submit name="save" code="general.save"/>
 
+    <button name="save" type="submit" class="button2">
+        <spring:message code="general.send"/>
+    </button>
 
-    <acme:cancel url="mezzage/list.do" code="general.cancel"/>
+    <acme:cancel url="redirect:folder/list.do" code="general.cancel"/>
 
 
 </form:form>
