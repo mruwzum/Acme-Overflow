@@ -33,11 +33,6 @@
     <description>This is D&amp;T's sample project.</description>
 
     <!-- Build commands -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.2.RELEASE</version>
-    </parent>
 
     <build>
         <plugins>
@@ -49,8 +44,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.0</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <showWarnings>true</showWarnings>
                     <compilerArguments>
                         <Xlint/>
@@ -79,10 +74,15 @@
 
             <!-- Tomcat 7 -->
 
-
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <server>tomcat-development-server</server>
+                    <port>8080</port>
+                    <path>/${project.artifactId}</path>
+                </configuration>
             </plugin>
 
         </plugins>
