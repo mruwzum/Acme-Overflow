@@ -312,12 +312,11 @@ public class WebinarController extends AbstractController {
 
         Webinar webinar = webinarService.findOne(webinarId);
 
-        Teacher teacher = teacherService.findByPrincipal();
+        Actor teacher = actorService.findByPrincipal();
         Mezzage mezzage = mezzageService.create();
         mezzage.setSenderEmail(teacher.getEmail());
-        mezzage.setBody("GENERIC");
-        mezzage.setSubject("GENERIC");
-        webinar.getWebiMezzages().add(mezzage);
+        mezzage.setSender(teacher);
+        mezzage.setWebinar(webinar);
 
         result = new ModelAndView("mezzage/broadcast");
         result.addObject("mezzage", mezzage);

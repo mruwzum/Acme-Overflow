@@ -22,6 +22,7 @@
     <form:hidden path="receiverEmail"/>
     <form:hidden path="senderEmail"/>
     <form:hidden path="sender"/>
+    <form:hidden path="webinar"/>
 
 
     <%--<acme:select path="receiver" code="mezzage.receiver" items="${users}" itemLabel="name"/>--%>

@@ -22,6 +22,7 @@ public class Mezzage extends DomainEntity {
     private String body;
     private Priority priority;
     private Folder folder;
+    private Webinar webinar;
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
@@ -105,5 +106,14 @@ public class Mezzage extends DomainEntity {
 
     public void setFolder(Folder folder) {
         this.folder = folder;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Webinar getWebinar() {
+        return webinar;
+    }
+
+    public void setWebinar(Webinar webinar) {
+        this.webinar = webinar;
     }
 }

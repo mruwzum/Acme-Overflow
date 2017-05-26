@@ -81,14 +81,24 @@ public class FolderController extends AbstractController {
     @RequestMapping(value = "/view")
     public ModelAndView insideFolder(@RequestParam int folderId) {
         ModelAndView result;
+
+
         Folder folder = folderService.findOne(folderId);
         Boolean isTrashBox = folder.getName().equals("Trashbox");
-       Collection<Mezzage> mezzages = folder.getMezzages();
+        Boolean isInbox = folder.getName().equals("Inbox");
+
         Authority user = new Authority();
         user.setAuthority("USER");
-        if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(user)) {
-            userService.addMyWebinnarMezzagesToMyImbox(userService.findByPrincipal());
+        if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(user) && isInbox) {
+
+            Collection<Mezzage> mezzages = folder.getMezzages();
+            mezzages.addAll(userService.addMyWebinnarMezzagesToMyImbox(userService.findByPrincipal()));
         }
+
+       Collection<Mezzage> mezzages = folder.getMezzages();
+
+
+
        result = new ModelAndView("mezzage/list");
        result.addObject("mezzages", mezzages);
         result.addObject("isTrashBox", isTrashBox);

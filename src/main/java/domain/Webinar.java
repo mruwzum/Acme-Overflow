@@ -165,7 +165,7 @@ public class Webinar extends DomainEntity {
         this.URL = URL;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "webinar")
     public Collection<Mezzage> getWebiMezzages() {
         return webiMezzages;
     }

@@ -903,6 +903,7 @@
         </property>
         <property name="webiMezzages">
             <list>
+                <ref bean="mezzage8"/>
             </list>
         </property>
     </bean>
@@ -1754,6 +1755,7 @@
         <property name="body" value="Lorem ipsum dolor sit amet,"/>
         <property name="folder" ref="inbox7"/>
         <property name="priority" value="LOW"/>
+        <property name="webinar" ref="webinar3"/>
     </bean>
     <!--/Mezzagesage -->
 

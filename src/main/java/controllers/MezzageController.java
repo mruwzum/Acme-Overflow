@@ -226,10 +226,13 @@ public class MezzageController extends AbstractController {
     @RequestMapping(value = "/broadcast", method = RequestMethod.POST, params = "save")
     public ModelAndView broadcast(@Valid Mezzage mezzage, BindingResult binding) {
         ModelAndView result;
-        Actor teacher = actorService.findByPrincipal();
-        Folder f = actorService.folderByName(teacher, "Outbox");
+
+        Actor a = actorService.findByPrincipal();
+        Folder f = actorService.folderByName(a, "Outbox");
         mezzage.setFolder(f);
         mezzage.setSendDate(new Date(System.currentTimeMillis() - 100));
+
+
         //TODO cuando broadcasteas el message, no se asigna bien a los webimensajes en el otro controller
         mezzageService.save(mezzage);
 

@@ -291,10 +291,9 @@ public class UserService {
       return res;
    }
 
-   public void addMyWebinnarMezzagesToMyImbox(User u) {
+   public Collection<Mezzage> addMyWebinnarMezzagesToMyImbox(User u) {
       Collection<Mezzage> myWebis = myWebbinarMezzages(u);
-      Folder folder = actorService.folderByName(u, "Inbox");
-      folder.getMezzages().addAll(myWebis);
+      return myWebis;
 
 
    }
