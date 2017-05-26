@@ -210,9 +210,32 @@ public class WebinarController extends AbstractController {
 //        } else {
 //            try {
         //TODO: no se guarda por los learning
-
-        webinarService.save(webinar);
-        result = new ModelAndView("redirect:listAn.do");
+       Webinar copy = webinarService.create();
+       copy.setBills(webinar.getBills());
+       copy.setCategories(webinar.getCategories());
+       copy.setComments(webinar.getComments());
+       copy.setDescription(webinar.getDescription());
+       copy.setEvaluations(webinar.getEvaluations());
+       copy.setModules(webinar.getModules());
+       copy.setName(webinar.getName());
+       copy.setOwner(webinar.getOwner());
+       copy.setPartakers(webinar.getPartakers());
+       copy.setPicture(webinar.getPicture());
+       copy.setPrice(webinar.getPrice());
+       copy.setStartDate(webinar.getStartDate());
+       copy.setURL(webinar.getURL());
+       copy.setWebiMezzages(webinar.getWebiMezzages());
+       webinar.setWebiMezzages(null);
+       webinar.setPartakers(null);
+       webinar.setModules(null);
+       webinar.setEvaluations(null);
+       webinar.setCategories(null);
+       webinar.setOwner(null);
+       teacherService.findByPrincipal().getWebinars().remove(webinar);
+       webinarService.delete(webinar);
+       webinarService.save(copy);
+       teacherService.findByPrincipal().getWebinars().add(copy);
+       result = new ModelAndView("redirect:listMy.do");
 //            } catch (Throwable oops) {
 //               result = createEditModelAndView(webinar, "webinar.commit.error");
 //            }

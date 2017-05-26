@@ -59,7 +59,7 @@ public class Webinar extends DomainEntity {
         this.description = description;
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
+   @Temporal(TemporalType.DATE)
     public Date getStartDate() {
         return startDate;
     }
