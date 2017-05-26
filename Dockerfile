@@ -1,41 +1,37 @@
-FROM java:8-jre
-#https://github.com/docker-library/tomcat
+# A vanilla Tomcat 7 Docker container running under OpenJDK 7.
 
-ENV CATALINA_HOME /usr/local/tomcat
-ENV PATH $CATALINA_HOME/bin:$PATH
+FROM ubuntu:14.04
+MAINTAINER Miguel Antolin <ma.antolinbermudez@gmail.com>
 
-RUN mkdir -p "$CATALINA_HOME"
-WORKDIR $CATALINA_HOME
+# Install Tomcat and create private CATALINA_BASE at '/tomcat' owned by the Tomcat user.
+# Although Ubuntu creates a "tomcat7" user, we create our own (called "tcuser") so that 
+# child images are not artificially coupled to a specific Tomcat version number and
+# filesystem write access is limited to CATALINA_BASE.
+RUN DEBIAN_FRONTEND=noninteractive \
+ apt-get update && \
+ apt-get install -y openjdk-7-jre-headless tomcat7 tomcat7-user && \
+ groupadd -g 9000 tcuser && \
+ useradd -d /tomcat -r -s /bin/false -g 9000 -u 9000 tcuser && \ 
+ tomcat7-instance-create /tomcat && \
+ chown -R tcuser:tcuser /tomcat
 
-# see https://www.apache.org/dist/tomcat/tomcat-8/KEYS
-RUN gpg --keyserver pool.sks-keyservers.net --recv-keys \
-	05AB33110949707C93A279E3D3EFE6B686867BA6 \
-	07E48665A34DCAFAE522E5E6266191C37C037D42 \
-	47309207D818FFD8DCD3F83F1931D684307A10A5 \
-	541FBE7D8F78B25E055DDEE13C370389288584E7 \
-	61B832AC2F1C5A90F0F9B00A1C506407564C17A3 \
-	79F7026C690BAA50B92CD8B66A3AD3F4F22C4FED \
-	9BA44C2621385CB966EBA586F72C284D731FABEE \
-	A27677289986DB50844682F8ACB77FC2E86E29AC \
-	A9C5DF4D22E99998D9875A5110C01C5A2F6059E7 \
-	DCFD35E0BF8CA7344752DE8B6FB21E8933C60243 \
-	F3A04C595DB5B6A5F1ECA43E3B7BBB100D811BBE \
-	F7DA48BB64BCB84ECBA7EE6935CD23C10D498E23
+# Add volumes for volatile directories that aren't usually shared with child images.
+VOLUME ["/tomcat/logs", "/tomcat/temp", "/tomcat/work"]
 
-ENV TOMCAT_MAJOR 8
-ENV TOMCAT_VERSION 8.0.38
-ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
-
-RUN set -x \
-	&& curl -fSL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
-	&& curl -fSL "$TOMCAT_TGZ_URL.asc" -o tomcat.tar.gz.asc \
-	&& gpg --verify tomcat.tar.gz.asc \
-	&& tar -xvf tomcat.tar.gz --strip-components=1 \
-	&& rm bin/*.bat \
-	&& rm tomcat.tar.gz*
-
-ADD ./target/*.war $CATALINA_HOME/webapps/
-
+# Expose HTTP only by default.
 EXPOSE 8080
-CMD ["catalina.sh", "run"]
 
+# Workaround for https://bugs.launchpad.net/ubuntu/+source/tomcat7/+bug/1232258
+RUN ln -s /var/lib/tomcat7/common/ /usr/share/tomcat7/common && \
+ ln -s /var/lib/tomcat7/server/ /usr/share/tomcat7/server && \
+ ln -s /var/lib/tomcat7/shared/ /usr/share/tomcat7/shared
+
+# Use IPv4 by default and UTF-8 encoding. These are almost universally useful.
+ENV JAVA_OPTS -Djava.net.preferIPv4Stack=true -Dfile.encoding=UTF-8
+
+# All your base...
+ENV CATALINA_BASE /tomcat
+
+# Drop privileges and run Tomcat.
+USER tcuser
+CMD /usr/share/tomcat7/bin/catalina.sh run
