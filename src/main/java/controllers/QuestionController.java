@@ -156,6 +156,7 @@ public class QuestionController extends AbstractController {
         question = questionService.findOne(questionId);
         Assert.notNull(question);
         result = createEditModelAndView(question);
+       result.addObject("categories", categoryService.findAll());
 
         return result;
     }
@@ -178,16 +179,17 @@ public class QuestionController extends AbstractController {
         return result;
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-    public ModelAndView delete(Question question) {
+   @RequestMapping(value = "/delete", method = RequestMethod.GET)
+   public ModelAndView delete(@RequestParam int questionId) {
         ModelAndView result;
-        try {
-            questionService.delete(question);
-            result = new ModelAndView("redirect:list.do");
-        } catch (Throwable oops) {
-            result = createEditModelAndView(question, "question.commit.error");
-        }
-
+      Question question = questionService.findOne(questionId);
+      question.getCategories().getQuestions().remove(question);
+      question.setCategories(null);
+      question.setAnswers(null);
+//        question.setOwner(null);
+      questionService.save(question);
+      questionService.delete(question);
+      result = new ModelAndView("redirect:list.do");
         return result;
     }
 

@@ -78,10 +78,17 @@
 
     <!-- Attributes -->
 
-    <security:authorize access="hasAnyRole('USER','TEACHER')">
+    <security:authorize access="hasRole('USER')">
         <display:column>
             <a href="question/edit.do?questionId=${row.id}"> <spring:message
                     code="general.edit" />
+            </a>
+        </display:column>
+    </security:authorize>
+    <security:authorize access="hasRole('USER')">
+        <display:column>
+            <a href="question/delete.do?questionId=${row.id}"> <spring:message
+                    code="general.delete"/>
             </a>
         </display:column>
     </security:authorize>

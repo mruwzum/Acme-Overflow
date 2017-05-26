@@ -57,7 +57,7 @@ public class Question extends DomainEntity {
         this.createdDate = createdDate;
     }
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     public Category getCategories() {
         return categories;
     }

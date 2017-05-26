@@ -103,7 +103,7 @@ public abstract class Actor extends DomainEntity {
       this.sendedMezzages = sendedMezzages;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "owner")
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     public Collection<Folder> getFolders() {
         return folders;
     }

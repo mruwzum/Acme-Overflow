@@ -15,7 +15,7 @@ public class Evaluation extends DomainEntity {
     private Collection<EvaluationQuestion> evaluationQuestions;
     private Webinar webinar;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "evaluation")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaluation")
     @NotNull
     public Collection<EvaluationQuestion> getEvaluationQuestions() {
         return evaluationQuestions;

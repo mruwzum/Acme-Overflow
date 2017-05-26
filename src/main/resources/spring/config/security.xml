@@ -58,6 +58,7 @@
 		<!--Allow user to make question-->
 		<security:intercept-url pattern="/question/create.do" access="hasRole('USER')" />
 		<security:intercept-url pattern="/question/edit.do" access="hasRole('USER')" />
+        <security:intercept-url pattern="/question/delete.do" access="hasRole('USER')"/>
         <security:intercept-url pattern="/question/list.do" access="permitAll"/>
         <security:intercept-url pattern="/answer/create.do" access="hasAnyRole('USER','TEACHER')"/>
         <security:intercept-url pattern="/answer/edit.do" access="hasAnyRole('USER','TEACHER')"/>
