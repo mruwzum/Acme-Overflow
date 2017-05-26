@@ -19,7 +19,8 @@
         </H5>
     </div>
 </security:authorize>
-
+<spring:message code="general.questions" var="register1111"/>
+<h3><jstl:out value="${register1111}"/></h3>
 <!-- Listing grid -->
 <display:table pagesize="100" class="displaytag" keepStatus="true"
                name="questions" requestURI="${requestURI}" id="row">
@@ -69,7 +70,8 @@
 
 
 </display:table>
-
+<spring:message code="general.myQuestions" var="register11"/>
+<h3><jstl:out value="${register11}"/></h3>
 <display:table pagesize="100" class="displaytag" keepStatus="true"
                name="myquestions" requestURI="${requestURI}" id="row">
 

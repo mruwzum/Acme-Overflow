@@ -199,7 +199,7 @@ public class AnswerController extends AbstractController {
         if (opq.equals(false)) {
             result = new ModelAndView("user/error");
         } else {
-            result = new ModelAndView("redirect:listAll.do");
+           result = new ModelAndView("user/success");
         }
 
 
@@ -216,7 +216,7 @@ public class AnswerController extends AbstractController {
         if (op.equals(false)) {
             result = new ModelAndView("user/error");
         } else {
-            result = new ModelAndView("redirect:listAll.do");
+           result = new ModelAndView("user/success");
         }
 
 

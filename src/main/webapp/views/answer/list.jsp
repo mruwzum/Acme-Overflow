@@ -41,10 +41,6 @@
                         code="user.ban"/>
                 </a>
             </jstl:if>
-            <jstl:if test="${row.banned}">
-                <a href="answer/unban.do?answerId=${row.id}"> <spring:message
-                    code="user.unban"/>
-            </jstl:if>
         </display:column>
     </security:authorize>
     <spring:message code="answer.title" var="title"/>

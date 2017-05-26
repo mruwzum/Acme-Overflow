@@ -558,7 +558,7 @@
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountuser4"/>
         <property name="creditCard" ref="creditcard4"/>
-        <property name="banned" value="true"/>
+        <property name="banned" value="false"/>
         <property name="receivedMezzages">
             <list>
                 <ref bean="mezzage4"/>

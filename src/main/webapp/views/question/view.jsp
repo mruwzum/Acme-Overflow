@@ -72,9 +72,6 @@
         <!-- Listing grid socialIdentities -->
 
 
-
-
-
         <c:forEach items="${answers}" var="answer">
 
             <jstl:if test="${answer.teacher}">
@@ -92,11 +89,6 @@
                         <jstl:if test="${not answer.banned}">
                             <a href="answer/ban.do?answerId=${answer.id}"> <spring:message
                                     code="user.ban"/>
-                            </a>
-                        </jstl:if>
-                        <jstl:if test="${answer.banned}">
-                            <a href="answer/unban.do?answerId=${answer.id}"> <spring:message
-                                    code="user.unban"/>
                             </a>
                         </jstl:if>
                     </security:authorize>
@@ -135,12 +127,6 @@
                         <a href="answer/ban.do?answerId=${answer.id}"> <spring:message
                                 code="user.ban"/>
                         </a>
-                    </jstl:if>
-                    <jstl:if test="${answer.banned}">
-                        <a href="answer/unban.do?answerId=${answer.id}"> <spring:message
-                                code="user.unban"/>
-                        </a>
-
                     </jstl:if>
                 </security:authorize>
                 <security:authorize access="hasAnyRole('USER')">
