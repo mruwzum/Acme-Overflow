@@ -15,8 +15,6 @@ public class Category extends DomainEntity {
 
     private String name;
     private String description;
-    private Category father;
-    private Collection<Category> sons;
     private Collection<Question> questions;
     private Collection<Webinar> webinars;
 
@@ -40,25 +38,6 @@ public class Category extends DomainEntity {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    @OneToOne(cascade = CascadeType.PERSIST)
-    public Category getFather() {
-        return father;
-    }
-
-    public void setFather(Category father) {
-        this.father = father;
-    }
-
-    @OneToMany(cascade = CascadeType.PERSIST)
-    public Collection<Category> getSons() {
-        return sons;
-    }
-
-    public void setSons(Collection<Category> sons) {
-        this.sons = sons;
-    }
-
 
     @OneToMany(cascade = CascadeType.PERSIST)
     public Collection<Question> getQuestions() {

@@ -1026,12 +1026,6 @@
     <bean id="categorie1" class="domain.Category">
         <property name="name" value="software"/>
         <property name="description" value="Lorem ipsum dolor sit amet."/>
-        <property name="father" ref="categorie2"/>
-        <property name="sons">
-            <list>
-                <ref bean="categorie3"/>
-            </list>
-        </property>
         <property name="questions">
             <list>
                 <ref bean="question1"/>
@@ -1047,12 +1041,6 @@
     <bean id="categorie2" class="domain.Category">
         <property name="name" value="info"/>
         <property name="description" value="Lorem ipsum dolor sit amet."/>
-        <property name="father" ref="categorie3"/>
-        <property name="sons">
-            <list>
-                <ref bean="categorie1"/>
-            </list>
-        </property>
         <property name="questions">
             <list>
                 <ref bean="question2"/>
@@ -1069,11 +1057,6 @@
     <bean id="categorie3" class="domain.Category">
         <property name="name" value="hardware"/>
         <property name="description" value="Lorem ipsum dolor sit amet."/>
-        <property name="sons">
-            <list>
-                <ref bean="categorie2"/>
-            </list>
-        </property>
         <property name="questions">
             <list>
                 <ref bean="question5"/>

@@ -67,7 +67,6 @@ public class AdministratorServiceTest extends AbstractTest {
       categoryService.save(category1);
       Collection<Category> categories = new HashSet<>();
       categories.add(category1);
-      category.setSons(categories);
       Category c = categoryService.save(category);
       Assert.assertNotNull(c);
       unauthenticate();
