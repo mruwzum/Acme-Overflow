@@ -3,6 +3,7 @@ package repositories;
 import domain.Answer;
 import domain.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.Collection;
@@ -17,6 +18,8 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     Collection<Answer> notBannedAnswer(Question q);
 
 
-
+    @Modifying(clearAutomatically = true)
+    @Query("update Answer set question = null where question=?1")
+    int setQuestionNull(Question q);
 
 }

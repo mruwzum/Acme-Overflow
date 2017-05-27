@@ -158,6 +158,12 @@ public class QuestionService {
       return res1;
 
    }
+
+
+   public int setQuestionNull(Question c){
+
+        return questionRepository.setQuestionNull(c);
+   }
 }
 
 

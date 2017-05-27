@@ -222,6 +222,34 @@ public class SampleTest extends AbstractTest {
 
    }
 
+
+    @Test
+    public void setQuestionNull() {
+
+        authenticate("user1");
+
+        List<Question> questions = new ArrayList<>(userService.findByPrincipal().getQuestions());
+
+//        List<Answer> answers = new ArrayList<>(answerService.findAll());
+//
+//        for (Answer answer : answers){
+//            System.out.println(answer.getQuestion());
+//        }
+
+        questionService.setQuestionNull(questions.get(0));
+
+
+//        for (Answer answer : answers){
+//            System.out.println(answer.getQuestion());
+//        }
+
+        questions.get(0).setAnswers(new ArrayList<Answer>());
+        System.out.println(questions.get(0).getAnswers());
+
+        authenticate(null);
+
+    }
+
     // Ancillary methods ------------------------------------------------------
 
 }

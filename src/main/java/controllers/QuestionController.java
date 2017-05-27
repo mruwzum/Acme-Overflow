@@ -184,12 +184,11 @@ public class QuestionController extends AbstractController {
         ModelAndView result;
 
 
-
       Question question = questionService.findOne(questionId);
-       Category category = question.getCategories();
        question.setCategories(null);
-       category.getQuestions().remove(question);
-      question.getAnswers().removeAll(question.getAnswers());
+       questionService.setQuestionNull(question);
+       question.setSearch(null);
+
       userService.findByPrincipal().getQuestions().remove(question);
       //question.setOwner(null);
 //      questionService.save(question);

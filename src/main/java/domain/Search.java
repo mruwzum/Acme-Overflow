@@ -38,7 +38,7 @@ public class Search extends DomainEntity {
         this.category = category;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "search")
     public Collection<Question> getResults() {
         return results;
     }
