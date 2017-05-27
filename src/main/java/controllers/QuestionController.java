@@ -182,12 +182,17 @@ public class QuestionController extends AbstractController {
    @RequestMapping(value = "/delete", method = RequestMethod.GET)
    public ModelAndView delete(@RequestParam int questionId) {
         ModelAndView result;
+
+
+
       Question question = questionService.findOne(questionId);
-      question.getCategories().getQuestions().remove(question);
-      question.setCategories(null);
-      question.setAnswers(null);
-//        question.setOwner(null);
-      questionService.save(question);
+       Category category = question.getCategories();
+       question.setCategories(null);
+       category.getQuestions().remove(question);
+      question.getAnswers().removeAll(question.getAnswers());
+      userService.findByPrincipal().getQuestions().remove(question);
+      //question.setOwner(null);
+//      questionService.save(question);
       questionService.delete(question);
       result = new ModelAndView("redirect:list.do");
         return result;

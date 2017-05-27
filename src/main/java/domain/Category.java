@@ -39,7 +39,7 @@ public class Category extends DomainEntity {
         this.description = description;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categories")
     public Collection<Question> getQuestions() {
         return questions;
     }

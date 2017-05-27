@@ -57,7 +57,7 @@ public class Question extends DomainEntity {
         this.createdDate = createdDate;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     public Category getCategories() {
         return categories;
     }
@@ -75,7 +75,7 @@ public class Question extends DomainEntity {
         this.pictures = pictures;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @NotNull
     public User getOwner() {
         return owner;
@@ -85,7 +85,7 @@ public class Question extends DomainEntity {
         this.owner = owner;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "question")
     public Collection<Answer> getAnswers() {
         return answers;
     }

@@ -16,6 +16,7 @@
 <%@taglib prefix="security"
           uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="display" uri="http://displaytag.sf.net" %>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
 <spring:message code="mezzage.subject" var="subject1"/>
@@ -38,3 +39,30 @@
 <spring:message code="mezzage.priority" var="priority1"/>
 <h3><jstl:out value="${priority1}"/></h3>
 <jstl:out value="${priority}"/>
+
+
+<spring:message code="general.movetoFolder" var="priority1"/>
+<h3><jstl:out value="${priority1}"/></h3>
+
+<form:form action="mezzage/movef.do" modelAttribute="mezzage">
+
+    <form:hidden path="id" />
+    <form:hidden path="version" />
+    <form:hidden path="sender" />
+    <%--<form:hidden path="sendDate" />--%>
+    <form:hidden path="priority" />
+    <form:hidden path="receiver" />
+    <form:hidden path="senderEmail"/>
+    <form:hidden path="receiverEmail"/>
+    <form:hidden path="subject"/>
+    <form:hidden path="body"/>
+
+
+
+    <acme:select path="folder" code="mezzage.folder" items="${folders}" itemLabel="name"/>
+
+    <acme:submit name="save" code="general.movetoFolder"/>
+
+
+
+</form:form>

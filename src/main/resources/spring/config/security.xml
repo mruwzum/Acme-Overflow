@@ -146,6 +146,7 @@
 		<security:intercept-url pattern="/mezzage/delete.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
 		<security:intercept-url pattern="/mezzage/reply.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
 		<security:intercept-url pattern="/mezzage/forward.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
+		<security:intercept-url pattern="/mezzage/movef.do" access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')"/>
 
 
 

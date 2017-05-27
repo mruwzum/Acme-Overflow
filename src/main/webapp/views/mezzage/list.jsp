@@ -34,7 +34,7 @@
             </a>
         </display:column>
         <display:column>
-            <a href="mezzage/delete.do?mezzageId=${row.id}"> <spring:message
+            <a onclick="return confirm('<spring:message code="general.confirm.delete" />')" href="mezzage/delete.do?mezzageId=${row.id}"> <spring:message
                     code="general.delete"/>
             </a>
         </display:column>
@@ -47,9 +47,9 @@
     <spring:message code="mezzage.sendDate" var="sendDate"/>
     <display:column property="sendDate" title="${sendDate}" sortable="true"/>
     <spring:message code="mezzage.sender" var="sender"/>
-    <display:column property="sender" title="${sender}" sortable="true"/>
+    <display:column property="senderEmail" title="${sender}" sortable="true"/>
     <spring:message code="mezzage.receiver" var="receiver"/>
-    <display:column property="receiver" title="${receiver}" sortable="true"/>
+    <display:column property="receiverEmail" title="${receiver}" sortable="true"/>
     <spring:message code="mezzage.priority" var="priority"/>
     <display:column property="priority" title="${priority}" sortable="true"/>
 

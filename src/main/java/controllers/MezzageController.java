@@ -210,6 +210,7 @@ public class MezzageController extends AbstractController {
 
         ModelAndView result;
         Mezzage mezzage = mezzageService.findOne(mezzageId);
+        Collection<Folder> folders = actorService.findByPrincipal().getFolders();
 
         result = new ModelAndView("mezzage/view");
         result.addObject("subject", mezzage.getSubject());
@@ -218,6 +219,8 @@ public class MezzageController extends AbstractController {
         // result.addObject("sender", mezzage.getSender());
         result.addObject("priority", mezzage.getPriority());
         result.addObject("mezzageId", mezzage.getId());
+        result.addObject("mezzage", mezzage);
+        result.addObject("folders", folders);
         result.addObject("requestURI", "mezzage/view.do");
 
         return result;
@@ -279,6 +282,19 @@ public class MezzageController extends AbstractController {
 
         result = createEditModelAndView(mezzage);
         return result;
+
+
+    }
+
+
+    @RequestMapping(value = "/movef", method = RequestMethod.POST, params = "save")
+    public ModelAndView moveF(@Valid Mezzage mezzage) {
+        ModelAndView result;
+        mezzage.setSendDate(mezzage.getSendDate());
+        mezzageService.save(mezzage);
+        result = new ModelAndView("administrator/action-1");
+        return result;
+
 
 
     }
