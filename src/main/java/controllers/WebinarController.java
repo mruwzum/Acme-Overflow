@@ -172,9 +172,16 @@ public class WebinarController extends AbstractController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create() {
         ModelAndView result;
-        //TODO gordito crear webminars
-        Webinar webinar = webinarService.create();
+
+
+       Webinar webinar = webinarService.create();
         webinar.setOwner(teacherService.findByPrincipal());
+
+       webinar.setModules(new ArrayList<Module>());
+       webinar.setPartakers(new ArrayList<User>());
+       webinar.setEvaluations(new ArrayList<Evaluation>());
+       webinar.setComments(new ArrayList<Comment>());
+       webinar.setBills(new ArrayList<Bill>());
 
         Collection<Category> categories = categoryService.findAll();
 
@@ -205,62 +212,43 @@ public class WebinarController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid Webinar webinar, BindingResult binding) {
         ModelAndView result;
-//        if (!binding.hasErrors()) {
-//           result = createEditModelAndView(webinar);
-//        } else {
-//            try {
+       if (!binding.hasErrors()) {
+          result = createEditModelAndView(webinar);
+       } else {
+          try {
+             webinar.setOwner(teacherService.findByPrincipal());
+             webinarService.save(webinar);
+
+             result = new ModelAndView("redirect:listMy.do");
         //TODO: no se guarda por los learning
-       Webinar copy = webinarService.create();
-       copy.setBills(webinar.getBills());
-       copy.setCategories(webinar.getCategories());
-       copy.setComments(webinar.getComments());
-       copy.setDescription(webinar.getDescription());
-       copy.setEvaluations(webinar.getEvaluations());
-       copy.setModules(webinar.getModules());
-       copy.setName(webinar.getName());
-       copy.setOwner(webinar.getOwner());
-       copy.setPartakers(webinar.getPartakers());
-       copy.setPicture(webinar.getPicture());
-       copy.setPrice(webinar.getPrice());
-       copy.setStartDate(webinar.getStartDate());
-       copy.setURL(webinar.getURL());
-       copy.setWebiMezzages(webinar.getWebiMezzages());
-       webinar.setWebiMezzages(null);
-       webinar.setPartakers(null);
-       webinar.setModules(null);
-       webinar.setEvaluations(null);
-       webinar.setCategories(null);
-       webinar.setOwner(null);
-       teacherService.findByPrincipal().getWebinars().remove(webinar);
-       webinarService.delete(webinar);
-       webinarService.save(copy);
-       teacherService.findByPrincipal().getWebinars().add(copy);
-       result = new ModelAndView("redirect:listMy.do");
-//            } catch (Throwable oops) {
-//               result = createEditModelAndView(webinar, "webinar.commit.error");
-//            }
-//        }
-        return result;
+
+          } catch (Throwable oops) {
+             result = createEditModelAndView(webinar, "webinar.commit.error");
+          }
+       }
+       return result;
     }
 
-//    @RequestMapping(value = "/delete", method = RequestMethod.GET)
-//    public ModelAndView delete(@RequestParam int webinarId) {
-//        ModelAndView result;
-////        try {
-//        Webinar webinar = webinarService.findOne(webinarId);
-//        webinar.getCategories().getWebinars().remove(webinar);
-//        webinar.setBills(null);
-//        webinar.setComments(null);
-//        webinar.setEvaluations(null);
-//
-//        webinarService.delete(webinar);
-//        result = new ModelAndView("redirect:listAn.do");
-////        } catch (Throwable oops) {
-////           result = createEditModelAndView(webinar, "general.commit.error");
-////        }
-//
-//        return result;
-//    }
+   @RequestMapping(value = "/delete", method = RequestMethod.GET)
+   public ModelAndView delete(@RequestParam int webinarId) {
+      ModelAndView result;
+//        try {
+      Webinar webinar = webinarService.findOne(webinarId);
+      webinar.setCategories(null);
+      webinarService.setBillsNull(webinar);
+      webinarService.setQuestionNull(webinar);
+      webinarService.setEvaluationNull(webinar);
+//        teacherService.findByPrincipal().getWebinars().remove(webinar);
+//        webinar.setPartakers(null);
+      webinarService.setModulesNull(webinar);
+      webinarService.delete(webinar);
+      result = new ModelAndView("redirect:listMy.do");
+//        } catch (Throwable oops) {
+//           result = createEditModelAndView(webinar, "general.commit.error");
+//        }
+
+      return result;
+    }
 
     @RequestMapping(value = "/view", method = RequestMethod.GET)
     public ModelAndView webinarView(@RequestParam int webinarId) {

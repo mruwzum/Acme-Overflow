@@ -159,6 +159,26 @@ public class WebinarService {
       return res;
    }
 
+
+   public int setQuestionNull(Webinar c) {
+
+      return webinarRepository.setQuestionNull(c);
+   }
+
+   public int setEvaluationNull(Webinar c) {
+
+      return webinarRepository.setEvaluationNull(c);
+   }
+
+   public int setModulesNull(Webinar c) {
+
+      return webinarRepository.setModulesNull(c);
+   }
+
+   public int setBillsNull(Webinar c) {
+
+      return webinarRepository.setBillsNull(c);
+   }
 }
 
 

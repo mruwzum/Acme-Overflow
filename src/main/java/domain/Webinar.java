@@ -88,7 +88,7 @@ public class Webinar extends DomainEntity {
         this.picture = picture;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+   @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     public Category getCategories() {
         return categories;
     }
@@ -97,7 +97,7 @@ public class Webinar extends DomainEntity {
         this.categories = categories;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+   @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @NotNull
     public Teacher getOwner() {
         return owner;
@@ -107,7 +107,7 @@ public class Webinar extends DomainEntity {
         this.owner = owner;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "webinar")
+   @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
     public Collection<Comment> getComments() {
         return comments;
     }
@@ -117,7 +117,7 @@ public class Webinar extends DomainEntity {
     }
 
 
-    @ManyToMany(cascade = CascadeType.ALL)
+   @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     public Collection<User> getPartakers() {
         return partakers;
     }
@@ -127,7 +127,7 @@ public class Webinar extends DomainEntity {
     }
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "webinar")
+   @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
     public Collection<Module> getModules() {
         return modules;
     }
@@ -136,7 +136,7 @@ public class Webinar extends DomainEntity {
         this.modules = modules;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "webinar")
+   @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
     public Collection<Bill> getBills() {
         return bills;
     }
@@ -146,7 +146,7 @@ public class Webinar extends DomainEntity {
     }
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "webinar")
+   @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
     public Collection<Evaluation> getEvaluations() {
         return evaluations;
     }
@@ -165,7 +165,7 @@ public class Webinar extends DomainEntity {
         this.URL = URL;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "webinar")
+   @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
     public Collection<Mezzage> getWebiMezzages() {
         return webiMezzages;
     }

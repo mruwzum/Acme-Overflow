@@ -159,6 +159,7 @@
 		<security:intercept-url pattern="/webinar/view.do" access="permitAll"/>
 		<security:intercept-url pattern="/webinar/create.do" access="hasRole('TEACHER')"/>
 		<security:intercept-url pattern="/webinar/edit.do" access="hasRole('TEACHER')"/>
+        <security:intercept-url pattern="/webinar/delete.do" access="hasRole('TEACHER')"/>
 		<security:intercept-url pattern="/comment/create.do" access="hasRole('USER')"/>
 		<security:intercept-url pattern="/comment/edit.do" access="hasRole('USER')"/>
 		<security:intercept-url pattern="/webinar/register.do" access="hasRole('USER')"/>

@@ -52,6 +52,11 @@
         </a>
     </display:column>
     <display:column>
+        <a href="webinar/delete.do?webinarId=${row.id}"> <spring:message
+                code="general.delete"/>
+        </a>
+    </display:column>
+    <display:column>
         <a href="webinar/broadcastMessage.do?webinarId=${row.id}"> <spring:message
                 code="general.broadcastMessage"/>
         </a>

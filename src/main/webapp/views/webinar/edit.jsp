@@ -19,6 +19,9 @@
     <form:hidden path="owner" />
     <form:hidden path="comments" />
     <form:hidden path="partakers" />
+    <form:hidden path="modules"/>
+    <form:hidden path="evaluations"/>
+    <form:hidden path="bills"/>
 
 
     <acme:textbox path="name" code="webinar.name"/>
