@@ -28,3 +28,6 @@
 <spring:message code="bill.owner" var="name1"/>
 <h3><jstl:out value="${name1}"/></h3>
 <jstl:out value="${owner}"/>
+
+<br>
+<a class="button" href="/bill/list.do"><spring:message code="general.cancel"/></a>

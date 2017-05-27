@@ -50,5 +50,5 @@
 
     <acme:submit name="save" code="general.save"/>
 
-    <acme:cancel url="welcome/index" code="general.cancel"/>
+    <a class="button" href="/webinar/listMy.do"><spring:message code="general.cancel"/></a>
 </form:form>

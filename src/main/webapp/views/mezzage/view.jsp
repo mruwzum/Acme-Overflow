@@ -58,10 +58,13 @@
     <form:hidden path="body"/>
 
 
-
     <acme:select path="folder" code="mezzage.folder" items="${folders}" itemLabel="name"/>
+    <br>
 
     <acme:submit name="save" code="general.movetoFolder"/>
+
+    <a class="button" href="/folder/list.do"><spring:message code="general.cancel"/></a>
+
 
 
 

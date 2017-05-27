@@ -87,3 +87,5 @@
 
 </display:table>
 
+
+<a class="button" href="/user/list.do"><spring:message code="general.cancel"/></a>

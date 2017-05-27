@@ -60,6 +60,7 @@
         <spring:message code="general.empty"/>
     </button>
 
+    <a class="button" href="/folder/list.do"><spring:message code="general.cancel"/></a>
 
 
 </form:form>

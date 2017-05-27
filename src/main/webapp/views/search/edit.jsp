@@ -31,12 +31,8 @@
 
     <acme:submit name="save" code="general.save"/>
 
-    <jstl:if test="\$\{search.id != 0}">
-        <input type="submit" name="delete"
-               value="<spring:message code="general.delete" />"
-               onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
-    </jstl:if>
-    <acme:cancel url="search/list.do" code="general.cancel"/>
+    <a class="button" href="/welcome/index.do"><spring:message code="general.cancel"/></a>
+
 
 
 </form:form>

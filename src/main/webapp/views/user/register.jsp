@@ -63,10 +63,8 @@
     <br/>
 
     <!---------------------------- BOTONES -------------------------->
-    <input type="submit" name="save"
+    <input class="button2" type="submit" name="save"
            value="<spring:message code="user.save" />"/>
+    <a class="button" href="/welcome/index.do"><spring:message code="general.cancel"/></a>
 
-    <input type="button" name="cancel"
-           value="<spring:message code="user.cancel" />"
-           onclick="window.location.replace('question/list.do')"/>
 </form:form>
