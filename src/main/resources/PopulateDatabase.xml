@@ -104,7 +104,7 @@
         <property name="authorities">
             <list>
                 <bean class="security.Authority">
-                    <property name="authority" value="USER"/>
+                    <property name="authority" value="BAN"/>
                 </bean>
             </list>
         </property>
@@ -558,7 +558,7 @@
         <property name="phoneNumber" value="+23-6234456456"/>
         <property name="userAccount" ref="userAccountuser4"/>
         <property name="creditCard" ref="creditcard4"/>
-        <property name="banned" value="false"/>
+        <property name="banned" value="true"/>
         <property name="receivedMezzages">
             <list>
                 <ref bean="mezzage4"/>
@@ -595,6 +595,9 @@
             </list>
         </property>
     </bean>
+
+
+    <!--/User-->
     <bean id="teacher1" class="domain.Teacher">
         <property name="name" value="teacher1name"/>
         <property name="surname" value="teacher1surname"/>
@@ -1221,6 +1224,26 @@
         </property>
     </bean>
 
+    <bean id="question7" class="domain.Question">
+        <property name="title" value="question7"/>
+        <property name="banned" value="true"/>
+        <property name="summary"
+                  value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+        <property name="createdDate" value="2016/12/22"/>
+        <property name="owner" ref="user4"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="categories" ref="categorie3"/>
+        <property name="answers">
+            <list>
+            </list>
+        </property>
+    </bean>
+
 
     <!-- /Question -->
 
@@ -1329,6 +1352,7 @@
         <property name="teacher" value="true"/>
 
     </bean>
+
 
     <!--/Answers-->
 

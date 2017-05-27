@@ -274,14 +274,20 @@ public class UserService {
 
     public Boolean unbanUser(User user) {
         Boolean res = false;
-        Authority authority = new Authority();
-        authority.setAuthority("USER");
-        Authority authority2 = new Authority();
-        authority2.setAuthority("BAN");
-        user.getUserAccount().addAuthority(authority);
-        user.getUserAccount().removeAuthority(authority2);
-        user.setBanned(false);
-        res = true;
+       if (!user.getUserAccount().getAuthorities().isEmpty()) {
+
+
+          Authority authority = new Authority();
+          authority.setAuthority("USER");
+          Authority authority2 = new Authority();
+          authority2.setAuthority("BAN");
+
+          user.getUserAccount().addAuthority(authority);
+          user.getUserAccount().removeAuthority(authority2);
+          user.setBanned(false);
+          res = true;
+
+       }
         return res;
     }
 

@@ -233,13 +233,13 @@ public class UserController extends AbstractController {
         ModelAndView res;
         User user = userService.findOne(userId);
 
-        try {
+//        try {
             userService.unbanUser(user);
             res = new ModelAndView("redirect:listAll.do");
-        } catch (Exception e) {
-            res = new ModelAndView("user/error");
-            res.addObject("trace", e.toString());
-        }
+//        } catch (Exception e) {
+//            res = new ModelAndView("user/error");
+//            res.addObject("trace", e.toString());
+//        }
 
 
         return res;
