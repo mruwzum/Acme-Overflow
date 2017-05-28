@@ -76,10 +76,10 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
     @Query("select min(comments.size) from Webinar ")
     int minNumberOfCommentPerWebinar();
 
-    @Query("select u from User u join u.questions q where q.banned = true order by u.questions.size")
+    @Query("select u from User u join u.questions q where q.banned = true order by u.questions.size desc")
     Collection<User> userSortedByNumberOfQuestionBanned();
 
-    @Query("select u from User u join u.answers q where q.banned = true order by u.answers.size")
+    @Query("select u from User u join u.answers q where q.banned = true order by u.answers.size desc")
     Collection<User> userSortedByNumberOfAnswerBanned();
 
     @Query("select avg(u.questions.size) from User  u join u.questions q where q.banned = true")

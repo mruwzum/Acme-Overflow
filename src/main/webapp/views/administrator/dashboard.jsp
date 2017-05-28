@@ -111,25 +111,73 @@
 
 <spring:message code="dashboard.q20" var="q9b"/>
 <jstl:out value="${q9b}"/>:
-<jstl:out value="${q20}"/>
+<display:table pagesize="15" class="displaytag" keepStatus="true"
+               name="q20" requestURI="${requestURI}" id="row">
+
+
+    <spring:message code="user.name" var="name"/>
+    <display:column property="name" title="${name}" sortable="true"/>
+    <spring:message code="user.surname" var="surname"/>
+    <display:column property="surname" title="${surname}" sortable="true"/>
+
+</display:table>
+
 <br>
 <br/>
 
 <spring:message code="dashboard.q21" var="q9b"/>
 <jstl:out value="${q9b}"/>:
-<jstl:out value="${q21}"/>
+
+
+<display:table pagesize="15" class="displaytag" keepStatus="true"
+               name="q21" requestURI="${requestURI}" id="row">
+
+
+    <spring:message code="user.name" var="name"/>
+    <display:column property="name" title="${name}" sortable="true"/>
+    <spring:message code="user.surname" var="surname"/>
+    <display:column property="surname" title="${surname}" sortable="true"/>
+
+</display:table>
+
 <br>
 <br/>
 
+
+
 <spring:message code="dashboard.q22" var="q9b"/>
 <jstl:out value="${q9b}"/>:
-<jstl:out value="${q22}"/>
+<display:table pagesize="15" class="displaytag" keepStatus="true"
+               name="q22" requestURI="${requestURI}" id="row">
+
+
+    <spring:message code="user.name" var="name"/>
+    <display:column property="name" title="${name}" sortable="true"/>
+    <spring:message code="user.surname" var="surname"/>
+    <display:column property="surname" title="${surname}" sortable="true"/>
+
+</display:table>
 <br>
 <br/>
 
 <spring:message code="dashboard.q23" var="q9b"/>
-<jstl:out value="${q9b}"/>:
-<jstl:out value="${q23}"/>
+<jstl:out value="${q9b}"/>
+
+
+<display:table pagesize="10" class="displaytag" keepStatus="true"
+               name="q23" requestURI="${requestURI}" id="row">
+
+
+    <spring:message code="webinar.name" var="title" />
+    <display:column property="name" title="${title}" sortable="true" />
+    <spring:message code="webinar.description" var="description" />
+    <display:column property="description" title="${description}" sortable="true" />
+
+
+</display:table>
+
+
+
 <br>
 <br/>
 

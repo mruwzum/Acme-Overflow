@@ -33,18 +33,31 @@
 <br/>
 <spring:message code="dashboard.q4" var="q4b"/>
 <jstl:out value="${q4b}"/>:
-<jstl:out value="${q4}"/>
-<br>
+<display:table pagesize="10" class="displaytag" keepStatus="true"
+               name="q4" requestURI="${requestURI}" id="row">
+
+
+    <spring:message code="webinar.name" var="title" />
+    <display:column property="name" title="${title}" sortable="true" />
+    <spring:message code="webinar.description" var="description" />
+    <display:column property="description" title="${description}" sortable="true" />
+
+
+</display:table><br>
 <br/>
 <spring:message code="dashboard.q5" var="q5b"/>
 <jstl:out value="${q5b}"/>:
-<jstl:out value="${q5}"/>
-<br>
+<display:table pagesize="15" class="displaytag" keepStatus="true"
+               name="q5" requestURI="${requestURI}" id="row">
+
+
+    <spring:message code="user.name" var="name"/>
+    <display:column property="name" title="${name}" sortable="true"/>
+    <spring:message code="user.surname" var="surname"/>
+    <display:column property="surname" title="${surname}" sortable="true"/>
+
+</display:table><br>
 <br/>
-<spring:message code="dashboard.q6" var="q6b"/>
-<jstl:out value="${q6b}"/>:
-<jstl:out value="${q6}"/>
-<br>
-<br/>e
+
 
 
