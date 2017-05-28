@@ -1,7 +1,6 @@
 package controllers;
 
 
-import com.apple.eawt.AppEvent;
 import domain.Folder;
 import domain.Mezzage;
 import org.springframework.beans.factory.annotation.Autowired;
