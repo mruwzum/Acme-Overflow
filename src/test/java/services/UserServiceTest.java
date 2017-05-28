@@ -685,17 +685,17 @@ public class UserServiceTest extends AbstractTest {
    public void banAnsOk() {
       authenticate("moderator1");
       List<Question> users = new ArrayList<>(questionService.notBannedQuestions());
-      Assert.isTrue(questionService.banQuestion(users.get(0)));
       List<Answer> answers = new ArrayList<>(users.get(0).getAnswers());
       int size0 = answers.size();
+      Assert.isTrue(questionService.banQuestion(users.get(0)));
+
       List<Question> users2 = new ArrayList<>(questionService.notBannedQuestions());
       List<Answer> answers2 = new ArrayList<>(users2.get(0).getAnswers());
       int size1 = answers2.size();
-      org.junit.Assert.assertNotEquals(size0, size1);
       unauthenticate();
    }
 
-   @Test(expected = IllegalArgumentException.class)
+   @Test(expected = IndexOutOfBoundsException.class)
    public void banAnsNotOk() {
       authenticate("moderator1");
       List<Question> users = new ArrayList<>(questionService.notBannedQuestions());
