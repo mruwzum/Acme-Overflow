@@ -1,7 +1,9 @@
 package controllers;
 
 
+import domain.LearningMaterial;
 import domain.Module;
+import domain.Webinar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -10,9 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import security.Authority;
+import services.ActorService;
 import services.ModuleService;
+import services.TeacherService;
+import services.WebinarService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Controller
@@ -23,6 +30,12 @@ public class ModuleController extends AbstractController {
 
     @Autowired
     private ModuleService moduleService;
+    @Autowired
+    private WebinarService webinarService;
+    @Autowired
+    private ActorService actorService;
+    @Autowired
+    private TeacherService teacherService;
 
 
     //Constructors----------------------------------------------
@@ -71,11 +84,15 @@ public class ModuleController extends AbstractController {
 
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create() {
+    public ModelAndView create(@RequestParam int webinarId) {
 
         ModelAndView result;
 
+        Webinar webinar = webinarService.findOne(webinarId);
+
         Module module = moduleService.create();
+        module.setWebinar(webinar);
+        module.setLearningMaterials(new ArrayList<LearningMaterial>());
         result = createEditModelAndView(module);
 
         return result;
@@ -107,7 +124,7 @@ public class ModuleController extends AbstractController {
         } else {
             try {
                 moduleService.save(module);
-                result = new ModelAndView("redirect:list.do");
+                result = new ModelAndView("administrator/action-1");
             } catch (Throwable oops) {
                 result = createEditModelAndView(module, "module.commit.error");
             }
@@ -134,14 +151,49 @@ public class ModuleController extends AbstractController {
         ModelAndView result;
         try {
             Module module = moduleService.findOne(moduleId);
+            module.setWebinar(null);
             moduleService.delete(module);
-            result = new ModelAndView("redirect:list.do");
+            result = new ModelAndView("administrator/action-1");
         } catch (Throwable oops) {
             Module module = moduleService.findOne(moduleId);
             result = createEditModelAndView(module, "module.commit.error");
         }
 
         return result;
+    }
+
+
+
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    public ModelAndView view(@RequestParam int moduleId) {
+        ModelAndView res;
+        Module module;
+
+        module = moduleService.findOne(moduleId);
+        Boolean my = false;
+
+        Authority authority = new Authority();
+        authority.setAuthority("TEACHER");
+
+        if(actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
+
+            if (teacherService.findByPrincipal().getWebinars().contains(module.getWebinar())){
+                my = true;
+            }
+        }
+
+
+        res = new ModelAndView("module/view");
+        res.addObject("title", module.getTitle());
+        res.addObject("description", module.getDescription());
+        res.addObject("my", my);
+        res.addObject("id", module.getId());
+        res.addObject("learnings", module.getLearningMaterials());
+
+
+
+
+        return res;
     }
 
 }

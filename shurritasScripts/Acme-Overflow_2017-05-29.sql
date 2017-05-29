@@ -15,6 +15,7 @@ ALTER ROUTINE, EXECUTE, TRIGGER, SHOW VIEW
 ON `Acme-Overflow`.* TO 'acme-manager'@'%';
 
 
+
 # ************************************************************
 # Sequel Pro SQL dump
 # Versión 4541
@@ -24,7 +25,7 @@ ON `Acme-Overflow`.* TO 'acme-manager'@'%';
 #
 # Host: 127.0.0.1 (MySQL 5.5.53)
 # Base de datos: Acme-Overflow
-# Tiempo de Generación: 2017-05-28 11:41:17 +0000
+# Tiempo de Generación: 2017-05-29 10:21:39 +0000
 # ************************************************************
 
 
@@ -568,18 +569,21 @@ CREATE TABLE `LearningMaterial` (
   `attachmentsURLs` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `module_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_faeslv8gwuq2wuhcoo84rm4yu` (`module_id`),
+  CONSTRAINT `FK_faeslv8gwuq2wuhcoo84rm4yu` FOREIGN KEY (`module_id`) REFERENCES `Module` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `LearningMaterial` WRITE;
 /*!40000 ALTER TABLE `LearningMaterial` DISABLE KEYS */;
 
-INSERT INTO `LearningMaterial` (`id`, `version`, `attachmentsURLs`, `title`, `type`)
+INSERT INTO `LearningMaterial` (`id`, `version`, `attachmentsURLs`, `title`, `type`, `module_id`)
 VALUES
-	(277,0,'http://wwww.perri.com/pictures/pic4.png','libro4',1),
-	(298,0,'http://wwww.perri.com/pictures/pic1.png','libro',1),
-	(310,0,'http://wwww.perri.com/pictures/pic3.png','libro3',1),
-	(311,0,'http://wwww.perri.com/pictures/pic2.png','libro',2);
+	(277,0,'http://wwww.perri.com/pictures/pic4.png','libro4',1,NULL),
+	(298,0,'http://wwww.perri.com/pictures/pic1.png','libro',1,297),
+	(310,0,'http://wwww.perri.com/pictures/pic3.png','libro3',1,NULL),
+	(311,0,'http://wwww.perri.com/pictures/pic2.png','libro',2,NULL);
 
 /*!40000 ALTER TABLE `LearningMaterial` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -688,34 +692,6 @@ VALUES
 	(309,0,'module2','titulo del modulo 2',NULL);
 
 /*!40000 ALTER TABLE `Module` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Volcado de tabla Module_LearningMaterial
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `Module_LearningMaterial`;
-
-CREATE TABLE `Module_LearningMaterial` (
-  `Module_id` int(11) NOT NULL,
-  `learningMaterials_id` int(11) NOT NULL,
-  UNIQUE KEY `UK_q7hc6b80my73a3160vemuo3ec` (`learningMaterials_id`),
-  KEY `FK_jhx3qfwp80nkkbbubvojcgluh` (`Module_id`),
-  CONSTRAINT `FK_jhx3qfwp80nkkbbubvojcgluh` FOREIGN KEY (`Module_id`) REFERENCES `Module` (`id`),
-  CONSTRAINT `FK_q7hc6b80my73a3160vemuo3ec` FOREIGN KEY (`learningMaterials_id`) REFERENCES `LearningMaterial` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-LOCK TABLES `Module_LearningMaterial` WRITE;
-/*!40000 ALTER TABLE `Module_LearningMaterial` DISABLE KEYS */;
-
-INSERT INTO `Module_LearningMaterial` (`Module_id`, `learningMaterials_id`)
-VALUES
-	(276,277),
-	(297,298),
-	(309,310),
-	(309,311);
-
-/*!40000 ALTER TABLE `Module_LearningMaterial` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

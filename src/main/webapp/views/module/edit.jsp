@@ -17,22 +17,20 @@
     <form:hidden path="id" />
     <form:hidden path="version" />
     <form:hidden path="learningMaterials" />
+    <form:hidden path="webinar" />
+
 
 
     <acme:textbox path="title" code="module.title"/>
     <br />
-    <acme:textbox path="description" code="module.title"/>
+    <acme:textbox path="description" code="module.description"/>
     <br />
 
     <!---------------------------- BOTONES -------------------------->
 
     <acme:submit name="save" code="general.save"/>
 
-    <jstl:if test="\$\{module.id != 0}">
-        <input type="submit" name="delete"
-               value="<spring:message code="general.delete" />"
-               onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
-    </jstl:if>
+
     <acme:cancel url="module/list.do" code="general.cancel"/>
 
 

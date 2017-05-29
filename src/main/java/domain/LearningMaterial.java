@@ -4,9 +4,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -19,6 +17,7 @@ public class LearningMaterial extends DomainEntity {
     private String title;
     private String attachmentsURLs;
     private LearningMaterialType type;
+    private Module module;
 
 
     @NotBlank
@@ -49,5 +48,14 @@ public class LearningMaterial extends DomainEntity {
 
     public void setType(LearningMaterialType type) {
         this.type = type;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
     }
 }

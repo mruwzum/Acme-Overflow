@@ -62,12 +62,57 @@
 <h3><jstl:out value="${categories1}"/></h3>
 <jstl:out value="${categories}"/>
 <br/>
+
+
+    <jstl:if test="${my}">
+
+        <a class="button" href="module/create.do?webinarId=${webinarId}"> <spring:message
+                code="webinar.createModule"/>
+        </a>
+
+
+    </jstl:if>
+
 </div>
     <div id="content">
 
         <h2 class="highlighted"><jstl:out value="${name}"/></h2>
 
         <iframe width="850" height="500" src="${url}" frameborder="0" allowfullscreen></iframe>
+
+        <spring:message code="general.modules" var="register11"/>
+        <h2 class="highlighted"><jstl:out value="${register11}"/></h2>
+
+        <display:table pagesize="5" class="displaytag" keepStatus="true"
+                       name="modules" requestURI="${requestURI}" id="row">
+
+
+            <spring:message code="module.title" var="title" />
+            <display:column property="title" title="${title}" sortable="true" />
+            <spring:message code="module.description" var="description" />
+            <display:column property="description" title="${description}" sortable="true" />
+
+        <display:column>
+            <a href="module/view.do?moduleId=${row.id}"> <spring:message
+                    code="general.view"/>
+            </a>
+
+            </display:column>
+
+            <jstl:if test="${my}">
+
+            <display:column>
+                <a href="module/delete.do?moduleId=${row.id}"> <spring:message
+                        code="general.delete"/>
+                </a>
+
+            </display:column>
+            </jstl:if>
+
+
+        </display:table>
+
+
 
 <spring:message code="general.comments" var="register11"/>
 <h2 class="highlighted"><jstl:out value="${register11}"/></h2>
@@ -97,26 +142,6 @@
         </security:authorize>
 
 
-<%--<display:table pagesize="5" class="displaytag" keepStatus="true"--%>
-               <%--name="comments" requestURI="${requestURI}" id="row">--%>
-    <%--<!-- Attributes -->--%>
-    <%--<security:authorize access="hasAnyRole('MODERATOR')">--%>
-        <%--<display:column>--%>
-            <%--<a href="comment/edit.do?commentId=${row.id}"> <spring:message--%>
-                    <%--code="general.edit"/>--%>
-            <%--</a>--%>
-        <%--</display:column>--%>
-    <%--</security:authorize>--%>
-
-    <%--<spring:message code="comment.title" var="title"/>--%>
-    <%--<display:column property="title" title="${title}" sortable="true"/>--%>
-    <%--<spring:message code="comment.text" var="text"/>--%>
-    <%--<display:column property="text" title="${text}" sortable="true"/>--%>
-    <%--<spring:message code="comment.creationDate" var="creationDate"/>--%>
-    <%--<display:column property="creationDate" title="${creationDate}" sortable="true"/>--%>
-    <%--<spring:message code="comment.owner" var="owner"/>--%>
-    <%--<display:column property="owner" title="${owner}" sortable="true"/>--%>
-<%--</display:table>--%>
 
 <spring:message code="general.registeredUsers" var="register112"/>
 <h2 class="highlighted"><jstl:out value="${register112}"/></h2>
@@ -147,39 +172,7 @@
 </display:table>
 
 
-                    <%--<security:authorize access="hasRole('USER')">--%>
 
-
-                    <%--&lt;%&ndash;<jstl:if test="${not reg}">&ndash;%&gt;--%>
-
-                    <%--<a class="button2" href="/evaluationQuestion/write.do?webinarId=${webinarId}"> <spring:message--%>
-                    <%--code="webinar.evaluation"/>--%>
-                    <%--</a>--%>
-
-
-                    <%--&lt;%&ndash;</jstl:if>&ndash;%&gt;--%>
-
-
-                    <%--</security:authorize>--%>
-
-                    <display:table pagesize="5" class="displaytag" keepStatus="true"
-                                   name="questions" requestURI="${requestURI}" id="row">
-
-
-                    <!-- Attributes -->
-
-                    <security:authorize access="hasRole('USER')">
-                    <display:column>
-                    <a href="evaluationQuestion/write.do?evaluationQuestionId=${row.id}"> <spring:message
-                            code="general.answer"/>
-                    </a>
-                    </display:column>
-                    </security:authorize>
-
-                        <spring:message code="evaluationq.title" var="title"/>
-                        <display:column property="title" title="${title}" sortable="true"/>
-
-                    </display:table>
 
 
     </div>

@@ -2,6 +2,7 @@ package controllers;
 
 
 import domain.LearningMaterial;
+import domain.Module;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.LearningMaterialService;
+import services.ModuleService;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -23,6 +25,8 @@ public class LearningMaterialController extends AbstractController {
 
     @Autowired
     private LearningMaterialService learningMaterialService;
+    @Autowired
+    private ModuleService moduleService;
 
 
     //Constructors----------------------------------------------
@@ -43,7 +47,7 @@ public class LearningMaterialController extends AbstractController {
     protected static ModelAndView createEditModelAndView(LearningMaterial learningMaterial, String message) {
         ModelAndView result;
 
-        result = new ModelAndView("learningMaterial/edit");
+        result = new ModelAndView("learning-material/edit");
         result.addObject("learningMaterial", learningMaterial);
         result.addObject("message", message);
 
@@ -71,11 +75,14 @@ public class LearningMaterialController extends AbstractController {
 
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create() {
+    public ModelAndView create(@RequestParam int moduleId) {
 
         ModelAndView result;
 
+        Module module = moduleService.findOne(moduleId);
+
         LearningMaterial learningMaterial = learningMaterialService.create();
+        learningMaterial.setModule(module);
         result = createEditModelAndView(learningMaterial);
 
         return result;
@@ -107,7 +114,7 @@ public class LearningMaterialController extends AbstractController {
         } else {
             try {
                 learningMaterialService.save(learningMaterial);
-                result = new ModelAndView("redirect:list.do");
+                result = new ModelAndView("administrator/action-1");
             } catch (Throwable oops) {
                 result = createEditModelAndView(learningMaterial, "learningMaterial.commit.error");
             }
@@ -134,8 +141,9 @@ public class LearningMaterialController extends AbstractController {
         ModelAndView result;
         try {
             LearningMaterial learningMaterial = learningMaterialService.findOne(learningMaterialId);
+            learningMaterial.setModule(null);
             learningMaterialService.delete(learningMaterial);
-            result = new ModelAndView("redirect:list.do");
+            result = new ModelAndView("administrator/action-1");
         } catch (Throwable oops) {
             LearningMaterial learningMaterial = learningMaterialService.findOne(learningMaterialId);
             result = createEditModelAndView(learningMaterial, "learningMaterial.commit.error");

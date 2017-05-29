@@ -1079,6 +1079,7 @@
     <bean id="learningmaterial1" class="domain.LearningMaterial">
         <property name="title" value="libro"/>
         <property name="type" value="FILE"/>
+        <property name="module" ref="module1"/>
         <property name="attachmentsURLs" value="http://wwww.perri.com/pictures/pic1.png"/>
     </bean>
     <!-- LearningMaterial2 -->

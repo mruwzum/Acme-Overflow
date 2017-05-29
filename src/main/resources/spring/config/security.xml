@@ -152,6 +152,20 @@
 
 		<!--/Messages-->
 
+		<security:intercept-url pattern="/module/create.do" access="hasRole('TEACHER')"/>
+		<security:intercept-url pattern="/module/edit.do" access="hasRole('TEACHER')"/>
+		<security:intercept-url pattern="/module/view.do" access="permitAll"/>
+		<security:intercept-url pattern="/module/delete.do" access="hasRole('TEACHER')"/>
+
+
+
+		<security:intercept-url pattern="/learningMaterial/view.do" access="permitAll"/>
+		<security:intercept-url pattern="/learningMaterial/edit.do" access="hasRole('TEACHER')"/>
+		<security:intercept-url pattern="/learningMaterial/create.do" access="hasRole('TEACHER')"/>
+		<security:intercept-url pattern="/learningMaterial/delete.do" access="hasRole('TEACHER')"/>
+
+
+
 
 		<security:intercept-url pattern="/webinar/listMy.do" access="hasRole('TEACHER')"/>
 		<security:intercept-url pattern="/webinar/broadcastMessage.do" access="hasRole('TEACHER')"/>

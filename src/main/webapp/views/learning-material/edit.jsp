@@ -12,27 +12,32 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="learning-material/edit.do" modelAttribute="learningmaterial">
+<form:form action="learningMaterial/edit.do" modelAttribute="learningMaterial">
 
     <form:hidden path="id" />
     <form:hidden path="version" />
-    <form:hidden path="attachmentsURLs" />
+    <form:hidden path="module" />
+
 
 
     <acme:textbox path="title" code="learning-material.title"/>
     <br />
-    <acme:textbox path="type" code="learning-material.type"/>
+    <acme:textbox path="attachmentsURLs" code="learning-material.attachments"/>
+    <br />
+
+
+    <form:label path="type">
+        <spring:message code="learning-material.type"/>:
+    </form:label>
+    <form:select path="type" code="learning-material.type">
+        <form:options/>
+    </form:select>
     <br />
 
     <!---------------------------- BOTONES -------------------------->
 
     <acme:submit name="save" code="general.save"/>
 
-    <jstl:if test="\$\{learning-material.id != 0}">
-        <input type="submit" name="delete"
-               value="<spring:message code="general.delete" />"
-               onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
-    </jstl:if>
     <acme:cancel url="learning-material/list.do" code="general.cancel"/>
 
 

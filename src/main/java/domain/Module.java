@@ -40,7 +40,7 @@ public class Module extends DomainEntity {
         this.description = description;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "module")
     public Collection<LearningMaterial> getLearningMaterials() {
         return learningMaterials;
     }

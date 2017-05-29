@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import security.Authority;
 import services.*;
 
 import javax.validation.Valid;
@@ -262,9 +263,15 @@ public class WebinarController extends AbstractController {
             registered = true;
         }
 
-//      if(webinarService.myWebinars(teacherService.findByPrincipal()).contains(webinar)){
-//          my = true;
-//      }
+        Authority authority = new Authority();
+        authority.setAuthority("TEACHER");
+
+      if(actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
+
+          if (teacherService.findByPrincipal().getWebinars().contains(webinar)){
+              my = true;
+          }
+      }
 
 
         List<Evaluation> evaluations = new ArrayList<>(evaluationService.findAll());
@@ -291,8 +298,7 @@ public class WebinarController extends AbstractController {
         result.addObject("url", webinar.getURL());
         result.addObject("picture",webinar.getPicture());
         result.addObject("questions", evaluation.getEvaluationQuestions());
-//       result.addObject("my", my);
-//
+        result.addObject("my", my);
         result.addObject("requestURI", "webinar/view.do");
 
         return result;
