@@ -20,7 +20,7 @@ public class LearningMaterialService {
     // Constructors--------------------------------------------------------------------------------------
 
     @Autowired
-    private repositories.LearningMaterialRepository LearningMaterialRepository;
+    private repositories.LearningMaterialRepository learningMaterialRepository;
 
     // Managed repository--------------------------------------------------------------------------------
 
@@ -39,27 +39,27 @@ public class LearningMaterialService {
     }
 
     public Collection<LearningMaterial> findAll() {
-        Collection<LearningMaterial> res = LearningMaterialRepository.findAll();
+       Collection<LearningMaterial> res = learningMaterialRepository.findAll();
         Assert.notNull(res);
         return res;
     }
 
     public LearningMaterial findOne(int LearningMaterial) {
-        domain.LearningMaterial res = LearningMaterialRepository.findOne(LearningMaterial);
+       domain.LearningMaterial res = learningMaterialRepository.findOne(LearningMaterial);
         Assert.notNull(res);
         return res;
     }
 
     public LearningMaterial save(LearningMaterial a) {
         Assert.notNull(a);
-        LearningMaterial res = LearningMaterialRepository.save(a);
+       LearningMaterial res = learningMaterialRepository.save(a);
         return res;
     }
 
     public void delete(LearningMaterial a) {
         Assert.notNull(a);
         Assert.isTrue(a.getId() != 0);
-        LearningMaterialRepository.delete(a);
+       learningMaterialRepository.delete(a);
 
     }
 

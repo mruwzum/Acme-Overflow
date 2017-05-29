@@ -1081,7 +1081,159 @@ public class TeacherServiceTest extends AbstractTest {
       Assert.notNull(mezzage);
       unauthenticate();
    }
-   //TODO: (A1) An actor who is authenticated as user or teacher must be able to reply and forward any message.
+
+   //An actor who is authenticated as user or teacher must be able to reply and forward any message.
+   @Test
+   public void replyMessageUserOk() {
+      authenticate("user1");
+      User user = userService.findByPrincipal();
+      Folder inbox = actorService.folderByName(user, "Inbox");
+      Assert.notNull(inbox);
+      List<Mezzage> mezzages = new ArrayList<>(inbox.getMezzages());
+      Mezzage mezzage2 = mezzages.get(0);
+      Mezzage mezzage = mezzageService.create();
+      mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
+      mezzage.setSendDate(new Date(System.currentTimeMillis() - 100));
+      mezzage.setReceiverEmail(mezzage2.getSenderEmail());
+      mezzage.setSubject("test");
+      mezzage.setSubject("RE: " + mezzage2.getSubject());
+      mezzage.setBody("tezt");
+      actorService.textMessage(mezzage);
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void replyMessageUserNotOk() {
+      authenticate(null);
+      User user = userService.findByPrincipal();
+      Folder inbox = actorService.folderByName(user, "Inbox");
+      Assert.notNull(inbox);
+      List<Mezzage> mezzages = new ArrayList<>(inbox.getMezzages());
+      Mezzage mezzage2 = mezzages.get(0);
+      Mezzage mezzage = mezzageService.create();
+      mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
+      mezzage.setSendDate(new Date(System.currentTimeMillis() - 100));
+      mezzage.setReceiverEmail(mezzage2.getSenderEmail());
+      mezzage.setSubject("RE: " + mezzage2.getSubject());
+      actorService.textMessage(mezzage);
+      unauthenticate();
+   }
+
+   @Test
+   public void replyMessageTeacherOk() {
+      authenticate("teacher1");
+      Teacher user = teacherService.findByPrincipal();
+      Folder inbox = actorService.folderByName(user, "Inbox");
+      Assert.notNull(inbox);
+      List<Mezzage> mezzages = new ArrayList<>(inbox.getMezzages());
+      Mezzage mezzage2 = mezzages.get(0);
+      Mezzage mezzage = mezzageService.create();
+      mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
+      mezzage.setSendDate(new Date(System.currentTimeMillis() - 100));
+      mezzage.setReceiverEmail(mezzage2.getSenderEmail());
+      mezzage.setSubject("test");
+      mezzage.setSubject("RE: " + mezzage2.getSubject());
+      mezzage.setBody("tezt");
+      actorService.textMessage(mezzage);
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void replyMessageTeacherNotOk() {
+      authenticate(null);
+      Teacher user = teacherService.findByPrincipal();
+      Folder inbox = actorService.folderByName(user, "Inbox");
+      Assert.notNull(inbox);
+      List<Mezzage> mezzages = new ArrayList<>(inbox.getMezzages());
+      Mezzage mezzage2 = mezzages.get(0);
+      Mezzage mezzage = mezzageService.create();
+      mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
+      mezzage.setSendDate(new Date(System.currentTimeMillis() - 100));
+      mezzage.setReceiverEmail(mezzage2.getSenderEmail());
+      mezzage.setSubject("RE: " + mezzage2.getSubject());
+      actorService.textMessage(mezzage);
+      unauthenticate();
+   }
+
+   @Test
+   public void fwUserOk() {
+      authenticate("user1");
+      User user = userService.findByPrincipal();
+      Folder inbox = actorService.folderByName(user, "Inbox");
+      Assert.notNull(inbox);
+      List<Mezzage> mezzages = new ArrayList<>(inbox.getMezzages());
+      Mezzage mezzage2 = mezzages.get(0);
+      Mezzage mezzage = mezzageService.create();
+      mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
+      mezzage.setSendDate(new Date(System.currentTimeMillis() - 100));
+      mezzage.setSubject("FWD: " + mezzage2.getSubject());
+      mezzage.setBody(mezzage2.getBody());
+      mezzage.setReceiver(mezzage2.getReceiver());
+      mezzage.setReceiverEmail(mezzage2.getReceiverEmail());
+      actorService.textMessage(mezzage);
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void fwUserNotOk() {
+      authenticate(null);
+      User user = userService.findByPrincipal();
+      Folder inbox = actorService.folderByName(user, "Inbox");
+      Assert.notNull(inbox);
+      List<Mezzage> mezzages = new ArrayList<>(inbox.getMezzages());
+      Mezzage mezzage2 = mezzages.get(0);
+      Mezzage mezzage = mezzageService.create();
+      mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
+      mezzage.setSendDate(new Date(System.currentTimeMillis() - 100));
+      mezzage.setSubject("FWD: " + mezzage2.getSubject());
+      mezzage.setBody(mezzage2.getBody());
+      actorService.textMessage(mezzage);
+      unauthenticate();
+   }
+
+   @Test
+   public void fwTeacherOk() {
+      authenticate("teacher1");
+      Teacher user = teacherService.findByPrincipal();
+      Folder inbox = actorService.folderByName(user, "Inbox");
+      Assert.notNull(inbox);
+      List<Mezzage> mezzages = new ArrayList<>(inbox.getMezzages());
+      Mezzage mezzage2 = mezzages.get(0);
+      Mezzage mezzage = mezzageService.create();
+      mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
+      mezzage.setSendDate(new Date(System.currentTimeMillis() - 100));
+      mezzage.setSubject("FWD: " + mezzage2.getSubject());
+      mezzage.setBody(mezzage2.getBody());
+      mezzage.setReceiver(mezzage2.getReceiver());
+      mezzage.setReceiverEmail(mezzage2.getReceiverEmail());
+      actorService.textMessage(mezzage);
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void fwTeacherNotOk() {
+      authenticate(null);
+      Teacher user = teacherService.findByPrincipal();
+      Folder inbox = actorService.folderByName(user, "Inbox");
+      Assert.notNull(inbox);
+      List<Mezzage> mezzages = new ArrayList<>(inbox.getMezzages());
+      Mezzage mezzage2 = mezzages.get(0);
+      Mezzage mezzage = mezzageService.create();
+      mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
+      mezzage.setSendDate(new Date(System.currentTimeMillis() - 100));
+      mezzage.setSubject("FWD: " + mezzage2.getSubject());
+      mezzage.setBody(mezzage2.getBody());
+      actorService.textMessage(mezzage);
+      unauthenticate();
+   }
+
+
+
+
+
+
+
+
 
 
    //An actor who is authenticated as teacher, must be able to send a broadcast message to all the users assistants to a webinar.

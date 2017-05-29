@@ -1,9 +1,7 @@
 package services;
 
-import domain.Bill;
-import domain.Curricula;
-import domain.User;
-import domain.Webinar;
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import domain.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,10 +41,39 @@ public class WebinarServiceTest extends AbstractTest {
    private DutyService dutyService;
    @Autowired
    private BillService billService;
-
+   @Autowired
+   private LearningMaterialService learningMaterialService;
+   @Autowired
+   private ModuleService moduleService;
 
    @Before
    public void setUp() {
+      LearningMaterial learningMaterial = learningMaterialService.create();
+      learningMaterial.setAttachmentsURLs("http://www.video.mov");
+      learningMaterial.setTitle("title");
+      learningMaterial.setType(LearningMaterialType.VIDEO);
+      Module module = moduleService.create();
+      module.setDescription("des");
+      module.setTitle("title");
+      Collection<LearningMaterial> learningMaterials = new HashSet<>();
+      learningMaterials.add(learningMaterial);
+      module.setLearningMaterials(learningMaterials);
+      learningMaterial.setModule(module);
+      learningMaterialService.save(learningMaterial);
+
+
+      LearningMaterial learningMaterial2 = learningMaterialService.create();
+      learningMaterial2.setAttachmentsURLs("http://www.video.mov");
+      learningMaterial2.setTitle("title");
+      learningMaterial2.setType(LearningMaterialType.VIDEO);
+      Module module2 = moduleService.create();
+      module2.setDescription("des");
+      module2.setTitle("title");
+      Collection<LearningMaterial> learningMaterials2 = new HashSet<>();
+      learningMaterials2.add(learningMaterial2);
+      module2.setLearningMaterials(learningMaterials2);
+      learningMaterial2.setModule(module2);
+      learningMaterialService.save(learningMaterial2);
    }
 
 
@@ -135,9 +162,177 @@ public class WebinarServiceTest extends AbstractTest {
       unauthenticate();
    }
 
-   // TODO an actor authenticated as a user must be able to make a webinar evaluation once it has finished and the user has assisted to it.
+   // edit learning materials from a teacher positive and negative test cases
+
+   @Test
+   public void listLearningMaterials() {
+      authenticate("teacher1");
+      List<LearningMaterial> learningMaterials = new ArrayList<>(learningMaterialService.findAll());
+      Assert.notEmpty(learningMaterials);
+      unauthenticate();
+   }
+
+   @Test
+   public void createLearningMaterials() {
+      authenticate("teacher1");
+      LearningMaterial learningMaterial = learningMaterialService.create();
+      learningMaterial.setAttachmentsURLs("http://www.video.mov");
+      learningMaterial.setTitle("title");
+      learningMaterial.setType(LearningMaterialType.VIDEO);
+      Module module = moduleService.create();
+      module.setDescription("des");
+      module.setTitle("title");
+      Collection<LearningMaterial> learningMaterials = new HashSet<>();
+      learningMaterials.add(learningMaterial);
+      module.setLearningMaterials(learningMaterials);
+      learningMaterial.setModule(module);
+      learningMaterialService.save(learningMaterial);
+      unauthenticate();
+   }
+
+   @Test
+   public void editLearningMaterials() {
+      authenticate("teacher1");
+      List<LearningMaterial> learningMaterials = new ArrayList<>(learningMaterialService.findAll());
+      LearningMaterial learningMaterial = learningMaterials.get(0);
+      String name = learningMaterial.getTitle();
+      String nname = "fadfadfsdf";
+      learningMaterial.setTitle(nname);
+      learningMaterialService.save(learningMaterial);
+      org.junit.Assert.assertNotEquals(name, learningMaterial.getTitle());
+      unauthenticate();
+   }
+
+   @Test
+   public void deleteLearningMaterials() {
+      authenticate("teacher1");
+      List<LearningMaterial> learningMaterials = new ArrayList<>(learningMaterialService.findAll());
+      LearningMaterial learningMaterial = learningMaterials.get(0);
+      learningMaterialService.delete(learningMaterial);
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void listLearningMaterialsNotOk() {
+      authenticate("teacher1");
+      List<LearningMaterial> learningMaterials = new ArrayList<>();
+      Assert.notEmpty(learningMaterials);
+      unauthenticate();
+   }
+
+   @Test
+   public void createLearningMaterialsNotOk() {
+      authenticate("teacher1");
+      LearningMaterial learningMaterial = learningMaterialService.create();
+      Module module = moduleService.create();
+      Collection<LearningMaterial> learningMaterials = new HashSet<>();
+      learningMaterials.add(learningMaterial);
+      module.setLearningMaterials(learningMaterials);
+      learningMaterial.setModule(module);
+      learningMaterialService.save(learningMaterial);
+      unauthenticate();
+   }
+
+   @Test(expected = AssertionError.class)
+   public void editLearningMaterialsNotOk() {
+      authenticate("teacher1");
+      List<LearningMaterial> learningMaterials = new ArrayList<>(learningMaterialService.findAll());
+      LearningMaterial learningMaterial = learningMaterials.get(0);
+      String name = learningMaterial.getTitle();
+      String nname = "fadfadfsdf";
+      learningMaterialService.save(learningMaterial);
+      org.junit.Assert.assertNotEquals(name, learningMaterial.getTitle());
+      unauthenticate();
+   }
+
+   @Test(expected = IndexOutOfBoundsException.class)
+   public void deleteLearningMaterialsNotOk() {
+      authenticate("teacher1");
+      List<LearningMaterial> learningMaterials = new ArrayList<>(learningMaterialService.findAll());
+      LearningMaterial learningMaterial = learningMaterials.get(50000);
+      learningMaterialService.delete(learningMaterial);
+      unauthenticate();
+   }
 
 
+   // and authenticated teacher is able to edit modules positive and negative test cases
+
+   @Test
+   public void listModules() {
+      authenticate("teacher1");
+      List<Module> modules = new ArrayList<>(moduleService.findAll());
+      Assert.notEmpty(modules);
+      unauthenticate();
+   }
+
+   @Test
+   public void createModules() {
+      authenticate("teacher1");
+      Module module = moduleService.create();
+      module.setDescription("des");
+      module.setTitle("title");
+      moduleService.save(module);
+      unauthenticate();
+   }
+
+   @Test
+   public void editModules() {
+      authenticate("teacher1");
+      List<Module> modules = new ArrayList<>(moduleService.findAll());
+      Module module = modules.get(0);
+      String name = module.getTitle();
+      String nname = "fadfadfsdf";
+      module.setTitle(nname);
+      moduleService.save(module);
+      org.junit.Assert.assertNotEquals(name, module.getTitle());
+      unauthenticate();
+   }
+
+   @Test
+   public void deleteModules() {
+      authenticate("teacher1");
+      List<Module> modules = new ArrayList<>(moduleService.findAll());
+      Module module = modules.get(0);
+      moduleService.delete(module);
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void listModulesNotOk() {
+      authenticate("teacher1");
+      List<Module> modules = new ArrayList<>();
+      Assert.notEmpty(modules);
+      unauthenticate();
+   }
+
+   @Test(expected = IllegalArgumentException.class)
+   public void createModulesNotOk() {
+      authenticate(null);
+      Teacher t = teacherService.findByPrincipal();
+      Module module = moduleService.create();
+      moduleService.save(module);
+      unauthenticate();
+   }
+
+   @Test(expected = AssertionError.class)
+   public void editModulesNotOk() {
+      authenticate("teacher1");
+      List<Module> modules = new ArrayList<>(moduleService.findAll());
+      Module module = modules.get(0);
+      String name = module.getTitle();
+      moduleService.save(module);
+      org.junit.Assert.assertNotEquals(name, module.getTitle());
+      unauthenticate();
+   }
+
+   @Test(expected = IndexOutOfBoundsException.class)
+   public void deleteModulesNotOk() {
+      authenticate("teacher1");
+      List<Module> learningMaterials = new ArrayList<>(moduleService.findAll());
+      Module learningMaterial = learningMaterials.get(50000);
+      moduleService.delete(learningMaterial);
+      unauthenticate();
+   }
    // An authenticated user must be able to View the webinar in witch his/her is registered.
    @Test
    public void myRegisteredWebinarsOk() {
