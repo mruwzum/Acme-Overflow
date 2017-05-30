@@ -37,7 +37,6 @@
 			<li><a href="search/editCache.do"><spring:message code="master.page.changecache" /> </a></li>
 			<li><a href="administrator/editDuty.do"><spring:message code="master.page.changeDuty" /> </a></li>
 			<li><a href="admin/dashboard.do"><spring:message code="master.page.dashboard" /> </a></li>
-			<li><a href="evaluationQuestion/list.do"><spring:message code="master.page.evalution" /> </a></li>
             <li><a href="curricula/list.do"><spring:message code="master.curriculas.list"/> </a></li>
 
 
@@ -122,7 +121,7 @@
 
 			<%--****************************************AUTHENTICATED****************************************--%>
 
-			<security:authorize access="isAuthenticated()">
+            <security:authorize access="hasAnyRole('TEACHER','ADMIN','MODERATOR','USER')">
 		<li><a class="fNiv"><spring:message code="master.page.search"/></a>
 			<ul>
 				<li class="arrow"></li>
