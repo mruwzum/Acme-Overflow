@@ -104,12 +104,10 @@ public class UserService {
     public User findByPrincipal() {
         User result;
         UserAccount userAccount;
-
         userAccount = LoginService.getPrincipal();
         Assert.notNull(userAccount);
         result = findByUserAccount(userAccount);
         Assert.notNull(result);
-
         return result;
     }
 
@@ -142,22 +140,22 @@ public class UserService {
        Collection<Mezzage> sended = new HashSet<>();
         Collection<Folder> folders = new HashSet<>();
         Folder inbox = folderService.create();
-        inbox.setName("inbox");
+       inbox.setName("Inbox");
         inbox.setOwner(resu);
        Collection<Mezzage> innnn = new HashSet<>();
        inbox.setMezzages(innnn);
         Folder outbox = folderService.create();
-        outbox.setName("outbox");
+       outbox.setName("Outbox");
         outbox.setOwner(resu);
        Collection<Mezzage> ouuuu = new HashSet<>();
        outbox.setMezzages(ouuuu);
         Folder spambox = folderService.create();
-        spambox.setName("spambox");
+       spambox.setName("Spambox");
         spambox.setOwner(resu);
        Collection<Mezzage> spaaaam = new HashSet<>();
        spambox.setMezzages(spaaaam);
         Folder trashBox = folderService.create();
-        trashBox.setName("trashbox");
+       trashBox.setName("Trashbox");
         trashBox.setOwner(resu);
        Collection<Mezzage> trashhh = new HashSet<>();
        trashBox.setMezzages(trashhh);
@@ -172,7 +170,6 @@ public class UserService {
         resu.setFolders(folders);
        resu.setReceivedMezzages(received);
        resu.setSendedMezzages(sended);
-
         Collection<Answer> answers = new HashSet<>();
         Collection<Question> questions = new HashSet<>();
         Collection<Comment> comments = new HashSet<>();
@@ -196,43 +193,28 @@ public class UserService {
         UserAccount userAccount = userAccountService.save(res);
         teacher.setUserAccount(userAccount);
         Assert.notNull(teacher.getUserAccount().getAuthorities(), "authorities null al registrar");
-
        teacher.getCurricula().setApprobed(false);
-
         Teacher resu = teacherService.save(teacher);
-
-
-//        Curricula curricula = new Curricula();
-//        curricula.setExperienceSection(resu.getCurricula().getExperienceSection());
-//        curricula.setEducationSection(resu.getCurricula().getEducationSection());
-//        curricula.setHobbiesSection(resu.getCurricula().getHobbiesSection());
-//        curricula.setPhoto(resu.getCurricula().getPhoto());
-//        Collection<String> ref = new HashSet<>();
-//        curricula.setReferencias(ref);
-//        resu.setCurricula(curricula);
-//        curriculaService.save(curricula);
-
-
        Collection<Mezzage> received = new HashSet<>();
        Collection<Mezzage> sended = new HashSet<>();
         Collection<Folder> folders = new HashSet<>();
         Folder inbox = folderService.create();
-        inbox.setName("inbox");
+       inbox.setName("Inbox");
         inbox.setOwner(resu);
        Collection<Mezzage> innnn = new HashSet<>();
        inbox.setMezzages(innnn);
         Folder outbox = folderService.create();
-        outbox.setName("outbox");
+       outbox.setName("Outbox");
         outbox.setOwner(resu);
        Collection<Mezzage> ouuuu = new HashSet<>();
        outbox.setMezzages(ouuuu);
         Folder spambox = folderService.create();
-        spambox.setName("spambox");
+       spambox.setName("Spambox");
         spambox.setOwner(resu);
        Collection<Mezzage> spaaaam = new HashSet<>();
        spambox.setMezzages(spaaaam);
         Folder trashBox = folderService.create();
-        trashBox.setName("trashbox");
+       trashBox.setName("Trashbox");
         trashBox.setOwner(resu);
        Collection<Mezzage> trashhh = new HashSet<>();
        trashBox.setMezzages(trashhh);
