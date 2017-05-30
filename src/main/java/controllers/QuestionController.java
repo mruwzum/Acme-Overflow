@@ -110,7 +110,7 @@ public class QuestionController extends AbstractController {
 
         result = new ModelAndView("question/list");
         result.addObject("questions", questions);
-        result.addObject("requestURI", "question/list.do");
+       result.addObject("requestURI", "question/listAll.do");
 
         return result;
     }
@@ -124,7 +124,7 @@ public class QuestionController extends AbstractController {
 
         result = new ModelAndView("question/list");
        result.addObject("questions", questions);
-        result.addObject("requestURI", "question/list.do");
+       result.addObject("requestURI", "question/listPopular.do");
 
         return result;
     }
