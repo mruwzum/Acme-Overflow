@@ -52,8 +52,9 @@
         </a>
     </display:column>
     <display:column>
-        <a href="webinar/delete.do?webinarId=${row.id}"> <spring:message
-                code="general.delete"/>
+        <a href="webinar/delete.do?webinarId=${row.id}"
+           onclick="return confirm('<spring:message code="general.confirm.delete"/>')">
+            <spring:message code="general.delete"/>
         </a>
     </display:column>
     <display:column>

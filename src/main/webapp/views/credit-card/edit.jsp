@@ -39,11 +39,7 @@
 
     <acme:submit name="save" code="general.save"/>
 
-    <jstl:if test="\$\{credit-card.id != 0}">
-        <input type="submit" name="delete"
-               value="<spring:message code="general.delete" />"
-               onclick="return confirm('<spring:message code="general.confirm.delete" />')" />&nbsp;
-    </jstl:if>
+
     <acme:cancel url="credit-card/list.do" code="general.cancel"/>
 
 
