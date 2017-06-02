@@ -31,6 +31,6 @@
 
 
 <br>
-<a href="http://ourdisclaimer.com/?i=AcmeBnb Co.,Inc."><img src="http://ourdisclaimer.com/ourdisclaimer.gif"
-                                                            width="80" height="15"
-                                                            alt="Privacy policy / Política de privacidad"/></a>
+<%--<a href="http://ourdisclaimer.com/?i=AcmeOverflow.,Inc."><img src="http://ourdisclaimer.com/ourdisclaimer.gif"--%>
+<%--width="80" height="15"--%>
+<%--alt="Privacy policy / Política de privacidad"/></a>--%>

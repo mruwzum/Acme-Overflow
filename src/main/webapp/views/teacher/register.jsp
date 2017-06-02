@@ -86,6 +86,17 @@
     <form:input path="curricula.photo"/>
     <form:errors cssClass="error" path="curricula.photo"/>
     <br/>
+    <br/>
+
+    <spring:message code="terms" var="terms11"/>
+    <h3><jstl:out value="${terms11}"/></h3>
+
+    <a href="http://ourdisclaimer.com/?i=AcmeOverflow.,Inc."><img src="http://ourdisclaimer.com/ourdisclaimer.gif"
+                                                                  width="80" height="15"
+                                                                  alt="Privacy policy / Política de privacidad"/></a>
+
+    <br/>
+    <br/>
     <!---------------------------- BOTONES -------------------------->
     <input class="button2" type="submit" name="save"
            value="<spring:message code="user.save" />"/>
