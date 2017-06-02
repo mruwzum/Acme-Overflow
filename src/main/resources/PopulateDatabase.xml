@@ -1000,6 +1000,7 @@
     <bean id="module1" class="domain.Module">
         <property name="description" value="module1"/>
         <property name="title" value="titulo del modulo 1"/>
+        <property name="webinar" ref="webinar3"/>
         <property name="learningMaterials">
             <list>
                 <ref bean="learningmaterial1"/>
@@ -1009,6 +1010,7 @@
     <bean id="module2" class="domain.Module">
         <property name="description" value="module2"/>
         <property name="title" value="titulo del modulo 2"/>
+        <property name="webinar" ref="webinar2"/>
         <property name="learningMaterials">
             <list>
                 <ref bean="learningmaterial3"/>
@@ -1019,6 +1021,7 @@
     <bean id="module3" class="domain.Module">
         <property name="description" value="module3"/>
         <property name="title" value="titulo del modulo 3"/>
+        <property name="webinar" ref="webinar1"/>
         <property name="learningMaterials">
             <list>
                 <ref bean="learningmaterial4"/>
@@ -1086,12 +1089,14 @@
     <bean id="learningmaterial2" class="domain.LearningMaterial">
         <property name="title" value="libro"/>
         <property name="type" value="URL"/>
+        <property name="module" ref="module2"/>
         <property name="attachmentsURLs" value="http://wwww.perri.com/pictures/pic2.png"/>
     </bean>
     <!-- LearningMaterial3 -->
     <bean id="learningmaterial3" class="domain.LearningMaterial">
         <property name="title" value="libro3"/>
         <property name="type" value="FILE"/>
+        <property name="module" ref="module2"/>
         <property name="attachmentsURLs" value="http://wwww.perri.com/pictures/pic3.png"/>
 
     </bean>
@@ -1099,6 +1104,7 @@
     <bean id="learningmaterial4" class="domain.LearningMaterial">
         <property name="title" value="libro4"/>
         <property name="type" value="FILE"/>
+        <property name="module" ref="module3"/>
         <property name="attachmentsURLs" value="http://wwww.perri.com/pictures/pic4.png">
 
         </property>
