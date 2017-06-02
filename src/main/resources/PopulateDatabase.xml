@@ -1115,10 +1115,10 @@
     <!-- Question -->
     <bean id="question1" class="domain.Question">
         <property name="title" value="question1"/>
+        <property name="banned" value="false"/>
         <property name="summary" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
         <property name="createdDate" value="2017/04/22"/>
         <property name="owner" ref="user1"/>
-        <property name="banned" value="false"/>
         <property name="search" ref="search1"/>
         <property name="pictures">
             <array value-type="java.lang.String">

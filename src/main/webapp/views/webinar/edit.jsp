@@ -29,6 +29,8 @@
     <acme:textarea path="description" code="webinar.description"/>
 
     <acme:textbox path="startDate" code="webinar.startDate"/>
+
+
     <br />
     <acme:textbox path="price" code="webinar.price"/>
     <br />

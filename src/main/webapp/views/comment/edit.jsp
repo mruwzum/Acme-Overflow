@@ -24,7 +24,7 @@
 
     <acme:textbox path="title" code="comment.title"/>
     <br />
-    <acme:textbox path="text" code="comment.text"/>
+    <acme:textarea path="text" code="comment.text"/>
     <br />
 
 
