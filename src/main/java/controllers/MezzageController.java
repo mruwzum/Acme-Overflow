@@ -116,10 +116,10 @@ public class MezzageController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid Mezzage mezzage, BindingResult binding) {
         ModelAndView result;
-//        if (binding.hasErrors()) {
-//            result = createEditModelAndView(mezzage);
-//        } else {
-//            try {
+       if (!binding.hasErrors()) {
+          result = createEditModelAndView(mezzage);
+       } else {
+          try {
 
         mezzage.setSender(actorService.findByPrincipal());
         mezzage.setSenderEmail(actorService.findByPrincipal().getEmail());
@@ -127,13 +127,13 @@ public class MezzageController extends AbstractController {
        actorService.textMessage(mezzage);
 
        result = new ModelAndView("administrator/action-1");
-//            } catch (Throwable oops) {
-//                result = createEditModelAndView(mezzage, "general.commit.error");
-//                Collection<Actor> users = actorService.findAll();
-//                result.addObject("users", users);
-//
-//            }
-//        }
+          } catch (Throwable oops) {
+             result = createEditModelAndView(mezzage, "general.commit.error");
+             Collection<Actor> users = actorService.findAll();
+             result.addObject("users", users);
+
+          }
+       }
         return result;
     }
 
