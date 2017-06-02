@@ -1,5 +1,6 @@
 package services;
 
+import domain.Actor;
 import domain.Answer;
 import domain.Question;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -163,6 +164,12 @@ public class QuestionService {
    public int setQuestionNull(Question c){
 
         return questionRepository.setQuestionNull(c);
+   }
+
+
+   public Collection<Answer> myAnswerOfThisQuestion(Question q, Actor actor){
+
+       return questionRepository.myAnswerOfThisQuestion(q,actor);
    }
 }
 

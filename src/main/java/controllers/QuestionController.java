@@ -137,6 +137,7 @@ public class QuestionController extends AbstractController {
         Question question = questionService.create();
 
         Collection<Category> categories = categoryService.findAll();
+        question.setCreatedDate(new Date(System.currentTimeMillis() - 1000));
 
         result = createEditModelAndView(question);
         result.addObject("categories", categories);
@@ -169,7 +170,7 @@ public class QuestionController extends AbstractController {
         } else {
             try {
                 question.setOwner(userService.findByPrincipal());
-                question.setCreatedDate(new Date(System.currentTimeMillis() - 1000));
+                //question.setCreatedDate(new Date(System.currentTimeMillis() - 1000));
                 questionService.save(question);
                 result = new ModelAndView("redirect:list.do");
             } catch (Throwable oops) {
@@ -202,7 +203,7 @@ public class QuestionController extends AbstractController {
 
         ModelAndView result;
         Question question = questionService.findOne(questionId);
-
+        Collection<Answer> myAnswers = questionService.myAnswerOfThisQuestion(question, actorService.findByPrincipal());
 
         result = new ModelAndView("question/view");
         result.addObject("title", question.getTitle());
@@ -215,7 +216,6 @@ public class QuestionController extends AbstractController {
         Authority authority = new Authority();
         authority.setAuthority("MODERATOR");
 
-
         if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)) {
 
            Set<Answer> answers1 = new HashSet<>();
@@ -224,7 +224,12 @@ public class QuestionController extends AbstractController {
         } else {
            Set<Answer> answers = new HashSet<>();
            answers.addAll(questionService.notBannedAnswer(question));
-            result.addObject("answers", answers);
+
+           answers.removeAll(myAnswers);
+           result.addObject("answers", answers);
+           result.addObject("myAnswers", myAnswers);
+
+
         }
 
         result.addObject("questionId", question.getId());
@@ -241,6 +246,8 @@ public class QuestionController extends AbstractController {
         Question question = questionService.findOne(questionId);
 
         Set<Answer> answers = new HashSet<>(questionService.notBannedAnswer(question));
+
+
 
         result = new ModelAndView("question/view");
         result.addObject("title", question.getTitle());

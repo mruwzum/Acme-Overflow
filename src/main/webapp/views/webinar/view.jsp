@@ -83,6 +83,8 @@
         <spring:message code="general.modules" var="register11"/>
         <h2 class="highlighted"><jstl:out value="${register11}"/></h2>
 
+<jstl:if test="${reg}">
+
         <display:table pagesize="5" class="displaytag" keepStatus="true"
                        name="modules" requestURI="${requestURI}" id="row">
 
@@ -112,6 +114,7 @@
 
         </display:table>
 
+</jstl:if>
 
 
 <spring:message code="general.comments" var="register11"/>
@@ -133,6 +136,7 @@
             <hr>
 
         </c:forEach>
+<jstl:if test="${reg}">
 
         <security:authorize access="hasAnyRole('USER','TEACHER')">
             <a class="button" href="comment/create.do?webinarId=${webinarId}"> <spring:message
@@ -140,7 +144,7 @@
             </a>
 
         </security:authorize>
-
+</jstl:if>
 
 
 <spring:message code="general.registeredUsers" var="register112"/>

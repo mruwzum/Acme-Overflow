@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by daviddelatorre on 15/5/17.
@@ -41,5 +43,9 @@ public interface WebinarRepository extends JpaRepository<Webinar, Integer> {
     @Modifying(clearAutomatically = true)
     @Query("update Bill set webinar =  null where webinar=?1")
     int setBillsNull(Webinar q);
+
+
+    @Query("select c from Webinar c where c.startDate between ?1 and ?2")
+    List<Webinar> listIncoming(Date now, Date next);
 
 }

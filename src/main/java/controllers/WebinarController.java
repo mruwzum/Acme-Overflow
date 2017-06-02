@@ -221,7 +221,6 @@ public class WebinarController extends AbstractController {
              webinarService.save(webinar);
 
              result = new ModelAndView("redirect:listMy.do");
-        //TODO: no se guarda por los learning
 
           } catch (Throwable oops) {
              result = createEditModelAndView(webinar, "webinar.commit.error");
@@ -270,6 +269,7 @@ public class WebinarController extends AbstractController {
 
           if (teacherService.findByPrincipal().getWebinars().contains(webinar)){
               my = true;
+              registered=true;
           }
       }
 

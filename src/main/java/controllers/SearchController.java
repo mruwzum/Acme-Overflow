@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import security.Authority;
 import services.ActorService;
 import services.CategoryService;
 
@@ -190,20 +191,19 @@ public class SearchController extends AbstractController {
     public ModelAndView changeSearchCache(@Valid SearchCache searchCache) {
 
         ModelAndView res;
-//
-//        Authority authority = new Authority();
-//        authority.setAuthority("ADMIN");
-//
-//        if(otherService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
 
-        //TODO comprobar identidad de administrador antes de cambiar.
+        Authority authority = new Authority();
+        authority.setAuthority("ADMIN");
+
+        if(actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
+
         searchCacheService.save(searchCache);
         res = new ModelAndView("administrator/action-1");
 
-//        }else{
-//            res =  new ModelAndView("/welcome/index");
-//
-//        }
+        }else{
+            res =  new ModelAndView("/welcome/index");
+
+        }
 
         return res;
 

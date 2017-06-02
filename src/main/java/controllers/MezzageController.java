@@ -236,7 +236,6 @@ public class MezzageController extends AbstractController {
         mezzage.setSendDate(new Date(System.currentTimeMillis() - 100));
 
 
-        //TODO cuando broadcasteas el message, no se asigna bien a los webimensajes en el otro controller
         mezzageService.save(mezzage);
 
 

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import security.Authority;
+import services.ActorService;
 import services.AdministratorService;
 import services.DutyService;
 
@@ -31,6 +33,8 @@ public class AdministratorController extends AbstractController {
     private AdministratorService administratorService;
     @Autowired
     private DutyService dutyService;
+    @Autowired
+    private ActorService actorService;
 
     //Constructors----------------------------------------------
 
@@ -151,20 +155,19 @@ public class AdministratorController extends AbstractController {
     public ModelAndView changeDuty(@Valid Duty searchCache) {
 
         ModelAndView res;
-//
-//        Authority authority = new Authority();
-//        authority.setAuthority("ADMIN");
-//
-//        if(otherService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
 
-        //TODO comprobar identidad de administrador antes de cambiar.
+        Authority authority = new Authority();
+        authority.setAuthority("ADMIN");
+
+        if(actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
+
         dutyService.save(searchCache);
-        res = new ModelAndView("administrator/action-1");
+        res = new ModelAndView("user/success");
 
-//        }else{
-//            res =  new ModelAndView("/welcome/index");
-//
-//        }
+        }else{
+            res =  new ModelAndView("/welcome/index");
+
+        }
 
         return res;
 

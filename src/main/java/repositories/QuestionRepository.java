@@ -1,5 +1,6 @@
 package repositories;
 
+import domain.Actor;
 import domain.Answer;
 import domain.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,4 +23,7 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     @Query("update Answer set question = null where question=?1")
     int setQuestionNull(Question q);
 
+
+    @Query("select a from Question q join q.answers a where q=?1 and a.owner=?2")
+    Collection<Answer> myAnswerOfThisQuestion(Question q, Actor actor);
 }

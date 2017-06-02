@@ -146,10 +146,10 @@ public class AnswerController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid Answer answer, BindingResult binding) {
         ModelAndView result;
-//        if (binding.hasErrors()) {
-//            result = createEditModelAndView(answer);
-//        } else {
-//            try {
+        if (binding.hasErrors()) {
+            result = createEditModelAndView(answer);
+        } else {
+            try {
         //answer.setOwner(otherService.findByPrincipal());
 
         Authority authority = new Authority();
@@ -168,11 +168,11 @@ public class AnswerController extends AbstractController {
         }
 
 
-        result = new ModelAndView("welcome/index");
-//            } catch (Throwable oops) {
-//                result = createEditModelAndView(answer, "general.commit.error");
-//            }
-//        }
+        result = new ModelAndView("user/success");
+            } catch (Throwable oops) {
+                result = createEditModelAndView(answer, "general.commit.error");
+            }
+        }
         return result;
     }
 
@@ -186,6 +186,20 @@ public class AnswerController extends AbstractController {
             result = createEditModelAndView(answer, "general.commit.error");
         }
 
+        return result;
+    }
+
+
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public ModelAndView delete(@RequestParam int answerId) {
+        ModelAndView result;
+
+
+        Answer answer = answerService.findOne(answerId);
+        answer.setOwner(null);
+        answer.setQuestion(null);
+        answerService.delete(answer);
+        result = new ModelAndView("user/success");
         return result;
     }
 

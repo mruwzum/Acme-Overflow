@@ -30,8 +30,6 @@ public class LearningMaterial extends DomainEntity {
         this.title = title;
     }
 
-    //TODO poner esto como clase aparte?
-
     @NotNull
     @URL
     public String getAttachmentsURLs() {

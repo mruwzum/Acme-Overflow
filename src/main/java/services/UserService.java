@@ -285,6 +285,17 @@ public class UserService {
 
 
    }
+
+
+   public Collection<User> userNotBanned(){
+
+        return userRepository.usersNotBanned();
+   }
+
+    public Collection<User> userNotModerator(){
+
+        return userRepository.usersNotModerator();
+    }
 }
 
 

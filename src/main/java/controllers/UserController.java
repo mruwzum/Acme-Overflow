@@ -88,19 +88,13 @@ public class UserController extends AbstractController {
 
         Collection<User> res = new HashSet<>();
        users = userService.findAll();
-       Authority authority = new Authority();
-       authority.setAuthority("MODERATOR");
 
 
-        for (User user : users) {
-           if (!user.isBanned() && !user.getUserAccount().getAuthorities().contains(authority)) {
-                res.add(user);
-            }
-        }
+       res.addAll(userService.userNotBanned());
 
-       //TODO ponerlo en el service y quitar el for
+
         result = new ModelAndView("user/list");
-        result.addObject("users", users);
+        result.addObject("users", res);
         result.addObject("requestURI", "user/list.do");
 
         return result;
@@ -113,16 +107,12 @@ public class UserController extends AbstractController {
         Collection<User> users;
         users = userService.findAll();
         Collection<User> res = new HashSet<>();
-        Authority authority = new Authority();
-        authority.setAuthority("MODERATOR");
-        for (User u : users) {
-            if (! u.getUserAccount().getAuthorities().contains(authority)) {
-                res.add(u);
-            }
-        }
-       //TODO ponerlo en el service y quitar el for
+        res.addAll(userService.userNotModerator());
+
+        users.removeAll(res);
+
         result = new ModelAndView("user/list");
-        result.addObject("users", res);
+        result.addObject("users", users);
         result.addObject("requestURI", "user/list.do");
 
         return result;

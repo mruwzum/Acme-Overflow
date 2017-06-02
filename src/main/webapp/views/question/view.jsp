@@ -147,8 +147,6 @@
 
 
 
-
-
         <security:authorize access="hasAnyRole('USER','TEACHER')">
             <div>
                 <H5>
@@ -159,7 +157,33 @@
             </div>
         </security:authorize>
 
+
+
+            <c:forEach items="${myAnswers}" var="answer">
+
+
+                <div class="highlighted3">
+
+                    <h3 class="highlighted2">${answer.title}</h3>
+                        ${answer.description}
+                        ${answer.likes}
+                    <br>
+
+                    <a class="button2" href="/answer/edit.do?answerId=${answer.id}"> <spring:message
+                            code="answer.edit"/>
+                    </a>
+
+                    <a class="button2" href="/answer/delete.do?answerId=${answer.id}"> <spring:message
+                            code="general.delete"/>
+                    </a>
+
+
+                </div>
+
+            </c:forEach>
+
     </div>
+
 
 
 
