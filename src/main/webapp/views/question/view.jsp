@@ -22,25 +22,26 @@
 
     <div id="sidebar">
 
-        <spring:message code="question.related" var="rel"/>
-        <h1><jstl:out value="${rel}"/></h1>
+        <security:authorize access="isAuthenticated()">
 
-        <c:forEach items="${webinars}" var="webinar">
+            <spring:message code="question.related" var="rel"/>
+            <h1><jstl:out value="${rel}"/></h1>
 
-            <img src="${webinar.picture}" width="190px" height="100%" alt="webinar_picture"/>
-            <br>
+            <c:forEach items="${webinars}" var="webinar">
 
-
-            <a href="/webinar/view.do?webinarId=${webinar.id}"><h3><jstl:out value="${webinar.name}"/></h3></a>
-
+                <img src="${webinar.picture}" width="190px" height="100%" alt="webinar_picture"/>
+                <br>
 
 
-
-            <jstl:out value="${webinar.description}"/>
-            <br>
+                <a href="/webinar/view.do?webinarId=${webinar.id}"><h3><jstl:out value="${webinar.name}"/></h3></a>
 
 
-        </c:forEach>
+                <jstl:out value="${webinar.description}"/>
+                <br>
+
+
+            </c:forEach>
+        </security:authorize>
 
     </div>
 

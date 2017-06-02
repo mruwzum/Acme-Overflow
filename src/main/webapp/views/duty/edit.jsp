@@ -18,6 +18,8 @@
     <form:hidden path="version"/>
 
     <acme:textbox path="dutyValue" code="searchcache.value"/>
+    (%)
+    <br/>
     <br/>
 
     <!---------------------------- BOTONES -------------------------->

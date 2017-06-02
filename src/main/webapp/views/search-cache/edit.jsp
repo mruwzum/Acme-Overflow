@@ -17,9 +17,9 @@
     <form:hidden path="id" />
     <form:hidden path="version" />
 
-    <acme:textbox path="cacheValue" code="searchcache.value"/>
+    <acme:textbox path="cacheValue" code="searchcache.value"/> (número de búsquedas/number of searches)
     <br />
-
+    <br/>
     <!---------------------------- BOTONES -------------------------->
 
     <acme:submit name="save" code="general.save"/>
