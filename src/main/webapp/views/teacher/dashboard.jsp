@@ -16,25 +16,25 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="display" uri="http://displaytag.sf.net" %>
 <br>
-<spring:message code="dashboard.q1" var="q1b"/>
+<spring:message code="dashboard.qq1" var="q1b"/>
 <jstl:out value="${q1b}"/>:
-<jstl:out value="${q1}"/>
+<jstl:out value="${qq1}"/>
 <br/>
 <br>
-<spring:message code="dashboard.q2" var="q2b"/>
+<spring:message code="dashboard.qq2" var="q2b"/>
 <jstl:out value="${q2b}"/>:
-<jstl:out value="${q2}"/>
+<jstl:out value="${qq2}"/>
 <br>
 <br/>
-<spring:message code="dashboard.q3" var="q3b"/>
+<spring:message code="dashboard.qq3" var="q3b"/>
 <jstl:out value="${q3b}"/>:
-<jstl:out value="${q3}"/>
+<jstl:out value="${qq3}"/>
 <br>
 <br/>
-<spring:message code="dashboard.q4" var="q4b"/>
+<spring:message code="dashboard.qq4" var="q4b"/>
 <jstl:out value="${q4b}"/>:
 <display:table pagesize="10" class="displaytag" keepStatus="true"
-               name="q4" requestURI="${requestURI}" id="row">
+               name="qq4" requestURI="${requestURI}" id="row">
 
 
     <spring:message code="webinar.name" var="title" />
@@ -45,10 +45,10 @@
 
 </display:table><br>
 <br/>
-<spring:message code="dashboard.q5" var="q5b"/>
+<spring:message code="dashboard.qq5" var="q5b"/>
 <jstl:out value="${q5b}"/>:
 <display:table pagesize="15" class="displaytag" keepStatus="true"
-               name="q5" requestURI="${requestURI}" id="row">
+               name="qq5" requestURI="${requestURI}" id="row">
 
 
     <spring:message code="user.name" var="name"/>

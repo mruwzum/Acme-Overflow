@@ -95,7 +95,7 @@ public class TeacherService {
 
         Double res = total*duty/100;
 
-        return res.toString()+"euros";
+       return res.toString() + " euros";
     }
 
     public Teacher findByUserAccount(UserAccount userAccount) {

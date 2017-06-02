@@ -105,20 +105,20 @@ public class DashboardController extends AbstractController {
         ModelAndView res;
 
 
-        Double q1 = teacherService.averageNumberOfUserInMyWebinar(teacherService.findByPrincipal());
-        int q2 = teacherService.maxNumberOfUserInMyWebinar(teacherService.findByPrincipal());
-        int q3 = teacherService.minNumberOfUserInMyWebinar(teacherService.findByPrincipal());
-        Collection<Webinar> q4 = teacherService.webinarSortedByNumberOfUsers(teacherService.findByPrincipal());
-        Collection<User> q5 = teacherService.userRegisteredInMyWebinars(teacherService.findByPrincipal());
+       Double qq1 = teacherService.averageNumberOfUserInMyWebinar(teacherService.findByPrincipal());
+       int qq2 = teacherService.maxNumberOfUserInMyWebinar(teacherService.findByPrincipal());
+       int qq3 = teacherService.minNumberOfUserInMyWebinar(teacherService.findByPrincipal());
+       Collection<Webinar> qq4 = teacherService.webinarSortedByNumberOfUsers(teacherService.findByPrincipal());
+       Collection<User> qq5 = teacherService.userRegisteredInMyWebinars(teacherService.findByPrincipal());
 
 
         res = new ModelAndView("teacher/dashboard");
 
-        res.addObject("q1", q1);
-        res.addObject("q2", q2);
-        res.addObject("q3", q3);
-        res.addObject("q4", q4);
-        res.addObject("q5", q5);
+       res.addObject("qq1", qq1);
+       res.addObject("qq2", qq2);
+       res.addObject("qq3", qq3);
+       res.addObject("qq4", qq4);
+       res.addObject("qq5", qq5);
 
 
         return res;

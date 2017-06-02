@@ -26,7 +26,7 @@
 <jstl:out value="${q2}"/>
 <br>
 <br/>
-<spring:message code="dashboard.q3" var="q3b"/>
+<spring:message code="dashboard.qq3" var="q3b"/>
 <jstl:out value="${q3b}"/>:
 <jstl:out value="${q3}"/>
 <br>
