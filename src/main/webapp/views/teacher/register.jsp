@@ -89,11 +89,8 @@
     <br/>
 
     <spring:message code="terms" var="terms11"/>
-    <h3><jstl:out value="${terms11}"/></h3>
-
-    <a href="http://ourdisclaimer.com/?i=AcmeOverflow.,Inc."><img src="http://ourdisclaimer.com/ourdisclaimer.gif"
-                                                                  width="80" height="15"
-                                                                  alt="Privacy policy / Política de privacidad"/></a>
+    <h3></h3>
+    <a href="http://ourdisclaimer.com/?i=AcmeOverflow.,Inc."><jstl:out value="${terms11}"/></a>
 
     <br/>
     <br/>
