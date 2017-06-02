@@ -20,6 +20,16 @@
     </div>
 </security:authorize>
 
+
+<security:authorize access="isAnonymous()">
+    <div>
+        <H5>
+            <spring:message code="youshouldregister" var="yoShouldReg"/>
+            <h3><jstl:out value="${yoShouldReg}"/></h3>
+        </H5>
+    </div>
+</security:authorize>
+
 <!-- Listing grid -->
 <display:table pagesize="10" class="displaytag" keepStatus="true"
                name="webinars" requestURI="${requestURI}" id="row">

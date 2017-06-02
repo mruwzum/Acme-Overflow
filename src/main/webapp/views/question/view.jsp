@@ -17,7 +17,14 @@
           uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="display" uri="http://displaytag.sf.net" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<security:authorize access="isAnonymous()">
+    <div>
+        <H5>
+            <spring:message code="youshouldregister" var="yoShouldReg"/>
+            <h3><jstl:out value="${yoShouldReg}"/></h3>
+        </H5>
+    </div>
+</security:authorize>
 <div id="wrapper">
 
     <div id="sidebar">
