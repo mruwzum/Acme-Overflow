@@ -19,6 +19,9 @@
     <form:hidden path="createdDate" />
     <form:hidden path="answers" />
     <form:hidden path="owner" />
+    <form:hidden path="likedActors" />
+    <form:hidden path="dislikeActors" />
+
 
 
     <acme:textbox path="title" code="question.title"/>

@@ -101,17 +101,30 @@
                         </jstl:if>
                     </security:authorize>
                     <security:authorize access="hasAnyRole('USER')">
-                        <spring:message code="anwer.rate" var="rate"/>
-                        <a href="answer/ratenegative.do?answerId=${answer.id}"> <img src="images/disk.png" width="50px"
-                                                                                     height="50px" alt="dislike"/>
 
-                        </a>
-                        ${answer.dislikes}
+                        <c:choose>
 
-                        <a href="answer/ratepositive.do?answerId=${answer.id}"> <img src="images/like.png" width="50px" height="50px" alt="like"/>
+                            <c:when test="${likeda.contains(answer)}">
+                                <spring:message code="anwer.rate" var="rate"/>
+                                <a href="answer/ratenegative.do?answerId=${answer.id}"> <img src="images/disk.jpg" width="40px" height="40px" alt="dislike"/>
 
-                        </a>
-                        ${answer.likes}
+                                </a>
+                                ${answer.likes}
+                            </c:when>
+
+                            <c:otherwise>
+                                <a href="answer/ratepositive.do?answerId=${answer.id}"> <img src="images/like.png" width="50px" height="50px" alt="like"/>
+
+                                </a>
+                                ${answer.likes}
+
+                            </c:otherwise>
+
+                        </c:choose>
+
+
+
+
 
                     </security:authorize>
                     <hr>
@@ -139,14 +152,29 @@
                     </jstl:if>
                 </security:authorize>
                 <security:authorize access="hasAnyRole('USER')">
-                    <spring:message code="anwer.rate" var="rate"/>
-                    <a href="answer/ratenegative.do?answerId=${answer.id}"> <img src="images/disk.jpg" width="40px" height="40px" alt="dislike"/>
-                    </a>
-                    ${answer.dislikes}
+                    <c:choose>
 
-                    <a href="answer/ratepositive.do?answerId=${answer.id}"> <img src="images/like.png" width="50px" height="50px" alt="like"/>
-                </a>
-                ${answer.likes}
+                    <c:when test="${likeda.contains(answer)}">
+                        <spring:message code="anwer.rate" var="rate"/>
+                        <a href="answer/ratenegative.do?answerId=${answer.id}"> <img src="images/disk.jpg" width="40px" height="40px" alt="dislike"/>
+
+                        </a>
+                        ${answer.likes}
+                    </c:when>
+
+                    <c:otherwise>
+                        <a href="answer/ratepositive.do?answerId=${answer.id}"> <img src="images/like.png" width="50px" height="50px" alt="like"/>
+
+                        </a>
+                        ${answer.likes}
+
+                    </c:otherwise>
+
+                    </c:choose>
+
+
+
+
                 </security:authorize>
 
                 <hr>
@@ -171,7 +199,6 @@
             <c:forEach items="${myAnswers}" var="answer">
 
 
-                <div class="highlighted3">
 
                     <h3 class="highlighted2">${answer.title}</h3>
                         ${answer.description}
@@ -187,7 +214,6 @@
                     </a>
 
 
-                </div>
 
             </c:forEach>
 

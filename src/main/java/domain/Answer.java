@@ -25,6 +25,7 @@ public class Answer extends DomainEntity {
     private boolean banned;
    private Actor owner;
    private boolean isTeacher;
+   private Collection<Actor> likedActors;
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
@@ -107,4 +108,15 @@ public class Answer extends DomainEntity {
     public void setTeacher(boolean teacher) {
         isTeacher = teacher;
     }
+
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    public Collection<Actor> getLikedActors() {
+        return likedActors;
+    }
+
+    public void setLikedActors(Collection<Actor> likedActors) {
+        this.likedActors = likedActors;
+    }
+
+
 }

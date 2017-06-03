@@ -30,6 +30,8 @@ public abstract class Actor extends DomainEntity {
    private Collection<Comment> comments;
    private CreditCard creditCard;
 
+   private Collection<Answer> likedAnswers;
+
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
@@ -147,4 +149,14 @@ public abstract class Actor extends DomainEntity {
    public void setCreditCard(CreditCard creditCard) {
       this.creditCard = creditCard;
    }
+
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "likedActors")
+    public Collection<Answer> getLikedAnswers() {
+        return likedAnswers;
+    }
+
+    public void setLikedAnswers(Collection<Answer> likedAnswers) {
+        this.likedAnswers = likedAnswers;
+    }
+
 }

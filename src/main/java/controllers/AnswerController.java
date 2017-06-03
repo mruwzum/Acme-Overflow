@@ -1,6 +1,7 @@
 package controllers;
 
 
+import domain.Actor;
 import domain.Answer;
 import domain.Question;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import security.Authority;
 import services.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Controller
@@ -119,8 +121,7 @@ public class AnswerController extends AbstractController {
         answer.setQuestion(question);
         answer.setBanned(false);
         answer.setTeacher(false);
-        // question.getAnswers().add(answer);
-
+        answer.setLikedActors(new ArrayList<Actor>());
         result = createEditModelAndView(answer);
         //result.addObject("idii",question.getId());
 
@@ -243,8 +244,11 @@ public class AnswerController extends AbstractController {
       Answer answer = answerService.findOne(answerId);
       int likes = answer.getLikes();
       answer.setLikes(likes + 1);
+      answer.getLikedActors().add(actorService.findByPrincipal());
       answerService.save(answer);
-      result = new ModelAndView("user/success");
+       actorService.findByPrincipal().getLikedAnswers().add(answer);
+
+       result = new ModelAndView("user/success");
       return result;
    }
 
@@ -252,9 +256,13 @@ public class AnswerController extends AbstractController {
    public ModelAndView ratenegative(@RequestParam int answerId) {
       ModelAndView result;
       Answer answer = answerService.findOne(answerId);
-      int dislikes = answer.getDislikes();
-      answer.setDislikes(dislikes + 1);
-      answerService.save(answer);
+      Actor actor = actorService.findByPrincipal();
+       answer.getLikedActors().remove(actor);
+       actor.getLikedAnswers().remove(answer);
+
+       int likes = answer.getLikes();
+      answer.setDislikes(likes - 1);
+       answerService.save(answer);
       result = new ModelAndView("user/success");
       return result;
    }

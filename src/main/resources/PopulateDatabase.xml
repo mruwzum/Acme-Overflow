@@ -467,6 +467,11 @@
                 <ref bean="comment7"/>
             </list>
         </property>
+        <property name="likedAnswers">
+            <list>
+                <ref bean="answer1"/>
+            </list>
+        </property>
     </bean>
     <bean id="user2" class="domain.User">
         <property name="name" value="user2name"/>
@@ -510,6 +515,11 @@
                 <ref bean="comment6"/>
             </list>
         </property>
+        <property name="likedAnswers">
+            <list>
+            </list>
+        </property>
+
     </bean>
     <bean id="user3" class="domain.User">
         <property name="name" value="user3name"/>
@@ -550,6 +560,11 @@
                 <ref bean="comment3"/>
             </list>
         </property>
+        <property name="likedAnswers">
+            <list>
+            </list>
+        </property>
+
     </bean>
     <bean id="user4" class="domain.User">
         <property name="name" value="user4name"/>
@@ -594,6 +609,11 @@
                 <ref bean="comment5"/>
             </list>
         </property>
+        <property name="likedAnswers">
+            <list>
+            </list>
+        </property>
+
     </bean>
 
 
@@ -644,6 +664,11 @@
             </list>
         </property>
         <property name="curricula" ref="currricula1"/>
+        <property name="likedAnswers">
+            <list>
+            </list>
+        </property>
+
     </bean>
     <bean id="currricula1" class="domain.Curricula">
         <property name="photo" value="http://wwww.pic.jpg"/>
@@ -735,6 +760,11 @@
             </list>
         </property>
         <property name="curricula" ref="currricula2"/>
+        <property name="likedAnswers">
+            <list>
+            </list>
+        </property>
+
     </bean>
     <bean id="teacher3" class="domain.Teacher">
         <property name="name" value="teacher3name"/>
@@ -768,6 +798,11 @@
             </list>
         </property>
         <property name="curricula" ref="currricula3"/>
+        <property name="likedAnswers">
+            <list>
+            </list>
+        </property>
+
     </bean>
     <bean id="teacher4" class="domain.Teacher">
         <property name="name" value="teacher4name"/>
@@ -809,6 +844,11 @@
             </list>
         </property>
         <property name="curricula" ref="currricula4"/>
+        <property name="likedAnswers">
+            <list>
+            </list>
+        </property>
+
     </bean>
 
 
@@ -1289,6 +1329,7 @@
         <property name="question" ref="question2"/>
         <property name="owner" ref="user2"/>
         <property name="teacher" value="false"/>
+
 
     </bean>
     <bean id="answer3" class="domain.Answer">
@@ -1866,6 +1907,10 @@
             <list>
             </list>
         </property>
+        <property name="likedAnswers">
+            <list>
+            </list>
+        </property>
     </bean>
 
     <bean id="moderator2" class="domain.Moderator">
@@ -1899,6 +1944,10 @@
             </list>
         </property>
         <property name="comments">
+            <list>
+            </list>
+        </property>
+        <property name="likedAnswers">
             <list>
             </list>
         </property>

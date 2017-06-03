@@ -210,6 +210,7 @@ public class QuestionController extends AbstractController {
         result.addObject("summary", question.getSummary());
         result.addObject("owner", question.getOwner().getName());
         result.addObject("categorie", question.getCategories().toString());
+        result.addObject("likeda", actorService.findByPrincipal().getLikedAnswers());
 
         Collection<Webinar> webinar = question.getCategories().getWebinars();
 
