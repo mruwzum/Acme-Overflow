@@ -308,7 +308,9 @@ public class WebinarController extends AbstractController {
     public ModelAndView apply(@RequestParam int webinarId) {
         ModelAndView result;
 
-        Webinar webinar = webinarService.findOne(webinarId);
+
+       if (userService.findByPrincipal().getCreditCard())
+          Webinar webinar = webinarService.findOne(webinarId);
         User user = userService.findByPrincipal();
         Boolean op = webinarService.register(user, webinar);
 

@@ -23,6 +23,7 @@ public class CreditCard extends DomainEntity {
     private int month;
     private String CVV;
     private CreditCardType type;
+    private boolean valid;
 
 
     @NotBlank
@@ -84,4 +85,12 @@ public class CreditCard extends DomainEntity {
         this.type = type;
     }
 
+
+    public boolean isValid() {
+        return valid;
+    }
+
+    public void setValid(boolean valid) {
+        this.valid = valid;
+    }
 }

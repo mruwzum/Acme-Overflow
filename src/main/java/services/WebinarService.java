@@ -180,6 +180,30 @@ public class WebinarService {
 
       return webinarRepository.setBillsNull(c);
    }
+
+   public Boolean checkCreditCard(CreditCard creditCard) {
+      Boolean res = false;
+      Integer yearAct0 = (((new Date(System.currentTimeMillis())).getYear()));
+      String year = "20" + yearAct0.toString().substring(1);
+      Integer yearAct = new Integer(year);
+      int monthAct = new Date(System.currentTimeMillis()).getMonth();
+      if (creditCard == null) {
+         res = false;
+      } else if (creditCard.getYear() == yearAct && creditCard.getMonth() < monthAct) {
+         res = false;
+         creditCard.setValid(false);
+      } else if (creditCard.getYear() == yearAct && creditCard.getMonth() >= monthAct) {
+         res = true;
+         creditCard.setValid(true);
+      } else if (creditCard.getYear() >= yearAct) {
+         res = true;
+         creditCard.setValid(true);
+      } else if (creditCard.getYear() < yearAct) {
+         res = false;
+         creditCard.setValid(false);
+      }
+      return res;
+   }
 }
 
 
