@@ -1267,6 +1267,8 @@
         <property name="categories" ref="categorie3"/>
         <property name="answers">
             <list>
+                <ref bean="answer7"/>
+                <ref bean="answer8"/>
             </list>
         </property>
     </bean>
@@ -1287,6 +1289,7 @@
         <property name="categories" ref="categorie3"/>
         <property name="answers">
             <list>
+                <ref bean="answer9"/>
             </list>
         </property>
     </bean>
@@ -1400,8 +1403,57 @@
         <property name="teacher" value="true"/>
 
     </bean>
+    <bean id="answer7" class="domain.Answer">
+        <property name="banned" value="false"/>
+        <property name="title" value="answ7"/>
+        <property name="description" value="descrip7"/>
+        <property name="likes" value="5"/>
+        <property name="dislikes" value="1"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="question" ref="question6"/>
+        <property name="owner" ref="teacher1"/>
+        <property name="teacher" value="true"/>
 
+    </bean>
+    <bean id="answer8" class="domain.Answer">
+        <property name="banned" value="false"/>
+        <property name="title" value="answ8"/>
+        <property name="description" value="descrip8"/>
+        <property name="likes" value="8765"/>
+        <property name="dislikes" value="1"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="question" ref="question6"/>
+        <property name="owner" ref="teacher1"/>
+        <property name="teacher" value="true"/>
 
+    </bean>
+    <bean id="answer9" class="domain.Answer">
+        <property name="banned" value="false"/>
+        <property name="title" value="answ9"/>
+        <property name="description" value="descrip9"/>
+        <property name="likes" value="8"/>
+        <property name="dislikes" value="17"/>
+        <property name="pictures">
+            <array value-type="java.lang.String">
+                <value>http://www.pic.jpg</value>
+                <value>http://www.pic3.jpg</value>
+            </array>
+        </property>
+        <property name="question" ref="question7"/>
+        <property name="owner" ref="user3"/>
+        <property name="teacher" value="false"/>
+
+    </bean>
     <!--/Answers-->
 
 
