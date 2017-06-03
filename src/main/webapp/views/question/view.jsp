@@ -102,8 +102,8 @@
                     </security:authorize>
                     <security:authorize access="hasAnyRole('USER')">
                         <spring:message code="anwer.rate" var="rate"/>
-                        <a href="answer/ratenegative.do?answerId=${answer.id}"> <img src="images/disk.png" width="40px"
-                                                                                     height="40px" alt="dislike"/>
+                        <a href="answer/ratenegative.do?answerId=${answer.id}"> <img src="images/disk.png" width="50px"
+                                                                                     height="50px" alt="dislike"/>
 
                         </a>
                         ${answer.dislikes}
