@@ -106,7 +106,9 @@
 
                             <c:when test="${likeda.contains(answer)}">
                                 <spring:message code="anwer.rate" var="rate"/>
-                                <a href="answer/ratenegative.do?answerId=${answer.id}"> <img src="images/disk.jpg" width="40px" height="40px" alt="dislike"/>
+                                <a href="answer/ratenegative.do?answerId=${answer.id}"> <img src="images/disk.png"
+                                                                                             width="53px" height="53px"
+                                                                                             alt="dislike"/>
 
                                 </a>
                                 ${answer.likes}
