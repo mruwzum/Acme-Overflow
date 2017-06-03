@@ -321,7 +321,7 @@ public class WebinarController extends AbstractController {
              result = new ModelAndView("user/success");
           }
        } else {
-          result = new ModelAndView("user/error");
+          result = new ModelAndView("credit-card/error");
        }
 
 
