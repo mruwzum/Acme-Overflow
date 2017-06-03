@@ -25,5 +25,8 @@
 		<put-attribute name="title" value="credit-card: Listar" />
 		<put-attribute name="body" value="/views/credit-card/list.jsp" />
 	</definition>
-	
+	<definition name="credit-card/error" extends="master.page">
+		<put-attribute name="title" value="credit-card: Error"/>
+		<put-attribute name="body" value="/views/credit-card/error.jsp"/>
+	</definition>
 </tiles-definitions>

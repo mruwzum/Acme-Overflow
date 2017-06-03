@@ -307,19 +307,23 @@ public class WebinarController extends AbstractController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView apply(@RequestParam int webinarId) {
         ModelAndView result;
+       User user = userService.findByPrincipal();
 
-
-       if (userService.findByPrincipal().getCreditCard())
+       if (webinarService.checkCreditCard(user.getCreditCard())) {
           Webinar webinar = webinarService.findOne(webinarId);
-        User user = userService.findByPrincipal();
-        Boolean op = webinarService.register(user, webinar);
+
+          Boolean op = webinarService.register(user, webinar);
 
 
-        if (op.equals(false)) {
-            result = new ModelAndView("user/error");
-        } else {
-            result = new ModelAndView("user/success");
-        }
+          if (op.equals(false)) {
+             result = new ModelAndView("user/error");
+          } else {
+             result = new ModelAndView("user/success");
+          }
+       } else {
+          result = new ModelAndView("user/error");
+       }
+
 
         return result;
     }
