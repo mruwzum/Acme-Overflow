@@ -9,8 +9,8 @@
         <module name="Acme-Overflow" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Acme-Overflow" target="1.7" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="Acme-Overflow" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="Acme-Overflow:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="Acme-Overflow-1.8.war">
+    <root id="archive" name="overflow-1.8.war">
       <element id="artifact" artifact-name="Acme-Overflow:war exploded" />
     </root>
   </artifact>

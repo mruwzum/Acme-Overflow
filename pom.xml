@@ -12,18 +12,18 @@
     <!-- Artifact identification and properties -->
 
     <groupId>Design-and-Testing</groupId>
-    <artifactId>Acme-Overflow</artifactId>
+    <artifactId>overflow</artifactId>
     <version>1.8</version>
     <packaging>war</packaging>
 
     <properties>
         <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-        <docker.image.prefix>overflow</docker.image.prefix>
+        <docker.image.prefix>nullpoint</docker.image.prefix>
     </properties>
 
     <!-- Indexing information -->
 
-    <name>Acme-Overflow</name>
+    <name>overflow</name>
     <url>http://www.acme.com</url>
     <description>This is D&amp;T's sample project.</description>
 
@@ -39,8 +39,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.0</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <showWarnings>true</showWarnings>
                     <compilerArguments>
                         <Xlint/>
@@ -72,13 +72,14 @@
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.1</version>
+                <version>LATEST</version>
                 <configuration>
                     <server>tomcat-development-server</server>
                     <port>8080</port>
                     <path>/${project.artifactId}</path>
                 </configuration>
             </plugin>
+
 
             <plugin>
                 <groupId>com.spotify</groupId>
@@ -96,6 +97,8 @@
                     </resources>
                 </configuration>
             </plugin>
+
+
         </plugins>
     </build>
 
