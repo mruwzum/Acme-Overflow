@@ -10,6 +10,10 @@
           uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="display" uri="http://displaytag.sf.net" %>
 
+<%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
 <security:authorize access="permitAll">
     <div>
         <H5>

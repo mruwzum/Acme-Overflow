@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!-- 
- * tiles_es.xml
- *
- * Copyright (C) 2017 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
- * http://www.tdg-seville.info/License.html
- -->
+<!--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  -->
 
 <!DOCTYPE tiles-definitions PUBLIC
-       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
-      
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
 <tiles-definitions>
 
-	<definition name="welcome/index" extends="master.page">	
-		<put-attribute name="title" value="¡La mayor comunidad online para programadores para aprender y compartir su conocimiento, y avanzar como profesionales!" />
-		<put-attribute name="body" value="/views/welcome/index.jsp" />
-	</definition>
-	
+    <definition name="welcome/index" extends="master.page">
+        <put-attribute name="title"
+                       value="¡La mayor comunidad online para programadores para aprender y compartir su conocimiento, y avanzar como profesionales!"/>
+        <put-attribute name="body" value="/views/welcome/index.jsp"/>
+    </definition>
+
 </tiles-definitions>

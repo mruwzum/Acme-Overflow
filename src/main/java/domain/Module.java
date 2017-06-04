@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -57,5 +61,13 @@ public class Module extends DomainEntity {
 
     public void setWebinar(Webinar webinar) {
         this.webinar = webinar;
+    }
+
+    @Override
+    public String toString() {
+        return "Module{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

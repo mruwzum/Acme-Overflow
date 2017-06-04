@@ -1,20 +1,24 @@
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
-        pageEncoding="ISO-8859-1"%>
+        pageEncoding="ISO-8859-1" %>
 
-<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="security"
-          uri="http://www.springframework.org/security/tags"%>
-<%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+          uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="display" uri="http://displaytag.sf.net" %>
+
+<%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
 
 <security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">
     <div>
         <H5>
             <a href="mezzage/create.do"> <spring:message
-                    code="general.create" />
+                    code="general.create"/>
             </a>
         </H5>
     </div>
@@ -34,7 +38,8 @@
             </a>
         </display:column>
         <display:column>
-            <a onclick="return confirm('<spring:message code="general.confirm.delete" />')" href="mezzage/delete.do?mezzageId=${row.id}"> <spring:message
+            <a onclick="return confirm('<spring:message code="general.confirm.delete"/>')"
+               href="mezzage/delete.do?mezzageId=${row.id}"> <spring:message
                     code="general.delete"/>
             </a>
         </display:column>
@@ -52,7 +57,6 @@
     <display:column property="receiverEmail" title="${receiver}" sortable="true"/>
     <spring:message code="mezzage.priority" var="priority"/>
     <display:column property="priority" title="${priority}" sortable="true"/>
-
 
 
     <security:authorize access="hasAnyRole('ADMIN','USER','TEACHER','MODERATOR')">

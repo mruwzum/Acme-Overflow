@@ -1,4 +1,8 @@
 <%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
+<%--
   Created by IntelliJ IDEA.
   User: mruwzum
   Date: 1/3/17
@@ -92,7 +96,6 @@
                     <br>
 
 
-
                     <security:authorize access="hasAnyRole('ADMIN','MODERATOR')">
                         <jstl:if test="${not answer.banned}">
                             <a href="answer/ban.do?answerId=${answer.id}"> <spring:message
@@ -115,7 +118,9 @@
                             </c:when>
 
                             <c:otherwise>
-                                <a href="answer/ratepositive.do?answerId=${answer.id}"> <img src="images/like.png" width="50px" height="50px" alt="like"/>
+                                <a href="answer/ratepositive.do?answerId=${answer.id}"> <img src="images/like.png"
+                                                                                             width="50px" height="50px"
+                                                                                             alt="like"/>
 
                                 </a>
                                 ${answer.likes}
@@ -123,9 +128,6 @@
                             </c:otherwise>
 
                         </c:choose>
-
-
-
 
 
                     </security:authorize>
@@ -141,9 +143,7 @@
                 <br>
 
 
-
                 <br>
-
 
 
                 <security:authorize access="hasAnyRole('ADMIN','MODERATOR')">
@@ -156,25 +156,27 @@
                 <security:authorize access="hasAnyRole('USER')">
                     <c:choose>
 
-                    <c:when test="${likeda.contains(answer)}">
-                        <spring:message code="anwer.rate" var="rate"/>
-                        <a href="answer/ratenegative.do?answerId=${answer.id}"> <img src="images/disk.jpg" width="40px" height="40px" alt="dislike"/>
+                        <c:when test="${likeda.contains(answer)}">
+                            <spring:message code="anwer.rate" var="rate"/>
+                            <a href="answer/ratenegative.do?answerId=${answer.id}"> <img src="images/disk.jpg"
+                                                                                         width="40px" height="40px"
+                                                                                         alt="dislike"/>
 
-                        </a>
-                        ${answer.likes}
-                    </c:when>
+                            </a>
+                            ${answer.likes}
+                        </c:when>
 
-                    <c:otherwise>
-                        <a href="answer/ratepositive.do?answerId=${answer.id}"> <img src="images/like.png" width="50px" height="50px" alt="like"/>
+                        <c:otherwise>
+                            <a href="answer/ratepositive.do?answerId=${answer.id}"> <img src="images/like.png"
+                                                                                         width="50px" height="50px"
+                                                                                         alt="like"/>
 
-                        </a>
-                        ${answer.likes}
+                            </a>
+                            ${answer.likes}
 
-                    </c:otherwise>
+                        </c:otherwise>
 
                     </c:choose>
-
-
 
 
                 </security:authorize>
@@ -183,7 +185,6 @@
             </jstl:if>
 
         </c:forEach>
-
 
 
         <security:authorize access="hasAnyRole('USER','TEACHER')">
@@ -197,32 +198,26 @@
         </security:authorize>
 
 
-
-            <c:forEach items="${myAnswers}" var="answer">
-
+        <c:forEach items="${myAnswers}" var="answer">
 
 
-                    <h3 class="highlighted2">${answer.title}</h3>
-                        ${answer.description}
-                        ${answer.likes}
-                    <br>
+            <h3 class="highlighted2">${answer.title}</h3>
+            ${answer.description}
+            ${answer.likes}
+            <br>
 
-                    <a class="button2" href="/answer/edit.do?answerId=${answer.id}"> <spring:message
-                            code="answer.edit"/>
-                    </a>
+            <a class="button2" href="/answer/edit.do?answerId=${answer.id}"> <spring:message
+                    code="answer.edit"/>
+            </a>
 
-                    <a class="button2" href="/answer/delete.do?answerId=${answer.id}"> <spring:message
-                            code="general.delete"/>
-                    </a>
+            <a class="button2" href="/answer/delete.do?answerId=${answer.id}"> <spring:message
+                    code="general.delete"/>
+            </a>
 
 
-
-            </c:forEach>
+        </c:forEach>
 
     </div>
-
-
-
 
 
 </div>

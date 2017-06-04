@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package services;
 
 import domain.Actor;
@@ -10,11 +14,6 @@ import org.springframework.util.Assert;
 import repositories.QuestionRepository;
 
 import java.util.*;
-
-/**
- * Created by david on 05/11/2016.
- * Copyright © 2016 NullPoint Software
- */
 
 @Service
 @Transactional
@@ -30,6 +29,7 @@ public class QuestionService {
     private UserService userService;
     @Autowired
     private AnswerService answerService;
+
     public QuestionService() {
         super();
     }
@@ -72,6 +72,7 @@ public class QuestionService {
     public void flush() {
         questionRepository.flush();
     }
+
     // Other business methods -------------------------------------------------------------------------------
     public Boolean banQuestion(Question question) {
 
@@ -146,31 +147,31 @@ public class QuestionService {
         return res;
     }
 
-   public Collection<Question> listPopular() {
-      Collection<Question> questions;
-      questions = notBannedQuestions();
-      List<Question> res1 = new ArrayList<>();
-      res1.addAll(questions);
-      Collections.sort(res1, new Comparator<Question>() {
-         public int compare(Question m1, Question m2) {
-            return m2.getCreatedDate().toString().compareTo(m1.getCreatedDate().toString());
-         }
-      });
-      return res1;
+    public Collection<Question> listPopular() {
+        Collection<Question> questions;
+        questions = notBannedQuestions();
+        List<Question> res1 = new ArrayList<>();
+        res1.addAll(questions);
+        Collections.sort(res1, new Comparator<Question>() {
+            public int compare(Question m1, Question m2) {
+                return m2.getCreatedDate().toString().compareTo(m1.getCreatedDate().toString());
+            }
+        });
+        return res1;
 
-   }
+    }
 
 
-   public int setQuestionNull(Question c){
+    public int setQuestionNull(Question c) {
 
         return questionRepository.setQuestionNull(c);
-   }
+    }
 
 
-   public Collection<Answer> myAnswerOfThisQuestion(Question q, Actor actor){
+    public Collection<Answer> myAnswerOfThisQuestion(Question q, Actor actor) {
 
-       return questionRepository.myAnswerOfThisQuestion(q,actor);
-   }
+        return questionRepository.myAnswerOfThisQuestion(q, actor);
+    }
 }
 
 

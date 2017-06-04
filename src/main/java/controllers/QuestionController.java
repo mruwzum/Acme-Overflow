@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 
@@ -17,7 +21,10 @@ import security.Authority;
 import services.*;
 
 import javax.validation.Valid;
-import java.util.*;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/question")
@@ -110,7 +117,7 @@ public class QuestionController extends AbstractController {
 
         result = new ModelAndView("question/list");
         result.addObject("questions", questions);
-       result.addObject("requestURI", "question/listAll.do");
+        result.addObject("requestURI", "question/listAll.do");
 
         return result;
     }
@@ -119,12 +126,12 @@ public class QuestionController extends AbstractController {
     public ModelAndView questionListPopular() {
 
         ModelAndView result;
-        Collection<Question> questions = new ArrayList<>();
-       questions = questionService.listPopular();
+        Collection<Question> questions;
+        questions = questionService.listPopular();
 
         result = new ModelAndView("question/list");
-       result.addObject("questions", questions);
-       result.addObject("requestURI", "question/listPopular.do");
+        result.addObject("questions", questions);
+        result.addObject("requestURI", "question/listPopular.do");
 
         return result;
     }
@@ -133,10 +140,10 @@ public class QuestionController extends AbstractController {
     public ModelAndView create() {
 
         ModelAndView result;
+        Collection<Category> categories = categoryService.findAll();
 
         Question question = questionService.create();
 
-        Collection<Category> categories = categoryService.findAll();
         question.setCreatedDate(new Date(System.currentTimeMillis() - 1000));
 
         result = createEditModelAndView(question);
@@ -157,7 +164,7 @@ public class QuestionController extends AbstractController {
         question = questionService.findOne(questionId);
         Assert.notNull(question);
         result = createEditModelAndView(question);
-       result.addObject("categories", categoryService.findAll());
+        result.addObject("categories", categoryService.findAll());
 
         return result;
     }
@@ -170,7 +177,6 @@ public class QuestionController extends AbstractController {
         } else {
             try {
                 question.setOwner(userService.findByPrincipal());
-                //question.setCreatedDate(new Date(System.currentTimeMillis() - 1000));
                 questionService.save(question);
                 result = new ModelAndView("redirect:list.do");
             } catch (Throwable oops) {
@@ -180,21 +186,20 @@ public class QuestionController extends AbstractController {
         return result;
     }
 
-   @RequestMapping(value = "/delete", method = RequestMethod.GET)
-   public ModelAndView delete(@RequestParam int questionId) {
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public ModelAndView delete(@RequestParam int questionId) {
         ModelAndView result;
 
 
-      Question question = questionService.findOne(questionId);
-       question.setCategories(null);
-       questionService.setQuestionNull(question);
-       question.setSearch(null);
+        Question question = questionService.findOne(questionId);
+        question.setCategories(null);
+        questionService.setQuestionNull(question);
+        question.setSearch(null);
 
-      userService.findByPrincipal().getQuestions().remove(question);
-      //question.setOwner(null);
-//      questionService.save(question);
-      questionService.delete(question);
-      result = new ModelAndView("redirect:list.do");
+        userService.findByPrincipal().getQuestions().remove(question);
+
+        questionService.delete(question);
+        result = new ModelAndView("redirect:list.do");
         return result;
     }
 
@@ -219,16 +224,16 @@ public class QuestionController extends AbstractController {
 
         if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)) {
 
-           Set<Answer> answers1 = new HashSet<>();
-           answers1.addAll(question.getAnswers());
+            Set<Answer> answers1 = new HashSet<>();
+            answers1.addAll(question.getAnswers());
             result.addObject("answers", answers1);
         } else {
-           Set<Answer> answers = new HashSet<>();
-           answers.addAll(questionService.notBannedAnswer(question));
+            Set<Answer> answers = new HashSet<>();
+            answers.addAll(questionService.notBannedAnswer(question));
 
-           answers.removeAll(myAnswers);
-           result.addObject("answers", answers);
-           result.addObject("myAnswers", myAnswers);
+            answers.removeAll(myAnswers);
+            result.addObject("answers", answers);
+            result.addObject("myAnswers", myAnswers);
 
 
         }
@@ -247,7 +252,6 @@ public class QuestionController extends AbstractController {
         Question question = questionService.findOne(questionId);
 
         Set<Answer> answers = new HashSet<>(questionService.notBannedAnswer(question));
-
 
 
         result = new ModelAndView("question/view");

@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -59,7 +63,7 @@ public class Webinar extends DomainEntity {
         this.description = description;
     }
 
-   @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     public Date getStartDate() {
         return startDate;
     }
@@ -88,7 +92,7 @@ public class Webinar extends DomainEntity {
         this.picture = picture;
     }
 
-   @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     public Category getCategories() {
         return categories;
     }
@@ -97,7 +101,7 @@ public class Webinar extends DomainEntity {
         this.categories = categories;
     }
 
-   @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @NotNull
     public Teacher getOwner() {
         return owner;
@@ -107,7 +111,7 @@ public class Webinar extends DomainEntity {
         this.owner = owner;
     }
 
-   @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
     public Collection<Comment> getComments() {
         return comments;
     }
@@ -117,7 +121,7 @@ public class Webinar extends DomainEntity {
     }
 
 
-   @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     public Collection<User> getPartakers() {
         return partakers;
     }
@@ -127,7 +131,7 @@ public class Webinar extends DomainEntity {
     }
 
 
-   @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
     public Collection<Module> getModules() {
         return modules;
     }
@@ -136,7 +140,7 @@ public class Webinar extends DomainEntity {
         this.modules = modules;
     }
 
-   @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
     public Collection<Bill> getBills() {
         return bills;
     }
@@ -146,7 +150,7 @@ public class Webinar extends DomainEntity {
     }
 
 
-   @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
     public Collection<Evaluation> getEvaluations() {
         return evaluations;
     }
@@ -165,7 +169,7 @@ public class Webinar extends DomainEntity {
         this.URL = URL;
     }
 
-   @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "webinar")
     public Collection<Mezzage> getWebiMezzages() {
         return webiMezzages;
     }

@@ -1,20 +1,19 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 import domain.Bill;
-import domain.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.Assert;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.BillService;
-import services.CategoryService;
 import services.UserService;
 
-import javax.validation.Valid;
 import java.util.Collection;
 
 /**
@@ -46,7 +45,7 @@ public class BillController extends AbstractController {
     }
 
     @RequestMapping(value = "/view", method = RequestMethod.GET)
-    public ModelAndView view(@RequestParam int billId){
+    public ModelAndView view(@RequestParam int billId) {
 
         Bill bill = billService.findOne(billId);
         ModelAndView res;

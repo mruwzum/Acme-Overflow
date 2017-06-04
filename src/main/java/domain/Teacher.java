@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import javax.persistence.*;
@@ -45,8 +49,8 @@ public class Teacher extends Actor {
         this.IBAN = IBAN;
     }
 
-   @Override
-   public String toString() {
-      return super.getName() + " " + super.getSurname();
-   }
+    @Override
+    public String toString() {
+        return super.getName() + " " + super.getSurname();
+    }
 }

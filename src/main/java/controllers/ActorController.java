@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 
@@ -45,22 +49,6 @@ public class ActorController extends AbstractController {
         return result;
     }
 
-
-    //Create Method -----------------------------------------------------------
-//
-//	@RequestMapping(value = "/create", method = RequestMethod.GET)
-//	public ModelAndView create(){
-//
-//		ModelAndView result;
-//
-//		Actor actor = actorService.create();
-//		result = createEditModelAndView(actor);
-//
-//		return result;
-//
-//		}
-
-    // Edition ---------------------------------------------------------
 
     @RequestMapping(value = "/editp", method = RequestMethod.GET)
     public ModelAndView editp() {

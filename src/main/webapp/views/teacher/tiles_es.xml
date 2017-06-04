@@ -1,37 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!-- 
- * tiles_es.xml
- *
- * Copyright (C) 2017 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
- * http://www.tdg-seville.info/License.html
- -->
+<!--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  -->
 
 <!DOCTYPE tiles-definitions PUBLIC
-       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
-      
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
 <tiles-definitions>
 
-	<definition name="teacher/edit" extends="master.page">
-		<put-attribute name="title" value="teacher: Editar" />
-		<put-attribute name="body" value="/views/teacher/edit.jsp" />
-	</definition>
+    <definition name="teacher/edit" extends="master.page">
+        <put-attribute name="title" value="teacher: Editar"/>
+        <put-attribute name="body" value="/views/teacher/edit.jsp"/>
+    </definition>
 
-	<definition name="teacher/list" extends="master.page">
-		<put-attribute name="title" value="teacher: Listar" />
-		<put-attribute name="body" value="/views/teacher/list.jsp" />
-	</definition>
+    <definition name="teacher/list" extends="master.page">
+        <put-attribute name="title" value="teacher: Listar"/>
+        <put-attribute name="body" value="/views/teacher/list.jsp"/>
+    </definition>
     <definition name="teacher/register" extends="master.page">
         <put-attribute name="title" value="teacher: Registro"/>
         <put-attribute name="body" value="/views/teacher/register.jsp"/>
     </definition>
 
-	<definition name="teacher/dashboard" extends="master.page">
-		<put-attribute name="title" value="Dashboard" />
-		<put-attribute name="body" value="/views/teacher/dashboard.jsp" />
-	</definition>
+    <definition name="teacher/dashboard" extends="master.page">
+        <put-attribute name="title" value="Dashboard"/>
+        <put-attribute name="body" value="/views/teacher/dashboard.jsp"/>
+    </definition>
 </tiles-definitions>

@@ -1,4 +1,8 @@
 <%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
+<%--
   Created by IntelliJ IDEA.
   User: mruwzum
   Date: 19/12/16
@@ -60,8 +64,8 @@
 <spring:message code="dashboard.q9" var="q9b"/>
 <jstl:out value="${q9b}"/>:
 <jstl:out value="${q9}"/>
-    <br>
-    <br/>
+<br>
+<br/>
 <spring:message code="dashboard.q10" var="q9b"/>
 <jstl:out value="${q9b}"/>:
 <jstl:out value="${q10}"/>
@@ -144,7 +148,6 @@
 <br/>
 
 
-
 <spring:message code="dashboard.q22" var="q9b"/>
 <jstl:out value="${q9b}"/>:
 <display:table pagesize="15" class="displaytag" keepStatus="true"
@@ -168,14 +171,13 @@
                name="q23" requestURI="${requestURI}" id="row">
 
 
-    <spring:message code="webinar.name" var="title" />
-    <display:column property="name" title="${title}" sortable="true" />
-    <spring:message code="webinar.description" var="description" />
-    <display:column property="description" title="${description}" sortable="true" />
+    <spring:message code="webinar.name" var="title"/>
+    <display:column property="name" title="${title}" sortable="true"/>
+    <spring:message code="webinar.description" var="description"/>
+    <display:column property="description" title="${description}" sortable="true"/>
 
 
 </display:table>
-
 
 
 <br>

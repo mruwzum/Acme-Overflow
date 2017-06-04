@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import javax.persistence.Access;
@@ -22,5 +26,12 @@ public class Duty extends DomainEntity {
 
     public void setDutyValue(int dutyValue) {
         this.dutyValue = dutyValue;
+    }
+
+    @Override
+    public String toString() {
+        return "Duty{" +
+                "dutyValue=" + dutyValue +
+                '}';
     }
 }

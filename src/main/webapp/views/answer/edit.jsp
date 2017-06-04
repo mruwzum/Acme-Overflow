@@ -12,6 +12,10 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
+<%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
 <form:form action="answer/edit.do" modelAttribute="answer">
 
     <form:hidden path="id"/>
@@ -20,7 +24,7 @@
     <form:hidden path="dislikes"/>
     <form:hidden path="question"/>
     <form:hidden path="teacher"/>
-
+    <form:hidden path="likedActors"/>
 
 
     <acme:textbox path="title" code="answer.title"/>
@@ -34,7 +38,6 @@
     <acme:submit name="save" code="general.save"/>
 
     <a class="button" href="/welcome/index.do"><spring:message code="general.cancel"/></a>
-
 
 
 </form:form>

@@ -12,6 +12,10 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
+<%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
 <spring:message code="bill.number" var="name1"/>
 <h3><jstl:out value="${name1}"/></h3>
 <jstl:out value="${number}"/>

@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 
@@ -14,7 +18,10 @@ import security.Authority;
 import services.*;
 
 import javax.validation.Valid;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 
 
 @Controller
@@ -175,14 +182,14 @@ public class WebinarController extends AbstractController {
         ModelAndView result;
 
 
-       Webinar webinar = webinarService.create();
+        Webinar webinar = webinarService.create();
         webinar.setOwner(teacherService.findByPrincipal());
 
-       webinar.setModules(new ArrayList<Module>());
-       webinar.setPartakers(new ArrayList<User>());
-       webinar.setEvaluations(new ArrayList<Evaluation>());
-       webinar.setComments(new ArrayList<Comment>());
-       webinar.setBills(new ArrayList<Bill>());
+        webinar.setModules(new ArrayList<Module>());
+        webinar.setPartakers(new ArrayList<User>());
+        webinar.setEvaluations(new ArrayList<Evaluation>());
+        webinar.setComments(new ArrayList<Comment>());
+        webinar.setBills(new ArrayList<Bill>());
 
         Collection<Category> categories = categoryService.findAll();
 
@@ -213,41 +220,37 @@ public class WebinarController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid Webinar webinar, BindingResult binding) {
         ModelAndView result;
-       if (!binding.hasErrors()) {
-          result = createEditModelAndView(webinar);
-       } else {
-          try {
-             webinar.setOwner(teacherService.findByPrincipal());
-             webinarService.save(webinar);
+        if (! binding.hasErrors()) {
+            result = createEditModelAndView(webinar);
+        } else {
+            try {
+                webinar.setOwner(teacherService.findByPrincipal());
+                webinarService.save(webinar);
 
-             result = new ModelAndView("redirect:listMy.do");
+                result = new ModelAndView("redirect:listMy.do");
 
-          } catch (Throwable oops) {
-             result = createEditModelAndView(webinar, "webinar.commit.error");
-          }
-       }
-       return result;
+            } catch (Throwable oops) {
+                result = createEditModelAndView(webinar, "webinar.commit.error");
+            }
+        }
+        return result;
     }
 
-   @RequestMapping(value = "/delete", method = RequestMethod.GET)
-   public ModelAndView delete(@RequestParam int webinarId) {
-      ModelAndView result;
-//        try {
-      Webinar webinar = webinarService.findOne(webinarId);
-      webinar.setCategories(null);
-      webinarService.setBillsNull(webinar);
-      webinarService.setQuestionNull(webinar);
-      webinarService.setEvaluationNull(webinar);
-//        teacherService.findByPrincipal().getWebinars().remove(webinar);
-//        webinar.setPartakers(null);
-      webinarService.setModulesNull(webinar);
-      webinarService.delete(webinar);
-      result = new ModelAndView("redirect:listMy.do");
-//        } catch (Throwable oops) {
-//           result = createEditModelAndView(webinar, "general.commit.error");
-//        }
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public ModelAndView delete(@RequestParam int webinarId) {
+        ModelAndView result;
+        Webinar webinar = webinarService.findOne(webinarId);
+        webinar.setCategories(null);
+        webinarService.setBillsNull(webinar);
+        webinarService.setQuestionNull(webinar);
+        webinarService.setEvaluationNull(webinar);
 
-      return result;
+        webinarService.setModulesNull(webinar);
+        webinarService.delete(webinar);
+        result = new ModelAndView("redirect:listMy.do");
+
+
+        return result;
     }
 
     @RequestMapping(value = "/view", method = RequestMethod.GET)
@@ -265,13 +268,13 @@ public class WebinarController extends AbstractController {
         Authority authority = new Authority();
         authority.setAuthority("TEACHER");
 
-      if(actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
+        if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)) {
 
-          if (teacherService.findByPrincipal().getWebinars().contains(webinar)){
-              my = true;
-              registered=true;
-          }
-      }
+            if (teacherService.findByPrincipal().getWebinars().contains(webinar)) {
+                my = true;
+                registered = true;
+            }
+        }
 
 
         List<Evaluation> evaluations = new ArrayList<>(evaluationService.findAll());
@@ -281,7 +284,6 @@ public class WebinarController extends AbstractController {
         Evaluation evaluation = evaluationService.create();
         evaluation.setEvaluationQuestions(evaluationQuestions);
         evaluation.setWebinar(webinar);
-
 
 
         result = new ModelAndView("webinar/view");
@@ -296,7 +298,7 @@ public class WebinarController extends AbstractController {
         result.addObject("reg", registered);
         result.addObject("modules", webinar.getModules());
         result.addObject("url", webinar.getURL());
-        result.addObject("picture",webinar.getPicture());
+        result.addObject("picture", webinar.getPicture());
         result.addObject("questions", evaluation.getEvaluationQuestions());
         result.addObject("my", my);
         result.addObject("requestURI", "webinar/view.do");
@@ -307,22 +309,22 @@ public class WebinarController extends AbstractController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView apply(@RequestParam int webinarId) {
         ModelAndView result;
-       User user = userService.findByPrincipal();
+        User user = userService.findByPrincipal();
 
-       if (webinarService.checkCreditCard(user.getCreditCard())) {
-          Webinar webinar = webinarService.findOne(webinarId);
+        if (webinarService.checkCreditCard(user.getCreditCard())) {
+            Webinar webinar = webinarService.findOne(webinarId);
 
-          Boolean op = webinarService.register(user, webinar);
+            Boolean op = webinarService.register(user, webinar);
 
 
-          if (op.equals(false)) {
-             result = new ModelAndView("user/error");
-          } else {
-             result = new ModelAndView("user/success");
-          }
-       } else {
-          result = new ModelAndView("credit-card/error");
-       }
+            if (op.equals(false)) {
+                result = new ModelAndView("user/error");
+            } else {
+                result = new ModelAndView("user/success");
+            }
+        } else {
+            result = new ModelAndView("credit-card/error");
+        }
 
 
         return result;
@@ -348,24 +350,4 @@ public class WebinarController extends AbstractController {
     }
 
 
-
-
-
-//    @RequestMapping(value = "/unregister", method = RequestMethod.GET)
-//    public ModelAndView unapply(@RequestParam int webinarId) {
-//        ModelAndView result;
-//
-//        Webinar webinar = webinarService.findOne(webinarId);
-//        User user = userService.findByPrincipal();
-//        Boolean op = webinarService.unregister(user, webinar);
-//
-//
-//        if (op.equals(false)) {
-//            result = new ModelAndView("user/error");
-//        } else {
-//            result = new ModelAndView("user/success");
-//        }
-//
-//        return result;
-//    }
 }

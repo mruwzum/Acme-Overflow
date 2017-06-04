@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 
@@ -16,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import security.Authority;
 import services.ActorService;
 import services.CategoryService;
-
 import services.SearchCacheService;
 import services.SearchService;
 
@@ -127,7 +130,7 @@ public class SearchController extends AbstractController {
 
         Search search = searchService.findOne(searchId);
 
-        Collection<Question> resut = new ArrayList<>();
+        Collection<Question> resut;
         if (search.getCategory() == null) {
             resut = searchService.questionsByKeyword(search.getKeyword());
         } else {
@@ -141,19 +144,6 @@ public class SearchController extends AbstractController {
         return result;
     }
 
-
-//    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-//    public ModelAndView delete(Search search){
-//        ModelAndView result;
-//        try{
-//            searchService.delete(search);
-//            result=new ModelAndView("redirect:list.do");
-//        }catch(Throwable oops){
-//            result= createEditModelAndView(search, "general.commit.error");
-//        }
-//
-//        return result;
-//    }
 
     // Ancillary methods ------------------------------------------------
 
@@ -195,13 +185,13 @@ public class SearchController extends AbstractController {
         Authority authority = new Authority();
         authority.setAuthority("ADMIN");
 
-        if(actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
+        if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)) {
 
-        searchCacheService.save(searchCache);
-        res = new ModelAndView("administrator/action-1");
+            searchCacheService.save(searchCache);
+            res = new ModelAndView("administrator/action-1");
 
-        }else{
-            res =  new ModelAndView("/welcome/index");
+        } else {
+            res = new ModelAndView("/welcome/index");
 
         }
 

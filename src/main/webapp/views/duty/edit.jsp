@@ -12,6 +12,10 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
+<%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
 <form:form action="administrator/changeDuty.do" modelAttribute="duty">
 
     <form:hidden path="id"/>
@@ -27,7 +31,6 @@
     <acme:submit name="save" code="general.save"/>
 
     <a class="button" href="/welcome/index.do"><spring:message code="general.cancel"/></a>
-
 
 
 </form:form>

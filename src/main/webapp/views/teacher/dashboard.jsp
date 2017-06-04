@@ -1,4 +1,8 @@
 <%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
+<%--
   Created by IntelliJ IDEA.
   User: mruwzum
   Date: 19/12/16
@@ -37,10 +41,10 @@
                name="qq4" requestURI="${requestURI}" id="row">
 
 
-    <spring:message code="webinar.name" var="title" />
-    <display:column property="name" title="${title}" sortable="true" />
-    <spring:message code="webinar.description" var="description" />
-    <display:column property="description" title="${description}" sortable="true" />
+    <spring:message code="webinar.name" var="title"/>
+    <display:column property="name" title="${title}" sortable="true"/>
+    <spring:message code="webinar.description" var="description"/>
+    <display:column property="description" title="${description}" sortable="true"/>
 
 
 </display:table><br>

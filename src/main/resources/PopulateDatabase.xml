@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 
- * PopulateDatabase.xml
- *
- * Copyright (C) 2017 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
- * http://www.tdg-seville.info/License.html
- -->
+<!--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  -->
 
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans"
@@ -356,6 +350,7 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
+        <property name="valid" value="true"/>
     </bean>
     <!-- CreditCard2 -->
     <bean id="creditcard2" class="domain.CreditCard">
@@ -365,6 +360,7 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
+        <property name="valid" value="true"/>
     </bean>
     <!-- CreditCard3 -->
     <bean id="creditcard3" class="domain.CreditCard">
@@ -374,6 +370,7 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
+        <property name="valid" value="true"/>
     </bean>
     <!-- CreditCard4 -->
     <bean id="creditcard4" class="domain.CreditCard">
@@ -383,6 +380,7 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
+        <property name="valid" value="true"/>
     </bean>
 
     <!-- CreditCard -->
@@ -393,6 +391,7 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
+        <property name="valid" value="true"/>
     </bean>
     <!-- CreditCard2 -->
     <bean id="creditcard6" class="domain.CreditCard">
@@ -402,6 +401,7 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
+        <property name="valid" value="true"/>
     </bean>
     <!-- CreditCard3 -->
     <bean id="creditcard7" class="domain.CreditCard">
@@ -411,6 +411,7 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
+        <property name="valid" value="true"/>
     </bean>
     <!-- CreditCard4 -->
     <bean id="creditcard8" class="domain.CreditCard">
@@ -420,6 +421,7 @@
         <property name="year" value="2018"/>
         <property name="CVV" value="432"/>
         <property name="month" value="2"/>
+        <property name="valid" value="true"/>
     </bean>
 
 
@@ -955,7 +957,8 @@
         <property name="description" value="web4"/>
         <property name="startDate" value="2017/06/11"/>
         <property name="price" value="202.0"/>
-        <property name="picture" value="https://elearningindustry.com/wp-content/uploads/2015/10/top-7-webinar-tips-successful-webinar-host.jpg"/>
+        <property name="picture"
+                  value="https://elearningindustry.com/wp-content/uploads/2015/10/top-7-webinar-tips-successful-webinar-host.jpg"/>
         <property name="owner" ref="teacher4"/>
         <property name="URL" value="https://www.youtube.com/embed/90MBOV6mOPM"/>
         <property name="categories" ref="categorie3"/>
@@ -979,7 +982,8 @@
         <property name="description" value="web4"/>
         <property name="startDate" value="2016/06/11"/>
         <property name="price" value="20.0"/>
-        <property name="picture" value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6nOmDgD9qIKGOCWkJjgF3wd0TZjBcJW56MlKqgO4cFOqjfCV7"/>
+        <property name="picture"
+                  value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6nOmDgD9qIKGOCWkJjgF3wd0TZjBcJW56MlKqgO4cFOqjfCV7"/>
         <property name="owner" ref="teacher2"/>
         <property name="URL" value="https://www.youtube.com/embed/90MBOV6mOPM"/>
         <property name="categories" ref="categorie1"/>
@@ -1002,7 +1006,8 @@
         <property name="description" value="web6"/>
         <property name="startDate" value="2018/06/11"/>
         <property name="price" value="2000.0"/>
-        <property name="picture" value="http://www.terrainfirma.co.uk/blog/wp-content/uploads/2011/02/webinar-headset-pc.jpg"/>
+        <property name="picture"
+                  value="http://www.terrainfirma.co.uk/blog/wp-content/uploads/2011/02/webinar-headset-pc.jpg"/>
         <property name="owner" ref="teacher1"/>
         <property name="categories" ref="categorie1"/>
         <property name="URL" value="https://www.youtube.com/embed/90MBOV6mOPM"/>
@@ -1151,12 +1156,12 @@
     </bean>
 
 
-
     <!-- Question -->
     <bean id="question1" class="domain.Question">
         <property name="title" value="question1"/>
         <property name="banned" value="false"/>
-        <property name="summary" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+        <property name="summary"
+                  value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
         <property name="createdDate" value="2017/04/22"/>
         <property name="owner" ref="user1"/>
         <property name="search" ref="search1"/>
@@ -1178,7 +1183,8 @@
     <bean id="question2" class="domain.Question">
         <property name="title" value="question2"/>
         <property name="banned" value="false"/>
-        <property name="summary" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+        <property name="summary"
+                  value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
         <property name="createdDate" value="2017/05/22"/>
         <property name="owner" ref="user2"/>
         <property name="search" ref="search1"/>
@@ -1199,7 +1205,8 @@
     <bean id="question3" class="domain.Question">
         <property name="title" value="question3"/>
         <property name="banned" value="true"/>
-        <property name="summary" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+        <property name="summary"
+                  value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
         <property name="createdDate" value="2017/06/22"/>
         <property name="owner" ref="user3"/>
         <property name="pictures">
@@ -1219,7 +1226,8 @@
     <bean id="question4" class="domain.Question">
         <property name="title" value="question4"/>
         <property name="banned" value="false"/>
-        <property name="summary" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+        <property name="summary"
+                  value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
         <property name="createdDate" value="2017/04/12"/>
         <property name="owner" ref="user1"/>
         <property name="pictures">
@@ -1237,7 +1245,8 @@
     <bean id="question5" class="domain.Question">
         <property name="title" value="question5"/>
         <property name="banned" value="false"/>
-        <property name="summary" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+        <property name="summary"
+                  value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
         <property name="createdDate" value="2017/01/22"/>
         <property name="owner" ref="user1"/>
         <property name="pictures">
@@ -1255,7 +1264,8 @@
     <bean id="question6" class="domain.Question">
         <property name="title" value="question6"/>
         <property name="banned" value="false"/>
-        <property name="summary" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+        <property name="summary"
+                  value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
         <property name="createdDate" value="2016/12/22"/>
         <property name="owner" ref="user4"/>
         <property name="pictures">
@@ -1315,6 +1325,12 @@
         </property>
         <property name="question" ref="question1"/>
         <property name="owner" ref="user1"/>
+        <property name="likedActors">
+            <list>
+                <ref bean="user1"/>
+            </list>
+
+        </property>
     </bean>
 
     <bean id="answer2" class="domain.Answer">
@@ -1332,8 +1348,11 @@
         <property name="question" ref="question2"/>
         <property name="owner" ref="user2"/>
         <property name="teacher" value="false"/>
+        <property name="likedActors">
+            <list>
+            </list>
 
-
+        </property>
     </bean>
     <bean id="answer3" class="domain.Answer">
         <property name="title" value="answ3"/>
@@ -1350,7 +1369,11 @@
         <property name="question" ref="question2"/>
         <property name="owner" ref="teacher4"/>
         <property name="teacher" value="true"/>
+        <property name="likedActors">
+            <list>
+            </list>
 
+        </property>
     </bean>
     <bean id="answer4" class="domain.Answer">
         <property name="title" value="answ4"/>
@@ -1367,7 +1390,11 @@
         <property name="question" ref="question1"/>
         <property name="owner" ref="teacher1"/>
         <property name="teacher" value="true"/>
+        <property name="likedActors">
+            <list>
+            </list>
 
+        </property>
     </bean>
     <bean id="answer5" class="domain.Answer">
         <property name="banned" value="true"/>
@@ -1384,7 +1411,11 @@
         <property name="question" ref="question3"/>
         <property name="owner" ref="teacher2"/>
         <property name="teacher" value="true"/>
+        <property name="likedActors">
+            <list>
+            </list>
 
+        </property>
     </bean>
     <bean id="answer6" class="domain.Answer">
         <property name="banned" value="true"/>
@@ -1401,7 +1432,11 @@
         <property name="question" ref="question3"/>
         <property name="owner" ref="teacher1"/>
         <property name="teacher" value="true"/>
+        <property name="likedActors">
+            <list>
+            </list>
 
+        </property>
     </bean>
     <bean id="answer7" class="domain.Answer">
         <property name="banned" value="false"/>
@@ -1418,7 +1453,11 @@
         <property name="question" ref="question6"/>
         <property name="owner" ref="teacher1"/>
         <property name="teacher" value="true"/>
+        <property name="likedActors">
+            <list>
+            </list>
 
+        </property>
     </bean>
     <bean id="answer8" class="domain.Answer">
         <property name="banned" value="false"/>
@@ -1435,7 +1474,11 @@
         <property name="question" ref="question6"/>
         <property name="owner" ref="teacher1"/>
         <property name="teacher" value="true"/>
+        <property name="likedActors">
+            <list>
+            </list>
 
+        </property>
     </bean>
     <bean id="answer9" class="domain.Answer">
         <property name="banned" value="false"/>
@@ -1452,7 +1495,11 @@
         <property name="question" ref="question7"/>
         <property name="owner" ref="user3"/>
         <property name="teacher" value="false"/>
+        <property name="likedActors">
+            <list>
+            </list>
 
+        </property>
     </bean>
     <!--/Answers-->
 

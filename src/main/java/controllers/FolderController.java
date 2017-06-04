@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 
@@ -94,12 +98,11 @@ public class FolderController extends AbstractController {
             mezzages.addAll(userService.addMyWebinnarMezzagesToMyImbox(userService.findByPrincipal()));
         }
 
-       Collection<Mezzage> mezzages = folder.getMezzages();
+        Collection<Mezzage> mezzages = folder.getMezzages();
 
 
-
-       result = new ModelAndView("mezzage/list");
-       result.addObject("mezzages", mezzages);
+        result = new ModelAndView("mezzage/list");
+        result.addObject("mezzages", mezzages);
         result.addObject("isTrashBox", isTrashBox);
         return result;
     }
@@ -163,19 +166,6 @@ public class FolderController extends AbstractController {
 
         return result;
     }
-//    @RequestMapping(value = "/delete", method = RequestMethod.GET)
-//    public ModelAndView delete2(@RequestParam int folderId) {
-//        ModelAndView result;
-//        try {
-//            Folder folder = folderService.findOne(folderId);
-//            folderService.delete(folder);
-//            result = new ModelAndView("redirect:list.do");
-//        } catch (Throwable oops) {
-//            Folder folder = folderService.findOne(folderId);
-//            result = createEditModelAndView(folder, "folder.commit.error");
-//        }
-//
-//        return result;
-//    }
+
 
 }

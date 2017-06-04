@@ -1,9 +1,12 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package repositories;
 
 import domain.Actor;
 import domain.Folder;
 import domain.Mezzage;
-import domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

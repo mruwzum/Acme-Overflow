@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import org.hibernate.validator.constraints.SafeHtml;
@@ -45,5 +49,13 @@ public class EvaluationQuestion extends DomainEntity {
 
     public void setEvaluation(Evaluation evaluation) {
         this.evaluation = evaluation;
+    }
+
+    @Override
+    public String toString() {
+        return "EvaluationQuestion{" +
+                "title='" + title + '\'' +
+                ", answer='" + answer + '\'' +
+                '}';
     }
 }

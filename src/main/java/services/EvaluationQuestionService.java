@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package services;
 
 import domain.EvaluationQuestion;
@@ -8,11 +12,6 @@ import org.springframework.util.Assert;
 import repositories.EvaluationQuestionRepository;
 
 import java.util.Collection;
-
-/**
- * Created by david on 05/11/2016.
- * Copyright © 2016 NullPoint Software
- */
 
 @Service
 @Transactional

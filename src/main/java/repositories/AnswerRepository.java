@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package repositories;
 
 import domain.Answer;
@@ -12,5 +16,6 @@ import java.util.Collection;
 public interface AnswerRepository extends JpaRepository<Answer, Integer> {
     @Query("select a from Answer a")
     Collection<Answer> all();
+
 
 }

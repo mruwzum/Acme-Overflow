@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package services;
 
 import domain.*;
@@ -12,11 +16,6 @@ import security.UserAccount;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-/**
- * Created by david on 05/11/2016.
- * Copyright © 2016 NullPoint Software
- */
 
 @Service
 @Transactional
@@ -85,17 +84,17 @@ public class TeacherService {
     }
 
 
-    public String totalEarn(Teacher t){
+    public String totalEarn(Teacher t) {
 
-        List<Duty> duties =  new ArrayList<>(dutyService.findAll());
+        List<Duty> duties = new ArrayList<>(dutyService.findAll());
 
         Double total = teacherRepository.totalEarnWithoutComission(t);
 
         int duty = duties.get(0).getDutyValue();
 
-        Double res = total*duty/100;
+        Double res = total * duty / 100;
 
-       return res.toString() + " euros";
+        return res.toString() + " euros";
     }
 
     public Teacher findByUserAccount(UserAccount userAccount) {
@@ -154,7 +153,7 @@ public class TeacherService {
 
     }
 
-    public Collection<Bill> myBills(Teacher t){
+    public Collection<Bill> myBills(Teacher t) {
 
         Teacher teacher = findByPrincipal();
         Assert.notNull(teacher);

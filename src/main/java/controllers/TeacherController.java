@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 
@@ -151,19 +155,19 @@ public class TeacherController extends AbstractController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
     public ModelAndView save(@Valid Teacher teacher, BindingResult binding) {
         ModelAndView result;
-//        if (!binding.hasErrors()) {
-//            result = createEditModelAndView(teacher);
-//        } else {
-//            try {
-        teacherService.save(teacher);
-        teacher.getCurricula().setApprobed(false);
-        teacher.getCurricula().setOwner(teacherService.findByPrincipal());
+        if (binding.hasErrors()) {
+            result = createEditModelAndView(teacher);
+        } else {
+            try {
+                teacherService.save(teacher);
+                teacher.getCurricula().setApprobed(false);
+                teacher.getCurricula().setOwner(teacherService.findByPrincipal());
 
-        result = new ModelAndView("redirect:list.do");
-//            } catch (Throwable oops) {
-//                result = createEditModelAndView(teacher, "teacher.commit.error");
-//            }
-//        }
+                result = new ModelAndView("user/success");
+            } catch (Throwable oops) {
+                result = createEditModelAndView(teacher, "teacher.commit.error");
+            }
+        }
         return result;
     }
 
@@ -182,14 +186,14 @@ public class TeacherController extends AbstractController {
 
 
     @RequestMapping(value = "/bill", method = RequestMethod.GET)
-    public ModelAndView bills(){
+    public ModelAndView bills() {
 
         ModelAndView res;
 
-        Collection<Bill> bills =  teacherService.myBills(teacherService.findByPrincipal());
+        Collection<Bill> bills = teacherService.myBills(teacherService.findByPrincipal());
         String total = teacherService.totalEarn(teacherService.findByPrincipal());
 
-        res =  new ModelAndView("bill/list");
+        res = new ModelAndView("bill/list");
         res.addObject("bills", bills);
         res.addObject("total", total);
         return res;

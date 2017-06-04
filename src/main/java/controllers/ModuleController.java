@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 
@@ -132,20 +136,6 @@ public class ModuleController extends AbstractController {
         return result;
     }
 
-    //    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-//    public ModelAndView delete(@Valid int moduleId){
-//        ModelAndView result;
-//        try{
-//            Module module = moduleService.findOne(moduleId);
-//            moduleService.delete(module);
-//            result=new ModelAndView("redirect:list.do");
-//        }catch(Throwable oops){
-//            Module module = moduleService.findOne(moduleId);
-//            result= createEditModelAndView(module, "module.commit.error");
-//        }
-//
-//        return result;
-//    }
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public ModelAndView delete2(@RequestParam int moduleId) {
         ModelAndView result;
@@ -163,7 +153,6 @@ public class ModuleController extends AbstractController {
     }
 
 
-
     @RequestMapping(value = "/view", method = RequestMethod.GET)
     public ModelAndView view(@RequestParam int moduleId) {
         ModelAndView res;
@@ -175,9 +164,9 @@ public class ModuleController extends AbstractController {
         Authority authority = new Authority();
         authority.setAuthority("TEACHER");
 
-        if(actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
+        if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)) {
 
-            if (teacherService.findByPrincipal().getWebinars().contains(module.getWebinar())){
+            if (teacherService.findByPrincipal().getWebinars().contains(module.getWebinar())) {
                 my = true;
             }
         }
@@ -189,8 +178,6 @@ public class ModuleController extends AbstractController {
         res.addObject("my", my);
         res.addObject("id", module.getId());
         res.addObject("learnings", module.getLearningMaterials());
-
-
 
 
         return res;

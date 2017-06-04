@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import org.hibernate.validator.constraints.Email;
@@ -20,17 +24,17 @@ public abstract class Actor extends DomainEntity {
     private String surname;
     private String phoneNumber;
     private String email;
-   private Collection<Mezzage> receivedMezzages;
-   private Collection<Mezzage> sendedMezzages;
+    private Collection<Mezzage> receivedMezzages;
+    private Collection<Mezzage> sendedMezzages;
     private Collection<Folder> folders;
 
     private UserAccount userAccount;
-   private Collection<Answer> answers;
-   private Collection<Search> searches;
-   private Collection<Comment> comments;
-   private CreditCard creditCard;
+    private Collection<Answer> answers;
+    private Collection<Search> searches;
+    private Collection<Comment> comments;
+    private CreditCard creditCard;
 
-   private Collection<Answer> likedAnswers;
+    private Collection<Answer> likedAnswers;
 
 
     @NotBlank
@@ -89,23 +93,23 @@ public abstract class Actor extends DomainEntity {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
     public Collection<Mezzage> getReceivedMezzages() {
-       return receivedMezzages;
+        return receivedMezzages;
     }
 
-   public void setReceivedMezzages(Collection<Mezzage> receivedMezzages) {
-      this.receivedMezzages = receivedMezzages;
+    public void setReceivedMezzages(Collection<Mezzage> receivedMezzages) {
+        this.receivedMezzages = receivedMezzages;
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
     public Collection<Mezzage> getSendedMezzages() {
-       return sendedMezzages;
+        return sendedMezzages;
     }
 
-   public void setSendedMezzages(Collection<Mezzage> sendedMezzages) {
-      this.sendedMezzages = sendedMezzages;
+    public void setSendedMezzages(Collection<Mezzage> sendedMezzages) {
+        this.sendedMezzages = sendedMezzages;
     }
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     public Collection<Folder> getFolders() {
         return folders;
     }
@@ -114,43 +118,43 @@ public abstract class Actor extends DomainEntity {
         this.folders = folders;
     }
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
-   public Collection<Answer> getAnswers() {
-      return answers;
-   }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    public Collection<Answer> getAnswers() {
+        return answers;
+    }
 
-   public void setAnswers(Collection<Answer> answers) {
-      this.answers = answers;
-   }
+    public void setAnswers(Collection<Answer> answers) {
+        this.answers = answers;
+    }
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
-   public Collection<Search> getSearches() {
-      return searches;
-   }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    public Collection<Search> getSearches() {
+        return searches;
+    }
 
-   public void setSearches(Collection<Search> searches) {
-      this.searches = searches;
-   }
+    public void setSearches(Collection<Search> searches) {
+        this.searches = searches;
+    }
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
-   public Collection<Comment> getComments() {
-      return comments;
-   }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    public Collection<Comment> getComments() {
+        return comments;
+    }
 
-   public void setComments(Collection<Comment> comments) {
-      this.comments = comments;
-   }
+    public void setComments(Collection<Comment> comments) {
+        this.comments = comments;
+    }
 
-   @OneToOne(cascade = CascadeType.ALL)
-   public CreditCard getCreditCard() {
-      return creditCard;
-   }
+    @OneToOne(cascade = CascadeType.ALL)
+    public CreditCard getCreditCard() {
+        return creditCard;
+    }
 
-   public void setCreditCard(CreditCard creditCard) {
-      this.creditCard = creditCard;
-   }
+    public void setCreditCard(CreditCard creditCard) {
+        this.creditCard = creditCard;
+    }
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "likedActors")
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     public Collection<Answer> getLikedAnswers() {
         return likedAnswers;
     }

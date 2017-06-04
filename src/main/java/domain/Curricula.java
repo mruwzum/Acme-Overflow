@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -87,5 +91,15 @@ public class Curricula extends DomainEntity {
 
     public void setOwner(Teacher owner) {
         this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return "Curricula{" +
+                "photo='" + photo + '\'' +
+                ", educationSection='" + educationSection + '\'' +
+                ", experienceSection='" + experienceSection + '\'' +
+                ", hobbiesSection='" + hobbiesSection + '\'' +
+                '}';
     }
 }

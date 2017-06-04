@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package services;
 
 import domain.*;
@@ -140,14 +144,6 @@ public class AdministratorService {
         return administratorRepository.minNumberOfAnswerPerUser();
     }
 
-
-//    public User userWhoHaveAutoredMoreAnswer(){
-//
-//        Administrator administrator = findByPrincipal();
-//        Assert.notNull(administrator);
-//
-//        return administratorRepository.userWhoHaveAutoredMoreAnswer();
-//    }
 
     public Collection<User> userSortedByQuestionNumber() {
 
@@ -375,46 +371,6 @@ public class AdministratorService {
     }
 
 
-//    public Boolean banUser(User chorbi){
-//        Boolean res = false;
-//
-//        if(!chorbi.getUserAccount().getAuthorities().isEmpty()){
-//            Authority authority =  new Authority();
-//            authority.setAuthority("CHORBI");
-//            Authority authority2 =  new Authority();
-//            authority2.setAuthority("BAN");
-//
-//            chorbi.getUserAccount().addAuthority(authority2);
-//            chorbi.getUserAccount().removeAuthority(authority);
-//
-//            chorbi.setBanned(true);
-//
-//            res = true;
-//
-//        }
-//        return res;
-
-    //    }
-//
-//
-//    public Boolean unbanChorbi(Chorbi chorbi){
-//        Boolean res = false;
-//
-//            Authority authority =  new Authority();
-//            authority.setAuthority("CHORBI");
-//            Authority authority2 =  new Authority();
-//            authority2.setAuthority("BAN");
-//            chorbi.getUserAccount().addAuthority(authority);
-//            chorbi.getUserAccount().removeAuthority(authority2);
-//
-//
-//            chorbi.setBanned(false);
-//
-//            res = true;
-//
-//        return res;
-//
-//    }
     public void flush() {
         administratorRepository.flush();
     }

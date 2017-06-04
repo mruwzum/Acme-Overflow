@@ -1,4 +1,8 @@
 <%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
+<%--
   Created by IntelliJ IDEA.
   User: mruwzum
   Date: 1/3/17
@@ -46,12 +50,11 @@
 
 <form:form action="mezzage/movef.do" modelAttribute="mezzage">
 
-    <form:hidden path="id" />
-    <form:hidden path="version" />
-    <form:hidden path="sender" />
-    <%--<form:hidden path="sendDate" />--%>
-    <form:hidden path="priority" />
-    <form:hidden path="receiver" />
+    <form:hidden path="id"/>
+    <form:hidden path="version"/>
+    <form:hidden path="sender"/>
+    <form:hidden path="priority"/>
+    <form:hidden path="receiver"/>
     <form:hidden path="senderEmail"/>
     <form:hidden path="receiverEmail"/>
     <form:hidden path="subject"/>
@@ -64,8 +67,6 @@
     <acme:submit name="save" code="general.movetoFolder"/>
 
     <a class="button" href="/folder/list.do"><spring:message code="general.cancel"/></a>
-
-
 
 
 </form:form>

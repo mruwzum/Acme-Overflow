@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package services;
 
 import domain.Curricula;
@@ -7,11 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.util.Collection;
-
-/**
- * Created by david on 05/11/2016.
- * Copyright © 2016 NullPoint Software
- */
 
 @Service
 @Transactional
@@ -67,7 +66,7 @@ public class CurriculaService {
     public Boolean unapprobeCurricula(Curricula curricula) {
 
         Boolean res = false;
-       if (!curricula.isApprobed()) {
+        if (! curricula.isApprobed()) {
             res = false;
         } else if (curricula.isApprobed()) {
             curricula.setApprobed(false);
@@ -80,9 +79,9 @@ public class CurriculaService {
 
     public Boolean approbeCurricula(Curricula curricula) {
         Boolean res = false;
-       if (curricula.isApprobed()) {
+        if (curricula.isApprobed()) {
             res = false;
-        } else if (!curricula.isApprobed()) {
+        } else if (! curricula.isApprobed()) {
             curricula.setApprobed(true);
             CurriculaRepository.save(curricula);
             res = true;

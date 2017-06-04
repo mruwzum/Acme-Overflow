@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package services;
 
 import domain.Category;
@@ -77,86 +81,6 @@ public class SearchService {
     public void flush() {
         searchRepository.flush();
     }
-
-
-//
-//    public List<User> davidFinder(Search search){
-//
-//        List<User> res;
-//
-//       List<User> todos = new ArrayList<>(userService.findAll());
-//
-//       if (!search.getCoordinate().getCity().equals("void")){
-//           todos.retainAll(searchRepository.findByCity(search.getCoordinate().getCity()));
-//        }
-//
-//       if(!(search.getAge()==null)){
-//           int overAge =  search.getAge()+5;
-//           int underAge = search.getAge()-5;
-//           todos.retainAll(searchRepository.findByAge(underAge,overAge));
-//       }
-//       if (!(search.getGenre()==null)){
-//           todos.retainAll(searchRepository.findByGenre(search.getGenre()));
-//       }
-//       if (!(search.getRelationship()==null)){
-//           todos.retainAll(searchRepository.findByRelationship(search.getRelationship()));
-//       }
-//       if (!search.getCoordinate().getCountry().equals("")){
-//           todos.retainAll(searchRepository.findByCountry(search.getCoordinate().getCountry()));
-//       }
-//       if (!search.getCoordinate().getProvince().equals("")){
-//          todos.retainAll(searchRepository.findByProvince(search.getCoordinate().getProvince()));
-//       }
-//       if (!search.getCoordinate().getState().equals("")){
-//           todos.retainAll(searchRepository.findByState(search.getCoordinate().getState()));
-//       }
-//       if (!search.getKeyword().equals("")){
-//           todos.retainAll(searchRepository.findByKeyword(search.getKeyword()));
-//       }
-//
-//        return todos;
-//
-//    }
-//
-//    public Boolean checkCreditCard(CreditCard creditCard){
-//        Boolean res = false;
-//        Integer yearAct0 = (((new Date(System.currentTimeMillis())).getYear()));
-//        String year ="20"+ yearAct0.toString().substring(1);
-//        Integer yearAct = new Integer(year);
-//        int monthAct = new Date(System.currentTimeMillis()).getMonth();
-//        if(creditCard==null){
-//            res = false;
-//        }else if (creditCard.getExpirationYear()==yearAct && creditCard.getExpirationMonth()<monthAct){
-//            res = false;
-//            creditCard.setValid(false);
-//        }else if (creditCard.getExpirationYear()==yearAct && creditCard.getExpirationMonth()>=monthAct){
-//            res =  true;
-//            creditCard.setValid(true);
-//        }else if (creditCard.getExpirationYear()>=yearAct){
-//            res=   true;
-//            creditCard.setValid(true);
-//        }else if (creditCard.getExpirationYear()<yearAct){
-//            res= false;
-//            creditCard.setValid(false);
-//        }
-//        return res;
-//    }
-//    public void checkTime(Collection<Search> searches){
-//        Date actual = new Date(System.currentTimeMillis());
-//        List<SearchCache> caches = new ArrayList<>(searchCacheService.findAll());
-//        Integer hour = caches.get(0).getCacheValue();
-//        Long VALUEZ = hour * 60 * 60 * 1000L;
-//        if (caches.isEmpty()){
-//
-//        }else {
-//            for (Search s : searches) {
-//                if (Math.abs(s.getCreationDate().getTime() - actual.getTime()) > VALUEZ) {
-//                    searches.remove(s);
-//                }
-//            }
-//
-//        }
-//        }
 
 
     public Collection<Question> questionsByKeyword(String keyword) {

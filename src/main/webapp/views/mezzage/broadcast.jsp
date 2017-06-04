@@ -12,6 +12,10 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
+<%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
 <form:form action="mezzage/broadcast.do" modelAttribute="mezzage">
 
     <form:hidden path="id"/>
@@ -23,10 +27,6 @@
     <form:hidden path="senderEmail"/>
     <form:hidden path="sender"/>
     <form:hidden path="webinar"/>
-
-
-    <%--<acme:select path="receiver" code="mezzage.receiver" items="${users}" itemLabel="name"/>--%>
-    <%--<br/>--%>
 
 
     <acme:textbox path="subject" code="mezzage.subject"/>

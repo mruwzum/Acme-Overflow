@@ -12,6 +12,10 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
+<%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
 <form:form action="user/edit.do" modelAttribute="user">
 
     <form:hidden path="id"/>

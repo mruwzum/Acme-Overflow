@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 
@@ -49,7 +53,6 @@ public class DashboardController extends AbstractController {
         int q11 = administratorService.maxNumberOfCommentPerWebinar();
         int q12 = administratorService.minNumberOfCommentPerWebinar();
 
-        // User q13 = administratorService.userWhoHaveAutoredMoreAnswer();
         Collection<User> q15 = administratorService.userSortedByQuestionNumber();
         Collection<User> q16 = administratorService.userSortedByNumberOfLikes();
         Collection<User> q17 = administratorService.usersWithCreditCards();
@@ -81,7 +84,6 @@ public class DashboardController extends AbstractController {
         res.addObject("q10", q10);
         res.addObject("q11", q11);
         res.addObject("q12", q12);
-        //res.addObject("q13",q13);
         res.addObject("q15", q15);
         res.addObject("q16", q16);
         res.addObject("q17", q17);
@@ -105,20 +107,20 @@ public class DashboardController extends AbstractController {
         ModelAndView res;
 
 
-       Double qq1 = teacherService.averageNumberOfUserInMyWebinar(teacherService.findByPrincipal());
-       int qq2 = teacherService.maxNumberOfUserInMyWebinar(teacherService.findByPrincipal());
-       int qq3 = teacherService.minNumberOfUserInMyWebinar(teacherService.findByPrincipal());
-       Collection<Webinar> qq4 = teacherService.webinarSortedByNumberOfUsers(teacherService.findByPrincipal());
-       Collection<User> qq5 = teacherService.userRegisteredInMyWebinars(teacherService.findByPrincipal());
+        Double qq1 = teacherService.averageNumberOfUserInMyWebinar(teacherService.findByPrincipal());
+        int qq2 = teacherService.maxNumberOfUserInMyWebinar(teacherService.findByPrincipal());
+        int qq3 = teacherService.minNumberOfUserInMyWebinar(teacherService.findByPrincipal());
+        Collection<Webinar> qq4 = teacherService.webinarSortedByNumberOfUsers(teacherService.findByPrincipal());
+        Collection<User> qq5 = teacherService.userRegisteredInMyWebinars(teacherService.findByPrincipal());
 
 
         res = new ModelAndView("teacher/dashboard");
 
-       res.addObject("qq1", qq1);
-       res.addObject("qq2", qq2);
-       res.addObject("qq3", qq3);
-       res.addObject("qq4", qq4);
-       res.addObject("qq5", qq5);
+        res.addObject("qq1", qq1);
+        res.addObject("qq2", qq2);
+        res.addObject("qq3", qq3);
+        res.addObject("qq4", qq4);
+        res.addObject("qq5", qq5);
 
 
         return res;

@@ -1,4 +1,8 @@
 <%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
+<%--
   Created by IntelliJ IDEA.
   User: mruwzum
   Date: 1/3/17

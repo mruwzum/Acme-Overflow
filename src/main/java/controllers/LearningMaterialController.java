@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 
@@ -122,20 +126,7 @@ public class LearningMaterialController extends AbstractController {
         return result;
     }
 
-    //    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-//    public ModelAndView delete(@Valid int learningMaterialId){
-//        ModelAndView result;
-//        try{
-//            LearningMaterial learningMaterial = learningMaterialService.findOne(learningMaterialId);
-//            learningMaterialService.delete(learningMaterial);
-//            result=new ModelAndView("redirect:list.do");
-//        }catch(Throwable oops){
-//            LearningMaterial learningMaterial = learningMaterialService.findOne(learningMaterialId);
-//            result= createEditModelAndView(learningMaterial, "learningMaterial.commit.error");
-//        }
-//
-//        return result;
-//    }
+
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public ModelAndView delete2(@RequestParam int learningMaterialId) {
         ModelAndView result;

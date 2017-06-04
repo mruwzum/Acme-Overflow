@@ -1,93 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 
- * converters.xml
- *
- * Copyright (C) 2017 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
- * http://www.tdg-seville.info/License.html
- -->
+<!--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  -->
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
-	xsi:schemaLocation="
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd		
 	">
 
-	<util:list id="converters">
-		<!-- Actor -->
-		<bean class="converters.ActorToStringConverter"/>
-		<bean class="converters.StringToActorConverter"/>
-		<!-- Administrator -->
-		<bean class="converters.AdministratorToStringConverter"/>
-		<bean class="converters.StringToAdministratorConverter"/>
-		<!-- Answer -->
-		<bean class="converters.AnswerToStringConverter"/>
-		<bean class="converters.StringToAnswerConverter"/>
-		<!-- Banner -->
-		<bean class="converters.BannerToStringConverter"/>
-		<bean class="converters.StringToBannerConverter"/>
-		<!-- Category -->
-		<bean class="converters.CategoryToStringConverter"/>
-		<bean class="converters.StringToCategoryConverter"/>
-		<!-- Comment -->
-		<bean class="converters.CommentToStringConverter"/>
-		<bean class="converters.StringToCommentConverter"/>
-		<!-- Credit-Card -->
-		<bean class="converters.CreditCardToStringConverter"/>
-		<bean class="converters.StringToCreditCardConverter"/>
-		<!-- Curricula -->
-		<bean class="converters.CurriculaToStringConverter"/>
-		<bean class="converters.StringToCurriculaConverter"/>
-		<!-- Date -->
-		<bean class="converters.DateToStringConverter"/>
-		<bean class="converters.StringToDateConverter"/>
-		<!-- Evaluation Question -->
-		<bean class="converters.EvaluationQuestionToStringConverter"/>
-		<bean class="converters.StringToEvaluationQuestionConverter"/>
-		<!-- Evaluation -->
-		<bean class="converters.EvaluationToStringConverter"/>
-		<bean class="converters.EvaluationToStringConverter"/>
-		<!-- Folder -->
-		<bean class="converters.FolderToStringConverter"/>
-		<bean class="converters.StringToFolderConverter"/>
-		<!-- Learning Material -->
-		<bean class="converters.LearningMaterialToStringConverter"/>
-		<bean class="converters.StringToLearningMaterialConverter"/>
-		<!-- Mezzagesage -->
-		<bean class="converters.MezzageToStringConverter"/>
-		<bean class="converters.StringToMezzageConverter"/>
-		<!-- Moderator -->
-		<bean class="converters.ModeratorToStringConverter"/>
-		<bean class="converters.StringToModeratorConverter"/>
-		<!-- Module -->
-		<bean class="converters.ModuleToStringConverter"/>
-		<bean class="converters.StringToModuleConverter"/>
-		<!-- Question -->
-		<bean class="converters.QuestionToStringConverter"/>
-		<bean class="converters.StringToQuestionConverter"/>
-		<!-- Search Cache-->
-		<bean class="converters.SearchCacheToStringConverter"/>
-		<bean class="converters.StringToSearchCacheConverter"/>
-		<!-- Search -->
-		<bean class="converters.SearchToStringConverter"/>
-		<bean class="converters.StringToSearchConverter"/>
-		<!-- User -->
-		<bean class="converters.UserToStringConverter"/>
-		<bean class="converters.StringToUserConverter"/>
-		<!-- User account -->
-		<bean class="converters.UserAccountToStringConverter"/>
-		<bean class="converters.StringToUserAccountConverter"/>
-		<!-- Teacher -->
-		<bean class="converters.TeacherToStringConverter"/>
-		<bean class="converters.StringToTeacherConverter"/>
-		<!-- Webinar -->
-		<bean class="converters.WebinarToStringConverter"/>
-		<bean class="converters.StringToWebinarConverter"/>
+    <util:list id="converters">
+        <!-- Actor -->
+        <bean class="converters.ActorToStringConverter"/>
+        <bean class="converters.StringToActorConverter"/>
+        <!-- Administrator -->
+        <bean class="converters.AdministratorToStringConverter"/>
+        <bean class="converters.StringToAdministratorConverter"/>
+        <!-- Answer -->
+        <bean class="converters.AnswerToStringConverter"/>
+        <bean class="converters.StringToAnswerConverter"/>
+        <!-- Banner -->
+        <bean class="converters.BannerToStringConverter"/>
+        <bean class="converters.StringToBannerConverter"/>
+        <!-- Category -->
+        <bean class="converters.CategoryToStringConverter"/>
+        <bean class="converters.StringToCategoryConverter"/>
+        <!-- Comment -->
+        <bean class="converters.CommentToStringConverter"/>
+        <bean class="converters.StringToCommentConverter"/>
+        <!-- Credit-Card -->
+        <bean class="converters.CreditCardToStringConverter"/>
+        <bean class="converters.StringToCreditCardConverter"/>
+        <!-- Curricula -->
+        <bean class="converters.CurriculaToStringConverter"/>
+        <bean class="converters.StringToCurriculaConverter"/>
+        <!-- Date -->
+        <bean class="converters.DateToStringConverter"/>
+        <bean class="converters.StringToDateConverter"/>
+        <!-- Evaluation Question -->
+        <bean class="converters.EvaluationQuestionToStringConverter"/>
+        <bean class="converters.StringToEvaluationQuestionConverter"/>
+        <!-- Evaluation -->
+        <bean class="converters.EvaluationToStringConverter"/>
+        <bean class="converters.EvaluationToStringConverter"/>
+        <!-- Folder -->
+        <bean class="converters.FolderToStringConverter"/>
+        <bean class="converters.StringToFolderConverter"/>
+        <!-- Learning Material -->
+        <bean class="converters.LearningMaterialToStringConverter"/>
+        <bean class="converters.StringToLearningMaterialConverter"/>
+        <!-- Mezzagesage -->
+        <bean class="converters.MezzageToStringConverter"/>
+        <bean class="converters.StringToMezzageConverter"/>
+        <!-- Moderator -->
+        <bean class="converters.ModeratorToStringConverter"/>
+        <bean class="converters.StringToModeratorConverter"/>
+        <!-- Module -->
+        <bean class="converters.ModuleToStringConverter"/>
+        <bean class="converters.StringToModuleConverter"/>
+        <!-- Question -->
+        <bean class="converters.QuestionToStringConverter"/>
+        <bean class="converters.StringToQuestionConverter"/>
+        <!-- Search Cache-->
+        <bean class="converters.SearchCacheToStringConverter"/>
+        <bean class="converters.StringToSearchCacheConverter"/>
+        <!-- Search -->
+        <bean class="converters.SearchToStringConverter"/>
+        <bean class="converters.StringToSearchConverter"/>
+        <!-- User -->
+        <bean class="converters.UserToStringConverter"/>
+        <bean class="converters.StringToUserConverter"/>
+        <!-- User account -->
+        <bean class="converters.UserAccountToStringConverter"/>
+        <bean class="converters.StringToUserAccountConverter"/>
+        <!-- Teacher -->
+        <bean class="converters.TeacherToStringConverter"/>
+        <bean class="converters.StringToTeacherConverter"/>
+        <!-- Webinar -->
+        <bean class="converters.WebinarToStringConverter"/>
+        <bean class="converters.StringToWebinarConverter"/>
 
-	</util:list>
-	
+    </util:list>
+
 </beans>

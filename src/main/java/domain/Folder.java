@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -14,7 +18,7 @@ import java.util.Collection;
 public class Folder extends DomainEntity {
 
     private String name;
-   private Collection<Mezzage> mezzages;
+    private Collection<Mezzage> mezzages;
     private Actor owner;
 
 
@@ -30,11 +34,11 @@ public class Folder extends DomainEntity {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "folder")
     public Collection<Mezzage> getMezzages() {
-       return mezzages;
+        return mezzages;
     }
 
-   public void setMezzages(Collection<Mezzage> mezzages) {
-      this.mezzages = mezzages;
+    public void setMezzages(Collection<Mezzage> mezzages) {
+        this.mezzages = mezzages;
     }
 
 
@@ -45,5 +49,12 @@ public class Folder extends DomainEntity {
 
     public void setOwner(Actor owner) {
         this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return "Folder{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

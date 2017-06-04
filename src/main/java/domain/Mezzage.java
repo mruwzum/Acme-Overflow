@@ -1,10 +1,13 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.util.Date;
 
@@ -34,7 +37,7 @@ public class Mezzage extends DomainEntity {
         this.senderEmail = senderEmail;
     }
 
-   @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getReceiverEmail() {
         return receiverEmail;
     }
@@ -115,5 +118,17 @@ public class Mezzage extends DomainEntity {
 
     public void setWebinar(Webinar webinar) {
         this.webinar = webinar;
+    }
+
+    @Override
+    public String toString() {
+        return "Mezzage{" +
+                "senderEmail='" + senderEmail + '\'' +
+                ", receiverEmail='" + receiverEmail + '\'' +
+                ", sendDate=" + sendDate +
+                ", subject='" + subject + '\'' +
+                ", body='" + body + '\'' +
+                ", priority=" + priority +
+                '}';
     }
 }

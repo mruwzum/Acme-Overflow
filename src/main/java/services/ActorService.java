@@ -1,9 +1,12 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package services;
 
 import domain.Actor;
 import domain.Folder;
 import domain.Mezzage;
-import domain.Priority;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -15,7 +18,6 @@ import security.UserAccountService;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,8 +31,8 @@ public class ActorService {
     private UserAccountService userAccountService;
     @Autowired
     private FolderService folderService;
-   @Autowired
-   private MezzageService mezzageService;
+    @Autowired
+    private MezzageService mezzageService;
 
     // Supporting services -----------------------
 
@@ -118,12 +120,11 @@ public class ActorService {
         return res;
     }
 
-   public Actor findByName(String name) {
-      Assert.notNull(name);
-      Actor res = actorRepository.findByName(name);
-      return res;
-   }
-
+    public Actor findByName(String name) {
+        Assert.notNull(name);
+        Actor res = actorRepository.findByName(name);
+        return res;
+    }
 
 
     public Collection<Folder> getFolders() {
@@ -154,75 +155,61 @@ public class ActorService {
         folderService.delete(f);
     }
 
-//   public Mezzage sendMessage(Mezzage mezzage) {
-//        Actor u;
-//        u = findByPrincipal();
-//        Assert.notNull(u, "El actor no existe");
-//      recieveMessage(mezzage, mezzage.getReceiver());
-//      return mezzage;
-//    }
 
-   public Mezzage recieveMessage(Mezzage mezzage, Actor a) {
+    public Mezzage recieveMessage(Mezzage mezzage, Actor a) {
 
 
         List<Folder> folders = new ArrayList<>(a.getFolders());
         Assert.notEmpty(folders, "carpetas vacias");
-      folders.get(2).getMezzages().add(mezzage);
+        folders.get(2).getMezzages().add(mezzage);
         a.setFolders(folders);
-      return mezzage;
+        return mezzage;
     }
 
-   public void textMessage(Mezzage mezzage) {
+    public void textMessage(Mezzage mezzage) {
 
-       Assert.notNull(mezzage.getSubject(), "El subject no existe");
-       Assert.notNull(mezzage.getBody(), "El body no existe");
-      Assert.notNull(mezzage.getReceiverEmail(), "El recipient no existe");
-      // Assert.notNull(mezzage.getSender(), "El sender es null ");
+        Assert.notNull(mezzage.getSubject(), "El subject no existe");
+        Assert.notNull(mezzage.getBody(), "El body no existe");
+        Assert.notNull(mezzage.getReceiverEmail(), "El recipient no existe");
 
-     Actor receiver = actorRepository.findUserByEmail(mezzage.getReceiverEmail());
+        Actor receiver = actorRepository.findUserByEmail(mezzage.getReceiverEmail());
 
-       Actor sender = actorRepository.findUserByEmail(mezzage.getSenderEmail());
-
-
-      mezzage.setReceiver(receiver);
-      Mezzage mezzage1 = mezzageService.create();
-      mezzage1.setSendDate(mezzage.getSendDate());
-      mezzage1.setSenderEmail(mezzage.getSenderEmail());
-      //mezzage1.setSender(mezzage.getSender());
-      mezzage1.setBody(mezzage.getBody());
-      mezzage1.setSubject(mezzage.getSubject());
-      mezzage1.setPriority(mezzage.getPriority());
-      mezzage1.setReceiver(mezzage.getReceiver());
-      mezzage1.setReceiverEmail(mezzage.getReceiverEmail());
+        Actor sender = actorRepository.findUserByEmail(mezzage.getSenderEmail());
 
 
-      Folder f = actorRepository.folderByName(receiver, "Inbox");
-      mezzage1.setFolder(f);
-      //f.getMezzages().add(mezzage1);
+        mezzage.setReceiver(receiver);
+        Mezzage mezzage1 = mezzageService.create();
+        mezzage1.setSendDate(mezzage.getSendDate());
+        mezzage1.setSenderEmail(mezzage.getSenderEmail());
+        mezzage1.setBody(mezzage.getBody());
+        mezzage1.setSubject(mezzage.getSubject());
+        mezzage1.setPriority(mezzage.getPriority());
+        mezzage1.setReceiver(mezzage.getReceiver());
+        mezzage1.setReceiverEmail(mezzage.getReceiverEmail());
 
 
-
-       Folder fs = actorRepository.folderByName(sender, "Outbox");
-       mezzage.setFolder(fs);
-       //fs.getMezzages().add(mezzage);
-
-       mezzageService.save(mezzage);
-       mezzageService.save(mezzage1);
-
-//       mezzageService.save(mezzage1);
+        Folder f = actorRepository.folderByName(receiver, "Inbox");
+        mezzage1.setFolder(f);
 
 
-   }
+        Folder fs = actorRepository.folderByName(sender, "Outbox");
+        mezzage.setFolder(fs);
+
+        mezzageService.save(mezzage);
+        mezzageService.save(mezzage1);
 
 
-   public Collection<Mezzage> allMessages(Actor a) {
+    }
 
-      return actorRepository.allMessages(a);
-   }
 
-   public Folder folderByName(Actor a, String name){
+    public Collection<Mezzage> allMessages(Actor a) {
 
-        return actorRepository.folderByName(a,name);
-   }
+        return actorRepository.allMessages(a);
+    }
+
+    public Folder folderByName(Actor a, String name) {
+
+        return actorRepository.folderByName(a, name);
+    }
 
 }

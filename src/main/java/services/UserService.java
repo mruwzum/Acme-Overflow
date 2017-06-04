@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package services;
 
 import domain.*;
@@ -14,11 +18,6 @@ import security.UserAccountService;
 
 import java.util.Collection;
 import java.util.HashSet;
-
-/**
- * Created by david on 05/11/2016.
- * Copyright © 2016 NullPoint Software
- */
 
 @Service
 @Transactional
@@ -48,8 +47,8 @@ public class UserService {
     private TeacherService teacherService;
     @Autowired
     private CurriculaService curriculaService;
-   @Autowired
-   private ActorService actorService;
+    @Autowired
+    private ActorService actorService;
 
     // Managed repository--------------------------------------------------------------------------------
 
@@ -94,9 +93,9 @@ public class UserService {
 
     }
 
-   public void flush() {
-      userRepository.flush();
-   }
+    public void flush() {
+        userRepository.flush();
+    }
 
     // Other business methods -------------------------------------------------------------------------------
 
@@ -136,40 +135,36 @@ public class UserService {
         u.setUserAccount(userAccount);
         Assert.notNull(u.getUserAccount().getAuthorities(), "authorities null al registrar");
         User resu = userRepository.save(u);
-       Collection<Mezzage> received = new HashSet<>();
-       Collection<Mezzage> sended = new HashSet<>();
+        Collection<Mezzage> received = new HashSet<>();
+        Collection<Mezzage> sended = new HashSet<>();
         Collection<Folder> folders = new HashSet<>();
         Folder inbox = folderService.create();
-       inbox.setName("Inbox");
+        inbox.setName("Inbox");
         inbox.setOwner(resu);
-       Collection<Mezzage> innnn = new HashSet<>();
-       inbox.setMezzages(innnn);
+        Collection<Mezzage> innnn = new HashSet<>();
+        inbox.setMezzages(innnn);
         Folder outbox = folderService.create();
-       outbox.setName("Outbox");
+        outbox.setName("Outbox");
         outbox.setOwner(resu);
-       Collection<Mezzage> ouuuu = new HashSet<>();
-       outbox.setMezzages(ouuuu);
+        Collection<Mezzage> ouuuu = new HashSet<>();
+        outbox.setMezzages(ouuuu);
         Folder spambox = folderService.create();
-       spambox.setName("Spambox");
+        spambox.setName("Spambox");
         spambox.setOwner(resu);
-       Collection<Mezzage> spaaaam = new HashSet<>();
-       spambox.setMezzages(spaaaam);
+        Collection<Mezzage> spaaaam = new HashSet<>();
+        spambox.setMezzages(spaaaam);
         Folder trashBox = folderService.create();
-       trashBox.setName("Trashbox");
+        trashBox.setName("Trashbox");
         trashBox.setOwner(resu);
-       Collection<Mezzage> trashhh = new HashSet<>();
-       trashBox.setMezzages(trashhh);
+        Collection<Mezzage> trashhh = new HashSet<>();
+        trashBox.setMezzages(trashhh);
         folders.add(inbox);
         folders.add(outbox);
         folders.add(spambox);
         folders.add(trashBox);
-//        folderService.save(inbox);
-//        folderService.save(outbox);
-//        folderService.save(spambox);
-//        folderService.save(trashBox);
         resu.setFolders(folders);
-       resu.setReceivedMezzages(received);
-       resu.setSendedMezzages(sended);
+        resu.setReceivedMezzages(received);
+        resu.setSendedMezzages(sended);
         Collection<Answer> answers = new HashSet<>();
         Collection<Question> questions = new HashSet<>();
         Collection<Comment> comments = new HashSet<>();
@@ -193,42 +188,38 @@ public class UserService {
         UserAccount userAccount = userAccountService.save(res);
         teacher.setUserAccount(userAccount);
         Assert.notNull(teacher.getUserAccount().getAuthorities(), "authorities null al registrar");
-       teacher.getCurricula().setApprobed(false);
+        teacher.getCurricula().setApprobed(false);
         Teacher resu = teacherService.save(teacher);
-       Collection<Mezzage> received = new HashSet<>();
-       Collection<Mezzage> sended = new HashSet<>();
+        Collection<Mezzage> received = new HashSet<>();
+        Collection<Mezzage> sended = new HashSet<>();
         Collection<Folder> folders = new HashSet<>();
         Folder inbox = folderService.create();
-       inbox.setName("Inbox");
+        inbox.setName("Inbox");
         inbox.setOwner(resu);
-       Collection<Mezzage> innnn = new HashSet<>();
-       inbox.setMezzages(innnn);
+        Collection<Mezzage> innnn = new HashSet<>();
+        inbox.setMezzages(innnn);
         Folder outbox = folderService.create();
-       outbox.setName("Outbox");
+        outbox.setName("Outbox");
         outbox.setOwner(resu);
-       Collection<Mezzage> ouuuu = new HashSet<>();
-       outbox.setMezzages(ouuuu);
+        Collection<Mezzage> ouuuu = new HashSet<>();
+        outbox.setMezzages(ouuuu);
         Folder spambox = folderService.create();
-       spambox.setName("Spambox");
+        spambox.setName("Spambox");
         spambox.setOwner(resu);
-       Collection<Mezzage> spaaaam = new HashSet<>();
-       spambox.setMezzages(spaaaam);
+        Collection<Mezzage> spaaaam = new HashSet<>();
+        spambox.setMezzages(spaaaam);
         Folder trashBox = folderService.create();
-       trashBox.setName("Trashbox");
+        trashBox.setName("Trashbox");
         trashBox.setOwner(resu);
-       Collection<Mezzage> trashhh = new HashSet<>();
-       trashBox.setMezzages(trashhh);
-//        folders.add(inbox);
-//        folders.add(outbox);
-//        folders.add(spambox);
-//        folders.add(trashBox);
+        Collection<Mezzage> trashhh = new HashSet<>();
+        trashBox.setMezzages(trashhh);
         folderService.save(inbox);
         folderService.save(outbox);
         folderService.save(spambox);
         folderService.save(trashBox);
         resu.setFolders(folders);
-       resu.setReceivedMezzages(received);
-       resu.setSendedMezzages(sended);
+        resu.setReceivedMezzages(received);
+        resu.setSendedMezzages(sended);
 
         Collection<Answer> answers = new HashSet<>();
         Collection<Comment> comments = new HashSet<>();
@@ -256,43 +247,43 @@ public class UserService {
 
     public Boolean unbanUser(User user) {
         Boolean res = false;
-       if (!user.getUserAccount().getAuthorities().isEmpty()) {
+        if (! user.getUserAccount().getAuthorities().isEmpty()) {
 
 
-          Authority authority = new Authority();
-          authority.setAuthority("USER");
-          Authority authority2 = new Authority();
-          authority2.setAuthority("BAN");
+            Authority authority = new Authority();
+            authority.setAuthority("USER");
+            Authority authority2 = new Authority();
+            authority2.setAuthority("BAN");
 
-          user.getUserAccount().addAuthority(authority);
-          user.getUserAccount().removeAuthority(authority2);
-          user.setBanned(false);
-          res = true;
+            user.getUserAccount().addAuthority(authority);
+            user.getUserAccount().removeAuthority(authority2);
+            user.setBanned(false);
+            res = true;
 
-       }
+        }
         return res;
     }
 
-   public Collection<Mezzage> myWebbinarMezzages(User user) {
-      Collection<Mezzage> res = new HashSet<>();
-      res = userRepository.myWebbinarMezzages(user);
-      return res;
-   }
+    public Collection<Mezzage> myWebbinarMezzages(User user) {
+        Collection<Mezzage> res = new HashSet<>();
+        res = userRepository.myWebbinarMezzages(user);
+        return res;
+    }
 
-   public Collection<Mezzage> addMyWebinnarMezzagesToMyImbox(User u) {
-      Collection<Mezzage> myWebis = myWebbinarMezzages(u);
-      return myWebis;
-
-
-   }
+    public Collection<Mezzage> addMyWebinnarMezzagesToMyImbox(User u) {
+        Collection<Mezzage> myWebis = myWebbinarMezzages(u);
+        return myWebis;
 
 
-   public Collection<User> userNotBanned(){
+    }
+
+
+    public Collection<User> userNotBanned() {
 
         return userRepository.usersNotBanned();
-   }
+    }
 
-    public Collection<User> userNotModerator(){
+    public Collection<User> userNotModerator() {
 
         return userRepository.usersNotModerator();
     }

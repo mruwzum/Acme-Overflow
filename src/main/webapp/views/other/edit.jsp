@@ -11,6 +11,10 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
 TODO hacer aqui la vista de edición completa de usuarios
 
 <form:form action="finder/find.do" modelAttribute="finder">

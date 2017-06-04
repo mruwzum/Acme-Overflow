@@ -1,12 +1,6 @@
 <%--
- * textbox.tag
- *
- * Copyright (C) 2017 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
- * http://www.tdg-seville.info/License.html
- --%>
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
 
 <%@ tag language="java" body-content="empty" %>
 
@@ -20,23 +14,23 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<%-- Attributes --%> 
- 
+<%-- Attributes --%>
+
 <%@ attribute name="path" required="true" %>
 <%@ attribute name="code" required="true" %>
 
 <%@ attribute name="readonly" required="false" %>
 
 <jstl:if test="${readonly == null}">
-	<jstl:set var="readonly" value="false" />
+    <jstl:set var="readonly" value="false"/>
 </jstl:if>
 
 <%-- Definition --%>
 
 <div>
-	<form:label path="${path}">
-		<spring:message code="${code}" />
-	</form:label>	
-	<form:input path="${path}" readonly="${readonly}" />	
-	<form:errors path="${path}" cssClass="error" />
+    <form:label path="${path}">
+        <spring:message code="${code}"/>
+    </form:label>
+    <form:input path="${path}" readonly="${readonly}"/>
+    <form:errors path="${path}" cssClass="error"/>
 </div>	

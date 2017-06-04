@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 
@@ -159,13 +163,13 @@ public class AdministratorController extends AbstractController {
         Authority authority = new Authority();
         authority.setAuthority("ADMIN");
 
-        if(actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
+        if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)) {
 
-        dutyService.save(searchCache);
-        res = new ModelAndView("user/success");
+            dutyService.save(searchCache);
+            res = new ModelAndView("user/success");
 
-        }else{
-            res =  new ModelAndView("/welcome/index");
+        } else {
+            res = new ModelAndView("/welcome/index");
 
         }
 

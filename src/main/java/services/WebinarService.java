@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package services;
 
 import domain.*;
@@ -8,11 +12,6 @@ import org.springframework.util.Assert;
 import repositories.WebinarRepository;
 
 import java.util.*;
-
-/**
- * Created by david on 05/11/2016.
- * Copyright © 2016 NullPoint Software
- */
 
 @Service
 @Transactional
@@ -81,7 +80,7 @@ public class WebinarService {
         }
 
 
-        Bill bill =  billService.create();
+        Bill bill = billService.create();
         bill.setOwner(user);
         bill.setWebinar(webinar);
         bill.setValue(webinar.getPrice());
@@ -112,7 +111,7 @@ public class WebinarService {
         return webinarRepository.myWebinars(t);
     }
 
-   public Collection<Webinar> myWebinarsO(Actor t) {
+    public Collection<Webinar> myWebinarsO(Actor t) {
 
         Assert.notNull(t);
         return webinarRepository.myWebinarso(t);
@@ -140,70 +139,70 @@ public class WebinarService {
 
     }
 
-   public Collection<Webinar> listIncoming() {
-      Collection<Webinar> webinars;
-      List<Webinar> res = new ArrayList<>();
-      webinars = webinarRepository.findAll();
+    public Collection<Webinar> listIncoming() {
+        Collection<Webinar> webinars;
+        List<Webinar> res = new ArrayList<>();
+        webinars = webinarRepository.findAll();
 
 
-       Date now = new Date(System.currentTimeMillis()-100);
-       Date nextMonth = new Date(System.currentTimeMillis() + 1000 *60*60* 24 * 31L);
+        Date now = new Date(System.currentTimeMillis() - 100);
+        Date nextMonth = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 31L);
 
 
-       res = webinarRepository.listIncoming(now,nextMonth);
+        res = webinarRepository.listIncoming(now, nextMonth);
 
-      Collections.sort(res, new Comparator<Webinar>() {
-         public int compare(Webinar m1, Webinar m2) {
-            return m2.getStartDate().toString().compareTo(m1.getStartDate().toString());
-         }
-      });
-      return res;
-   }
+        Collections.sort(res, new Comparator<Webinar>() {
+            public int compare(Webinar m1, Webinar m2) {
+                return m2.getStartDate().toString().compareTo(m1.getStartDate().toString());
+            }
+        });
+        return res;
+    }
 
 
-   public int setQuestionNull(Webinar c) {
+    public int setQuestionNull(Webinar c) {
 
-      return webinarRepository.setQuestionNull(c);
-   }
+        return webinarRepository.setQuestionNull(c);
+    }
 
-   public int setEvaluationNull(Webinar c) {
+    public int setEvaluationNull(Webinar c) {
 
-      return webinarRepository.setEvaluationNull(c);
-   }
+        return webinarRepository.setEvaluationNull(c);
+    }
 
-   public int setModulesNull(Webinar c) {
+    public int setModulesNull(Webinar c) {
 
-      return webinarRepository.setModulesNull(c);
-   }
+        return webinarRepository.setModulesNull(c);
+    }
 
-   public int setBillsNull(Webinar c) {
+    public int setBillsNull(Webinar c) {
 
-      return webinarRepository.setBillsNull(c);
-   }
+        return webinarRepository.setBillsNull(c);
+    }
 
-   public Boolean checkCreditCard(CreditCard creditCard) {
-      Boolean res = false;
-      Integer yearAct0 = (((new Date(System.currentTimeMillis())).getYear()));
-      String year = "20" + yearAct0.toString().substring(1);
-      Integer yearAct = new Integer(year);
-      int monthAct = new Date(System.currentTimeMillis()).getMonth();
-      if (creditCard == null) {
-         res = false;
-      } else if (creditCard.getYear() == yearAct && creditCard.getMonth() < monthAct) {
-         res = false;
-         creditCard.setValid(false);
-      } else if (creditCard.getYear() == yearAct && creditCard.getMonth() >= monthAct) {
-         res = true;
-         creditCard.setValid(true);
-      } else if (creditCard.getYear() >= yearAct) {
-         res = true;
-         creditCard.setValid(true);
-      } else if (creditCard.getYear() < yearAct) {
-         res = false;
-         creditCard.setValid(false);
-      }
-      return res;
-   }
+    public Boolean checkCreditCard(CreditCard creditCard) {
+        Boolean res = false;
+        Integer yearAct0 = (((new Date(System.currentTimeMillis())).getYear()));
+        String year = "20" + yearAct0.toString().substring(1);
+        Integer yearAct = new Integer(year);
+        int monthAct = new Date(System.currentTimeMillis()).getMonth();
+        if (creditCard == null) {
+            res = false;
+        } else if (creditCard.getYear() == yearAct && creditCard.getMonth() < monthAct) {
+            res = false;
+            creditCard.setValid(false);
+        } else if (creditCard.getYear() == yearAct && creditCard.getMonth() >= monthAct) {
+            res = true;
+            creditCard.setValid(true);
+        } else if (creditCard.getYear() >= yearAct) {
+            res = true;
+            creditCard.setValid(true);
+        } else if (creditCard.getYear() < yearAct) {
+            res = false;
+            creditCard.setValid(false);
+        }
+        return res;
+    }
 }
 
 

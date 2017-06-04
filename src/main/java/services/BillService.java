@@ -1,12 +1,14 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package services;
 
 import domain.Bill;
-import domain.Duty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.BillRepository;
-import repositories.DutyRepository;
 
 import javax.transaction.Transactional;
 import java.util.Collection;

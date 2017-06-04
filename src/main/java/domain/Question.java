@@ -1,6 +1,9 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 
@@ -110,5 +113,14 @@ public class Question extends DomainEntity {
 
     public void setSearch(Search search) {
         this.search = search;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "title='" + title + '\'' +
+                ", summary='" + summary + '\'' +
+                ", createdDate=" + createdDate +
+                '}';
     }
 }

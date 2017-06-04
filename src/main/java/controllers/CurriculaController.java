@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 
@@ -63,7 +67,7 @@ public class CurriculaController extends AbstractController {
 
         curricula = curriculaService.findAll();
         result = new ModelAndView("curricula/list");
-       result.addObject("curriculas", curricula);
+        result.addObject("curriculas", curricula);
         result.addObject("requestURI", "curricula/list.do");
 
         return result;
@@ -115,67 +119,53 @@ public class CurriculaController extends AbstractController {
         return result;
     }
 
-    //    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-//    public ModelAndView delete(@Valid int curriculaId){
-//        ModelAndView result;
-//        try{
-//            curricula curricula = curriculaService.findOne(curriculaId);
-//            curriculaService.delete(curricula);
-//            result=new ModelAndView("redirect:list.do");
-//        }catch(Throwable oops){
-//            curricula curricula = curriculaService.findOne(curriculaId);
-//            result= createEditModelAndView(curricula, "curricula.commit.error");
-//        }
-//
-//        return result;
-//    }
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public ModelAndView delete2(@RequestParam int curriculaId) {
-       ModelAndView result;
-       try {
-          Curricula curricula = curriculaService.findOne(curriculaId);
-          curriculaService.delete(curricula);
-          result = new ModelAndView("redirect:list.do");
-       } catch (Throwable oops) {
-          Curricula curricula = curriculaService.findOne(curriculaId);
-          result = createEditModelAndView(curricula, "curricula.commit.error");
-       }
+        ModelAndView result;
+        try {
+            Curricula curricula = curriculaService.findOne(curriculaId);
+            curriculaService.delete(curricula);
+            result = new ModelAndView("redirect:list.do");
+        } catch (Throwable oops) {
+            Curricula curricula = curriculaService.findOne(curriculaId);
+            result = createEditModelAndView(curricula, "curricula.commit.error");
+        }
 
-       return result;
+        return result;
     }
 
-   @RequestMapping(value = "unapprobe", method = RequestMethod.GET)
-   public ModelAndView ban(@RequestParam int curriculaId) {
-      ModelAndView result;
-      Boolean opq;
-      Curricula curricula = curriculaService.findOne(curriculaId);
-      opq = curriculaService.unapprobeCurricula(curricula);
+    @RequestMapping(value = "unapprobe", method = RequestMethod.GET)
+    public ModelAndView ban(@RequestParam int curriculaId) {
+        ModelAndView result;
+        Boolean opq;
+        Curricula curricula = curriculaService.findOne(curriculaId);
+        opq = curriculaService.unapprobeCurricula(curricula);
 
-      if (opq.equals(false)) {
-         result = new ModelAndView("user/error");
-      } else {
-         result = new ModelAndView("redirect:list.do");
-      }
-
-
-      return result;
-   }
-
-   @RequestMapping(value = "approbe", method = RequestMethod.GET)
-   public ModelAndView unban(@RequestParam int curriculaId) {
-      ModelAndView result;
-      Boolean op;
-      Curricula curricula = curriculaService.findOne(curriculaId);
-      op = curriculaService.approbeCurricula(curricula);
-
-      if (op.equals(false)) {
-         result = new ModelAndView("user/error");
-      } else {
-         result = new ModelAndView("redirect:list.do");
-      }
+        if (opq.equals(false)) {
+            result = new ModelAndView("user/error");
+        } else {
+            result = new ModelAndView("redirect:list.do");
+        }
 
 
-      return result;
-   }
+        return result;
+    }
+
+    @RequestMapping(value = "approbe", method = RequestMethod.GET)
+    public ModelAndView unban(@RequestParam int curriculaId) {
+        ModelAndView result;
+        Boolean op;
+        Curricula curricula = curriculaService.findOne(curriculaId);
+        op = curriculaService.approbeCurricula(curricula);
+
+        if (op.equals(false)) {
+            result = new ModelAndView("user/error");
+        } else {
+            result = new ModelAndView("redirect:list.do");
+        }
+
+
+        return result;
+    }
 
 }

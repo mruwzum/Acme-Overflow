@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 
@@ -10,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import security.Authority;
 import security.UserAccountService;
 import services.CreditCardService;
 import services.UserService;
@@ -87,10 +90,10 @@ public class UserController extends AbstractController {
         Collection<User> users;
 
         Collection<User> res = new HashSet<>();
-       users = userService.findAll();
+        users = userService.findAll();
 
 
-       res.addAll(userService.userNotBanned());
+        res.addAll(userService.userNotBanned());
 
 
         result = new ModelAndView("user/list");
@@ -202,13 +205,9 @@ public class UserController extends AbstractController {
         ModelAndView res;
         User user = userService.findOne(userId);
 
-//		try {
+
         userService.banUser(user);
         res = new ModelAndView("redirect:listAll.do");
-//		} catch (Exception e) {
-//			res = new ModelAndView("chorbi/error");
-//			res.addObject("trace", e.fillInStackTrace());
-//		}
 
 
         return res;
@@ -223,13 +222,8 @@ public class UserController extends AbstractController {
         ModelAndView res;
         User user = userService.findOne(userId);
 
-//        try {
-            userService.unbanUser(user);
-            res = new ModelAndView("redirect:listAll.do");
-//        } catch (Exception e) {
-//            res = new ModelAndView("user/error");
-//            res.addObject("trace", e.toString());
-//        }
+        userService.unbanUser(user);
+        res = new ModelAndView("redirect:listAll.do");
 
 
         return res;
@@ -250,20 +244,20 @@ public class UserController extends AbstractController {
         return result;
     }
 
-   @RequestMapping(value = "/view", method = RequestMethod.GET)
-   public ModelAndView lessorViewAn(@RequestParam int userId) {
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    public ModelAndView lessorViewAn(@RequestParam int userId) {
 
-      ModelAndView result;
-      User user = userService.findOne(userId);
+        ModelAndView result;
+        User user = userService.findOne(userId);
 
 
-      result = new ModelAndView("user/view");
-      result.addObject("name", user.getName());
-      result.addObject("surname", user.getSurname());
-      result.addObject("email", user.getEmail());
-      result.addObject("phoneNumber", user.getPhoneNumber());
-      result.addObject("questions", user.getQuestions());
-      result.addObject("requestURI", "user/view.do");
-      return result;
-   }
+        result = new ModelAndView("user/view");
+        result.addObject("name", user.getName());
+        result.addObject("surname", user.getSurname());
+        result.addObject("email", user.getEmail());
+        result.addObject("phoneNumber", user.getPhoneNumber());
+        result.addObject("questions", user.getQuestions());
+        result.addObject("requestURI", "user/view.do");
+        return result;
+    }
 }

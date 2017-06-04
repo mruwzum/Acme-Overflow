@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 
@@ -13,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import security.Authority;
-import services.*;
+import services.ActorService;
+import services.AnswerService;
+import services.QuestionService;
+import services.UserService;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -123,7 +130,6 @@ public class AnswerController extends AbstractController {
         answer.setTeacher(false);
         answer.setLikedActors(new ArrayList<Actor>());
         result = createEditModelAndView(answer);
-        //result.addObject("idii",question.getId());
 
         return result;
 
@@ -151,25 +157,24 @@ public class AnswerController extends AbstractController {
             result = createEditModelAndView(answer);
         } else {
             try {
-        //answer.setOwner(otherService.findByPrincipal());
 
-        Authority authority = new Authority();
-        authority.setAuthority("TEACHER");
-        if(actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)){
-            answer.setOwner(actorService.findByPrincipal());
-            answer.setTeacher(true);
-            answer.setQuestion(answer.getQuestion());
-            answerService.save(answer);
+                Authority authority = new Authority();
+                authority.setAuthority("TEACHER");
+                if (actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority)) {
+                    answer.setOwner(actorService.findByPrincipal());
+                    answer.setTeacher(true);
+                    answer.setQuestion(answer.getQuestion());
+                    answerService.save(answer);
 
-        }else{
-            answer.setOwner(actorService.findByPrincipal());
-            answer.setQuestion(answer.getQuestion());
-            answerService.save(answer);
+                } else {
+                    answer.setOwner(actorService.findByPrincipal());
+                    answer.setQuestion(answer.getQuestion());
+                    answerService.save(answer);
 
-        }
+                }
 
 
-        result = new ModelAndView("user/success");
+                result = new ModelAndView("user/success");
             } catch (Throwable oops) {
                 result = createEditModelAndView(answer, "general.commit.error");
             }
@@ -214,7 +219,7 @@ public class AnswerController extends AbstractController {
         if (opq.equals(false)) {
             result = new ModelAndView("user/error");
         } else {
-           result = new ModelAndView("user/success");
+            result = new ModelAndView("user/success");
         }
 
 
@@ -231,40 +236,41 @@ public class AnswerController extends AbstractController {
         if (op.equals(false)) {
             result = new ModelAndView("user/error");
         } else {
-           result = new ModelAndView("user/success");
+            result = new ModelAndView("user/success");
         }
 
 
         return result;
     }
 
-   @RequestMapping(value = "ratepositive", method = RequestMethod.GET)
-   public ModelAndView ratepositive(@RequestParam int answerId) {
-      ModelAndView result;
-      Answer answer = answerService.findOne(answerId);
-      int likes = answer.getLikes();
-      answer.setLikes(likes + 1);
-      answer.getLikedActors().add(actorService.findByPrincipal());
-      answerService.save(answer);
-       actorService.findByPrincipal().getLikedAnswers().add(answer);
+    @RequestMapping(value = "ratepositive", method = RequestMethod.GET)
+    public ModelAndView ratepositive(@RequestParam int answerId) {
+        ModelAndView result;
+        Answer answer = answerService.findOne(answerId);
+        int likes = answer.getLikes();
+        answer.setLikes(likes + 1);
+        answer.getLikedActors().add(actorService.findByPrincipal());
+        actorService.findByPrincipal().getLikedAnswers().add(answer);
+        answerService.save(answer);
 
-       result = new ModelAndView("user/success");
-      return result;
-   }
 
-   @RequestMapping(value = "ratenegative", method = RequestMethod.GET)
-   public ModelAndView ratenegative(@RequestParam int answerId) {
-      ModelAndView result;
-      Answer answer = answerService.findOne(answerId);
-      Actor actor = actorService.findByPrincipal();
-       answer.getLikedActors().remove(actor);
-       actor.getLikedAnswers().remove(answer);
+        result = new ModelAndView("user/success");
+        return result;
+    }
 
-       int likes = answer.getLikes();
-      answer.setDislikes(likes - 1);
-       answerService.save(answer);
-      result = new ModelAndView("user/success");
-      return result;
-   }
+    @RequestMapping(value = "ratenegative", method = RequestMethod.GET)
+    public ModelAndView ratenegative(@RequestParam int answerId) {
+        ModelAndView result;
+        Answer answer = answerService.findOne(answerId);
+        Actor actor = actorService.findByPrincipal();
+        answer.getLikedActors().remove(actor);
+        actor.getLikedAnswers().remove(answer);
+
+        int likes = answer.getLikes();
+        answer.setDislikes(likes - 1);
+        answerService.save(answer);
+        result = new ModelAndView("user/success");
+        return result;
+    }
 
 }

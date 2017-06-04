@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -16,7 +20,7 @@ public class Search extends DomainEntity {
     private String keyword;
     private Category category;
     private Collection<Question> results;
-   private Actor owner;
+    private Actor owner;
 
 
     @NotBlank
@@ -52,7 +56,16 @@ public class Search extends DomainEntity {
         return owner;
     }
 
-   public void setOwner(Actor owner) {
+    public void setOwner(Actor owner) {
         this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return "Search{" +
+                "keyword='" + keyword + '\'' +
+                ", category=" + category +
+                ", owner=" + owner +
+                '}';
     }
 }

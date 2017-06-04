@@ -1,12 +1,14 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 /**
@@ -23,9 +25,9 @@ public class Answer extends DomainEntity {
     private int dislikes;
     private Question question;
     private boolean banned;
-   private Actor owner;
-   private boolean isTeacher;
-   private Collection<Actor> likedActors;
+    private Actor owner;
+    private boolean isTeacher;
+    private Collection<Actor> likedActors;
 
     @NotBlank
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
@@ -97,7 +99,7 @@ public class Answer extends DomainEntity {
         return owner;
     }
 
-   public void setOwner(Actor owner) {
+    public void setOwner(Actor owner) {
         this.owner = owner;
     }
 
@@ -118,5 +120,11 @@ public class Answer extends DomainEntity {
         this.likedActors = likedActors;
     }
 
-
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

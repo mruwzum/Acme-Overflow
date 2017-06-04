@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package controllers;
 
 import domain.Category;
@@ -40,20 +44,6 @@ public class CategoryController extends AbstractController {
 
     }
 
-//    @RequestMapping(value = "/delete", method = RequestMethod.GET)
-//    public ModelAndView deleteProperty(@RequestParam int categorieID) {
-//        ModelAndView result = new ModelAndView("redirect:list.do");
-//        Category categorie  = categoryService.findOne(categorieID);
-//        try {
-//            categoryService.delete(categorie);
-//        }catch (DataIntegrityViolationException e){
-//            result = new ModelAndView("sponsor/text");
-//
-//            String texto1 =  "You can't delete a category that contains any recipe / No puede borrar una categoría que tenga recetas asociadas";
-//            result.addObject("texto1", texto1);
-//        }
-//        return result;
-//    }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public ModelAndView edit(@RequestParam int categoryId) {
@@ -117,8 +107,6 @@ public class CategoryController extends AbstractController {
         ModelAndView result;
         result = new ModelAndView("category/edit");
         result.addObject("category", categorie);
-//        result.addObject("name",categorie.getName());
-//       result.addObject("description",categorie.getDescription());
 
 
         return result;

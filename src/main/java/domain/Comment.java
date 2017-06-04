@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import org.hibernate.validator.constraints.SafeHtml;
@@ -16,7 +20,7 @@ public class Comment extends DomainEntity {
     private String title;
     private String text;
     private Date creationDate;
-   private Actor owner;
+    private Actor owner;
     private Webinar webinar;
 
 
@@ -38,7 +42,6 @@ public class Comment extends DomainEntity {
         this.text = text;
     }
 
-    // @NotNull
     @Temporal(TemporalType.DATE)
     public Date getCreationDate() {
         return creationDate;
@@ -53,7 +56,7 @@ public class Comment extends DomainEntity {
         return owner;
     }
 
-   public void setOwner(Actor owner) {
+    public void setOwner(Actor owner) {
         this.owner = owner;
     }
 
@@ -64,5 +67,14 @@ public class Comment extends DomainEntity {
 
     public void setWebinar(Webinar webinar) {
         this.webinar = webinar;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "title='" + title + '\'' +
+                ", text='" + text + '\'' +
+                ", creationDate=" + creationDate +
+                '}';
     }
 }

@@ -11,6 +11,10 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
+<%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
 <form:form action="teacher/register.do" modelAttribute="teacher">
 
     <form:hidden path="id"/>
@@ -23,25 +27,7 @@
     <acme:textbox path="phoneNumber" code="user.phone"/>
     <acme:textbox path="IBAN" code="user.IBAN"/>
 
-    <%--<h3><spring:message code="edit.creditcard" var="cc"/>--%>
-    <%--<jstl:out value="${cc}"/>--%>
-    <%--</h3>--%>
-    <%--<acme:textbox path="creditCard.holder" code="creditCard.holderName"/>--%>
-    <%--<br />--%>
-    <%--<form:label path="creditCard.brand">--%>
-    <%--<spring:message code="creditCard.brandName"/>:--%>
-    <%--</form:label>--%>
-    <%--<form:select path="creditCard.brand" code="creditCard.brandName">--%>
-    <%--<form:options/>--%>
-    <%--</form:select>--%>
-    <%--<acme:textbox path="creditCard.number" code="creditCard.number"/>--%>
-    <%--<br />--%>
-    <%--<acme:textbox path="creditCard.ExpirationYear" code="creditCard.expirationYear"/>--%>
-    <%--<br />--%>
-    <%--<acme:textbox path="creditCard.ExpirationMonth" code="creditCard.expirationMonth"/>--%>
-    <%--<br />--%>
-    <%--<acme:textbox path="creditCard.CVV" code="creditCard.CVV"/>--%>
-    <%--<br />--%>
+
     <br/>
     <h1>User Account</h1>
     <br>
@@ -63,21 +49,21 @@
     <form:label path="curricula.hobbiesSection">
         <spring:message code="curricula.hobbiesSection"/>
     </form:label>
-    <form:input path="curricula.hobbiesSection"/>
+    <form:textarea path="curricula.hobbiesSection"/>
     <form:errors cssClass="error" path="curricula.hobbiesSection"/>
     <br/>
 
     <form:label path="curricula.educationSection">
         <spring:message code="curricula.educationSection"/>
     </form:label>
-    <form:input path="curricula.educationSection"/>
+    <form:textarea path="curricula.educationSection"/>
     <form:errors cssClass="error" path="curricula.educationSection"/>
     <br/>
 
     <form:label path="curricula.experienceSection">
         <spring:message code="curricula.experienceSection"/>
     </form:label>
-    <form:input path="curricula.experienceSection"/>
+    <form:textarea path="curricula.experienceSection"/>
     <form:errors cssClass="error" path="curricula.experienceSection"/>
     <br/>
     <form:label path="curricula.photo">

@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -12,7 +16,6 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Access(AccessType.PROPERTY)
 public class Bill extends DomainEntity {
-
 
 
     String number;
@@ -58,5 +61,13 @@ public class Bill extends DomainEntity {
 
     public void setWebinar(Webinar webinar) {
         this.webinar = webinar;
+    }
+
+    @Override
+    public String toString() {
+        return "Bill{" +
+                "number='" + number + '\'' +
+                ", value=" + value +
+                '}';
     }
 }

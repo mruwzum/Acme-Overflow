@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
@@ -85,12 +89,22 @@ public class CreditCard extends DomainEntity {
         this.type = type;
     }
 
-
+    @NotNull
     public boolean isValid() {
         return valid;
     }
 
     public void setValid(boolean valid) {
         this.valid = valid;
+    }
+
+    @Override
+    public String toString() {
+        return "CreditCard{" +
+                "holderName='" + holderName + '\'' +
+                ", number='" + number + '\'' +
+                ", year=" + year +
+                ", month=" + month +
+                '}';
     }
 }

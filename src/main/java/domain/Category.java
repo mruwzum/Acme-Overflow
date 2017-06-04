@@ -1,3 +1,7 @@
+/*
+ * Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+ */
+
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -61,4 +65,6 @@ public class Category extends DomainEntity {
     public String toString() {
         return name;
     }
+
+
 }

@@ -1,4 +1,8 @@
 <%--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  --%>
+
+<%--
   Created by IntelliJ IDEA.
   User: mruwzum
   Date: 1/3/17
@@ -34,10 +38,9 @@
 <jstl:if test="${my}">
     <security:authorize access="permitAll">
 
-            <a class="button2" href="learningMaterial/create.do?moduleId=${id}"> <spring:message
-                    code="general.create" />
-            </a>
-
+        <a class="button2" href="learningMaterial/create.do?moduleId=${id}"> <spring:message
+                code="general.create"/>
+        </a>
 
 
     </security:authorize>
@@ -52,29 +55,29 @@
     <!-- Attributes -->
     <jstl:if test="${my}">
 
-    <security:authorize access="permitAll">
-        <display:column>
-            <a href="learningMaterial/edit.do?learningMaterialId=${row.id}"> <spring:message
-                    code="general.edit" />
-            </a>
-        </display:column>
-    </security:authorize>
+        <security:authorize access="permitAll">
+            <display:column>
+                <a href="learningMaterial/edit.do?learningMaterialId=${row.id}"> <spring:message
+                        code="general.edit"/>
+                </a>
+            </display:column>
+        </security:authorize>
     </jstl:if>
 
-    <spring:message code="learning-material.title" var="title" />
-    <display:column property="title" title="${title}" sortable="true" />
-    <spring:message code="learning-material.attachments" var="attachmentsURLs" />
-    <display:column property="attachmentsURLs" title="${attachmentsURLs}" sortable="true" />
+    <spring:message code="learning-material.title" var="title"/>
+    <display:column property="title" title="${title}" sortable="true"/>
+    <spring:message code="learning-material.attachments" var="attachmentsURLs"/>
+    <display:column property="attachmentsURLs" title="${attachmentsURLs}" sortable="true"/>
 
     <jstl:if test="${my}">
 
-   <security:authorize access="permitAll">
-        <display:column>
-            <a href="learningMaterial/delete.do?learningMaterialId=${row.id}"> <spring:message
-                    code="general.delete" />
-            </a>
-        </display:column>
-    </security:authorize>
-</jstl:if>
+        <security:authorize access="permitAll">
+            <display:column>
+                <a href="learningMaterial/delete.do?learningMaterialId=${row.id}"> <spring:message
+                        code="general.delete"/>
+                </a>
+            </display:column>
+        </security:authorize>
+    </jstl:if>
 
 </display:table>

@@ -1,70 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 
- * i18n-l10n.xml
- *
- * Copyright (C) 2017 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
- * http://www.tdg-seville.info/License.html
- -->
+<!--
+  ~ Copyright © 2017. All information contained here included the intellectual and technical concepts are property of Null Point Software.
+  -->
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
-	xsi:schemaLocation="
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd 
 	">
 
-	<util:list id="messages">
-		<value>/views/master-page/messages</value>
-		<value>/views/misc/messages</value>
-		<value>/views/security/messages</value>
-		<value>/views/welcome/messages</value>
+    <util:list id="messages">
+        <value>/views/master-page/messages</value>
+        <value>/views/misc/messages</value>
+        <value>/views/security/messages</value>
+        <value>/views/welcome/messages</value>
 
-		<!--Administrator-->
-		<value>/views/administrator/messages</value>
-		<!--Answer-->
-		<value>/views/answer/messages</value>
-		<!--Banner-->
-		<value>/views/banner/messages</value>
-		<!--Category-->
-		<value>/views/category/messages</value>
-		<!--Comment-->
-		<value>/views/comment/messages</value>
-		<!--Credit-Card-->
-		<value>/views/credit-card/messages</value>
-		<!--Curricula-->
-		<value>/views/curricula/messages</value>
-		<!--Folder-->
-		<value>/views/folder/messages</value>
-		<!--Learning Material-->
-		<value>/views/learning-material/messages</value>
-		<!-- Mezzagesage-->
-		<value>/views/mezzage/messages</value>
-		<!--Module-->
-		<value>/views/module/messages</value>
-		<!--Other-->
-		<value>/views/other/messages</value>
-		<!--Question-->
-		<value>/views/question/messages</value>
-		<!--Search-->
-		<value>/views/search/messages</value>
-		<!--Search-Cache-->
-		<value>/views/search-cache/messages</value>
-		<!--Teacher-->
-		<value>/views/teacher/messages</value>
-		<!--User-->
-		<value>/views/user/messages</value>
-		<!--Webinar-->
-		<value>/views/webinar/messages</value>
-		<!--Bill-->
-		<value>/views/bill/messages</value>
-		<!--Duty-->
-		<value>/views/duty/messages</value>
-		<!--Duty-->
-		<value>/views/evaluation-question/messages</value>
-	</util:list>
+        <!--Administrator-->
+        <value>/views/administrator/messages</value>
+        <!--Answer-->
+        <value>/views/answer/messages</value>
+        <!--Banner-->
+        <value>/views/banner/messages</value>
+        <!--Category-->
+        <value>/views/category/messages</value>
+        <!--Comment-->
+        <value>/views/comment/messages</value>
+        <!--Credit-Card-->
+        <value>/views/credit-card/messages</value>
+        <!--Curricula-->
+        <value>/views/curricula/messages</value>
+        <!--Folder-->
+        <value>/views/folder/messages</value>
+        <!--Learning Material-->
+        <value>/views/learning-material/messages</value>
+        <!-- Mezzagesage-->
+        <value>/views/mezzage/messages</value>
+        <!--Module-->
+        <value>/views/module/messages</value>
+        <!--Other-->
+        <value>/views/other/messages</value>
+        <!--Question-->
+        <value>/views/question/messages</value>
+        <!--Search-->
+        <value>/views/search/messages</value>
+        <!--Search-Cache-->
+        <value>/views/search-cache/messages</value>
+        <!--Teacher-->
+        <value>/views/teacher/messages</value>
+        <!--User-->
+        <value>/views/user/messages</value>
+        <!--Webinar-->
+        <value>/views/webinar/messages</value>
+        <!--Bill-->
+        <value>/views/bill/messages</value>
+        <!--Duty-->
+        <value>/views/duty/messages</value>
+        <!--Duty-->
+        <value>/views/evaluation-question/messages</value>
+    </util:list>
 
 </beans>
